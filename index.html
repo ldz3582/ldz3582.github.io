@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYE08Z338"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XVYE08Z338');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>clock&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Welcome!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="clock&#39;s blog">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="clock&#39;s blog">
+<meta property="og:description" content="Welcome!">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="clock's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">clock&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Here&#39;s liyuhan&#39;s personal blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/15/%E6%B5%8B%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2025-01-15T06:58:27.000Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/15/%E6%B5%8B%E8%AF%95/">测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>个人csdn博客：clock的时钟</p>
+<p>离散化<br>首先大家最关注的问题就是什么时候用离散化 呢？</p>
+<p>为什么要用离散化？ 离散化就是将连续或者大范围的数据映射到一个极小，连续的整数范围内的过程，在许多算法问题中，尤其是涉及到大量范围查询或者频繁更新操作时，离散化可以显著提高效率和降低时空复杂度，离散化的使用场景：</p>
+<p>1）处理大范围的数据</p>
+<p>2）优化空间利用</p>
+<p>解决方案：通过离散化，将所有出现过的x,l,r进行排序并去重，映射到一个连续的较小整数范围内，优势：空间节省，提高缓存命中率。</p>
+<p>3）简化查询与更新。</p>
+<p>一般离散化就是要将稀疏数据映射到紧凑范围，那就会有很多人不理解排序了为什么要去重啊</p>
+<p>这里就是解释：这样做就是为了确保每个唯一数值有唯一的索引，因为离散化本质上就是映射。</p>
+<p>每个数值对应一个唯一的索引，索引是连续且有序的。</p>
+<p>这样做，避免重复映射导致的错误，如果不进行去重，alls 可能出现很多相同的值，</p>
+<p>那么有的人还会有一个问题：为什么去重不会影响求和，去重只是为了建立机制，不影响数组本身。</p>
+<p>所以离散化本质就是映射，理解了映射这个题目就理解了。</p>
+<p>但是还是很难理解</p>
+<p>这是我一开始的疑问：为什么要离散化两个端点（l,r) 离散化的目的是将原始坐标映射到一个连续，较小的范围，这样做是节省空间。将所有相关坐标（插入的坐标与查询端点）放在一个数组alls中。</p>
+<p>add使用来插入的，query是用来查询操作的</p>
+<p>include <iostream></p>
+<p>include <vector></p>
+<p>include <algorithm></p>
+<p>using namespace std;</p>
+<p>typedef pair&lt;int, int&gt; PII;</p>
+<p>const int N &#x3D; 300010;</p>
+<p>int n, m;<br>int a[N], s[N];</p>
+<p>vector<int> alls;<br>vector<PII> add, query;</p>
+<p>int find(int x)<br>{<br>  int l &#x3D; 0, r &#x3D; alls.size() - 1;<br>  while (l &lt; r)<br>  {<br>      int mid &#x3D; l + r &gt;&gt; 1;<br>      if (alls[mid] &gt;&#x3D; x) r &#x3D; mid;<br>      else l &#x3D; mid + 1;<br>  }<br>  return r + 1;<br>}</p>
+<p>int main()<br>{<br>  cin &gt;&gt; n &gt;&gt; m;<br>  for (int i &#x3D; 0; i &lt; n; i ++ )<br>  {<br>      int x, c;<br>      cin &gt;&gt; x &gt;&gt; c;<br>      add.push_back({x, c});</p>
+<pre><code>  alls.push_back(x);
+</code></pre>
+<p>  }</p>
+<p>  for (int i &#x3D; 0; i &lt; m; i ++ )<br>  {<br>      int l, r;<br>      cin &gt;&gt; l &gt;&gt; r;<br>      query.push_back({l, r});</p>
+<pre><code>  alls.push_back(l);
+  alls.push_back(r);
+</code></pre>
+<p>  }</p>
+<p>  &#x2F;&#x2F; 去重<br>  sort(alls.begin(), alls.end());<br>  alls.erase(unique(alls.begin(), alls.end()), alls.end());</p>
+<p>  &#x2F;&#x2F; 处理插入<br>  for (auto item : add)<br>  {<br>      int x &#x3D; find(item.first);<br>      a[x] +&#x3D; item.second;<br>  }</p>
+<p>  &#x2F;&#x2F; 预处理前缀和<br>  for (int i &#x3D; 1; i &lt;&#x3D; alls.size(); i ++ ) s[i] &#x3D; s[i - 1] + a[i];</p>
+<p>  &#x2F;&#x2F; 处理询问<br>  for (auto item : query)<br>  {<br>      int l &#x3D; find(item.first), r &#x3D; find(item.second);<br>      cout &lt;&lt; s[r] - s[l - 1] &lt;&lt; endl;<br>  }</p>
+<p>  return 0;<br>}</p>
+<p>这个图就好理解了，这样就真正理解离散化的意义了；主要是掌握这个映射关系。</p>
+<p>区间合并<br>区间合并简单一点，本质上就是讨论左边界与右边界的关系，可以弄一个st,ed 来判断关系</p>
+<p>主要是理解答题上的思路</p>
+<p>include <iostream></p>
+<p>include <vector></p>
+<p>include <algorithm></p>
+<p>using namespace std ;<br>typedef pair&lt;int,int&gt; pii ;<br>vector<pii> nums,res ;<br>int main()<br>{<br>  int st&#x3D;-2e9,ed&#x3D;-2e9 ;                           &#x2F;&#x2F;ed代表区间结尾，st代表区间开头<br>  int n ;<br>  scanf(“%d”,&amp;n) ;<br>  while(n–)<br>  {<br>      int l,r ;<br>      scanf(“%d%d”,&amp;l,&amp;r) ;<br>      nums.push_back({l,r}) ;<br>  }<br>  sort(nums.begin(),nums.end()) ;                 &#x2F;&#x2F;按左端点排序<br>  for(auto num:nums)<br>  {<br>      if(ed&lt;num.first)                           &#x2F;&#x2F;情况1：两个区间无法合并<br>      {<br>          if(ed!&#x3D;-2e9) res.push_back({st,ed}) ;   &#x2F;&#x2F;区间1放进res数组<br>          st&#x3D;num.first,ed&#x3D;num.second ;           &#x2F;&#x2F;维护区间2<br>      }<br>      &#x2F;&#x2F;情况2：两个区间可以合并，且区间1不包含区间2，区间2不包含区间1<br>      else if(ed&lt;num.second)<br>          ed&#x3D;num.second ;                         &#x2F;&#x2F;区间合并<br>  }<br>  &#x2F;&#x2F;(实际上也有情况3：区间1包含区间2，此时不需要任何操作，可以省略)</p>
+<p>  &#x2F;&#x2F;注：排过序之后，不可能有区间2包含区间1</p>
+<p>  res.push_back({st,ed});</p>
+<p>  &#x2F;&#x2F;考虑循环结束时的st,ed变量，此时的st,ed变量不需要继续维护，只需要放进res数组即可。<br>  &#x2F;&#x2F;因为这是最后的一个序列，所以不可能继续进行合并。</p>
+<p>  &#x2F;*<br>  for(auto r:res)<br>      printf(“%d %d\n”,r.first,r.second) ;<br>  puts(“”) ;<br>  *&#x2F;</p>
+<p>  &#x2F;&#x2F;(把上面的注释去掉，可以在调试时用)</p>
+<p>  printf(“%d”,res.size()) ;           &#x2F;&#x2F;输出答案<br>  return 0 ;<br>}</p>
+<p>————————————————</p>
+<pre><code>                        版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_87202881/article/details/145125183">https://blog.csdn.net/2401_87202881/article/details/145125183</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/15/%E6%B5%8B%E8%AF%95/" data-id="cm5xwlydu0005fmcqcoomcoyy" data-title="测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/15/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2025-01-15T06:21:36.385Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/15/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/15/hello-world/" data-id="cm5xwlydp0000fmcq27x6hvap" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-前端(html+css)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" class="article-date">
+  <time class="dt-published" datetime="2025-01-15T04:00:00.000Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前端-html-css"><a href="#前端-html-css" class="headerlink" title="前端(html+css)"></a>前端(html+css)</h2><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>前端技术栈</p>
+<p>![image-20250115091200102](&#x2F;Users&#x2F;liyuhan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20250115091200102.png)</p>
+<p>关注的方面：美观，功能，安全，性能，无障碍，安全，体验</p>
+<p>前端边界：jsnode electron,react Native ,web RTC,webGL ,WebASSEMBLY </p>
+<h2 id="HTML-速通"><a href="#HTML-速通" class="headerlink" title="HTML 速通"></a>HTML 速通</h2><p>Hyper	Text	    Markup	 Language</p>
+ <!doctype html><p>是 HTML 文档的文档类型声明（DOCTYPE Declaration），它的作用是告诉浏览器这个文档使用的是哪种 HTML 版本，以便正确地渲染内容。<br> &lt;&#x2F;!doctype&gt;</p>
+<p>DOM树</p>
+<ul>
+<li><p>标题<h>1-6</p>
+</li>
+<li><p>**列表 **</p>
+</li>
+</ul>
+<ol>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ol>
+
+
+
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ul>
+
+
+
+<dl>
+  <dt>start</dt>
+  <dd>first</dd>
+  <dd>second</dd>
+  <dd>third</dd>
+</dl>
+
+
+
+<ul>
+<li><p>链接</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/course/bytetech/7145675320224383006/section/7145427918028537892">wangzhi</a></p>
+<p>超链接</p>
+<p>![image-20250115093214842](&#x2F;Users&#x2F;liyuhan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20250115093214842.png)</p>
+</li>
+<li><p>输入：</p>
+<input placeholder="please enter your name">
+
+<input type = "range">
+
+<input type="number" min="1" max="10">
+
+<textarea>Hey</textarea>
+
+
+
+
+</li>
+<li><p>标签</p>
+<p>
+  <label><input type="checkbox" />apple</label>
+  <label><input type="checkbox" checked />banana</label>
+</p>
+
+<p>展示了两个复选框（checkbox），它们可以独立选择。默认情况下，第一个复选框未选中，第二个复选框已选中（通过 checked 属性）。</p>
+<p>
+  <label><input type="radio" name="sport" />footbal</label>
+  <label><input type="radio" name="sport" />basketball</label>
+</p>
+
+<p>你的代码中展示了两个单选按钮（radio），它们属于同一个分组（通过 name&#x3D;”sport” 属性指定）。由于它们有相同的 name 属性，用户在选择时只能选中一个。</p>
+<p>
+  <select>
+   <option>key</option> 
+   <option>clock</option>
+    <option>others</option>
+  </select>
+</p>
+
+
+
+<p>提供的代码展示了一个下拉选择框（<select>），包含三个选项：key、clock 和 others。以下是对你的代码的完整示例改进和优化。</p>
+</li>
+</ul>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datalist Example</title>
+</head>
+<body>
+    <p>Enter a name (you can select from the suggestions):</p>
+    <input list="name" name="username" placeholder="Type or select a name">
+    <datalist id="name">
+        <option value="yuhan"></option>
+        <option value="yajun"></option>
+        <option value="ruitong"></option>
+    </datalist>
+</body>
+</html>
+
+<p>代码展示了一个 datalist 元素，它可以为输入框提供可选的建议列表。以下是如何将其与输入框结合使用的完整示例：这样就类似于搜索文框</p>
+<p>标签：<blockquote></p>
+<ol>
+<li><blockquote> **标签**：</li>
+</ol>
+<p>​	•	用于引用长段落的内容，并通过 cite 属性标明引用的来源。</p>
+<blockquote cite="http://t.cn/RfjK0OF">
+    <p>天才并不是自生自长……</p>
+</blockquote>
+
+
+
+<p>​	2.	<cite> <strong>标签</strong>：</p>
+<p>​	•	用于标记书名、文章标题等。</p>
+<p>我最喜欢的一本书是<cite>小王子</cite>。</p>
+
+<ol start="3">
+<li><q> <strong>标签</strong>：</li>
+</ol>
+<p>​	•	用于标记行内引用。</p>
+<p>在<cite>第一章</cite>，我们讲过<q>字符串是不可变量</q>。</p>
+
+<p>​	4.	<code> <strong>标签</strong>：</p>
+<p>​	•	用于标记代码片段。</p>
+<p><code>const</code>声明创建一个只读的常量。</p>
+
+<p>​	5.	<pre> <strong>标签</strong>：</p>
+<p>​	•	保持内容的格式化输出（包括空格和换行）。</p>
+<pre><code>
+const add = (a, b) => a + b;
+const multiply = (a, b) => a * b;
+</code></pre>
+
+<ul>
+<li><p>内容划分</p>
+<p>![image-20250115101542216](/Users/liyuhan/Library/Application Support/typora-user-images/image-20250115101542216.png)</p>
+</li>
+</ul>
+<h2 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h2><p><strong>HTML语义化</strong> 是指在编写HTML代码时，通过使用具有明确含义的标签来结构化网页内容，使代码具有更好的可读性和可维护性，同时帮助浏览器、开发者、搜索引擎更准确地理解网页内容的结构和含义。</p>
+<p><strong>为什么需要HTML语义化？</strong></p>
+<p>​	1.	<strong>提升代码可读性</strong>：</p>
+<p>​	•	让开发者通过标签的名称就能直观地理解内容的用途。</p>
+<p>​	•	方便团队协作和后续维护。</p>
+<p>​	2.	<strong>增强SEO（搜索引擎优化）</strong>：</p>
+<p>​	•	语义化标签帮助搜索引擎更准确地抓取和理解网页内容，提高网页排名。</p>
+<p>​	3.	<strong>改进无障碍支持</strong>：</p>
+<p>​	•	辅助技术（如屏幕阅读器）可以更好地解析网页内容，提升对残障用户的友好程度。</p>
+<p>​	4.	<strong>更好的样式和行为分离</strong>：</p>
+<p>​	•	语义化标签可以更容易被CSS和JavaScript针对性地应用样式或功能。</p>
+<p>![image-20250115101840447](/Users/liyuhan/Library/Application Support/typora-user-images/image-20250115101840447.png)</p>
+<p>这样会更好 理解每一个部分是什么意思</p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p><strong>CSS</strong>（Cascading Style Sheets，层叠样式表）是一种用来控制网页外观和布局的语言，它用于与HTML搭配，为网页添加样式，使其更加美观和易用。</p>
+<ul>
+<li><strong>CSS的作用</strong></li>
+</ul>
+<p>​	1.	<strong>控制样式</strong>：</p>
+<p>​	•	改变文字颜色、大小、字体等。</p>
+<p>​	•	设置背景颜色、图片等。</p>
+<p>​	2.	<strong>布局设计</strong>：</p>
+<p>​	•	通过盒模型、弹性布局（Flexbox）、网格布局（Grid）等，创建复杂的网页布局。</p>
+<p>​	3.	<strong>响应式设计</strong>：</p>
+<p>​	•	利用媒体查询（Media Query）适配不同设备屏幕尺寸。</p>
+<p>​	4.	<strong>行为分离</strong>：</p>
+<p>​	•	将内容（HTML）与样式（CSS）分离，提升网页的可维护性。</p>
+<ul>
+<li>组成</li>
+</ul>
+<p>![image-20250115102250443](/Users/liyuhan/Library/Application Support/typora-user-images/image-20250115102250443.png)</p>
+<h3 id="在页面中使用css"><a href="#在页面中使用css" class="headerlink" title="在页面中使用css"></a><strong>在页面中使用css</strong></h3><ul>
+<li><p>外链</p>
+<p>一般是将样式写在单独的.css文件中，然后在html页面中通过<link>标签使用</p>
+<p>主要是实现样式与html分离，代码结构清晰</p>
+<p>可以复用同一个css文件到多个html页面</p>
+<p>更易于维护</p>
+<p>下面是一个例子</p>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External CSS</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 引用外部样式 -->
+</head>
+<body>
+    <h1>Hey!buddy!</h1>
+    <p>This is a paragraph styled with external CSS.</p>
+</body>
+</html>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: blue;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: gray;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>嵌入</p>
+<p> 将CSS代码直接写在HTML文档的 <style> 标签中，通常位于 <head> 部分。</p>
+<ul>
+<li><p>优点：</p>
+<ul>
+<li>试用于页面特定的样式需求</li>
+<li>不需要额外css文件，方便快速测试</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>样式与html混合，降低可读性与可维护性</li>
+<li>无法复用到其他页面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Embedded CSS&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;    &lt;!--这里就是实现的内嵌了--&gt;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            color: green;</span><br><span class="line">            font-size: 24px;</span><br><span class="line">            text-align: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        p &#123;</span><br><span class="line">            color: black;</span><br><span class="line">            font-size: 14px;</span><br><span class="line">            line-height: 1.5;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello, World!&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;This is a paragraph styled with embedded CSS.&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>内联</p>
+<p>将样式直接写在HTML元素的 style 属性中。</p>
+<p><strong>优点：</strong></p>
+<p>​    •    适用于单独调整某个元素的样式。</p>
+<p>​    •    立即生效，无需额外的CSS文件或样式块。</p>
+<p><strong>缺点：</strong></p>
+<p>​    •    破坏了内容和样式的分离。</p>
+<p>​    •    代码冗长，不适合大规模样式控制。</p>
+<p>​    •    无法复用，降低代码维护性。</p>
+</li>
+</ul>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline CSS</title>
+</head>
+<body>
+    <h1 style="color: red; font-size: 24px; text-align: center;">Hello, World!</h1>
+    <p style="color: gray; font-size: 14px; line-height: 1.5;">
+        This is a paragraph styled with inline CSS.
+    </p>
+</body>
+</html>
+
+<p>所以我个人推荐用外联，因为外联确实更清楚</p>
+<p>![image-20250115103757371](/Users/liyuhan/Library/Application Support/typora-user-images/image-20250115103757371.png)</p>
+<p>工作布置。</p>
+<h3 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h3><p><strong>1. 通配选择器 (*)</strong></p>
+<p><strong>描述：</strong></p>
+<p>通配选择器选中页面中的所有元素。</p>
+<p><strong>特点：</strong></p>
+<p>​	•	应用于全局样式初始化。</p>
+<p>​	•	通配选择器的性能开销较大，尽量避免频繁使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果：</strong></p>
+<p>​	•	去掉所有HTML元素的默认外边距（margin）和内边距（padding）。</p>
+<p>​	•	常用于CSS reset（重置样式表）或初始化。</p>
+<p><strong>场景：</strong></p>
+<p>​	•	在项目开始时统一重置浏览器的默认样式。</p>
+<p>​	•	调试时快速查看未被特殊样式覆盖的默认效果。</p>
+<p><strong>2. 元素选择器</strong></p>
+<p><strong>描述：</strong></p>
+<p>直接使用HTML标签名称选择页面中的所有该类型的元素。</p>
+<p><strong>特点：</strong></p>
+<p>​	•	简单直观。</p>
+<p>​	•	适用于为某一类标签设置全局样式。</p>
+<p>​	•	优先级低，容易被其他选择器覆盖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">    line-height: 1.5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果：</strong></p>
+<p>​	•	将所有段落（<p>）文字设置为蓝色，并增加行高。</p>
+<p><strong>场景：</strong></p>
+<p>​	•	为段落、标题、表格、按钮等标签设置通用样式。</p>
+<p>​	•	如 body 元素中设置全局字体：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    font-family: Arial, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 类选择器 (.)</strong></p>
+<p><strong>描述：</strong></p>
+<p>通过类名（class）选择HTML元素。类选择器使用 . 前缀。</p>
+<p><strong>特点：</strong></p>
+<p>​	•	一个类名可以应用于多个元素。</p>
+<p>​	•	支持组合多个类名，具有高灵活性。</p>
+<p>​	•	优先级比元素选择器高，但低于ID选择器。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: yellow;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是在css里面呈现的</p>
+<p>现在下面这个是在html里面实现的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;This is a box.&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. ID选择器 (#)</strong></p>
+<p><strong>描述：</strong></p>
+<p>通过ID选择器选中具有特定 id 属性的元素。ID选择器使用 # 前缀。</p>
+<p><strong>特点：</strong></p>
+<p>​	•	选择器唯一，应用于单个HTML元素。</p>
+<p>​	•	优先级高于类选择器。</p>
+<p>​	•	不推荐频繁使用，因为ID的唯一性限制了其复用性。</p>
+<p>在css里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#header &#123;</span><br><span class="line">    font-size: 20px;</span><br><span class="line">    color: white;</span><br><span class="line">    background-color: black;</span><br><span class="line">    padding: 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对应的html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;header&quot;&gt;This is the header.&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>​	•	同一页面中，一个ID只能出现一次：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;unique-id&quot;&gt;&lt;/div&gt; &lt;!-- 合法 --&gt;</span><br><span class="line">&lt;div id=&quot;unique-id&quot;&gt;&lt;/div&gt; &lt;!-- 非法，重复ID --&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CSS属性选择器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;a href=&quot;#top&quot;&gt;回到顶部&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;a href=&quot;a.jpg&quot;&gt;查看图片&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>第一个链接</strong>：<a href="#top"> 表示锚点链接，用于跳转到页面顶部。</p>
+<p>​	•	<strong>第二个链接</strong>：<a href="a.jpg"> 表示超链接，用于查看图片。</p>
+<p><strong>CSS 部分</strong></p>
+<p><strong>属性选择器 a[href^=&quot;#&quot;]</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a[href^=&quot;#&quot;] &#123;</span><br><span class="line">    color: #f54767;</span><br><span class="line">    background: 0 center/1em url(https://assets.codepen.io/59477/arrow-up.png) no-repeat;</span><br><span class="line">    padding-left: 1.1em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	[href^=&quot;#&quot;]：</p>
+<p>​	•	选择器 ^= 用于选择 href 属性值以 # 开头的 <a> 元素。</p>
+<p>​	•	在本例中，匹配的是 <a href="#top">。</p>
+<p>​	1.	color: #f54767;：</p>
+<p>设置文字颜色为粉红色（#f54767）。</p>
+<p>​	2.	background: 0 center/1em url(...) no-repeat;：</p>
+<p>​	•	设置背景图片为 arrow-up.png，背景图片居中对齐（center）。</p>
+<p>​	•	使用 1em 设置背景图片的大小。</p>
+<p>​	•	不重复显示背景图片（no-repeat）。</p>
+<p>​	3.	padding-left: 1.1em;：</p>
+<p>为左侧添加1.1em的内边距，使文字与背景图片保持间距。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a[href$=&quot;.jpg&quot;] &#123;</span><br><span class="line">    color: deepskyblue;</span><br><span class="line">    background: 0 center/1em url(https://assets.codepen.io/59477/image3.png) no-repeat;</span><br><span class="line">    padding-left: 1.2em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	[href$=&quot;.jpg&quot;]：</p>
+<p>​	•	<strong>选择器 $= 用于选择 href 属性值以 .jpg 结尾的 <a> 元素</strong>。</p>
+<p>​	•	在本例中，匹配的是 <a href="a.jpg">。</p>
+<p>​	•	<strong>样式解释</strong>：</p>
+<p>​	1.	color: deepskyblue;：</p>
+<p>设置文字颜色为天蓝色。</p>
+<p>​	2.	background: 0 center/1em url(...) no-repeat;：</p>
+<p>​	•	设置背景图片为 image3.png，图片居中对齐。</p>
+<p>​	•	使用 1em 设置背景图片的大小。</p>
+<p>​	•	背景图片不重复显示。</p>
+<p>​	3.	padding-left: 1.2em;：</p>
+<p>为左侧添加1.2em的内边距，使文字与背景图片保持间距。</p>
+<h3 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h3><p>![image-20250115133544822](/Users/liyuhan/Library/Application Support/typora-user-images/image-20250115133544822.png)</p>
+<p><strong>1）直接组合</strong></p>
+<p><strong>语法：</strong></p>
+<p>A B</p>
+<p><strong>说明：</strong></p>
+<p>选择满足条件的 <strong>B</strong> 元素，前提是它是 <strong>A</strong> 元素的后代（可以是子元素，也可以是更深层的嵌套）。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nav a &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>解释</strong>：选择所有 nav 标签中的后代 a 标签（超链接），并将其文字颜色设置为蓝色。</p>
+<p>2)后代组合</p>
+<p><strong>语法：</strong></p>
+<p>A &gt; B</p>
+<p><strong>说明：</strong></p>
+<p>选择满足条件的 <strong>B</strong> 元素，前提是它是 <strong>A</strong> 元素的直接子元素。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">section &gt; p &#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>解释</strong>：选择所有 section 标签下直接嵌套的 p 标签，将其文字颜色设置为红色。</p>
+<p><strong>区别：</strong></p>
+<p>​	•	与直接组合（A B）相比，后代组合只能选中一级子元素，不会匹配更深层的嵌套。</p>
+<p><strong>3. 相邻兄弟选择器（A + B）</strong></p>
+<p><strong>语法：</strong></p>
+<p>A + B</p>
+<p><strong>说明：</strong></p>
+<p>选择满足条件的 <strong>B</strong> 元素，前提是它紧接在 <strong>A</strong> 元素之后，且两者是同级兄弟。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h2 + p &#123;</span><br><span class="line">    font-size: 18px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>解释</strong>：选择所有紧接在 h2 标签后面的 p 标签，将其字体大小设置为18px。</p>
+<p><strong>4. 通用兄弟选择器（A ~ B）</strong></p>
+<p><strong>语法：</strong></p>
+<p>A ~ B</p>
+<p><strong>说明：</strong></p>
+<p>选择满足条件的 <strong>B</strong> 元素，前提是它位于 <strong>A</strong> 元素之后，且两者是同级兄弟。</p>
+<p><strong>示例：</strong>\</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h2 ～ p &#123;</span><br><span class="line">    color: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>解释</strong>：选择 h2 标签之后的所有 p 标签，将其文字颜色设置为灰色。</p>
+<p><strong>HTML</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;</span><br><span class="line">    &lt;a href=&quot;#home&quot;&gt;Home&lt;/a&gt;</span><br><span class="line">    &lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;</span><br><span class="line">&lt;/nav&gt;</span><br><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;p&gt;First paragraph inside section.&lt;/p&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;p&gt;Nested paragraph inside div.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line">&lt;h2&gt;Header 2&lt;/h2&gt;</span><br><span class="line">&lt;p&gt;Paragraph directly after h2.&lt;/p&gt;</span><br><span class="line">&lt;p&gt;Another paragraph after h2.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>css</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/* 直接组合：选择 nav 下的所有 a 标签 */</span><br><span class="line">nav a &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 后代组合：选择 section 下的直接子元素 p */</span><br><span class="line">section &gt; p &#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 相邻兄弟选择器：选择 h2 后紧邻的 p */</span><br><span class="line">h2 + p &#123;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 通用兄弟选择器：选择 h2 后的所有 p */</span><br><span class="line">h2 ~ p &#123;</span><br><span class="line">    color: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" data-id="cm5xwlydu0006fmcqekwefifz" data-title="day1-前端基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-双指针运算，位运算" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" class="article-date">
+  <time class="dt-published" datetime="2025-01-12T12:00:00.000Z" itemprop="datePublished">2025-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="双指针运算，位运算"><a href="#双指针运算，位运算" class="headerlink" title="双指针运算，位运算"></a>双指针运算，位运算</h1><p>双指针的算法一般会降低复杂度，进而提高效率</p>
+<p>那么优势是什么呢？ 他可以将时间复杂度由o(n*n) 降低为o(n)</p>
+<p>进而提高效率</p>
+<p>那么下面是一道题目</p>
+<p>\799. 最长连续不重复子序</p>
+<p>给定一个长度为 n 的整数序列，请找出最长的不包含重复的数的连续区间，输出它的长度。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h4><p>第一行包含整数 n。</p>
+<p>第二行包含 n 个整数（均在 0∼105 范围内），表示整数序列。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h4><p>共一行，包含一个整数，表示最长的不包含重复的数的连续区间的长度。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a><strong>数据范围</strong></h4><p>1≤n≤105</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a><strong>输入样例：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 2 3 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a><strong>输出样例：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">int a[N],s[N];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for(int i = 0;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int res = 0;</span><br><span class="line">    for(int i = 0,j=0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s[a[i]] ++;</span><br><span class="line">        while(j &lt; i &amp;&amp; s[a[i]] &gt; 1) s[a[j++]]--;</span><br><span class="line">        res = max(res,i-j+1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>双指针较为简单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line">int a[N],b[N];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m,x;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; x;</span><br><span class="line">    for(int i = 0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0,j = m-1;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while(j &gt;= 0 &amp;&amp; a[i] + b[j] &gt; x)   j--;</span><br><span class="line">        if(j &gt;= 0 &amp;&amp; a[i] + b[j] == x) cout &lt;&lt; i &lt;&lt; &#x27; &#x27; &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个是运用双指针计算数组元素的目标和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line">int a[N],b[N];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for(int i = 0;i&lt;n;i++)   cin &gt;&gt; a[i];</span><br><span class="line">    for(int i = 0;i&lt;m;i++)   cin &gt;&gt; b[i];</span><br><span class="line">    int j = 0;</span><br><span class="line">    for(int i = 0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j &lt; n &amp;&amp; a[j] == b[i]) j++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if(j == n)</span><br><span class="line">    cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;</span><br><span class="line">    else cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个是判断子序列的编程方法</p>
+<p>以上就是双指针运算了</p>
+<p>下面就是重头戏，就是位数运算</p>
+<p>想到双指针，就会想到lowbit(x)这个东西</p>
+<p>那么什么是lowbit原理呢？</p>
+<p>一下为lowbit 的含义：</p>
+<p>表示取得整数x的二进制表示中，从右边往左的第一个1以及其后全部0所组成的那部分数值</p>
+<p>及可以理解为 只保留x 的最右边的那个1 ，其余位全部清零。</p>
+<p>实际上是 x &amp; (-x)：</p>
+<p>• 在计算机中，负数以补码形式存储。若 x 的二进制是 bxxxx1000（其中 bxxxx 可以理解为前面的若干位），</p>
+<p>则 -x 的二进制会是其反码加 1，即再一次把相同位置的最低位 1 提取出来。</p>
+<p>• 与运算 x &amp; (-x) 只保留了从右往左遇到的<strong>第一个</strong> 1 <strong>所在位置</strong>上的值，其余位全部变为 0。</p>
+<p>好的，那么现在理解了什么是lowbit ,那就练习一道题目试一试叭！</p>
+<p>假设我有一个数，我要求其二进制1的个数是多少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">// 函数：获取 x 的最低位 1 以及其后所有 0 组成的数值</span><br><span class="line">int lowbit(int x) &#123;</span><br><span class="line">    return x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;              // 输入需要处理的整数数量</span><br><span class="line">    while(n--) &#123;</span><br><span class="line">        int x;</span><br><span class="line">        cin &gt;&gt; x;          // 读入当前整数</span><br><span class="line"></span><br><span class="line">        int res = 0;</span><br><span class="line">        while(x) &#123;         // 当 x 不为 0 时，继续提取最低位 1</span><br><span class="line">            x -= lowbit(x);</span><br><span class="line">            res++;         // 每去掉一个最低位 1，就计数 +1</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; res &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不知道你们理解了没有，现在我举一个例子吧</p>
+<p>比如我输入 31</p>
+<p>那么 31 对应的二进制是 11111</p>
+<p>现在逐层 去掉最低位 1</p>
+<p>\1. lowbit(31) &#x3D; 1，x &#x3D; 31 - 1 &#x3D; 30，res &#x3D; 1</p>
+<p>\2. lowbit(30) &#x3D; 2，x &#x3D; 30 - 2 &#x3D; 28，res &#x3D; 2</p>
+<p>\3. lowbit(28) &#x3D; 4，x &#x3D; 28 - 4 &#x3D; 24，res &#x3D; 3</p>
+<p>\4. lowbit(24) &#x3D; 8，x &#x3D; 24 - 8 &#x3D; 16，res &#x3D; 4</p>
+<p>\5. lowbit(16) &#x3D; 16，x &#x3D; 16 - 16 &#x3D; 0，res &#x3D; 5</p>
+<p>• 最终 res &#x3D; 5</p>
+<p>x &amp; (-x). 这个地方着重理解，非常不错的一个点啊！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" data-id="cm5xwlyds0001fmcq8exs8eef" data-title="双指针运算与位运算" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-数据结构-链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-01-12T12:00:00.000Z" itemprop="datePublished">2025-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">数据结构-链表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数据结构-链表"><a href="#数据结构-链表" class="headerlink" title="数据结构-链表"></a><strong>数据结构-链表</strong></h1><h2 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a><strong>单链表</strong></h2><p>一般在算法里面都是采用的静态链表，动态链表</p>
+<p>单链表一般就是邻接表，包括存储树与图</p>
+<p>双链表一般是优化某些问题的</p>
+<p>一下是动态链表与静态链表之间的区别</p>
+<p><strong>. 内存分配方式</strong></p>
+<p>• <strong>静态链表</strong>：</p>
+<p>• 静态链表通常是基于<em>一个固定大小的数组来实现的</em>。链表中的每个结点在数组中占据一个位置，通过数组下标来模拟指针的功能。</p>
+<p>• 每个结点除了存储数据外，还需要一个指向下一个结点的位置（数组的下标或索引）。</p>
+<p>• 静态链表的内存大小在编译时确定，不能动态扩展。</p>
+<p>• <strong>动态链表</strong>：</p>
+<p>• 动态链表使用的是 <strong>指针 来动态分配内存。每次需要插入一个新结点时，程序会调用 malloc() 或 new 操作符（取决于编程语言）来动态分配内存空间</strong>。</p>
+<p>• 动态链表的内存是按需分配的，因此可以随时扩展或收缩，内存使用效率较高。</p>
+<p><strong>2. 内存管理</strong></p>
+<p>• <strong>静态链表</strong>：</p>
+<p>• 由于静态链表基于数组，内存是一次性分配的。数组的大小在编译时固定，因此如果链表的实际大小小于数组的大小，会浪费内存；如果链表的大小超过了预设的数组大小，则无法继续扩展。</p>
+<p>• 静态链表没有真正的指针，而是通过数组下标来模拟指针关系。</p>
+<p>• <strong>动态链表</strong>：</p>
+<p>• 动态链表的内存管理由操作系统或运行时环境来负责，程序可以在运行时动态申请和释放内存。</p>
+<p>• 每个结点可以独立分配内存，因此内存空间的使用更灵活，能够根据链表实际的大小来管理内存。</p>
+<p><strong>3. 空间效率</strong></p>
+<p>• <strong>静态链表</strong>：</p>
+<p>• 由于预先分配了固定大小的内存，因此空间利用率可能较低。特别是当链表的元素数目变化很大时，静态链表可能会浪费很多内存。</p>
+<p>• <strong>动态链表</strong>：</p>
+<p>• 空间利用率较高。每个结点的内存空间是动态分配的，只有当需要更多空间时才会分配额外的内存。</p>
+<p><strong>4. 灵活性</strong></p>
+<p>• <strong>静态链表</strong>：</p>
+<p>• 静态链表的灵活性较差，因为它的大小是固定的，一旦数组大小确定，无法改变。</p>
+<p>• <strong>动态链表</strong>：</p>
+<p>• 动态链表的灵活性较强，可以根据实际需要动态增减结点，适应不同的链表大小。</p>
+<p><strong>5. 实现方式</strong></p>
+<p>• <strong>静态链表</strong>：</p>
+<p>• 通常通过一个结构体和一个固定大小的数组来实现。数组中的每个元素都包含数据部分和指向下一个结点的“下标”或“索引”，模拟指针的功能。</p>
+<p>• <strong>动态链表</strong>：</p>
+<p>• 每个结点包含两个部分：数据部分和一个指针（或者引用）指向下一个结点。内存是动态分配的，因此每个结点都是独立的。</p>
+<p>静态链表不同与动态链表，他一般是不用-&gt;next 指针的，所以</p>
+<p><img src="/../images/image-20250115154715622.png" alt="image-20250115154715622"></p>
+<p>可以参考这个图片，下面是一个单链表的程序</p>
+<p><img src="/../images/image-20250115154753618.png" alt="image-20250115154753618"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">    head = -1;</span><br><span class="line">    idx = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将x插到头结点</span><br><span class="line">void add_to_head(int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x, ne[idx] = head, head = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将x插到下标是k的点后面</span><br><span class="line">void add(int k, int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x, ne[idx] = ne[k], ne[k] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将下标是k的点后面的点删掉</span><br><span class="line">void remove(int k)</span><br><span class="line">&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这个就是大体的头插，删除，插在某一个节点的后面</p>
+<p>现在来画图解释一下头插!<img src="/../images/image-20250115154812932.png" alt="image-20250115154812932"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head = idx;   // 将当前的 `idx` 赋值给 `head`，使头节点指向当前结点。</span><br><span class="line">idx = idx + 1; // 自增 `idx`，为下一次插入操作预留新的数组位置。</span><br></pre></td></tr></table></figure>
+
+<p>这里是一个拆分，也许这样你就理解了为什么是idx++了</p>
+<p>现在再来解释一下再一个节点（不是头节点插入）</p>
+<p><img src="/../images/image-20250115154829517.png" alt="image-20250115154829517"></p>
+<p>下面在画一个删除节点的</p>
+<p><img src="/../images/image-20250115154847687.png" alt="image-20250115154847687"></p>
+<p>这个就简单一点吧</p>
+<p>现在在回到刚刚那个题，现在我们来上代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 100010;</span><br><span class="line"></span><br><span class="line">int head,e[N],ne[N],idx;</span><br><span class="line"></span><br><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">    head = -1;</span><br><span class="line">    idx = 0; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void add_to_head(int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void add(int k,int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = ne[k];</span><br><span class="line">    ne[k] = idx++;</span><br><span class="line">&#125;</span><br><span class="line">void remove( int k)</span><br><span class="line">&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int m;</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line">    init();</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int k,x;</span><br><span class="line">        char op;</span><br><span class="line">        cin &gt;&gt; op;</span><br><span class="line">        if(op == &#x27;H&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            add_to_head(x);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(op == &#x27;D&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k;</span><br><span class="line">            if(!k) head = ne[head];</span><br><span class="line">        </span><br><span class="line">            else remove(k-1);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            cin &gt;&gt; k &gt;&gt; x;</span><br><span class="line">            add(k-1,x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = head;i != -1;i = ne[i])  cout &lt;&lt; e[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面最重要的是add(k-1,x) 这里，因为很容易搞错</p>
+<h2 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h2><p>因为只写代码的话很多同学就不明白为什么是这样的，所以现在我画个图</p>
+<p><img src="/../images/image-20250115154914464.png" alt="image-20250115154914464"></p>
+<p>大体上就是这样的，根据这个图，我们就要进行4次修改才可以</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void add(int k,int x)</span><br><span class="line">&#123;</span><br><span class="line">	e[idx] = x;  //对当前我要插入的点赋值</span><br><span class="line">	r[idx] = r[k] ; //这里指的是将要添加的值的右边箭头指向k位置的右边箭头指向的值</span><br><span class="line">	l[idx] = k;</span><br><span class="line">	l[r[k]] = idx;</span><br><span class="line">	r[k] = idx;</span><br><span class="line">&#125;  四个指针操作，主要是画图就理解深刻； </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么这里是插入，如果是删除嫩？我应该怎么写呢</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void remove(int k) //如果我要删除第k的点</span><br><span class="line">&#123;</span><br><span class="line">	r[l[k]] = r[k];</span><br><span class="line">	l[r[k]] = l[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我一直都是写的数组，推荐写数组，因为写数组比写结构体简单</p>
+<p><strong>1. 数组是连续存储，结构简单</strong></p>
+<p>​	•	数组是 <strong>连续内存块</strong>，通过索引直接访问元素，无需处理复杂的指针操作。</p>
+<p>​	•	在实现链表时，数组模拟的静态链表通过下标来模拟指针（例如 next 数组存储后继位置），逻辑更直观。</p>
+<p>​	•	而结构体需要真正的指针去指向动态分配的内存，涉及内存分配 (malloc 或 new)、释放 (free 或 delete) 和指针操作，这增加了复杂度。</p>
+<p>下面为两个示例对比：</p>
+<p>数组操作（静态链表）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">e[idx] = x;        // 存储数据</span><br><span class="line">next[idx] = head;  // 模拟指针，存储下标</span><br><span class="line">head = idx++;</span><br></pre></td></tr></table></figure>
+
+<p>结构体操作（动态链表）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Node* newNode = new Node(); // 动态分配内存</span><br><span class="line">newNode-&gt;data = x;          // 存储数据</span><br><span class="line">newNode-&gt;next = head;       // 指向当前头节点</span><br><span class="line">head = newNode;             // 更新头节点</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​	•	<strong>为什么</strong> idx &#x3D; 2：</p>
+<p>​	•	左端点（0）和右端点（1）被预留用于标记链表边界。</p>
+<p>​	•	数据存储从下标 2 开始，逻辑清晰且避免冲突。</p>
+<p>​	•	<strong>是否可以使用其他值</strong>：</p>
+<p>​	•	从 2 开始是最合理的选择，因为更小的值（0 或 1）会导致下标冲突，更大的值（3 或以上）会浪费空间。</p>
+<p>​	•	<strong>左端点和右端点的作用</strong>：</p>
+<p>​	•	统一链表操作的边界处理，无需额外判断特殊情况。</p>
+<p>所以一般设置idx从2开始</p>
+<p>下面上代码</p>
+<p>实现一个双链表，双链表初始为空，支持 5 种操作：</p>
+<ol>
+<li>在最左侧插入一个数；</li>
+<li>在最右侧插入一个数；</li>
+<li>将第 k 个插入的数删除；</li>
+<li>在第 k 个插入的数左侧插入一个数；</li>
+<li>在第 k 个插入的数右侧插入一个数</li>
+</ol>
+<p>现在要对该链表进行 M 次操作，进行完所有操作后，从左到右输出整个链表。</p>
+<p><strong>注意</strong>:题目中第 k 个插入的数并不是指当前链表的第 k 个数。例如操作过程中一共插入了 n 个数，则按照插入的时间顺序，这 n 个数依次为：第 1 个插入的数，第 2 个插入的数，…第 n 个插入的数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 M，表示操作次数。</p>
+<p>接下来 M 行，每行包含一个操作命令，操作命令可能为以下几种：</p>
+<ol>
+<li><code>L x</code>，表示在链表的最左端插入数 x。</li>
+<li><code>R x</code>，表示在链表的最右端插入数 x。</li>
+<li><code>D k</code>，表示将第 k 个插入的数删除。</li>
+<li><code>IL k x</code>，表示在第 k 个插入的数左侧插入一个数。</li>
+<li><code>IR k x</code>，表示在第 k 个插入的数右侧插入一个数。</li>
+</ol>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>共一行，将整个链表从左到右输出。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤M≤100000<br>所有操作保证合法。</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">R 7</span><br><span class="line">D 1</span><br><span class="line">L 3</span><br><span class="line">IL 2 10</span><br><span class="line">D 3</span><br><span class="line">IL 2 7</span><br><span class="line">L 8</span><br><span class="line">R 9</span><br><span class="line">IL 4 7</span><br><span class="line">IR 2 2</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8 7 7 3 2 9</span><br></pre></td></tr></table></figure>
+
+<p>这个是题目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 100010;</span><br><span class="line"></span><br><span class="line">int m;</span><br><span class="line">int e[N], l[N], r[N], idx;</span><br><span class="line"></span><br><span class="line">// 在节点a的右边插入一个数x</span><br><span class="line">void insert(int a, int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    l[idx] = a, r[idx] = r[a];</span><br><span class="line">    l[r[a]] = idx, r[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 删除节点a</span><br><span class="line">void remove(int a)</span><br><span class="line">&#123;</span><br><span class="line">    l[r[a]] = l[a];</span><br><span class="line">    r[l[a]] = r[a];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    // 0是左端点，1是右端点</span><br><span class="line">    r[0] = 1, l[1] = 0;</span><br><span class="line">    idx = 2;</span><br><span class="line"></span><br><span class="line">    while (m -- )</span><br><span class="line">    &#123;</span><br><span class="line">        string op;</span><br><span class="line">        cin &gt;&gt; op;</span><br><span class="line">        int k, x;</span><br><span class="line">        if (op == &quot;L&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            insert(0, x);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (op == &quot;R&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            insert(l[1], x);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (op == &quot;D&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k;</span><br><span class="line">            remove(k + 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (op == &quot;IL&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k &gt;&gt; x;</span><br><span class="line">            insert(l[k + 1], x);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k &gt;&gt; x;</span><br><span class="line">            insert(k + 1, x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = r[0]; i != 1; i = r[i]) cout &lt;&lt; e[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>大体上，这个就是基于数组的单链表，双链表的实现。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm5xwlydt0002fmcq6cjsb3hr" data-title="数据结构-链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/15/%E6%B5%8B%E8%AF%95/">测试</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">数据结构-链表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
