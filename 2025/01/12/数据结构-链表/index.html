@@ -13,15 +13,19 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="数据结构-链表单链表一般在算法里面都是采用的静态链表，动态链表 单链表一般就是邻接表，包括存储树与图 双链表一般是优化某些问题的 一下是动态链表与静态链表之间的区别 . 内存分配方式 • 静态链表： • 静态链表通常是基于一个固定大小的数组来实现的。链表中的每个结点在数组中占据一个位置，通过数组下标来模拟指针的功能。 • 每个结点除了存储数据外，还需要一个指向下一个结点的位置（数组的下标或索引）。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="file:///Users/liyuhan/Library/Application%20Support/typora-user-images/image-20250114102023219.png?lastModify=1736823335">
-<meta property="og:image" content="file:///Users/liyuhan/Library/Application%20Support/typora-user-images/image-20250114102134692.png?lastModify=1736823335">
+<meta property="og:image" content="http://example.com/images/image-20250115154715622.png">
+<meta property="og:image" content="http://example.com/images/image-20250115154753618.png">
+<meta property="og:image" content="http://example.com/images/image-20250115154812932.png">
+<meta property="og:image" content="http://example.com/images/image-20250115154829517.png">
+<meta property="og:image" content="http://example.com/images/image-20250115154847687.png">
+<meta property="og:image" content="http://example.com/images/image-20250115154914464.png">
 <meta property="article:published_time" content="2025-01-12T12:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-15T06:27:42.963Z">
+<meta property="article:modified_time" content="2025-01-15T07:49:28.407Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="file:///Users/liyuhan/Library/Application%20Support/typora-user-images/image-20250114102023219.png?lastModify=1736823335">
+<meta name="twitter:image" content="http://example.com/images/image-20250115154715622.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -137,27 +141,27 @@
 <p>• <strong>动态链表</strong>：</p>
 <p>• 每个结点包含两个部分：数据部分和一个指针（或者引用）指向下一个结点。内存是动态分配的，因此每个结点都是独立的。</p>
 <p>静态链表不同与动态链表，他一般是不用-&gt;next 指针的，所以</p>
-<p><img src="file:///Users/liyuhan/Library/Application%20Support/typora-user-images/image-20250114102023219.png?lastModify=1736823335" alt="img"></p>
+<p><img src="/../images/image-20250115154715622.png" alt="image-20250115154715622"></p>
 <p>可以参考这个图片，下面是一个单链表的程序</p>
-<p><img src="file:///Users/liyuhan/Library/Application%20Support/typora-user-images/image-20250114102134692.png?lastModify=1736823335" alt="img"></p>
+<p><img src="/../images/image-20250115154753618.png" alt="image-20250115154753618"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">    head = -1;</span><br><span class="line">    idx = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将x插到头结点</span><br><span class="line">void add_to_head(int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x, ne[idx] = head, head = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将x插到下标是k的点后面</span><br><span class="line">void add(int k, int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x, ne[idx] = ne[k], ne[k] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 将下标是k的点后面的点删掉</span><br><span class="line">void remove(int k)</span><br><span class="line">&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>这个就是大体的头插，删除，插在某一个节点的后面</p>
-<p>现在来画图解释一下头插![image-20250114111749736](&#x2F;Users&#x2F;liyuhan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20250114111749736.png)</p>
+<p>现在来画图解释一下头插!<img src="/../images/image-20250115154812932.png" alt="image-20250115154812932"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head = idx;   // 将当前的 `idx` 赋值给 `head`，使头节点指向当前结点。</span><br><span class="line">idx = idx + 1; // 自增 `idx`，为下一次插入操作预留新的数组位置。</span><br></pre></td></tr></table></figure>
 
 <p>这里是一个拆分，也许这样你就理解了为什么是idx++了</p>
 <p>现在再来解释一下再一个节点（不是头节点插入）</p>
-<p>![image-20250114112327520](&#x2F;Users&#x2F;liyuhan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20250114112327520.png)</p>
+<p><img src="/../images/image-20250115154829517.png" alt="image-20250115154829517"></p>
 <p>下面在画一个删除节点的</p>
-<p>![image-20250114112543174](&#x2F;Users&#x2F;liyuhan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20250114112543174.png)</p>
+<p><img src="/../images/image-20250115154847687.png" alt="image-20250115154847687"></p>
 <p>这个就简单一点吧</p>
 <p>现在在回到刚刚那个题，现在我们来上代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 100010;</span><br><span class="line"></span><br><span class="line">int head,e[N],ne[N],idx;</span><br><span class="line"></span><br><span class="line">void init()</span><br><span class="line">&#123;</span><br><span class="line">    head = -1;</span><br><span class="line">    idx = 0; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void add_to_head(int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void add(int k,int x)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = ne[k];</span><br><span class="line">    ne[k] = idx++;</span><br><span class="line">&#125;</span><br><span class="line">void remove( int k)</span><br><span class="line">&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int m;</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line">    init();</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int k,x;</span><br><span class="line">        char op;</span><br><span class="line">        cin &gt;&gt; op;</span><br><span class="line">        if(op == &#x27;H&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            add_to_head(x);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(op == &#x27;D&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k;</span><br><span class="line">            if(!k) head = ne[head];</span><br><span class="line">        </span><br><span class="line">            else remove(k-1);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            cin &gt;&gt; k &gt;&gt; x;</span><br><span class="line">            add(k-1,x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = head;i != -1;i = ne[i])  cout &lt;&lt; e[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这里面最重要的是add(k-1,x) 这里，因为很容易搞错</p>
 <h2 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h2><p>因为只写代码的话很多同学就不明白为什么是这样的，所以现在我画个图</p>
-<p>![image-20250114152400891](&#x2F;Users&#x2F;liyuhan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20250114152400891.png)</p>
+<p><img src="/../images/image-20250115154914464.png" alt="image-20250115154914464"></p>
 <p>大体上就是这样的，根据这个图，我们就要进行4次修改才可以</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void add(int k,int x)</span><br><span class="line">&#123;</span><br><span class="line">	e[idx] = x;  //对当前我要插入的点赋值</span><br><span class="line">	r[idx] = r[k] ; //这里指的是将要添加的值的右边箭头指向k位置的右边箭头指向的值</span><br><span class="line">	l[idx] = k;</span><br><span class="line">	l[r[k]] = idx;</span><br><span class="line">	r[k] = idx;</span><br><span class="line">&#125;  四个指针操作，主要是画图就理解深刻； </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -222,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm5xky5d70002xqcqbr3c4yyl" data-title="数据结构-链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm5xltm9a0005abcq34gfe2o2" data-title="数据结构-链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -234,20 +238,15 @@
     
 <nav id="article-nav">
   
-    <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          day1-前端基础
+          双指针运算与位运算
         
       </div>
     </a>
   
-  
-    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">双指针运算与位运算</div>
-    </a>
   
 </nav>
 
@@ -317,11 +316,11 @@
           </li>
         
           <li>
-            <a href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">数据结构-链表</a>
+            <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
           </li>
         
           <li>
-            <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
+            <a href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">数据结构-链表</a>
           </li>
         
       </ul>
