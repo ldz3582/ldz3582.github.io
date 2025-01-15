@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYE08Z338"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XVYE08Z338');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>前缀和与差分 - 算法4 | clock&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前缀和与差分前缀和前缀和本质上是等差数列 前缀和是一种常见的算法思想，适用于处理与数组区间求和相关的问题，能够提高查询效率 那么什么时候会想到前缀和呢？ 1）高频的区间与查询：当你需要频繁查询数组或矩阵的某些区间的总和时，前缀和可以极大的优化效率 以下为几个场景：1，频繁区间和查询，和为特定值的子数组，二维区域求和，统计特定性质的子数组 以下为前缀和795 练习题  123456789101112">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前缀和与差分 - 算法4">
+<meta property="og:url" content="http://example.com/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/index.html">
+<meta property="og:site_name" content="clock&#39;s blog">
+<meta property="og:description" content="前缀和与差分前缀和前缀和本质上是等差数列 前缀和是一种常见的算法思想，适用于处理与数组区间求和相关的问题，能够提高查询效率 那么什么时候会想到前缀和呢？ 1）高频的区间与查询：当你需要频繁查询数组或矩阵的某些区间的总和时，前缀和可以极大的优化效率 以下为几个场景：1，频繁区间和查询，和为特定值的子数组，二维区域求和，统计特定性质的子数组 以下为前缀和795 练习题  123456789101112">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213038881.png">
+<meta property="og:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213140626.png">
+<meta property="og:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213150333.png">
+<meta property="og:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213231619.png">
+<meta property="og:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213257388.png">
+<meta property="og:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213339219.png">
+<meta property="article:published_time" content="2025-01-15T06:58:27.000Z">
+<meta property="article:modified_time" content="2025-01-15T13:36:11.947Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213038881.png">
+  
+    <link rel="alternate" href="/atom.xml" title="clock's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">clock&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Here&#39;s liyuhan&#39;s personal blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-前缀和与差分" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" class="article-date">
+  <time class="dt-published" datetime="2025-01-15T06:58:27.000Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      前缀和与差分 - 算法4
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前缀和与差分"><a href="#前缀和与差分" class="headerlink" title="前缀和与差分"></a>前缀和与差分</h2><h3 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a><strong>前缀和</strong></h3><p>前缀和本质上是等差数列</p>
+<p>前缀和是一种常见的算法思想，适用于处理与数组区间求和相关的问题，能够提高查询效率</p>
+<p>那么什么时候会想到前缀和呢？</p>
+<p><strong>1）高频的区间与查询：当你需要频繁查询数组或矩阵的某些区间的总和时，前缀和可以极大的优化效率</strong></p>
+<p><strong>以下为几个场景：1，频繁区间和查询，和为特定值的子数组，二维区域求和，统计特定性质的子数组</strong></p>
+<p>以下为前缀和795 练习题</p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213038881.png" alt="image-20250115213038881"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">​</span><br><span class="line">const int N = 100010;</span><br><span class="line">int s[N],a[N];</span><br><span class="line">​</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int m,n;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s[i] = s[i-1] + a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int l,r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        cout &lt;&lt; s[r] - s[l-1] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就是应用的前缀和，首先输入值，然后对每一个位置的区间和为等差数列的公式，最后在主函数里面分别输入左边界和右边界，然后从第一个位置到最右边减去第一个位置到做左边的左边的数。</p>
+<h3 id="子矩阵的和"><a href="#子矩阵的和" class="headerlink" title="子矩阵的和"></a><strong>子矩阵的和</strong></h3><p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213140626.png" alt="image-20250115213140626"></p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213150333.png" alt="image-20250115213150333"></p>
+<p>已混点：就是坐标，明确坐标时在区间内</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">​</span><br><span class="line">const int N = 1010;</span><br><span class="line">int s[N][N],a[N][N];</span><br><span class="line">​</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int m,n,q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j = 1;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">            //前缀和</span><br><span class="line">            s[i][j] = s[i-1][j] + s[i][j-1] - s[i-1][j-1] + a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        int x1,y1,x2,y2;</span><br><span class="line">        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2;</span><br><span class="line">        </span><br><span class="line">        cout &lt;&lt; s[x2][y2] - s[x1-1][y2] - s[x2][y1-1] + s[x1-1][y1-1] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个一开始不好理解，多理解就好啦</p>
+<h3 id="差分"><a href="#差分" class="headerlink" title="差分"></a><strong>差分</strong></h3><p>什么是差分呢？首先理解</p>
+<p>以下为介绍：</p>
+<p>差分算法 是一种高效处理 区间修改 问题的算法技巧，主要适用于一维或者二维数据，主要是勇敢记录变化量来简化区间操作</p>
+<p><strong>核心思想：差分数组记录相邻元素的差值，通过差分数组进行操作，可以快速完成区间内的加减更新</strong></p>
+<p>那么好处是什么呢？</p>
+<p><strong>高效处理多次区间操作： 对区间的直接修改需要遍历整个区间效率较低</strong></p>
+<p><strong>差分算法只需要记录变化，查询复杂度会为O(1)</strong></p>
+<p><strong>内存消耗小，差分数组大小与原数组相同，无需额外存储每次操作的结果</strong></p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213231619.png" alt="image-20250115213231619"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">​</span><br><span class="line">cosnt int N = 100010;</span><br><span class="line">int a[N];</span><br><span class="line">​</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        b[i] = a[i] - a[i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    int l,r,c;</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r &gt;&gt; c;</span><br><span class="line">        b[l] += c;</span><br><span class="line">        b[r + 1] -= c;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i] = b[i] + a[i-1];</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里画一个图</p>
+<p>你就理解了</p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213257388.png" alt="image-20250115213257388"></p>
+<p>大体上就是这个思路</p>
+<p>但是如果按照上面的思路的话可能会显示段错误，反正我是这样的</p>
+<p>那么应该怎么改进呢？</p>
+<p>段错误： 最常见的原因是数组下标越界或者使用了未初始化的内存</p>
+<p>比如说如果读到人r &#x3D; n 这里会导致越界，所以要特殊说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">​</span><br><span class="line">// 如果 n 上限是 10^5，通常开到 10^5+5 或更大，避免下标 r+1 越界</span><br><span class="line">static const int MAXN = 100000 + 5;</span><br><span class="line">​</span><br><span class="line">int a[MAXN], b[MAXN];</span><br><span class="line">​</span><br><span class="line">int main() &#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line">    cin.tie(nullptr);</span><br><span class="line">​</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">​</span><br><span class="line">    // 读入原始数组</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    // 为了安全，显式地设置 a[0] = 0，</span><br><span class="line">    // 如果 a、b 是全局 static/全局数组，在 C++ 中会默认初始化为 0，但加上更稳。</span><br><span class="line">    a[0] = 0;</span><br><span class="line">​</span><br><span class="line">    // 构建差分数组：</span><br><span class="line">    // b[i] = a[i] - a[i-1]</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        b[i] = a[i] - a[i - 1];</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    // 读入 m 次操作，每次把区间 [l, r] 的元素都加 c</span><br><span class="line">    while (m--) &#123;</span><br><span class="line">        int l, r, c;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r &gt;&gt; c;</span><br><span class="line">​</span><br><span class="line">        // 差分区间加法</span><br><span class="line">        b[l] += c;</span><br><span class="line">​</span><br><span class="line">        // 如果 r &lt; n，再对 b[r+1] -= c，避免访问越界</span><br><span class="line">        if (r &lt; n) &#123;</span><br><span class="line">            b[r + 1] -= c;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    // 通过差分数组 b 重新计算出 a</span><br><span class="line">    // a[i] = a[i-1] + b[i]</span><br><span class="line">    // 注意这里若要从头开始计算，需要把 a[0] 设成 0</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        a[i] = a[i - 1] + b[i];</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    // 输出结果</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; (i == n ? &#x27;\\n&#x27; : &#x27; &#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">​</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="差分矩阵"><a href="#差分矩阵" class="headerlink" title="差分矩阵"></a><strong>差分矩阵</strong></h3><p>这个我认为是难度最大的</p>
+<p>输入一个 n 行 m 列的整数矩阵，再输入 q 个操作，每个操作包含五个整数 x1,y1,x2,y2,c，其中 (x1,y1) 和 (x2,y2) 表示一个子矩阵的左上角坐标和右下角坐标。</p>
+<p>每个操作都要将选中的子矩阵中的每个元素的值加上 c。</p>
+<p>请你将进行完所有操作后的矩阵输出。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><p>第一行包含整数 n,m,q。</p>
+<p>接下来 n 行，每行包含 m 个整数，表示整数矩阵。</p>
+<p>接下来 q 行，每行包含 5 个整数 x1,y1,x2,y2,c，表示一个操作。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3><p>共 n 行，每行 m 个整数，表示所有操作进行完毕后的最终矩阵。</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a><strong>数据范围</strong></h3><p>1≤n,m≤1000,</p>
+<p>1≤q≤100000,</p>
+<p>1≤x1≤x2≤n,</p>
+<p>1≤y1≤y2≤m,</p>
+<p>−1000≤c≤1000,</p>
+<p>−1000≤矩阵内元素的值≤1000</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a><strong>输入样例：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 4 3</span><br><span class="line">1 2 2 1</span><br><span class="line">3 2 2 1</span><br><span class="line">1 1 1 1</span><br><span class="line">1 1 2 2 1</span><br><span class="line">1 3 2 3 2</span><br><span class="line">3 1 3 4 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a><strong>输出样例：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 3 4 1</span><br><span class="line">4 3 4 1</span><br><span class="line">2 2 2 2</span><br></pre></td></tr></table></figure>
+
+<p>这个是题目</p>
+<p>下面我画一个图，类似于子矩阵的和</p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250115213339219.png" alt="image-20250115213339219"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N = 1e3 + 10;</span><br><span class="line">int a[N][N],b[N][N];</span><br><span class="line">void insert(int x1,int y1,int x2,int y2,int c)</span><br><span class="line">&#123;</span><br><span class="line">    b[x1][y1] += c;</span><br><span class="line">    b[x2 + 1][y1] -= c;</span><br><span class="line">    b[x1][y2 + 1] -= c;</span><br><span class="line">    b[x2 + 1][y2 + 1] += c;</span><br><span class="line">&#125;</span><br><span class="line">​</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n ,m,q;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j = 1;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j = 1;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            insert(i,j,i,j,a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        int x1,y1,x2,y2,c;</span><br><span class="line">        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2 &gt;&gt; c;</span><br><span class="line">        insert(x1,y1,x2,y2,c);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j = 1;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            b[i][j] += b[i-1][j] + b[i][j-1] - b[i-1][j-1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j = 1;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d &quot;,b[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ok了，这个是1月12日的差分与前缀和整理</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" data-id="cm5xy8fco0007wkcqgjmh8enc" data-title="前缀和与差分 - 算法4" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          离散化 - 算法1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/">离散化 - 算法1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">前缀和与差分 - 算法4</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/Day%202-%E8%87%AA%E8%A1%8C%E5%BC%95%E5%85%A5echarts%E5%B9%B6%E7%86%9F%E7%BB%83%E4%BD%BF%E7%94%A8%E6%9F%B1%E7%8A%B6%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE%E4%B8%8E%E6%8A%98%E7%BA%BF%E5%9B%BE/">day2-ES6学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
