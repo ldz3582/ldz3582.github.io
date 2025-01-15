@@ -69,6 +69,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/15/%E6%B5%8B%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2025-01-15T06:58:27.000Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/15/%E6%B5%8B%E8%AF%95/">测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>个人csdn博客：clock的时钟</p>
+<p>离散化<br>首先大家最关注的问题就是什么时候用离散化 呢？</p>
+<p>为什么要用离散化？ 离散化就是将连续或者大范围的数据映射到一个极小，连续的整数范围内的过程，在许多算法问题中，尤其是涉及到大量范围查询或者频繁更新操作时，离散化可以显著提高效率和降低时空复杂度，离散化的使用场景：</p>
+<p>1）处理大范围的数据</p>
+<p>2）优化空间利用</p>
+<p>解决方案：通过离散化，将所有出现过的x,l,r进行排序并去重，映射到一个连续的较小整数范围内，优势：空间节省，提高缓存命中率。</p>
+<p>3）简化查询与更新。</p>
+<p>一般离散化就是要将稀疏数据映射到紧凑范围，那就会有很多人不理解排序了为什么要去重啊</p>
+<p>这里就是解释：这样做就是为了确保每个唯一数值有唯一的索引，因为离散化本质上就是映射。</p>
+<p>每个数值对应一个唯一的索引，索引是连续且有序的。</p>
+<p>这样做，避免重复映射导致的错误，如果不进行去重，alls 可能出现很多相同的值，</p>
+<p>那么有的人还会有一个问题：为什么去重不会影响求和，去重只是为了建立机制，不影响数组本身。</p>
+<p>所以离散化本质就是映射，理解了映射这个题目就理解了。</p>
+<p>但是还是很难理解</p>
+<p>这是我一开始的疑问：为什么要离散化两个端点（l,r) 离散化的目的是将原始坐标映射到一个连续，较小的范围，这样做是节省空间。将所有相关坐标（插入的坐标与查询端点）放在一个数组alls中。</p>
+<p>add使用来插入的，query是用来查询操作的</p>
+<p>include <iostream></p>
+<p>include <vector></p>
+<p>include <algorithm></p>
+<p>using namespace std;</p>
+<p>typedef pair&lt;int, int&gt; PII;</p>
+<p>const int N &#x3D; 300010;</p>
+<p>int n, m;<br>int a[N], s[N];</p>
+<p>vector<int> alls;<br>vector<PII> add, query;</p>
+<p>int find(int x)<br>{<br>  int l &#x3D; 0, r &#x3D; alls.size() - 1;<br>  while (l &lt; r)<br>  {<br>      int mid &#x3D; l + r &gt;&gt; 1;<br>      if (alls[mid] &gt;&#x3D; x) r &#x3D; mid;<br>      else l &#x3D; mid + 1;<br>  }<br>  return r + 1;<br>}</p>
+<p>int main()<br>{<br>  cin &gt;&gt; n &gt;&gt; m;<br>  for (int i &#x3D; 0; i &lt; n; i ++ )<br>  {<br>      int x, c;<br>      cin &gt;&gt; x &gt;&gt; c;<br>      add.push_back({x, c});</p>
+<pre><code>  alls.push_back(x);
+</code></pre>
+<p>  }</p>
+<p>  for (int i &#x3D; 0; i &lt; m; i ++ )<br>  {<br>      int l, r;<br>      cin &gt;&gt; l &gt;&gt; r;<br>      query.push_back({l, r});</p>
+<pre><code>  alls.push_back(l);
+  alls.push_back(r);
+</code></pre>
+<p>  }</p>
+<p>  &#x2F;&#x2F; 去重<br>  sort(alls.begin(), alls.end());<br>  alls.erase(unique(alls.begin(), alls.end()), alls.end());</p>
+<p>  &#x2F;&#x2F; 处理插入<br>  for (auto item : add)<br>  {<br>      int x &#x3D; find(item.first);<br>      a[x] +&#x3D; item.second;<br>  }</p>
+<p>  &#x2F;&#x2F; 预处理前缀和<br>  for (int i &#x3D; 1; i &lt;&#x3D; alls.size(); i ++ ) s[i] &#x3D; s[i - 1] + a[i];</p>
+<p>  &#x2F;&#x2F; 处理询问<br>  for (auto item : query)<br>  {<br>      int l &#x3D; find(item.first), r &#x3D; find(item.second);<br>      cout &lt;&lt; s[r] - s[l - 1] &lt;&lt; endl;<br>  }</p>
+<p>  return 0;<br>}</p>
+<p>这个图就好理解了，这样就真正理解离散化的意义了；主要是掌握这个映射关系。</p>
+<p>区间合并<br>区间合并简单一点，本质上就是讨论左边界与右边界的关系，可以弄一个st,ed 来判断关系</p>
+<p>主要是理解答题上的思路</p>
+<p>include <iostream></p>
+<p>include <vector></p>
+<p>include <algorithm></p>
+<p>using namespace std ;<br>typedef pair&lt;int,int&gt; pii ;<br>vector<pii> nums,res ;<br>int main()<br>{<br>  int st&#x3D;-2e9,ed&#x3D;-2e9 ;                           &#x2F;&#x2F;ed代表区间结尾，st代表区间开头<br>  int n ;<br>  scanf(“%d”,&amp;n) ;<br>  while(n–)<br>  {<br>      int l,r ;<br>      scanf(“%d%d”,&amp;l,&amp;r) ;<br>      nums.push_back({l,r}) ;<br>  }<br>  sort(nums.begin(),nums.end()) ;                 &#x2F;&#x2F;按左端点排序<br>  for(auto num:nums)<br>  {<br>      if(ed&lt;num.first)                           &#x2F;&#x2F;情况1：两个区间无法合并<br>      {<br>          if(ed!&#x3D;-2e9) res.push_back({st,ed}) ;   &#x2F;&#x2F;区间1放进res数组<br>          st&#x3D;num.first,ed&#x3D;num.second ;           &#x2F;&#x2F;维护区间2<br>      }<br>      &#x2F;&#x2F;情况2：两个区间可以合并，且区间1不包含区间2，区间2不包含区间1<br>      else if(ed&lt;num.second)<br>          ed&#x3D;num.second ;                         &#x2F;&#x2F;区间合并<br>  }<br>  &#x2F;&#x2F;(实际上也有情况3：区间1包含区间2，此时不需要任何操作，可以省略)</p>
+<p>  &#x2F;&#x2F;注：排过序之后，不可能有区间2包含区间1</p>
+<p>  res.push_back({st,ed});</p>
+<p>  &#x2F;&#x2F;考虑循环结束时的st,ed变量，此时的st,ed变量不需要继续维护，只需要放进res数组即可。<br>  &#x2F;&#x2F;因为这是最后的一个序列，所以不可能继续进行合并。</p>
+<p>  &#x2F;*<br>  for(auto r:res)<br>      printf(“%d %d\n”,r.first,r.second) ;<br>  puts(“”) ;<br>  *&#x2F;</p>
+<p>  &#x2F;&#x2F;(把上面的注释去掉，可以在调试时用)</p>
+<p>  printf(“%d”,res.size()) ;           &#x2F;&#x2F;输出答案<br>  return 0 ;<br>}</p>
+<p>————————————————</p>
+<pre><code>                        版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_87202881/article/details/145125183">https://blog.csdn.net/2401_87202881/article/details/145125183</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/15/%E6%B5%8B%E8%AF%95/" data-id="cm5xkdi5w0006qjcq0jkhcp8l" data-title="测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/15/hello-world/" class="article-date">
@@ -108,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/hello-world/" data-id="cm5xjjuvm0000gfcqb4xzh981" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/hello-world/" data-id="cm5xkdi5r0000qjcq7icp630m" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -533,104 +633,11 @@ const multiply = (a, b) => a * b;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" data-id="cm5xjjuvo0001gfcq7v50ag1m" data-title="day1-前端基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" data-id="cm5xkdi5t0001qjcqf12j5n18" data-title="day1-前端基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-双指针运算，位运算" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" class="article-date">
-  <time class="dt-published" datetime="2025-01-12T12:00:00.000Z" itemprop="datePublished">2025-01-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="双指针运算，位运算"><a href="#双指针运算，位运算" class="headerlink" title="双指针运算，位运算"></a>双指针运算，位运算</h1><p>双指针的算法一般会降低复杂度，进而提高效率</p>
-<p>那么优势是什么呢？ 他可以将时间复杂度由o(n*n) 降低为o(n)</p>
-<p>进而提高效率</p>
-<p>那么下面是一道题目</p>
-<p>\799. 最长连续不重复子序</p>
-<p>给定一个长度为 n 的整数序列，请找出最长的不包含重复的数的连续区间，输出它的长度。</p>
-<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h4><p>第一行包含整数 n。</p>
-<p>第二行包含 n 个整数（均在 0∼105 范围内），表示整数序列。</p>
-<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h4><p>共一行，包含一个整数，表示最长的不包含重复的数的连续区间的长度。</p>
-<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a><strong>数据范围</strong></h4><p>1≤n≤105</p>
-<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a><strong>输入样例：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 2 3 5</span><br></pre></td></tr></table></figure>
-
-<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a><strong>输出样例：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">int a[N],s[N];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for(int i = 0;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int res = 0;</span><br><span class="line">    for(int i = 0,j=0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s[a[i]] ++;</span><br><span class="line">        while(j &lt; i &amp;&amp; s[a[i]] &gt; 1) s[a[j++]]--;</span><br><span class="line">        res = max(res,i-j+1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>双指针较为简单</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line">int a[N],b[N];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m,x;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; x;</span><br><span class="line">    for(int i = 0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0,j = m-1;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while(j &gt;= 0 &amp;&amp; a[i] + b[j] &gt; x)   j--;</span><br><span class="line">        if(j &gt;= 0 &amp;&amp; a[i] + b[j] == x) cout &lt;&lt; i &lt;&lt; &#x27; &#x27; &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>这个是运用双指针计算数组元素的目标和</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line">int a[N],b[N];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for(int i = 0;i&lt;n;i++)   cin &gt;&gt; a[i];</span><br><span class="line">    for(int i = 0;i&lt;m;i++)   cin &gt;&gt; b[i];</span><br><span class="line">    int j = 0;</span><br><span class="line">    for(int i = 0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j &lt; n &amp;&amp; a[j] == b[i]) j++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if(j == n)</span><br><span class="line">    cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;</span><br><span class="line">    else cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个是判断子序列的编程方法</p>
-<p>以上就是双指针运算了</p>
-<p>下面就是重头戏，就是位数运算</p>
-<p>想到双指针，就会想到lowbit(x)这个东西</p>
-<p>那么什么是lowbit原理呢？</p>
-<p>一下为lowbit 的含义：</p>
-<p>表示取得整数x的二进制表示中，从右边往左的第一个1以及其后全部0所组成的那部分数值</p>
-<p>及可以理解为 只保留x 的最右边的那个1 ，其余位全部清零。</p>
-<p>实际上是 x &amp; (-x)：</p>
-<p>• 在计算机中，负数以补码形式存储。若 x 的二进制是 bxxxx1000（其中 bxxxx 可以理解为前面的若干位），</p>
-<p>则 -x 的二进制会是其反码加 1，即再一次把相同位置的最低位 1 提取出来。</p>
-<p>• 与运算 x &amp; (-x) 只保留了从右往左遇到的<strong>第一个</strong> 1 <strong>所在位置</strong>上的值，其余位全部变为 0。</p>
-<p>好的，那么现在理解了什么是lowbit ,那就练习一道题目试一试叭！</p>
-<p>假设我有一个数，我要求其二进制1的个数是多少</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">// 函数：获取 x 的最低位 1 以及其后所有 0 组成的数值</span><br><span class="line">int lowbit(int x) &#123;</span><br><span class="line">    return x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;              // 输入需要处理的整数数量</span><br><span class="line">    while(n--) &#123;</span><br><span class="line">        int x;</span><br><span class="line">        cin &gt;&gt; x;          // 读入当前整数</span><br><span class="line"></span><br><span class="line">        int res = 0;</span><br><span class="line">        while(x) &#123;         // 当 x 不为 0 时，继续提取最低位 1</span><br><span class="line">            x -= lowbit(x);</span><br><span class="line">            res++;         // 每去掉一个最低位 1，就计数 +1</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; res &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不知道你们理解了没有，现在我举一个例子吧</p>
-<p>比如我输入 31</p>
-<p>那么 31 对应的二进制是 11111</p>
-<p>现在逐层 去掉最低位 1</p>
-<p>\1. lowbit(31) &#x3D; 1，x &#x3D; 31 - 1 &#x3D; 30，res &#x3D; 1</p>
-<p>\2. lowbit(30) &#x3D; 2，x &#x3D; 30 - 2 &#x3D; 28，res &#x3D; 2</p>
-<p>\3. lowbit(28) &#x3D; 4，x &#x3D; 28 - 4 &#x3D; 24，res &#x3D; 3</p>
-<p>\4. lowbit(24) &#x3D; 8，x &#x3D; 24 - 8 &#x3D; 16，res &#x3D; 4</p>
-<p>\5. lowbit(16) &#x3D; 16，x &#x3D; 16 - 16 &#x3D; 0，res &#x3D; 5</p>
-<p>• 最终 res &#x3D; 5</p>
-<p>x &amp; (-x). 这个地方着重理解，非常不错的一个点啊！！！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" data-id="cm5xjjuvp0002gfcqdfox74i7" data-title="双指针运算与位运算" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
 
     </footer>
   </div>
@@ -786,11 +793,104 @@ const multiply = (a, b) => a * b;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm5xjjuvq0005gfcqey1t20dd" data-title="数据结构-链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm5xkdi5u0002qjcqfg592oau" data-title="数据结构-链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-双指针运算，位运算" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" class="article-date">
+  <time class="dt-published" datetime="2025-01-12T12:00:00.000Z" itemprop="datePublished">2025-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="双指针运算，位运算"><a href="#双指针运算，位运算" class="headerlink" title="双指针运算，位运算"></a>双指针运算，位运算</h1><p>双指针的算法一般会降低复杂度，进而提高效率</p>
+<p>那么优势是什么呢？ 他可以将时间复杂度由o(n*n) 降低为o(n)</p>
+<p>进而提高效率</p>
+<p>那么下面是一道题目</p>
+<p>\799. 最长连续不重复子序</p>
+<p>给定一个长度为 n 的整数序列，请找出最长的不包含重复的数的连续区间，输出它的长度。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h4><p>第一行包含整数 n。</p>
+<p>第二行包含 n 个整数（均在 0∼105 范围内），表示整数序列。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h4><p>共一行，包含一个整数，表示最长的不包含重复的数的连续区间的长度。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a><strong>数据范围</strong></h4><p>1≤n≤105</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a><strong>输入样例：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 2 3 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a><strong>输出样例：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">int a[N],s[N];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for(int i = 0;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int res = 0;</span><br><span class="line">    for(int i = 0,j=0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s[a[i]] ++;</span><br><span class="line">        while(j &lt; i &amp;&amp; s[a[i]] &gt; 1) s[a[j++]]--;</span><br><span class="line">        res = max(res,i-j+1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>双指针较为简单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line">int a[N],b[N];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m,x;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; x;</span><br><span class="line">    for(int i = 0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0,j = m-1;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        while(j &gt;= 0 &amp;&amp; a[i] + b[j] &gt; x)   j--;</span><br><span class="line">        if(j &gt;= 0 &amp;&amp; a[i] + b[j] == x) cout &lt;&lt; i &lt;&lt; &#x27; &#x27; &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个是运用双指针计算数组元素的目标和</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 1e5 + 10;</span><br><span class="line">int a[N],b[N];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for(int i = 0;i&lt;n;i++)   cin &gt;&gt; a[i];</span><br><span class="line">    for(int i = 0;i&lt;m;i++)   cin &gt;&gt; b[i];</span><br><span class="line">    int j = 0;</span><br><span class="line">    for(int i = 0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j &lt; n &amp;&amp; a[j] == b[i]) j++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if(j == n)</span><br><span class="line">    cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl;</span><br><span class="line">    else cout &lt;&lt; &quot;No&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个是判断子序列的编程方法</p>
+<p>以上就是双指针运算了</p>
+<p>下面就是重头戏，就是位数运算</p>
+<p>想到双指针，就会想到lowbit(x)这个东西</p>
+<p>那么什么是lowbit原理呢？</p>
+<p>一下为lowbit 的含义：</p>
+<p>表示取得整数x的二进制表示中，从右边往左的第一个1以及其后全部0所组成的那部分数值</p>
+<p>及可以理解为 只保留x 的最右边的那个1 ，其余位全部清零。</p>
+<p>实际上是 x &amp; (-x)：</p>
+<p>• 在计算机中，负数以补码形式存储。若 x 的二进制是 bxxxx1000（其中 bxxxx 可以理解为前面的若干位），</p>
+<p>则 -x 的二进制会是其反码加 1，即再一次把相同位置的最低位 1 提取出来。</p>
+<p>• 与运算 x &amp; (-x) 只保留了从右往左遇到的<strong>第一个</strong> 1 <strong>所在位置</strong>上的值，其余位全部变为 0。</p>
+<p>好的，那么现在理解了什么是lowbit ,那就练习一道题目试一试叭！</p>
+<p>假设我有一个数，我要求其二进制1的个数是多少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">// 函数：获取 x 的最低位 1 以及其后所有 0 组成的数值</span><br><span class="line">int lowbit(int x) &#123;</span><br><span class="line">    return x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;              // 输入需要处理的整数数量</span><br><span class="line">    while(n--) &#123;</span><br><span class="line">        int x;</span><br><span class="line">        cin &gt;&gt; x;          // 读入当前整数</span><br><span class="line"></span><br><span class="line">        int res = 0;</span><br><span class="line">        while(x) &#123;         // 当 x 不为 0 时，继续提取最低位 1</span><br><span class="line">            x -= lowbit(x);</span><br><span class="line">            res++;         // 每去掉一个最低位 1，就计数 +1</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; res &lt;&lt; &#x27; &#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不知道你们理解了没有，现在我举一个例子吧</p>
+<p>比如我输入 31</p>
+<p>那么 31 对应的二进制是 11111</p>
+<p>现在逐层 去掉最低位 1</p>
+<p>\1. lowbit(31) &#x3D; 1，x &#x3D; 31 - 1 &#x3D; 30，res &#x3D; 1</p>
+<p>\2. lowbit(30) &#x3D; 2，x &#x3D; 30 - 2 &#x3D; 28，res &#x3D; 2</p>
+<p>\3. lowbit(28) &#x3D; 4，x &#x3D; 28 - 4 &#x3D; 24，res &#x3D; 3</p>
+<p>\4. lowbit(24) &#x3D; 8，x &#x3D; 24 - 8 &#x3D; 16，res &#x3D; 4</p>
+<p>\5. lowbit(16) &#x3D; 16，x &#x3D; 16 - 16 &#x3D; 0，res &#x3D; 5</p>
+<p>• 最终 res &#x3D; 5</p>
+<p>x &amp; (-x). 这个地方着重理解，非常不错的一个点啊！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" data-id="cm5xkdi5v0005qjcq91ng26i5" data-title="双指针运算与位运算" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
 
     </footer>
   </div>
@@ -820,7 +920,7 @@ const multiply = (a, b) => a * b;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
     </div>
   </div>
 
@@ -830,7 +930,7 @@ const multiply = (a, b) => a * b;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a>
+      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a>
     </div>
   </div>
 
@@ -852,6 +952,10 @@ const multiply = (a, b) => a * b;
       <ul>
         
           <li>
+            <a href="/2025/01/15/%E6%B5%8B%E8%AF%95/">测试</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/15/hello-world/">Hello World</a>
           </li>
         
@@ -860,11 +964,11 @@ const multiply = (a, b) => a * b;
           </li>
         
           <li>
-            <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
+            <a href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">数据结构-链表</a>
           </li>
         
           <li>
-            <a href="/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/">数据结构-链表</a>
+            <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">双指针运算与位运算</a>
           </li>
         
       </ul>
