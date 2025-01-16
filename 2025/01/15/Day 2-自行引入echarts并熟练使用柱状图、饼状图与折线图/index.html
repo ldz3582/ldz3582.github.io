@@ -173,9 +173,9 @@ let d = 2; // 报错: SyntaxError: Identifier &#39;d&#39; has already been decla
 <p>  const numbers &#x3D; [1, 2, 3, 4, 5];<br>  const [first, second, …rest] &#x3D; numbers;</p>
 <p>  console.log(first);  &#x2F;&#x2F; 输出: 1<br>  console.log(second); &#x2F;&#x2F; 输出: 2<br>  console.log(rest);   &#x2F;&#x2F; 输出: [3, 4, 5]<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">##### 对象解构</span><br><span class="line"></span><br><span class="line">对象解构允许你**根据对象的属性名称，将对象中的属性值赋值给对应的变量**</span><br><span class="line"></span><br><span class="line">* 基本用法</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  const person &#x3D; {<br>      name: ‘李四’,<br>      age: 30,<br>      city: ‘北京’<br>  };</p>
 <p>  const { name, age, city } &#x3D; person;</p>
-<p>  console.log(name); &#x2F;&#x2F; 输出: 李四<br>  console.log(age);  &#x2F;&#x2F; 输出: 30<br>  console.log(city); &#x2F;&#x2F; 输出: 北京<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这个是最简单的用法，通过前面的定义在输出对应的值</span><br><span class="line"></span><br><span class="line">* 重命名变量</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  const user &#x3D; {<br>      username: ‘zhangsan’,<br>      email: ‘<a href="mailto:&#x7a;&#x68;&#97;&#110;&#103;&#115;&#97;&#x6e;&#64;&#101;&#x78;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">zhangsan@example.com</a>‘<br>  };</p>
+<p>  console.log(name); &#x2F;&#x2F; 输出: 李四<br>  console.log(age);  &#x2F;&#x2F; 输出: 30<br>  console.log(city); &#x2F;&#x2F; 输出: 北京<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这个是最简单的用法，通过前面的定义在输出对应的值</span><br><span class="line"></span><br><span class="line">* 重命名变量</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  const user &#x3D; {<br>      username: ‘zhangsan’,<br>      email: ‘<a href="mailto:&#x7a;&#x68;&#97;&#110;&#x67;&#x73;&#97;&#110;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#46;&#99;&#x6f;&#x6d;">zhangsan@example.com</a>‘<br>  };</p>
 <p>  const { username: userName, email: userEmail } &#x3D; user;</p>
-<p>  console.log(userName);  &#x2F;&#x2F; 输出: zhangsan<br>  console.log(userEmail); &#x2F;&#x2F; 输出: <a href="mailto:&#122;&#x68;&#x61;&#110;&#x67;&#115;&#x61;&#x6e;&#64;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#x63;&#x6f;&#x6d;">zhangsan@example.com</a><br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	有时变量名称与对象属性名称不一致，可以使用冒号（:）进行重命名</span><br><span class="line"></span><br><span class="line">* 默认值</span><br><span class="line"></span><br><span class="line">  如果**解构时对应的属性不存在**，可以为**变量设置默认值。**</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  const settings &#x3D; {<br>      theme: ‘dark’,<br>      language: ‘zh-CN’<br>  };</p>
+<p>  console.log(userName);  &#x2F;&#x2F; 输出: zhangsan<br>  console.log(userEmail); &#x2F;&#x2F; 输出: <a href="mailto:&#x7a;&#x68;&#x61;&#x6e;&#103;&#115;&#97;&#x6e;&#64;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#109;">zhangsan@example.com</a><br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">​	有时变量名称与对象属性名称不一致，可以使用冒号（:）进行重命名</span><br><span class="line"></span><br><span class="line">* 默认值</span><br><span class="line"></span><br><span class="line">  如果**解构时对应的属性不存在**，可以为**变量设置默认值。**</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  const settings &#x3D; {<br>      theme: ‘dark’,<br>      language: ‘zh-CN’<br>  };</p>
 <p>  const { theme, fontSize &#x3D; ‘16px’ } &#x3D; settings;</p>
 <p>  console.log(theme);    &#x2F;&#x2F; 输出: dark<br>  console.log(fontSize); &#x2F;&#x2F; 输出: 16px<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">* 嵌套结构</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  const user &#x3D; {<br>      name: ‘王五’,<br>      address: {<br>          city: ‘上海’,<br>          zip: ‘200000’<br>      },<br>      hobbies: [‘reading’, ‘traveling’]<br>  };</p>
 <p>  const {<br>      name,<br>      address: { city, zip },<br>      hobbies: [firstHobby, secondHobby]<br>  } &#x3D; user;</p>
@@ -354,7 +354,7 @@ iterator.next(); // 开始执行第一个异步任务
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/Day%202-%E8%87%AA%E8%A1%8C%E5%BC%95%E5%85%A5echarts%E5%B9%B6%E7%86%9F%E7%BB%83%E4%BD%BF%E7%94%A8%E6%9F%B1%E7%8A%B6%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE%E4%B8%8E%E6%8A%98%E7%BA%BF%E5%9B%BE/" data-id="cm5z4d2gd00008kcqeti49n6b" data-title="day1-ES6学习基础语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/Day%202-%E8%87%AA%E8%A1%8C%E5%BC%95%E5%85%A5echarts%E5%B9%B6%E7%86%9F%E7%BB%83%E4%BD%BF%E7%94%A8%E6%9F%B1%E7%8A%B6%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE%E4%B8%8E%E6%8A%98%E7%BA%BF%E5%9B%BE/" data-id="cm5z4g8lk0007a6cqa3f1ci6z" data-title="day1-ES6学习基础语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -366,19 +366,19 @@ iterator.next(); // 开始执行第一个异步任务
     
 <nav id="article-nav">
   
-    <a href="/2025/01/15/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Hello World
+          day1-前端基础
         
       </div>
     </a>
   
   
-    <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">day1-前端基础</div>
+      <div class="article-nav-title">双指针运算与位运算-算法3</div>
     </a>
   
 </nav>
@@ -437,11 +437,11 @@ iterator.next(); // 开始执行第一个异步任务
       <ul>
         
           <li>
-            <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">前缀和与差分 - 算法4</a>
+            <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/">离散化 - 算法1</a>
           </li>
         
           <li>
-            <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/">离散化 - 算法1</a>
+            <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">前缀和与差分 - 算法4</a>
           </li>
         
           <li>
@@ -449,11 +449,11 @@ iterator.next(); // 开始执行第一个异步任务
           </li>
         
           <li>
-            <a href="/2025/01/15/Day%202-%E8%87%AA%E8%A1%8C%E5%BC%95%E5%85%A5echarts%E5%B9%B6%E7%86%9F%E7%BB%83%E4%BD%BF%E7%94%A8%E6%9F%B1%E7%8A%B6%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE%E4%B8%8E%E6%8A%98%E7%BA%BF%E5%9B%BE/">day1-ES6学习基础语法</a>
+            <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
           </li>
         
           <li>
-            <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
+            <a href="/2025/01/15/Day%202-%E8%87%AA%E8%A1%8C%E5%BC%95%E5%85%A5echarts%E5%B9%B6%E7%86%9F%E7%BB%83%E4%BD%BF%E7%94%A8%E6%9F%B1%E7%8A%B6%E5%9B%BE%E3%80%81%E9%A5%BC%E7%8A%B6%E5%9B%BE%E4%B8%8E%E6%8A%98%E7%BA%BF%E5%9B%BE/">day1-ES6学习基础语法</a>
           </li>
         
       </ul>
