@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYE08Z338"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XVYE08Z338');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>day1-ES6学习基础语法 | clock&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ES6一  认识：什么是ES6?ES6，全称 ECMAScript 2015，是JavaScript语言的一个重要版本，对语言进行了许多重大改进和新增功能。ES6的引入极大地提升了JavaScript的可用性、可读性和开发效率 *ECMAScript  是由 ECMA 国际标准化组织制定的脚本语言标准，*JavaScript 是其最广泛的实现。ES6（ECMAScript 2015）是ECMASc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day1-ES6学习基础语法">
+<meta property="og:url" content="http://example.com/2025/01/15/Fixed_Day_2-ES6/index.html">
+<meta property="og:site_name" content="clock&#39;s blog">
+<meta property="og:description" content="ES6一  认识：什么是ES6?ES6，全称 ECMAScript 2015，是JavaScript语言的一个重要版本，对语言进行了许多重大改进和新增功能。ES6的引入极大地提升了JavaScript的可用性、可读性和开发效率 *ECMAScript  是由 ECMA 国际标准化组织制定的脚本语言标准，*JavaScript 是其最广泛的实现。ES6（ECMAScript 2015）是ECMASc">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/image-20250116141332513.png">
+<meta property="article:published_time" content="2025-01-15T04:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-16T09:48:26.062Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/image-20250116141332513.png">
+  
+    <link rel="alternate" href="/atom.xml" title="clock's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">clock&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Here&#39;s liyuhan&#39;s personal blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Fixed_Day_2-ES6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/15/Fixed_Day_2-ES6/" class="article-date">
+  <time class="dt-published" datetime="2025-01-15T04:00:00.000Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      day1-ES6学习基础语法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="一-认识：什么是ES6"><a href="#一-认识：什么是ES6" class="headerlink" title="一  认识：什么是ES6?"></a>一  认识：什么是ES6?</h1><p><strong>ES6</strong>，全称 <strong>ECMAScript 2015</strong>，是JavaScript语言的一个重要版本，对语言进行了许多重大改进和新增功能。ES6的引入极大地提升了JavaScript的可用性、可读性和开发效率</p>
+<p>*<em>ECMAScript</em></p>
+<ul>
+<li>是由 ECMA 国际标准化组织制定的脚本语言标准，*<em>JavaScript</em></li>
+<li>是其最广泛的实现。ES6（ECMAScript 2015）是ECMAScript标准的第六个版本，于2015年正式发布。ES6引入了许多新特性，使得JavaScript在语法和功能上更加强大和灵活。</li>
+</ul>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="二-第一章：ECMASript-相关介绍"><a href="#二-第一章：ECMASript-相关介绍" class="headerlink" title="二    第一章：ECMASript 相关介绍"></a>二    第一章：ECMASript 相关介绍</h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><h1 id="-3"><a href="#-3" class="headerlink" title=""></a></h1><h1 id="-4"><a href="#-4" class="headerlink" title=""></a></h1><ul>
+<li>什么是ECMASript?</li>
+</ul>
+<p>ECMAScript 是一种由 ECMA 国际标准化组织制定的脚本语言标准，JavaScript 是其最广泛的实现。ECMAScript 定期发布新版本，引入新的语法和功能，提升语言的性能和可用性</p>
+<ul>
+<li><p>为什么学习ES6?</p>
+</li>
+<li><p><strong>1. 现代JavaScript开发的基础</strong></p>
+<p>ES6引入了大量的新特性和语法，使得JavaScript更加现代化和强大。许多现代前端框架和库（如React、Vue、Angular等）都依赖于ES6及其后续版本的特性。因此，掌握ES6是学习和使用这些框架的基础。</p>
+<p><strong>2. 提高代码可读性和可维护性</strong></p>
+<p>ES6提供了更简洁、清晰的语法，使代码更具可读性和可维护性。</p>
+</li>
+</ul>
+<h1 id="-5"><a href="#-5" class="headerlink" title=""></a></h1><h1 id="-6"><a href="#-6" class="headerlink" title=""></a></h1><h1 id="ES6语法"><a href="#ES6语法" class="headerlink" title="*ES6语法"></a>*ES6语法</h1><h1 id="-7"><a href="#-7" class="headerlink" title=""></a></h1><h1 id="-8"><a href="#-8" class="headerlink" title=""></a></h1><h1 id="-9"><a href="#-9" class="headerlink" title=""></a></h1><h1 id="let语法"><a href="#let语法" class="headerlink" title="let语法"></a>let语法</h1><p>使用 let 声明变量的基本语法如下：</p>
+<ul>
+<li><p>变量不能重复声明</p>
+</li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var c = 1;</span><br><span class="line">var c = 2; // 合法</span><br><span class="line">console.log(c); // 输出: 2</span><br><span class="line"></span><br><span class="line">let d = 1;</span><br><span class="line">let d = 2; // 报错: SyntaxError: Identifier &#x27;d&#x27; has already been declared</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>块级作用域</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let variableName = initialValue;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>声明变量</strong>：let 用于声明一个<strong>块级作用域</strong>的变量。</p>
+<p>​	•	<strong>初始化</strong>：可以选择性地为变量赋予一个初始值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let name = &#x27;张三&#x27;;</span><br><span class="line">console.log(name); // 输出: 张三</span><br><span class="line"></span><br><span class="line">name = &#x27;李四&#x27;;</span><br><span class="line">console.log(name); // 输出: 李四</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>不存在变量提升</p>
+<p>​    •    var：变量声明会被提升到函数或全局作用域的顶部，但不会提升赋值。未赋值时，<strong>变量值为 undefined</strong>。</p>
+<p>​    •    let：变量声明同样会被提升，<strong>但不会初始化</strong>。<strong>访问未初始化的 let 变量会导致 ReferenceError</strong>。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">console.log(a); // 输出: undefined</span><br><span class="line">var a = 5;</span><br><span class="line"></span><br><span class="line">console.log(b); // 报错: ReferenceError: Cannot access &#x27;b&#x27; before initialization</span><br><span class="line">let b = 10;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>不影响作用域链</p>
+<p> 由于 let 的块级作用域特性，使用 let 声明变量不会改变或扩展当前的作用域链。它仅在其所在的代码块内部引入新的作用域，而不会影响外部的作用域链结构。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function testVar() &#123;</span><br><span class="line">    console.log(a); // 输出: undefined（变量提升）</span><br><span class="line">    var a = 10;</span><br><span class="line">    if (true) &#123;</span><br><span class="line">        var a = 20; // 同一个变量，影响整个函数作用域</span><br><span class="line">        console.log(a); // 输出: 20</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(a); // 输出: 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function testLet() &#123;</span><br><span class="line">    // console.log(b); // 报错: ReferenceError: Cannot access &#x27;b&#x27; before initialization</span><br><span class="line">    let b = 10;</span><br><span class="line">    if (true) &#123;</span><br><span class="line">        let b = 20; // 不同的变量，仅在块级作用域内有效</span><br><span class="line">        console.log(b); // 输出: 20</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(b); // 输出: 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">testVar();</span><br><span class="line">testLet();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-10"><a href="#-10" class="headerlink" title=""></a></h1><h1 id="-11"><a href="#-11" class="headerlink" title=""></a></h1><h1 id="-12"><a href="#-12" class="headerlink" title=""></a></h1><h1 id="const-语法"><a href="#const-语法" class="headerlink" title="const 语法"></a>const 语法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const PI = 3.14159;</span><br><span class="line">console.log(PI); // 输出: 3.14159</span><br><span class="line"></span><br><span class="line">// 尝试重新赋值会导致错误</span><br><span class="line">// PI = 3.14; // 报错: TypeError: Assignment to constant variable.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>声明常量</strong>：const 用于声明一个不可重新赋值的常量。</p>
+<p>​	•	<strong>初始化</strong>：const 声明时必须同时进行初始化，不能先声明后赋值。</p>
+<ul>
+<li><p>Const 一定要赋初值</p>
+</li>
+<li><p>一般常量使用大写（潜规则）</p>
+</li>
+<li><p>常量的值不能修改</p>
+</li>
+<li><p>块儿级作用域 <strong>也只能在块内执行</strong></p>
+</li>
+<li><p>对于数组与对象的元素修改，不算做对常量的修改，不会报错</p>
+<p>const 只保证变量绑定的不可变性，<strong><u>而不保证对象或数组内部的内容不可变。即，使用 const 声明的对象或数组，其属性或元素仍然可以被修改</u></strong>。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const person = &#123;</span><br><span class="line">    name: &#x27;张三&#x27;,</span><br><span class="line">    age: 25</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 修改对象属性是允许的</span><br><span class="line">person.age = 26;</span><br><span class="line">console.log(person.age); // 输出: 26</span><br><span class="line"></span><br><span class="line">// 不能重新赋值整个对象</span><br><span class="line">// person = &#123;&#125;; // 报错: TypeError: Assignment to constant variable.</span><br><span class="line"></span><br><span class="line">const numbers = [1, 2, 3];</span><br><span class="line"></span><br><span class="line">// 修改数组元素是允许的</span><br><span class="line">numbers.push(4);</span><br><span class="line">console.log(numbers); // 输出: [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">// 不能重新赋值整个数组</span><br><span class="line">// numbers = [4, 5, 6]; // 报错: TypeError: Assignment to constant variable.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-13"><a href="#-13" class="headerlink" title=""></a></h1><h1 id="-14"><a href="#-14" class="headerlink" title=""></a></h1><h1 id="-15"><a href="#-15" class="headerlink" title=""></a></h1><h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><p>允许从数组或对象中提取值，并将其赋值给变量。解构赋值不仅使代码更加简洁和易读，还提升了开发效率</p>
+<p><strong>解构赋值</strong>是一种方便从数组或对象中提取数据，<strong>并将其赋值给独立变量的语法。它通过匹配结构的方式，将复杂的数据结构中的值“拆解”出来</strong></p>
+<h1 id="-16"><a href="#-16" class="headerlink" title=""></a></h1><h1 id="-17"><a href="#-17" class="headerlink" title=""></a></h1><h1 id="-18"><a href="#-18" class="headerlink" title=""></a></h1><h1 id="-19"><a href="#-19" class="headerlink" title=""></a></h1><h1 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h1><ul>
+<li>基本用法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">const [first, second, third] = numbers;</span><br><span class="line"></span><br><span class="line">console.log(first);  // 输出: 1</span><br><span class="line">console.log(second); // 输出: 2</span><br><span class="line">console.log(third);  // 输出: 3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>数组解构允许你按照数组的索引位置，将数组中的元素赋值给对应的变量。</strong></p>
+<ul>
+<li>跳过元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const colors = [&#x27;red&#x27;, &#x27;green&#x27;, &#x27;blue&#x27;, &#x27;yellow&#x27;];</span><br><span class="line">const [primary, , tertiary] = colors;</span><br><span class="line"></span><br><span class="line">console.log(primary);   // 输出: red</span><br><span class="line">console.log(tertiary); // 输出: blue</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>  如果你不需要某些元素，可以使用逗号（,）跳过。</p>
+<ul>
+<li><p>默认值</p>
+<p>如果解构时对应的元素不存在，可以为变量设置默认值</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const fruits = [&#x27;apple&#x27;];</span><br><span class="line">const [firstFruit, secondFruit = &#x27;banana&#x27;] = fruits;</span><br><span class="line"></span><br><span class="line">console.log(firstFruit);  // 输出: apple</span><br><span class="line">console.log(secondFruit); // 输出: banana</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>剩余元素</p>
+<p>使用**<u>展开运算符（…）可以将剩余的元素收集到一个数组</u>**中。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const numbers = [1, 2, 3, 4, 5];</span><br><span class="line">const [first, second, ...rest] = numbers;</span><br><span class="line"></span><br><span class="line">console.log(first);  // 输出: 1</span><br><span class="line">console.log(second); // 输出: 2</span><br><span class="line">console.log(rest);   // 输出: [3, 4, 5]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="-20"><a href="#-20" class="headerlink" title=""></a></h1><h1 id="-21"><a href="#-21" class="headerlink" title=""></a></h1><h1 id="-22"><a href="#-22" class="headerlink" title=""></a></h1><h1 id="-23"><a href="#-23" class="headerlink" title=""></a></h1><h1 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h1><p>对象解构允许你<strong>根据对象的属性名称，将对象中的属性值赋值给对应的变量</strong></p>
+<ul>
+<li>基本用法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const person = &#123;</span><br><span class="line">    name: &#x27;李四&#x27;,</span><br><span class="line">    age: 30,</span><br><span class="line">    city: &#x27;北京&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const &#123; name, age, city &#125; = person;</span><br><span class="line"></span><br><span class="line">console.log(name); // 输出: 李四</span><br><span class="line">console.log(age);  // 输出: 30</span><br><span class="line">console.log(city); // 输出: 北京</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这个是最简单的用法，通过前面的定义在输出对应的值</p>
+<ul>
+<li>重命名变量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const user = &#123;</span><br><span class="line">    username: &#x27;zhangsan&#x27;,</span><br><span class="line">    email: &#x27;zhangsan@example.com&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const &#123; username: userName, email: userEmail &#125; = user;</span><br><span class="line"></span><br><span class="line">console.log(userName);  // 输出: zhangsan</span><br><span class="line">console.log(userEmail); // 输出: zhangsan@example.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	有时变量名称与对象属性名称不一致，可以使用冒号（:）进行重命名</p>
+<ul>
+<li><p>默认值</p>
+<p>如果<strong>解构时对应的属性不存在</strong>，可以为<strong>变量设置默认值。</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const settings = &#123;</span><br><span class="line">    theme: &#x27;dark&#x27;,</span><br><span class="line">    language: &#x27;zh-CN&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const &#123; theme, fontSize = &#x27;16px&#x27; &#125; = settings;</span><br><span class="line"></span><br><span class="line">console.log(theme);    // 输出: dark</span><br><span class="line">console.log(fontSize); // 输出: 16px</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>嵌套结构</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const user = &#123;</span><br><span class="line">    name: &#x27;王五&#x27;,</span><br><span class="line">    address: &#123;</span><br><span class="line">        city: &#x27;上海&#x27;,</span><br><span class="line">        zip: &#x27;200000&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    hobbies: [&#x27;reading&#x27;, &#x27;traveling&#x27;]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const &#123;</span><br><span class="line">    name,</span><br><span class="line">    address: &#123; city, zip &#125;,</span><br><span class="line">    hobbies: [firstHobby, secondHobby]</span><br><span class="line">&#125; = user;</span><br><span class="line"></span><br><span class="line">console.log(name);        // 输出: 王五</span><br><span class="line">console.log(city);        // 输出: 上海</span><br><span class="line">console.log(zip);         // 输出: 200000</span><br><span class="line">console.log(firstHobby);  // 输出: reading</span><br><span class="line">console.log(secondHobby); // 输出: traveling</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="-24"><a href="#-24" class="headerlink" title=""></a></h1><h1 id="-25"><a href="#-25" class="headerlink" title=""></a></h1><h1 id="-26"><a href="#-26" class="headerlink" title=""></a></h1><h1 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h1><ul>
+<li><p>是使用反引号（&#96;）包裹的一种新的字符串表示方式。相比于传统的单引号（’）或双引号（”），模板字符串提供了更多的功能和更高的灵活性，使得字符串操作更加简洁和强大。</p>
+</li>
+<li><p>声明</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const message = `这是一个模板字符串。`;</span><br><span class="line">console.log(message); // 输出: 这是一个模板字符串。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>内容中可以直接出现换行符</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let str = `</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;沈腾&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;玛丽&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;魏翔&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;艾伦&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">console.log(str);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>变量拼接</p>
+<p>  可以在模版字符串中变量拼接中<strong>直接使用${}来嵌入变量</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const name = &#x27;沈腾&#x27;;</span><br><span class="line">const age = 44;</span><br><span class="line"></span><br><span class="line">const introduction = `你好，我是$&#123;name&#125;，今年$&#123;age&#125;岁。`;</span><br><span class="line"></span><br><span class="line">console.log(introduction);</span><br><span class="line">// 输出: 你好，我是沈腾，今年44岁。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-27"><a href="#-27" class="headerlink" title=""></a></h1><h1 id="-28"><a href="#-28" class="headerlink" title=""></a></h1><h1 id="-29"><a href="#-29" class="headerlink" title=""></a></h1><h1 id="简化对象写法"><a href="#简化对象写法" class="headerlink" title="简化对象写法"></a>简化对象写法</h1><p>当对象的属性名与赋值给他的变量名相同的时候，可以省略属性的显式声明，只有变量名即可</p>
+<p>传统写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const name = &#x27;张三&#x27;;</span><br><span class="line">const age = 25;</span><br><span class="line"></span><br><span class="line">const person = &#123;</span><br><span class="line">    name: name,</span><br><span class="line">    age: age</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(person); // 输出: &#123; name: &#x27;张三&#x27;, age: 25 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>简化写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const name = &#x27;张三&#x27;;</span><br><span class="line">const age = 25;</span><br><span class="line"></span><br><span class="line">const person = &#123;</span><br><span class="line">    name,</span><br><span class="line">    age</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(person); // 输出: &#123; name: &#x27;张三&#x27;, age: 25 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-30"><a href="#-30" class="headerlink" title=""></a></h1><h1 id="-31"><a href="#-31" class="headerlink" title=""></a></h1><h1 id="-32"><a href="#-32" class="headerlink" title=""></a></h1><h1 id="-33"><a href="#-33" class="headerlink" title=""></a></h1><h1 id="方法简写"><a href="#方法简写" class="headerlink" title="方法简写"></a>方法简写</h1><p>在对象中定义方法时，可以省略fuction关键字</p>
+<p>传统写法里面在运用$时必须要加上fuction关键字才可以</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const person = &#123;</span><br><span class="line">    name: &#x27;李四&#x27;,</span><br><span class="line">    greet: function() &#123;</span><br><span class="line">        console.log(`你好，我是$&#123;this.name&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person.greet(); // 输出: 你好，我是李四</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>但是简化用法的话，可以直接将fuction进行忽略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const person = &#123;</span><br><span class="line">    name: &#x27;李四&#x27;,</span><br><span class="line">    greet() &#123;</span><br><span class="line">        console.log(`你好，我是$&#123;this.name&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person.greet(); // 输出: 你好，我是李四</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>*<u><strong>等效于：</strong></u>*</p>
+<p>*<u><strong>greet: function() { … }。</strong></u>*</p>
+<h1 id="-34"><a href="#-34" class="headerlink" title=""></a></h1><h1 id="-35"><a href="#-35" class="headerlink" title=""></a></h1><h1 id="-36"><a href="#-36" class="headerlink" title=""></a></h1><h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><h1 id="-37"><a href="#-37" class="headerlink" title=""></a></h1><h1 id="-38"><a href="#-38" class="headerlink" title=""></a></h1><h1 id="-39"><a href="#-39" class="headerlink" title=""></a></h1><h1 id="-40"><a href="#-40" class="headerlink" title=""></a></h1><h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(param1, param2, ..., paramN) =&gt; expression</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>参数</strong>：用小括号 () 包裹。如果只有一个参数，可以省略括号。</p>
+<p>​	•	<strong>箭头</strong>：使用 &#x3D;&gt; 表示函数体。</p>
+<p>​	•	<strong>函数体</strong>：</p>
+<p>​	•	如果只有一条表达式，可以省略 {} 和 return，返回值是该表达式的结果。</p>
+<p>​	•	如果有多条语句，需要用 {} 包裹，并显式使用 return 返回值。</p>
+<ul>
+<li>函数声明于调用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let fn = (a, b) =&gt; &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let result = fn(1, 2);</span><br><span class="line">console.log(result); // 输出: 3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="-41"><a href="#-41" class="headerlink" title=""></a></h1><h1 id="-42"><a href="#-42" class="headerlink" title=""></a></h1><h1 id="-43"><a href="#-43" class="headerlink" title=""></a></h1><h1 id="-44"><a href="#-44" class="headerlink" title=""></a></h1><h1 id="箭头函数与this"><a href="#箭头函数与this" class="headerlink" title="箭头函数与this"></a>箭头函数与this</h1><ul>
+<li>This 是静态的，this 始终指向函数声明中所在作用域下的this的值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function getName() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line">let getName2 = () =&gt; &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;;</span><br><span class="line">window.name = &#x27;尚硅谷&#x27;; // 在浏览器环境中，为全局对象 window 添加 name 属性</span><br><span class="line"></span><br><span class="line">const school = &#123;</span><br><span class="line">    name: &#x27;ATGUIGU&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">getName(); // 输出: 尚硅谷</span><br><span class="line">getName2(); // 输出: 尚硅谷</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里是使用的直接调用</p>
+<p>那么如果是call方法调用呢？</p>
+<p>如果前面还是上面的代码，现在我改一种方式来写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">getName.call(school); // 输出: ATGUIGU</span><br><span class="line">getName2.call(school); // 输出: 尚硅谷</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>call ，普通函数通过call方法调用，显式的将this 指向school对象因此输出的就是ATCUIGU</strong></p>
+<p><em><strong>然而，箭头函数的this 不会被call或者apply改变，始终指向全局对象window,因此输出window的值还是尚硅谷</strong></em></p>
+<ul>
+<li><strong><u>不能作为构造示例化对象</u></strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let Person = () =&gt; &#123;&#125;;</span><br><span class="line">new Person(); // 报错: Person is not a constructor</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>•	箭头函数没有自己的 this 和 prototype，因此不能通过 new 关键字调用。</p>
+<p>​	•	构造函数需要 this 来指向新创建的实例对象，而箭头函数没有 this 的概念。</p>
+<p>那么普通函数是可以用new 的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function Person(name, age) &#123;</span><br><span class="line">    // 将参数赋值给当前实例对象</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line"></span><br><span class="line">    // 添加方法</span><br><span class="line">    this.sayHello = function() &#123;</span><br><span class="line">        console.log(`你好，我是$&#123;this.name&#125;，今年$&#123;this.age&#125;岁。`);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 使用 new 创建对象实例</span><br><span class="line">const person1 = new Person(&#x27;张三&#x27;, 25);</span><br><span class="line">const person2 = new Person(&#x27;李四&#x27;, 30);</span><br><span class="line"></span><br><span class="line">// 调用方法</span><br><span class="line">person1.sayHello(); // 输出: 你好，我是张三，今年25岁。</span><br><span class="line">person2.sayHello(); // 输出: 你好，我是李四，今年30岁。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p><strong><u>不能用arguements变量</u></strong></p>
+<p>箭头函数没有自己的 arguments 对象，它会继承自外层作用域的 arguments（如果外层作用域是普通函数）</p>
+<p>​    •    如果外层没有 arguments，在箭头函数中使用 arguments 会导致报错。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const arrowFunc = () =&gt; &#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">arrowFunc(1, 2, 3); // 报错: ReferenceError: arguments is not defined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>那么普通 函数是怎样实现的呢</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function normalFunc() &#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">normalFunc(1, 2, 3); // 输出: [Arguments] &#123; &#x27;0&#x27;: 1, &#x27;1&#x27;: 2, &#x27;2&#x27;: 3 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><del><em><strong>1. arguments 的特点</strong></em></del></p>
+<p><del><em><strong>1.1 定义</strong></em></del></p>
+<p>​	<del><em>•	arguments 是一个*<em>类数组对象</em></em>，包含了函数调用时传递的所有参数。*</del></p>
+<p>​	<del><em>•	类数组对象的意思是，它有 length 属性，但不能直接使用数组的方法，比如 map、reduce。</em></del></p>
+<p><del><em><strong>1.2 特性</strong></em></del></p>
+<p>​	~~*•	只有<strong>普通函数</strong>会自动生成 arguments 对象，*<em>箭头函数没有</em></p>
+<ul>
+<li>arguments。*~~</li>
+</ul>
+<p>​	<del><em>•	它是一个动态对象，随着函数调用的参数变化而变化。</em></del></p>
+<p>​	<del><em>•	arguments[0] 表示第一个参数，arguments[1] 表示第二个参数，依此类推。</em></del></p>
+<p>​	<del><em>•	arguments.length 返回传入参数的数量。</em></del></p>
+<ul>
+<li>箭头函数的简写</li>
+</ul>
+<p>有以下这几种形式：</p>
+<ul>
+<li><p>单表达式函数</p>
+<p>如果函数体只有一行表达式，可以省略{}和return关键字，直接返回表达式的结果</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 普通写法</span><br><span class="line">const add = (a, b) =&gt; &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 简写</span><br><span class="line">const add = (a, b) =&gt; a + b;</span><br><span class="line"></span><br><span class="line">console.log(add(2, 3)); // 输出: 5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>单参数函数</p>
+<p>如果箭头函数只有一个参数，可以省略参数外的括号（）</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  // 普通写法</span><br><span class="line">  const square = (x) =&gt; x </span><br><span class="line">* x;</span><br><span class="line">  </span><br><span class="line">  // 简写</span><br><span class="line">  const square = x =&gt; x </span><br><span class="line">* x;</span><br><span class="line">  </span><br><span class="line">  console.log(square(4)); // 输出: 16</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<p>  这样就连括号都不用加了</p>
+<ul>
+<li><p>返回对象字面量</p>
+<p>如果箭头函数返回一个对象字面量，必须用括号（）将对象包裹起来，否则会被解析为代码块</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 错误写法</span><br><span class="line">const createUser = (name, age) =&gt; &#123; name: name, age: age &#125;;</span><br><span class="line">// 结果是 undefined，因为 `&#123;&#125;` 被解析为代码块</span><br><span class="line"></span><br><span class="line">// 正确写法</span><br><span class="line">const createUser = (name, age) =&gt; (&#123; name: name, age: age &#125;);</span><br><span class="line"></span><br><span class="line">console.log(createUser(&#x27;张三&#x27;, 25));</span><br><span class="line">// 输出: &#123; name: &#x27;张三&#x27;, age: 25 &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>默认参数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 普通写法</span><br><span class="line">const greet = (name = &#x27;游客&#x27;) =&gt; `你好，$&#123;name&#125;！`;</span><br><span class="line"></span><br><span class="line">console.log(greet()); // 输出: 你好，游客！</span><br><span class="line">console.log(greet(&#x27;张三&#x27;)); // 输出: 你好，张三！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="-45"><a href="#-45" class="headerlink" title=""></a></h1><h1 id="-46"><a href="#-46" class="headerlink" title=""></a></h1><h1 id="-47"><a href="#-47" class="headerlink" title=""></a></h1><h1 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h1><ul>
+<li>形参初始值，具有<strong>默认值的参数</strong>，一般位置要靠后（潜规则）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function calculate(a = 1, b = 2) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(calculate());          // 输出: 3</span><br><span class="line">console.log(calculate(5));         // 输出: 7 (b 使用默认值 2)</span><br><span class="line">console.log(calculate(3, 4));      // 输出: 7</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>与解构赋值结合</li>
+</ul>
+<p><img src="/../images/image-20250116141332513.png" alt="image-20250116141332513"></p>
+<h1 id="-48"><a href="#-48" class="headerlink" title=""></a></h1><h1 id="-49"><a href="#-49" class="headerlink" title=""></a></h1><h1 id="-50"><a href="#-50" class="headerlink" title=""></a></h1><h1 id="rest参数（形参位置）"><a href="#rest参数（形参位置）" class="headerlink" title="rest参数（形参位置）"></a>rest参数（形参位置）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function func(a, b, ...rest) &#123;</span><br><span class="line">    // a 和 b 是普通参数</span><br><span class="line">    // rest 是一个数组，包含其余的参数</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用 …变量名 表示 rest 参数，必须是函数参数列表中的最后一个参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function func(a, b, ...rest) &#123;</span><br><span class="line">    console.log(a);    // 第一个参数</span><br><span class="line">    console.log(b);    // 第二个参数</span><br><span class="line">    console.log(rest); // 剩余参数组成的数组</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func(1, 2, 3, 4, 5);</span><br><span class="line">// 输出:</span><br><span class="line">// 1</span><br><span class="line">// 2</span><br><span class="line">// [3, 4, 5]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="-51"><a href="#-51" class="headerlink" title=""></a></h1><h1 id="-52"><a href="#-52" class="headerlink" title=""></a></h1><h1 id="-53"><a href="#-53" class="headerlink" title=""></a></h1><h1 id="扩展运算符（调用实参）"><a href="#扩展运算符（调用实参）" class="headerlink" title="扩展运算符（调用实参）"></a>扩展运算符（调用实参）</h1><p>扩展运算符与 rest *<em>参数</em></p>
+<ul>
+<li><p>的外观一样（都是…），但功能不同。扩展运算符用于<strong>展开</strong>，而 rest 参数用于<strong>收集</strong>。</p>
+</li>
+<li><p>合并数组</p>
+<p>使用扩展运算符可<strong>以方便地合并两个或多个数组。</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const arr1 = [1, 2, 3];</span><br><span class="line">const arr2 = [4, 5, 6];</span><br><span class="line"></span><br><span class="line">const combined = [...arr1, ...arr2];</span><br><span class="line">console.log(combined); // 输出: [1, 2, 3, 4, 5, 6]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>数组克隆</p>
+<p>使用扩展运算符可以快速克隆一个数组，创建一个全新的副本。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  const arr1 = [1, 2, 3];</span><br><span class="line">const arr2 = [...arr1]; // 克隆数组</span><br><span class="line"></span><br><span class="line">arr2[0] = 10;</span><br><span class="line"></span><br><span class="line">console.log(arr1); // 输出: [1, 2, 3] （原数组未被修改）</span><br><span class="line">console.log(arr2); // 输出: [10, 2, 3]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong><u>扩展运算符（…）是克隆数组的最简洁方式。</u></strong></p>
+<ul>
+<li>将伪数组转换为真正的数组</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const nodeList = document.querySelectorAll(&#x27;div&#x27;);</span><br><span class="line">const nodeArray = [...nodeList];</span><br><span class="line">console.log(nodeArray); // 输出: 一个数组形式的节点列表</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	•	document.querySelectorAll：</p>
+<p>​	•	querySelectorAll 是一种 DOM 操作方法，用于在文档中选择所有符合指定 CSS 选择器的元素。</p>
+<p>​	•	<strong>它返回一个 NodeList 对象，这是一个类数组对象，包含所有匹配的 DOM 节点。</strong></p>
+<p>​	•	<strong>NodeList 不能直接使用数组的方法（如 map、filter 等），但可以通过索引访问元素，并具有 length 属性。</strong></p>
+<h1 id="-54"><a href="#-54" class="headerlink" title=""></a></h1><h1 id="-55"><a href="#-55" class="headerlink" title=""></a></h1><h1 id="-56"><a href="#-56" class="headerlink" title=""></a></h1><h1 id="ES6-symbol"><a href="#ES6-symbol" class="headerlink" title="ES6 symbol"></a>ES6 symbol</h1><p>Symbol 是 ES6 引入的一种原始数据类型，表示唯一的标识符。它的主要特点是每个 Symbol 值都是唯一的，即使<strong>它们的描述（description）相同，两个 Symbol 值也不会相等。</strong></p>
+<ul>
+<li>*<em>创建symbol</em></li>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const sym1 = Symbol();</span><br><span class="line">const sym2 = Symbol(&#x27;描述文本&#x27;);</span><br><span class="line"></span><br><span class="line">console.log(sym1); // 输出: Symbol()</span><br><span class="line">console.log(sym2); // 输出: Symbol(描述文本)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用 Symbol() 函数创建一个新的 Symbol 值，可以选择为其添加一个描述（description）用于调试或打印。</p>
+<p>Symbol 的主要用途是创建唯一的标识符，避免属性名冲突,所以<strong>symbol具有唯一性</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const sym1 = Symbol(&#x27;key&#x27;);</span><br><span class="line">const sym2 = Symbol(&#x27;key&#x27;);</span><br><span class="line"></span><br><span class="line">console.log(sym1 === sym2); // 输出: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p><strong>全局symbol注册</strong></p>
+<p>通过symbol 可以创建全局可共享的symbol，但是对于相同的描述，symbol会返回相同的symbol值</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const sym1 = Symbol.for(&#x27;shared&#x27;);</span><br><span class="line">const sym2 = Symbol.for(&#x27;shared&#x27;);</span><br><span class="line"></span><br><span class="line">console.log(sym1 === sym2); // 输出: true</span><br><span class="line"></span><br><span class="line">// 获取全局 Symbol 的描述</span><br><span class="line">console.log(Symbol.keyFor(sym1)); // 输出: shared</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p><strong>不能与其他数据进行运算</strong></p>
+</li>
+<li><p>使用symbol 定义对象的唯一属性</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const sym = Symbol(&#x27;uniqueKey&#x27;);</span><br><span class="line">const obj = &#123;</span><br><span class="line">    [sym]: &#x27;值&#x27;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(obj[sym]); // 输出: 值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>  使用 Symbol 作为属性名时，必须用方括号（[]）访问，因为 Symbol 不是字符串。</p>
+<h1 id="-57"><a href="#-57" class="headerlink" title=""></a></h1><h1 id="-58"><a href="#-58" class="headerlink" title=""></a></h1><h1 id="-59"><a href="#-59" class="headerlink" title=""></a></h1><h1 id="-60"><a href="#-60" class="headerlink" title=""></a></h1><h1 id="内置symbol值"><a href="#内置symbol值" class="headerlink" title="内置symbol值"></a>内置symbol值</h1><p>*<em>内置 Symbol 值</em></p>
+<ul>
+<li>是 JavaScript 提供的一些特殊 Symbol，它们定义了一些语言层级的行为，使开发者可以自定义对象的特定行为。这些内置 Symbol 是 ES6 及以后版本中的一部分。</li>
+</ul>
+<h1 id="-61"><a href="#-61" class="headerlink" title=""></a></h1><h1 id="-62"><a href="#-62" class="headerlink" title=""></a></h1><h1 id="-63"><a href="#-63" class="headerlink" title=""></a></h1><h1 id="-64"><a href="#-64" class="headerlink" title=""></a></h1><h1 id="-65"><a href="#-65" class="headerlink" title=""></a></h1><h1 id="1-Symbol-iterator"><a href="#1-Symbol-iterator" class="headerlink" title="1. Symbol.iterator"></a><strong>1. Symbol.iterator</strong></h1><p>定义对象的默认迭代器，用于 for…of 循环或扩展运算符（…）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const iterable = &#123;</span><br><span class="line">    data: [1, 2, 3],</span><br><span class="line">    [Symbol.iterator]() &#123;</span><br><span class="line">        let index = 0;</span><br><span class="line">        return &#123;</span><br><span class="line">            next: () =&gt; (&#123;</span><br><span class="line">                value: this.data[index++],</span><br><span class="line">                done: index &gt; this.data.length,</span><br><span class="line">            &#125;),</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">for (const value of iterable) &#123;</span><br><span class="line">    console.log(value); // 输出: 1, 2, 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-66"><a href="#-66" class="headerlink" title=""></a></h1><h1 id="-67"><a href="#-67" class="headerlink" title=""></a></h1><h1 id="-68"><a href="#-68" class="headerlink" title=""></a></h1><h1 id="-69"><a href="#-69" class="headerlink" title=""></a></h1><h1 id="-70"><a href="#-70" class="headerlink" title=""></a></h1><h1 id="2-Symbol-asyncIterator"><a href="#2-Symbol-asyncIterator" class="headerlink" title="2. Symbol.asyncIterator"></a><strong>2. Symbol.asyncIterator</strong></h1><p>定义对象的异步迭代器，用于 for await…of 循环.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const asyncIterable = &#123;</span><br><span class="line">    data: [1, 2, 3],</span><br><span class="line">    [Symbol.asyncIterator]() &#123;</span><br><span class="line">        let index = 0;</span><br><span class="line">        return &#123;</span><br><span class="line">            next: () =&gt;</span><br><span class="line">                new Promise((resolve) =&gt; &#123;</span><br><span class="line">                    setTimeout(() =&gt; &#123;</span><br><span class="line">                        resolve(&#123;</span><br><span class="line">                            value: this.data[index++],</span><br><span class="line">                            done: index &gt; this.data.length,</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;, 1000);</span><br><span class="line">                &#125;),</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(async () =&gt; &#123;</span><br><span class="line">    for await (const value of asyncIterable) &#123;</span><br><span class="line">        console.log(value); // 每隔 1 秒输出: 1, 2, 3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-71"><a href="#-71" class="headerlink" title=""></a></h1><h1 id="-72"><a href="#-72" class="headerlink" title=""></a></h1><h1 id="-73"><a href="#-73" class="headerlink" title=""></a></h1><h1 id="-74"><a href="#-74" class="headerlink" title=""></a></h1><h1 id="-75"><a href="#-75" class="headerlink" title=""></a></h1><h1 id="3-Symbol-toStringTag"><a href="#3-Symbol-toStringTag" class="headerlink" title="3. Symbol.toStringTag"></a><strong>3. Symbol.toStringTag</strong></h1><p>自定义 Object.prototype.toString 方法返回的值。</p>
+<h1 id="-76"><a href="#-76" class="headerlink" title=""></a></h1><h1 id="-77"><a href="#-77" class="headerlink" title=""></a></h1><h1 id="-78"><a href="#-78" class="headerlink" title=""></a></h1><h1 id="-79"><a href="#-79" class="headerlink" title=""></a></h1><h1 id="-80"><a href="#-80" class="headerlink" title=""></a></h1><h1 id="4-Symbol-toPrimitive"><a href="#4-Symbol-toPrimitive" class="headerlink" title="4. Symbol.toPrimitive"></a><strong>4. Symbol.toPrimitive</strong></h1><p>定义对象在类型转换（如数字、字符串）时的默认行为。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const obj = &#123;</span><br><span class="line">    [Symbol.toPrimitive](hint) &#123;</span><br><span class="line">        if (hint === &#x27;number&#x27;) return 42;</span><br><span class="line">        if (hint === &#x27;string&#x27;) return &#x27;Hello&#x27;;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(+obj); // 输出: 42</span><br><span class="line">console.log(`$&#123;obj&#125;`); // 输出: Hello</span><br><span class="line">console.log(obj + &#x27;&#x27;); // 输出: null</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-81"><a href="#-81" class="headerlink" title=""></a></h1><h1 id="-82"><a href="#-82" class="headerlink" title=""></a></h1><h1 id="-83"><a href="#-83" class="headerlink" title=""></a></h1><h1 id="-84"><a href="#-84" class="headerlink" title=""></a></h1><h1 id="-85"><a href="#-85" class="headerlink" title=""></a></h1><h1 id="5-Symbol-hasInstance"><a href="#5-Symbol-hasInstance" class="headerlink" title="5. Symbol.hasInstance"></a><strong>5. Symbol.hasInstance</strong></h1><p>定义对象在 instanceof 操作符中的行为。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class MyClass &#123;</span><br><span class="line">    static [Symbol.hasInstance](instance) &#123;</span><br><span class="line">        return instance instanceof Array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log([] instanceof MyClass); // 输出: true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-86"><a href="#-86" class="headerlink" title=""></a></h1><h1 id="-87"><a href="#-87" class="headerlink" title=""></a></h1><h1 id="-88"><a href="#-88" class="headerlink" title=""></a></h1><h1 id="-89"><a href="#-89" class="headerlink" title=""></a></h1><h1 id="-90"><a href="#-90" class="headerlink" title=""></a></h1><h1 id="6-Symbol-isConcatSpreadable"><a href="#6-Symbol-isConcatSpreadable" class="headerlink" title="6. Symbol.isConcatSpreadable"></a><strong>6. Symbol.isConcatSpreadable</strong></h1><p>定义对象是否可以在 Array.prototype.concat 中展开。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const arrayLike = &#123;</span><br><span class="line">    [Symbol.isConcatSpreadable]: true,</span><br><span class="line">    length: 2,</span><br><span class="line">    0: &#x27;a&#x27;,</span><br><span class="line">    1: &#x27;b&#x27;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const result = [].concat(arrayLike);</span><br><span class="line">console.log(result); // 输出: [&#x27;a&#x27;, &#x27;b&#x27;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>内置 Symbol</strong>	<strong>作用</strong></p>
+<p>Symbol.iterator	定义对象的默认迭代器行为。</p>
+<p>Symbol.asyncIterator	定义对象的异步迭代器行为。</p>
+<p>Symbol.toStringTag	自定义对象的 toString 输出内容。</p>
+<p>Symbol.toPrimitive	自定义对象的类型转换行为。</p>
+<p>Symbol.hasInstance	自定义 instanceof 的行为。</p>
+<p>Symbol.isConcatSpreadable	定义对象是否可以在 concat 中展开。</p>
+<p>Symbol.match	自定义字符串匹配行为（match 方法）。</p>
+<p>Symbol.replace	自定义字符串替换行为（replace 方法）。</p>
+<p>Symbol.search	自定义字符串搜索行为（search 方法）。</p>
+<p>Symbol.split	自定义字符串分割行为（split 方法）。</p>
+<p>Symbol.species	定义派生对象使用的构造函数。</p>
+<p>Symbol.unscopables	定义哪些属性不会出现在 with 语句中。</p>
+<p>Symbol.description	获取 Symbol 的描述文本。</p>
+<h1 id="-91"><a href="#-91" class="headerlink" title=""></a></h1><h1 id="二-第二章：迭代器"><a href="#二-第二章：迭代器" class="headerlink" title="二   第二章：迭代器"></a>二   第二章：迭代器</h1><p><strong>迭代器</strong>是 JavaScript 中一种用于按需访问集合元素的机制。它提供了一种统一的方式来遍历集合对象（如数组、字符串、Set、Map 等）。通过迭代器，开发者可以按顺序获取集合中的元素，而无需关心底层数据结构的实现迭代器是一个对象，它符合<strong>迭代协议</strong>（Iterator Protocol）。</p>
+<p>​	•	它提供一个 next() 方法，每次调用会返回一个包含 value 和 done 两个属性的对象：</p>
+<p>​	•	value：当前迭代的值。</p>
+<p>​	•	done：布尔值，表示是否迭代完成。</p>
+<p>​	•	false 表示还有更多元素。</p>
+<p>​	•	true 表示迭代结束。</p>
+<h1 id="-92"><a href="#-92" class="headerlink" title=""></a></h1><h1 id="-93"><a href="#-93" class="headerlink" title=""></a></h1><h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><ul>
+<li><p>创建一个指针对象，指向当前数据结构的起始位置</p>
+</li>
+<li><p>第一次调用对象的next方法，指针自动指向数据结构的第一个成员</p>
+</li>
+<li><p>接下来不断调用next方法，指针一直想后移动，直到指向最后一个成员</p>
+</li>
+<li><p>每调用next方法返回一个包含value和done属性的对象</p>
+</li>
+</ul>
+<p>创建一个简单的迭代器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function createIterator(array) &#123;</span><br><span class="line">    let index = 0;</span><br><span class="line">    return &#123;</span><br><span class="line">        next() &#123;</span><br><span class="line">            if (index &lt; array.length) &#123;</span><br><span class="line">                return &#123; value: array[index++], done: false &#125;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return &#123; value: undefined, done: true &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const iterator = createIterator([1, 2, 3]);</span><br><span class="line">console.log(iterator.next()); // 输出: &#123; value: 1, done: false &#125;</span><br><span class="line">console.log(iterator.next()); // 输出: &#123; value: 2, done: false &#125;</span><br><span class="line">console.log(iterator.next()); // 输出: &#123; value: 3, done: false &#125;</span><br><span class="line">console.log(iterator.next()); // 输出: &#123; value: undefined, done: true &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>当你自定义遍历数组时，<em><u>要想到迭代器</u></em></strong></p>
+<h1 id="-94"><a href="#-94" class="headerlink" title=""></a></h1><h1 id="二-第二章：生成器"><a href="#二-第二章：生成器" class="headerlink" title="二   第二章：生成器"></a>二   第二章：生成器</h1><p> **生成器（Generator）**是 ES6 引入的一种特殊函数，用于控制函数的执行流程。生成器函数可以暂停执行，并在需要时恢复执行。生成器返回一个 <strong>迭代器对象</strong>，通过 yield 关键字生成值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function</span><br><span class="line">* generator() &#123;</span><br><span class="line">    console.log(&#x27;执行开始&#x27;);</span><br><span class="line">    yield 1; // 暂停点 1</span><br><span class="line">    console.log(&#x27;暂停后恢复&#x27;);</span><br><span class="line">    yield 2; // 暂停点 2</span><br><span class="line">    console.log(&#x27;生成器结束&#x27;);</span><br><span class="line">    return 3; // 返回值</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const gen = generator();</span><br><span class="line"></span><br><span class="line">console.log(gen.next()); // 输出: &#123; value: 1, done: false &#125;</span><br><span class="line">console.log(gen.next()); // 输出: &#123; value: 2, done: false &#125;</span><br><span class="line">console.log(gen.next()); // 输出: &#123; value: 3, done: true &#125;</span><br><span class="line">console.log(gen.next()); // 输出: &#123; value: undefined, done: true &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	1.	<strong>暂停与恢复</strong></p>
+<p>​	•	每次执行 gen.next()，生成器从上一次暂停的地方恢复执行，直到遇到下一个 yield 或函数结束。</p>
+<p>​	•	yield 会将一个值返回给调用者，并暂停生成器的执行。</p>
+<p>​	2.	next() <strong>的返回值</strong></p>
+<p>​	•	value：当前 yield 的值（或 return 的值）。</p>
+<p>​	•	done：布尔值，表示生成器是否完成。</p>
+<p>​	3.	<strong>执行流程</strong></p>
+<p>​	•	第一次调用 next()，生成器开始执行，直到第一个 yield。</p>
+<p>​	•	再次调用 next()，从暂停点继续执行，直到下一个 yield 或 return。</p>
+<p>在代码中，也可以用for…of</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">遍历</span><br><span class="line">for(let v of gen())</span><br><span class="line">&#123;</span><br><span class="line">	console.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运用生成函数</p>
+<h1 id="-95"><a href="#-95" class="headerlink" title=""></a></h1><h1 id="-96"><a href="#-96" class="headerlink" title=""></a></h1><h1 id="-97"><a href="#-97" class="headerlink" title=""></a></h1><h1 id="-98"><a href="#-98" class="headerlink" title=""></a></h1><h1 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h1><p>利用生成器（Generator）控制异步函数的执行顺序。具体实现是通过 yield 和生成器的 next() 方法，将异步任务串行执行。</p>
+<p>​	1.	每个异步函数（如 one()、two()、three()）在执行完成后，调用 iterator.next()，恢复生成器的执行。</p>
+<ol start="2">
+<li>生成器函数 gen() 中的 yield 暂停点控制了异步任务的顺序。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    // 异步任务 1</span><br><span class="line">    function one() &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            console.log(111);  // 模拟异步任务完成</span><br><span class="line">            iterator.next();   // 恢复生成器执行</span><br><span class="line">        &#125;, 1000); // 1 秒后执行</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 异步任务 2</span><br><span class="line">    function two() &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            console.log(222);  // 模拟异步任务完成</span><br><span class="line">            iterator.next();   // 恢复生成器执行</span><br><span class="line">        &#125;, 2000); // 2 秒后执行</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 异步任务 3</span><br><span class="line">    function three() &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            console.log(333);  // 模拟异步任务完成</span><br><span class="line">            iterator.next();   // 恢复生成器执行</span><br><span class="line">        &#125;, 3000); // 3 秒后执行</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 生成器函数，用于串行控制</span><br><span class="line">    function</span><br><span class="line">* gen() &#123;</span><br><span class="line">        yield one();   // 执行 one()，暂停直到调用 next()</span><br><span class="line">        yield two();   // 执行 two()，暂停直到调用 next()</span><br><span class="line">        yield three(); // 执行 three()，暂停直到调用 next()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 启动生成器</span><br><span class="line">    const iterator = gen();</span><br><span class="line">    iterator.next(); // 开始执行第一个异步任务</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h1 id="-99"><a href="#-99" class="headerlink" title=""></a></h1><h1 id="二-第二章：promise"><a href="#二-第二章：promise" class="headerlink" title="二   第二章：promise"></a>二   第二章：promise</h1><h1 id="-100"><a href="#-100" class="headerlink" title=""></a></h1><h1 id="-101"><a href="#-101" class="headerlink" title=""></a></h1><h1 id="promise介绍与基本语法"><a href="#promise介绍与基本语法" class="headerlink" title="promise介绍与基本语法"></a>promise介绍与基本语法</h1><p>Promise 是 ES6 引入的一种用于处理异步操作的对象。它提供了更加优雅的方式来组织异步代码，避免回调地狱（Callback Hell）的问题</p>
+<p><strong>1.1 什么是 Promise？</strong></p>
+<p>​	•	Promise 是一个代表未来某个事件（通常是一个异步操作）最终结果的对象。</p>
+<p>​	•	一个 Promise 有三种可能的状态：</p>
+<p>​	1.	Pending**（进行中）**：初始状态，既没有被解决，也没有被拒绝。</p>
+<p>​	2.	Fulfilled**（已完成）**：操作成功完成，Promise 被解决。</p>
+<p>​	3.	Rejected**（已拒绝）**：操作失败，Promise 被拒绝。</p>
+<p>状态一旦从 Pending 变为 Fulfilled 或 Rejected，就不可再改变</p>
+<ul>
+<li><p><strong>基本语法</strong></p>
+</li>
+<li><p>实例化 Promise 对象</p>
+<p>Promise 是一个构造函数，接受一个执行器函数（executor）作为参数。执行器函数有两个参数：</p>
+<p>​    <strong>•    resolve：将 Promise 状态从 Pending 变为 Fulfilled。</strong></p>
+<p>​    <strong>•    reject：将 Promise 状态从 Pending 变为 Rejected。</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const promise = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    // 异步操作</span><br><span class="line">    const success = true; // 模拟结果</span><br><span class="line">    if (success) &#123;</span><br><span class="line">        resolve(&#x27;操作成功！&#x27;); // 调用 resolve 传递成功的值</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        reject(&#x27;操作失败！&#x27;); // 调用 reject 传递失败的原因</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以通过then 与 catch 来处理promise 的结果通过 .then 和 .catch 方法处理 Promise 的结果：</p>
+<p>​	•	<strong>then(onFulfilled, onRejected)</strong>：</p>
+<p>​	•	onFulfilled：状态变为 Fulfilled 时调用。</p>
+<p>​	•	onRejected（可选）：状态变为 Rejected 时调用。</p>
+<p>​	•	catch(onRejected)：<strong>用于捕获错误</strong>，等价于 .then(null, onRejected)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">promise</span><br><span class="line">    .then((result) =&gt; &#123;</span><br><span class="line">        console.log(result); // 输出: 操作成功！</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) =&gt; &#123;</span><br><span class="line">        console.log(error); // 如果失败，输出: 操作失败！</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Promise 的状态流转</p>
+<p>初始状态是pending ,状态变成fulfilled，value是成功的结果</p>
+<p><strong>在来一个例子</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const p = new Promise(function (resolve, reject) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">        // 模拟异步操作</span><br><span class="line">        let err = &#x27;数据读取失败&#x27;; // 模拟错误消息</span><br><span class="line">        reject(err); // 将 Promise 状态改为 Rejected，传递错误原因</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&#125;);</span><br><span class="line">p.then(</span><br><span class="line">    function (value) &#123;</span><br><span class="line">        console.log(value); // 如果成功（resolve），打印结果</span><br><span class="line">    &#125;,</span><br><span class="line">    function (reason) &#123;</span><br><span class="line">        console.error(reason); // 如果失败（reject），打印错误原因</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>解析：</strong></p>
+<p>​	•	then(onFulfilled, onRejected)：</p>
+<p>​	•	onFulfilled：当 Promise 状态为 Fulfilled 时调用，接收 resolve 的值。</p>
+<p>​	•	onRejected：当 Promise 状态为 Rejected 时调用，接收 reject 的原因。</p>
+<p>​	•	在这段代码中：</p>
+<p>​	•	成功的回调函数没有被调用，因为 Promise 被 reject(err) 标记为失败。</p>
+<p>​	•	失败的回调函数会被调用，console.error(reason) 输出错误消息。</p>
+<p>如果 Promise 的状态已经被 resolve 或 reject 更改，setTimeout 中的 reject(err) 虽然执行了，但它无法再影响 Promise 的状态，因为状态已经不可变。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const promise = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    reject(&#x27;失败&#x27;); // Promise 状态变为 Rejected</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise</span><br><span class="line">    .then((value) =&gt; &#123;</span><br><span class="line">        console.log(value); // 不会执行，因为状态是 Rejected</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((reason) =&gt; &#123;</span><br><span class="line">        console.error(reason); // 输出: 失败</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Promise 的状态不可变</strong></p>
+<p>​	•	Promise 的状态只能从 Pending 转为：</p>
+<p>​	•	Fulfilled（通过 resolve）。</p>
+<p>​	•	Rejected（通过 reject）。</p>
+<p>​	•	一旦状态变为 Fulfilled 或 Rejected，Promise 的状态就锁定，后续对 resolve 或 reject 的调用不会生效。</p>
+<p>因此，如果状态已经改变，*<em>定时器执行时调用的</em></p>
+<ul>
+<li>resolve *<em>或</em></li>
+<li>reject <strong>将被忽略</strong>。</li>
+</ul>
+<h1 id="-102"><a href="#-102" class="headerlink" title=""></a></h1><h1 id="-103"><a href="#-103" class="headerlink" title=""></a></h1><h1 id="promise-封装读取文件"><a href="#promise-封装读取文件" class="headerlink" title="promise 封装读取文件"></a>promise 封装读取文件</h1><ul>
+<li>引入 fs 模块</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>调用方法读取文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">fs.readFile(&#x27;./resoureces/为学.md&#x27;,(err,data)=&gt;&#123;</span><br><span class="line">//如果失败，则抛出错误</span><br><span class="line">if(err) throw err;</span><br><span class="line">//如果没有出错，则输出内容</span><br><span class="line">console.log(data.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>使用 Promise 封装</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const p = new Promise(fuction(resolve,reject))&#123;</span><br><span class="line">fs.readFile(&quot;./resoureces/为学.md&quot;,(err,data)=&gt;&#123;</span><br><span class="line">//判断如果失败</span><br><span class="line">if(err) reject(err); </span><br><span class="line">//如果成功</span><br><span class="line">resolve(data);</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">p.then(fuction(value)</span><br><span class="line">&#123;</span><br><span class="line">	console.log(value.toString());</span><br><span class="line">&#125;,fuction(reason)&#123;</span><br><span class="line">console.log(&quot;读取失败！&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="-104"><a href="#-104" class="headerlink" title=""></a></h1><h1 id="-105"><a href="#-105" class="headerlink" title=""></a></h1><h1 id="-106"><a href="#-106" class="headerlink" title=""></a></h1><h1 id="promise封装AJAX请求"><a href="#promise封装AJAX请求" class="headerlink" title="promise封装AJAX请求"></a>promise封装AJAX请求</h1><p>使用 *<em>Promise</em></p>
+<ul>
+<li>封装 AJAX 请求，可以让异步操作更加清晰和方便。下面是如何通过 XMLHttpRequest 结合 *<em>Promise</em></li>
+<li>封装 AJAX 请求的详细示例。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function ajaxPromise(url, method = &#x27;GET&#x27;) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        const xhr = new XMLHttpRequest();</span><br><span class="line">        xhr.open(method, url, true);</span><br><span class="line"></span><br><span class="line">        // 设置请求头（如果需要）</span><br><span class="line">        xhr.setRequestHeader(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);</span><br><span class="line"></span><br><span class="line">        xhr.onload = () =&gt; &#123;</span><br><span class="line">            if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">                resolve(xhr.response); // 请求成功时调用 resolve</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                reject(new Error(`请求失败，状态码：$&#123;xhr.status&#125;`)); // 请求失败时调用 reject</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        xhr.onerror = () =&gt; &#123;</span><br><span class="line">            reject(new Error(&#x27;网络错误&#x27;)); // 网络错误时调用 reject</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        xhr.send(); // 发送请求</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 使用示例</span><br><span class="line">ajaxPromise(&#x27;https://jsonplaceholder.typicode.com/posts&#x27;)</span><br><span class="line">    .then((response) =&gt; &#123;</span><br><span class="line">        console.log(&#x27;成功响应:&#x27;, JSON.parse(response));</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) =&gt; &#123;</span><br><span class="line">        console.error(&#x27;请求失败:&#x27;, error.message);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/15/Fixed_Day_2-ES6/" data-id="cm5z5hucw000bp4cq72k73gat" data-title="day1-ES6学习基础语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          day1-前端基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">双指针运算与位运算-算法3</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">前缀和与差分 - 算法4</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/">离散化 - 算法1</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/Fixed_Day_2-ES6/">day1-ES6学习基础语法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
