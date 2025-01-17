@@ -88,6 +88,370 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-重点-ES6封装AJAX请求" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/17/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82/" class="article-date">
+  <time class="dt-published" datetime="2025-01-17T02:30:31.301Z" itemprop="datePublished">2025-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>title: promise封装AJAX<br>date: 2025-01-15 12:00:00<br>tags:</p>
+<ul>
+<li><p>前端<br>categories:</p>
+</li>
+<li><p>前端</p>
+</li>
+</ul>
+<h1 id="重点-promise封装AJAX请求"><a href="#重点-promise封装AJAX请求" class="headerlink" title="重点- promise封装AJAX请求"></a><del>重点- promise封装AJAX请求</del></h1><p>在前面的笔记里面已经大体了解了一下AJAX是个什么东西，现在再回到promise里面</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>AJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下，通过异步与服务器交换数据并更新网页的技术。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>再次来理解-</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">function ajaxRequest(url) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        const xhr = new XMLHttpRequest();</span><br><span class="line">        xhr.open(&quot;GET&quot;, url, true);</span><br><span class="line"></span><br><span class="line">        // 请求成功时</span><br><span class="line">        xhr.onload = function () &#123;</span><br><span class="line">            if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">                resolve(xhr.responseText); // 请求成功，返回数据</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                reject(new Error(&quot;Request failed with status &quot; + xhr.status)); // 请求失败，返回错误</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        // 请求出错时</span><br><span class="line">        xhr.onerror = function () &#123;</span><br><span class="line">            reject(new Error(&quot;Network error&quot;));</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        xhr.send(); // 发送请求</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用示例</span><br><span class="line">ajaxRequest(&quot;https://api.apiservice.com/getJoke&quot;)</span><br><span class="line">    .then(function (response) &#123;</span><br><span class="line">        console.log(&quot;成功返回数据: &quot;, response);</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(function (error) &#123;</span><br><span class="line">        console.error(&quot;请求失败: &quot;, error);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​	1.	ajaxRequest 函数返回一个 Promise。</p>
+<p>​	2.	使用 XMLHttpRequest 对象发送异步请求。</p>
+<p>​	3.	在 onload 回调中，如果请求成功（HTTP状态码在200到299之间），调用 resolve 传递响应数据；如果失败，则调用 reject 返回错误。</p>
+<p>​	4.	在 onerror 回调中，网络出现错误时会调用 reject 进行错误处理。</p>
+<ol start="5">
+<li><p>使用 then 方法处理成功的响应，使用 catch 方法捕获错误。</p>
+<p> <strong><del>这样就明显理解多了</del></strong></p>
+</li>
+</ol>
+<h2 id="在这里补充一下promise大体上有什么"><a href="#在这里补充一下promise大体上有什么" class="headerlink" title="在这里补充一下promise大体上有什么"></a>在这里补充一下promise大体上有什么</h2><p>##介绍</p>
+<p>Promise 是 JavaScript 中的一种异步编程解决方案，它代表了一个<strong>异步操作的最终完成（或失败）<strong>及其结果值的表示。简单来说，Promise 用来处理</strong>异步操作</strong>的结果，它的核心目的是解决回调地狱（callback hell）问题，并让代码更加简洁、易于维护。</p>
+<p>关键词：异步操作哈</p>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p><strong>Promise 的状态</strong></p>
+<p>一个 Promise 实例有三种状态：</p>
+<p>​	1.	<strong>Pending（待定）</strong>：初始状态，既不是成功，也不是失败。</p>
+<p>​	2.	<strong>Fulfilled（已完成）</strong>：异步操作成功完成，且返回了结果。</p>
+<p>​	3.	<strong>Rejected（已拒绝）</strong>：异步操作失败，且返回了错误。</p>
+<p>这三种状态之间的转换是单向的：</p>
+<p>​	•	从 <strong>Pending</strong> 状态可以转为 <strong>Fulfilled</strong> 或 <strong>Rejected</strong>。</p>
+<p>​	•	一旦状态发生改变（从 <strong>Pending</strong> 到 <strong>Fulfilled</strong> 或 <strong>Rejected</strong>），它就不可再变了。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><strong>创建 Promise</strong></p>
+<p>要创建一个 Promise 对象，可以使用 new Promise() 构造函数，它接受一个回调函数，这个回调函数有两个参数：resolve 和 reject。</p>
+<p>​	•	resolve(value)：表示操作成功，传递成功的结果。</p>
+<p>​	•	reject(reason)：表示操作失败，传递失败的原因。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const promise = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    // 异步操作（例如网络请求、定时器等）</span><br><span class="line">    let success = true;</span><br><span class="line">    </span><br><span class="line">    if (success) &#123;</span><br><span class="line">        resolve(&quot;操作成功&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        reject(&quot;操作失败&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">promise.then((value) =&gt; &#123;</span><br><span class="line">    console.log(value); // 输出 &quot;操作成功&quot;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">promise.catch((error) =&gt; &#123;</span><br><span class="line">    console.error(error); // 输出 &quot;操作失败&quot;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    resolve(&quot;第一个成功&quot;);</span><br><span class="line">&#125;)</span><br><span class="line">    .then((value) =&gt; &#123;</span><br><span class="line">        console.log(value); // 输出 &quot;第一个成功&quot;</span><br><span class="line">        return &quot;第二个成功&quot;;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then((value) =&gt; &#123;</span><br><span class="line">        console.log(value); // 输出 &quot;第二个成功&quot;</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) =&gt; &#123;</span><br><span class="line">        console.error(error); // 错误处理</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Promise 支持链式调用，可以在一个 Promise 的 then 方法后接着另一个 then 或 catch。这样可以避免嵌套回调函数（即回调地狱）。</p>
+<p><strong>Promise 的常用方法</strong></p>
+<p>​	•	<strong>then(onFulfilled, onRejected)：Promise 成功或失败后的处理函数</strong>。</p>
+<p>​	•	<strong>onFulfilled(value)：Promise 被 resolve 后执行的回调。</strong></p>
+<p>​	•	onRejected(reason)：Promise 被 reject 后执行的回调。</p>
+<p>​	•	then() 方法会返回一个新的 Promise，<strong>可以继续链式调用</strong>。</p>
+<p>​	•	<strong>catch(onRejected)：处理 Promise 的拒绝（失败）情况，实际上是 .<u><em>then(undefined, onRejected) 的简写。</em></strong></u></p>
+<p>​	•	<strong>finally(onFinally)：无论 Promise 成功还是失败，都会执行的回调，适合用于清理操作。</strong></p>
+<p><u><em><strong><del>^-^呵呵，大体就会这一点&#x2F;&#x2F;&#x2F;。：）</del></strong></em></u></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/17/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82/" data-id="cm60cut9r000u12cqds9g4921" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-AJAX" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/17/AJAX/" class="article-date">
+  <time class="dt-published" datetime="2025-01-17T01:50:18.463Z" itemprop="datePublished">2025-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>title: AJAX<br>date: 2025-01-15 12:00:00<br>tags:</p>
+<ul>
+<li><p>前端<br>categories:</p>
+</li>
+<li><p>前端</p>
+</li>
+</ul>
+<h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><p>因为在promise的时候，有一个知识点是Promise封装AJAX请求，所以今天参考AJAX课程。大体了解一下到底是一个什么东西。</p>
+<h2 id="认识AJAX"><a href="#认识AJAX" class="headerlink" title="认识AJAX"></a>认识AJAX</h2><p>AJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下与服务器交换数据并更新部分网页内容的技术。它使得网页应用程序能够在后台异步地与服务器进行通信，提升了用户体验，使页面响应更加快速、流畅。</p>
+<p>AJAX的核心组成部分通常包括以下技术：</p>
+<p>​	1.	<strong>XMLHttpRequest</strong>：这是一个浏览器内建的JavaScript对象，用来异步地发送请求并接收响应。它可以发送不同类型的请求（如GET、POST等），并处理服务器的响应。</p>
+<p>​	2.	<strong>JavaScript</strong>：用于编写逻辑来发送请求、接收响应并动态更新页面内容。</p>
+<p>​	3.	<strong>HTML&#x2F;CSS</strong>：动态更新页面内容时使用，用来显示服务器响应的数据。</p>
+<p>​	4.	<strong>服务器端语言</strong>（如PHP、Node.js、Java、Python等）：用于处理AJAX请求并返回相应数据。</p>
+<p><strong>基本的AJAX流程</strong></p>
+<p>​	1.	客户端通过JavaScript创建一个XMLHttpRequest对象。</p>
+<p>​	2.	<strong>使用该对象向服务器发送请求。</strong></p>
+<p>​	3.	<strong>服务器处理请求并返回数据（通常是JSON或XML格式）</strong>。</p>
+<p>​	4.	JavaScript处理服务器返回的数据，并使用DOM（Document Object Model）来更新页面内容。</p>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><p>XML（eXtensible Markup Language，扩展标记语言）是一种用于描述数据结构和传输数据的标记语言。它与HTML类似，但XML的主要目的是<strong>存储和传输数据</strong>，而不是呈现数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;bookstore&gt;</span><br><span class="line">    &lt;book&gt;</span><br><span class="line">        &lt;title&gt;学习XML&lt;/title&gt;</span><br><span class="line">        &lt;author&gt;张三&lt;/author&gt;</span><br><span class="line">        &lt;price&gt;39.99&lt;/price&gt;</span><br><span class="line">    &lt;/book&gt;</span><br><span class="line">    &lt;book&gt;</span><br><span class="line">        &lt;title&gt;深入理解数据结构&lt;/title&gt;</span><br><span class="line">        &lt;author&gt;李四&lt;/author&gt;</span><br><span class="line">        &lt;price&gt;49.99&lt;/price&gt;</span><br><span class="line">    &lt;/book&gt;</span><br><span class="line">&lt;/bookstore&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AJAX特点"><a href="#AJAX特点" class="headerlink" title="AJAX特点"></a>AJAX特点</h3><p>AJAX优点</p>
+<ul>
+<li><p>无需刷新页面与服务器进行通信</p>
+</li>
+<li><p>允许你根据用户事件来更新部分页面内容</p>
+</li>
+</ul>
+<p>AJAX缺点</p>
+<ul>
+<li><p>没有浏览历史，不能回退</p>
+</li>
+<li><p>存在跨域问题</p>
+</li>
+<li><p>SEO不友好（网站或网页的结构、内容、代码等不利于搜索引擎优化（SEO），使得搜索引擎难以正确地索引和排名这些页面）</p>
+</li>
+</ul>
+<h3 id="AJAX-HTTP协议请求报文"><a href="#AJAX-HTTP协议请求报文" class="headerlink" title="AJAX-HTTP协议请求报文"></a>AJAX-HTTP协议请求报文</h3><p>在使用AJAX（Asynchronous JavaScript and XML）技术时，客户端通常使用XMLHttpRequest或fetchAPI来向服务器发送HTTP请求。这个请求的报文结构与普通的HTTP请求报文类似，但它是由JavaScript代码动态生成并发送的。</p>
+<p>HTTP协议（超文本传输协议），协议详细规定了浏览器和万维网服务器之间互相通信的规则。</p>
+<p><strong>请求报文</strong>：重点是格式与参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">行：POST</span><br><span class="line">头：HOST</span><br><span class="line">	 COOKIE</span><br><span class="line">	 Content-type:</span><br><span class="line">	 user-Agent:</span><br><span class="line">空行：</span><br><span class="line">体：</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应报文：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">行：HTTP/1.1. 200 OK</span><br><span class="line">头：Content-Type</span><br><span class="line">    Content-length</span><br><span class="line">    Content-encoding</span><br><span class="line"> 空行</span><br><span class="line"> 体：对应的响应报文</span><br></pre></td></tr></table></figure>
+
+<h3 id="Chrome网络控制台与POST请求"><a href="#Chrome网络控制台与POST请求" class="headerlink" title="Chrome网络控制台与POST请求"></a>Chrome网络控制台与POST请求</h3><p><img src="/../images/image-20250117095147207.png" alt="image-20250117095147207"></p>
+<p><strong>response Headers对应的是响应头信息。</strong></p>
+<p><u>响应行 HTTP&#x2F;1.1 200 OK,下面都是响应头。</u></p>
+<p><img src="/../images/image-20250117095415195.png" alt="image-20250117095415195"></p>
+<p><strong>response 这里是响应体</strong></p>
+<p><img src="/../images/image-20250117095524143.png" alt="image-20250117095524143"></p>
+<p><strong>Preview这里是响应体解析之后的查看页面，是一个预览</strong></p>
+<p><img src="/../images/image-20250117095734895.png" alt="image-20250117095734895"></p>
+<p><strong>请求报文看request Headers与Form Data</strong>(请求体)</p>
+<p> <strong>响应报文看response Headers与Response</strong></p>
+<p><strong>如果有get请求，有URl,那么就会变成query String Permeters</strong></p>
+<p>​	•	<strong>Request Headers</strong>：包含关于请求的元数据，例如User-Agent、Accept等。</p>
+<p>​	•	<strong>Form Data</strong>：通过POST方法提交的数据，通常位于请求体中。</p>
+<p>​	•	<strong>Query String Parameters</strong>：GET请求中的参数，附加在URL后，以?分隔，多个参数用&amp;连接。</p>
+<p>​	•	<strong>Response Headers</strong>：包含关于响应的元数据，例如Content-Type、Cache-Control等。</p>
+<p>​	•	<strong>Response Body</strong>：服务器返回给客户端的实际数据，可能是HTML、JSON、图片等内容。</p>
+<h3 id="EXPRESS框架"><a href="#EXPRESS框架" class="headerlink" title="EXPRESS框架"></a>EXPRESS框架</h3><p>为什么我们要学习EXPRESS框架呢，因为AJAX会给服务端发请求，既然发请求那么就需要一个服务端</p>
+<p><strong>命令终端</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -- yes</span><br><span class="line">nmp i express </span><br></pre></td></tr></table></figure>
+
+<p>在js里面的呈现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const express = require(&#x27;express&#x27;);  //这行代码导入了 Express 模块，允许你使用 Express 来创建服务器。</span><br><span class="line">const app = express();  //这行代码调用 express() 来初始化一个 Express 应用。</span><br><span class="line">app.get(&#x27;/&#x27;, (request, response) =&gt; &#123;</span><br><span class="line">    response.send(&#x27;HELLO EXPRESS&#x27;);</span><br><span class="line">&#125;);   //这里定义了一个路由处理程序，当收到对根路径 (/) 的 HTTP GET 请求时，服务器会响应 “HELLO EXPRESS”。</span><br><span class="line">app.listen(8000, () =&gt; &#123;</span><br><span class="line">    console.log(&quot;服务已启动, 8000 端口监听中....&quot;);</span><br><span class="line">&#125;);   //这行代码让应用监听 8000 端口。当服务器启动后，会在控制台输出一条消息，表示服务已经启动并在 8000 端口上监听。</span><br><span class="line"></span><br><span class="line">这段代码就是一个简单的 Express 服务器，它会对根路径（/）的请求返回 “HELLO EXPRESS” 字符串，并且监听 8000 端口。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/17/AJAX/" data-id="cm60cut9l000112cqh0kxb3jr" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-axios从入门到源码分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/16/axios%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2025-01-16T11:52:47.131Z" itemprop="datePublished">2025-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>title: axios<br>date: 2025-01-15 12:00:00<br>tags:</p>
+<ul>
+<li><p>前端<br>categories:</p>
+</li>
+<li><p>前端</p>
+</li>
+</ul>
+<h1 id="axios从入门到源码分析"><a href="#axios从入门到源码分析" class="headerlink" title="axios从入门到源码分析"></a>axios从入门到源码分析</h1><p>学习之前，要进行Promise 与 AJAX的复习</p>
+<p>因为前面已经进行了promise和ajax的学习，请参考前文笔记。</p>
+<p><del>删除线的是拓展的，与本文无关，就是自己不知道的名词</del></p>
+<p><strong>API</strong>（Application Programming Interface，应用程序编程接口）是 <strong>客户端与服务器</strong> 之间交互的接口，是实现 <strong>客户端与服务器之间通信</strong> 的一种规范和协议</p>
+<p>了解了大体上数据的传递过程通常是 <strong>客户端向服务器发送请求，服务器再进行处理，服务器向客户端返回，客户端处理</strong>，axios就是执行的第一步，虽然大体理解，但是还没有搞清楚每一个步骤到底是谁再操控，后期完善。</p>
+<h2 id="什么是Axios"><a href="#什么是Axios" class="headerlink" title="什么是Axios"></a>什么是Axios</h2><ul>
+<li><p>本质上就是一个基于promise的http客户端，用于浏览器和Node.js环境。他主要用于向服务器发送http请求病接收响应。</p>
+<p>Axios 是一个流行的 JavaScript 库，用于发送 HTTP 请求并处理响应。它可以在浏览器端和 Node.js 环境中运行，常用于前端开发中的 API 请求。</p>
+<p>​    •    <strong>支持的请求方法</strong>：</p>
+<p>​    •    GET：获取数据</p>
+<p>​    •    POST：提交数据</p>
+<p>​    •    PUT：更新数据</p>
+<p>​    •    DELETE：删除数据</p>
+<p>​    •    <strong>支持的功能</strong>：</p>
+<p>​    •    自动将响应数据解析为 JSON 格式（如果响应是 JSON 格式）。</p>
+<p>​    •    请求和响应拦截器。</p>
+<p>​    •    支持请求取消。</p>
+<p>​    •    支持并发请求处理。</p>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250117120309526.png" alt="image-20250117120309526"></p>
+<p> <a target="_blank" rel="noopener" href="https://www.bootcdn.cn/">https://www.bootcdn.cn</a> 网址搜索axios</p>
+<p><img src="/../images/image-20250117120454635.png" alt="image-20250117120454635"></p>
+<p><strong><u><del>在配置这里，出了很多问题，没有配置成功，先做个标记</del></u></strong></p>
+<p><img src="/../images/image-20250117122438865.png" alt="image-20250117122438865"></p>
+<h2 id="基本请求语法"><a href="#基本请求语法" class="headerlink" title="基本请求语法"></a>基本请求语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// GET 请求</span><br><span class="line">axios.get(&#x27;/user?id=12345&#x27;)</span><br><span class="line">  .then(response =&gt; console.log(response))</span><br><span class="line">  .catch(error =&gt; console.log(error));</span><br><span class="line"></span><br><span class="line">// POST 请求</span><br><span class="line">axios.post(&#x27;/user&#x27;, &#123;</span><br><span class="line">  name: &#x27;张三&#x27;,</span><br><span class="line">  age: 25</span><br><span class="line">&#125;)</span><br><span class="line">  .then(response =&gt; console.log(response))</span><br><span class="line">  .catch(error =&gt; console.log(error));</span><br></pre></td></tr></table></figure>
+
+<p><code>axios.get()</code> 是发送 GET 请求的方法</p>
+<p><code>/user?id=12345</code> 是请求的 URL，其中 <code>?id=12345</code> 是查询参数</p>
+<p><code>.then()</code> 处理成功的响应</p>
+<p><code>.catch()</code> 处理可能出现的错误</p>
+<ul>
+<li><code>axios.post()</code> 是发送 POST 请求的方法</li>
+<li>第一个参数 <code>/user</code> 是请求的 URL</li>
+<li>第二个参数 <code>&#123;name: &#39;张三&#39;, age: 25&#125;</code> 是要发送的数据（请求体）</li>
+<li><code>.then()</code> 处理成功的响应</li>
+<li><code>.catch()</code> 处理可能出现的错误</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET 请求通常用于获取数据，参数放在 URL 里</span><br><span class="line">POST 请求通常用于提交数据，数据放在请求体里</span><br><span class="line">GET 请求的参数会显示在 URL 中，POST 请求的数据不会</span><br><span class="line">GET 请求对数据大小有限制，POST 请求没有</span><br></pre></td></tr></table></figure>
+
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL()"></a><strong><del>URL()</del></strong></h2><p><strong><del>冷知识：URL（统一资源定位符）就像是互联网上的”地址系统”，它告诉浏览器要去哪里获取资源。让我们看一个典型的 URL：</del></strong></p>
+<p><strong><del>那么在哪里会有url呢，在哪里看</del></strong></p>
+<p><strong><del>URL（Uniform Resource Locator）本质上就是一个资源的地址，它指示了如何在网络中找到某个资源（比如网页、图片、JavaScript 文件等）。在你的例子中，URL 是用来指定 Axios 库所在的网络位置。</del></strong></p>
+<p><del><u><strong>URL 的结构</strong></u></del></p>
+<p><del><u><strong>URL 通常由以下几部分组成：</strong></u></del></p>
+<p>​	<del><u><strong>1.	协议（Protocol）：</strong></u></del></p>
+<p>​	<del><u><strong>•	例如：http:&#x2F;&#x2F; 或 https:&#x2F;&#x2F;，指定了如何与服务器进行通信。</strong></u></del></p>
+<p>​	<del><u><strong>2.	域名（Domain）：</strong></u></del></p>
+<p>​	<del><u><strong>•	例如：cdn.bootcdn.net，它是一个服务器的地址，告诉浏览器要连接哪个服务器。</strong></u></del></p>
+<p>​	<del><u><strong>3.	路径（Path）：</strong></u></del></p>
+<p>​	<del><u><strong>•	例如：&#x2F;ajax&#x2F;libs&#x2F;axios&#x2F;0.21.1&#x2F;axios.min.js，它指向服务器上具体资源的位置。</strong></u></del></p>
+<p>​	<del><u><strong>4.	查询参数（Query parameters）（可选）：</strong></u></del></p>
+<p>​	<del><u><strong>•	例如：?v&#x3D;1，可以附加一些参数来控制资源的获取方式。</strong></u></del></p>
+<p><del><u><strong>所以，像你在代码中使用的 <a target="_blank" rel="noopener" href="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js">https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js</a> 就是 Axios 库的一个 URL，它包含了协议、域名和路径，指示了从 CDN 服务器加载 Axios 的位置。</strong></u></del></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API()"></a><del><strong>API()</strong></del></h2><p><del><strong>API（Application Programming Interface，应用程序编程接口）是一组定义了不同软件组件之间交互规则的接口。它使得不同的软件系统、模块或服务能够彼此通信、协作，并共享数据或功能。</strong></del></p>
+<p><del><strong>1. API 的基本概念</strong></del></p>
+<p>​	<del><strong>•	接口：API 就是软件之间交互的接口，它定义了不同系统或服务之间如何调用、传递数据、接收响应等。</strong></del></p>
+<p>​	<del><strong>•	抽象：API 提供的是一种抽象层，用户或开发者不需要了解实现的具体细节，只需要知道如何使用它即可。</strong></del></p>
+<p>​	<del><strong>•	交互规范：API 确定了系统之间通信的协议、数据格式和调用方式，帮助开发者创建可以与其他系统协作的应用。</strong></del></p>
+<h2 id="请求配置"><a href="#请求配置" class="headerlink" title="请求配置"></a>请求配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">  method: &#x27;post&#x27;,  // 请求方法，指定为 POST 请求</span><br><span class="line">  url: &#x27;/user&#x27;,  // 请求的 URL，假设该 URL 为服务器上的 API 端点</span><br><span class="line">  data: &#123;  // 请求体数据，通常用于 POST 请求，包含发送到服务器的数据</span><br><span class="line">    name: &#x27;张三&#x27;,</span><br><span class="line">    age: 25</span><br><span class="line">  &#125;,</span><br><span class="line">  headers: &#123;  // 请求头，指定请求的相关信息</span><br><span class="line">    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;  // 请求头指定发送的数据类型为 JSON 格式</span><br><span class="line">  &#125;,</span><br><span class="line">  timeout: 5000  // 超时时间，单位为毫秒，表示请求超过 5 秒钟没有响应时会中止请求</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>一个完整的POST请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">  method: &#x27;post&#x27;,  // 请求方法</span><br><span class="line">  url: &#x27;https://api.example.com/user&#x27;,  // 完整的 API URL</span><br><span class="line">  data: &#123;  // 请求数据</span><br><span class="line">    name: &#x27;张三&#x27;,</span><br><span class="line">    age: 25</span><br><span class="line">  &#125;,</span><br><span class="line">  headers: &#123;  // 请求头</span><br><span class="line">    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  timeout: 5000  // 超时时间 5 秒</span><br><span class="line">&#125;)</span><br><span class="line">.then(response =&gt; &#123;</span><br><span class="line">  // 请求成功时的处理</span><br><span class="line">  console.log(&#x27;请求成功:&#x27;, response.data);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(error =&gt; &#123;</span><br><span class="line">  // 请求失败时的处理</span><br><span class="line">  if (error.code === &#x27;ECONNABORTED&#x27;) &#123;</span><br><span class="line">    console.error(&#x27;请求超时&#x27;);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    console.error(&#x27;请求失败:&#x27;, error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​	1.	<strong>POST 请求的数据</strong>：在 data 部分，发送的是一个包含 name 和 age 属性的 JSON 对象，这些数据将会被提交给服务器进行处理。Content-Type: application&#x2F;json 告诉服务器，发送的数据是 JSON 格式。</p>
+<p>​	2.	<strong>超时设置</strong>：通过 timeout 设置请求的最大等待时间。如果 5 秒内服务器没有响应，Axios 会中止请求，并抛出错误。</p>
+<p>​	3.	<strong>错误处理</strong>：</p>
+<p>​	•	使用 .catch() 捕获请求错误。</p>
+<p>​	•	可以根据 error.code 判断是否是超时错误（ECONNABORTED）。</p>
+<p>##<del><strong>JSON</strong></del></p>
+<p><del><strong>（JavaScript Object Notation）是一种轻量级的数据交换格式，常用于前后端数据的传输。它采用键值对的形式存储数据，易于阅读和编写，也易于机器解析和生成。</strong></del></p>
+<p><del><strong>JSON 的基本格式</strong></del></p>
+<p><del><strong>JSON 是一种基于文本的格式，通常用于表示结构化数据。它具有以下几种数据类型：</strong></del></p>
+<p>​	<del><strong>1.	对象（Object）：由一对大括号包围，包含键值对。每个键与值之间用冒号 : 分隔，键值对之间用逗号 , 分隔。</strong></del></p>
+<p>​	<del><strong>2.	数组（Array）：由一对方括号 [] 包围，包含多个元素，元素之间用逗号 , 分隔。</strong></del></p>
+<p>​	<del><strong>3.	字符串（String）：由双引号 “ 包围。</strong></del></p>
+<p>​	<del><strong>4.	数字（Number）：没有引号，表示数字（整数或浮点数）。</strong></del></p>
+<p>​	<del><strong>5.	布尔值（Boolean）：true 或 false。</strong></del></p>
+<p>​	<del><strong>6.	空值（Null）：表示空值，写作 null。</strong></del></p>
+<h2 id="put请求"><a href="#put请求" class="headerlink" title="put请求"></a>put请求</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">axios.put(&#x27;https://api.example.com/data/1&#x27;, &#123;</span><br><span class="line">  name: &#x27;李四&#x27;,</span><br><span class="line">  age: 30</span><br><span class="line">&#125;)</span><br><span class="line">.then(response =&gt; &#123;</span><br><span class="line">  console.log(response.data);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(error =&gt; &#123;</span><br><span class="line">  console.error(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>一般用来更新请求</p>
+<h2 id="Delete请求"><a href="#Delete请求" class="headerlink" title="Delete请求"></a>Delete请求</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&#x27;https://api.example.com/data/1&#x27;)</span><br><span class="line">  .then(response =&gt; &#123;</span><br><span class="line">    console.log(&#x27;删除成功&#x27;, response.data);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(error =&gt; &#123;</span><br><span class="line">    console.error(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>用于删除数据</p>
+<h2 id="请求和响应的拦截器"><a href="#请求和响应的拦截器" class="headerlink" title="请求和响应的拦截器"></a>请求和响应的拦截器</h2><p><strong>请求拦截器允</strong>许你在请求发送前对请求进行修改（例如添加认证 token）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.request.use(config =&gt; &#123;</span><br><span class="line">  // 在请求发送前添加 Authorization 请求头</span><br><span class="line">  config.headers[&#x27;Authorization&#x27;] = &#x27;Bearer your_token&#x27;;</span><br><span class="line">  return config;</span><br><span class="line">&#125;, error =&gt; &#123;</span><br><span class="line">  return Promise.reject(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应拦截器</strong>允许你在响应数据到达时做一些处理（例如统一处理错误）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.response.use(response =&gt; &#123;</span><br><span class="line">  // 对响应数据做处理</span><br><span class="line">  console.log(&#x27;响应数据:&#x27;, response);</span><br><span class="line">  return response;</span><br><span class="line">&#125;, error =&gt; &#123;</span><br><span class="line">  // 统一处理错误</span><br><span class="line">  console.error(&#x27;响应错误:&#x27;, error);</span><br><span class="line">  return Promise.reject(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="请求取消"><a href="#请求取消" class="headerlink" title="请求取消"></a>请求取消</h2><p>Axios 允许你取消请求，可以通过 CancelToken 来实现。这样可以避免发起无用请求，特别是在用户频繁切换操作时。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const source = axios.CancelToken.source();</span><br><span class="line"></span><br><span class="line">// 发起请求</span><br><span class="line">axios.get(&#x27;https://api.example.com/data&#x27;, &#123;</span><br><span class="line">  cancelToken: source.token</span><br><span class="line">&#125;)</span><br><span class="line">.then(response =&gt; &#123;</span><br><span class="line">  console.log(response.data);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(error =&gt; &#123;</span><br><span class="line">  if (axios.isCancel(error)) &#123;</span><br><span class="line">    console.log(&#x27;请求被取消:&#x27;, error.message);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    console.error(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 取消请求</span><br><span class="line">source.cancel(&#x27;操作被取消&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="并发请求"><a href="#并发请求" class="headerlink" title="并发请求"></a>并发请求</h2><p>Axios 提供了 axios.all() 方法，可以同时发起多个请求，并在所有请求完成后处理结果。你可以使用 axios.spread() 来处理多个请求的响应数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">axios.all([</span><br><span class="line">  axios.get(&#x27;https://api.example.com/data1&#x27;),</span><br><span class="line">  axios.get(&#x27;https://api.example.com/data2&#x27;)</span><br><span class="line">])</span><br><span class="line">.then(axios.spread((response1, response2) =&gt; &#123;</span><br><span class="line">  console.log(response1.data);</span><br><span class="line">  console.log(response2.data);</span><br><span class="line">&#125;))</span><br><span class="line">.catch(error =&gt; &#123;</span><br><span class="line">  console.error(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="处理请求数据"><a href="#处理请求数据" class="headerlink" title="处理请求数据"></a>处理请求数据</h2><p><strong>1. 自动转换响应数据</strong></p>
+<p>Axios 默认会自动将 JSON 格式的响应数据解析成 JavaScript 对象，无需手动处理。</p>
+<p><strong>2. 自定义请求和响应数据转换</strong></p>
+<p>你可以通过 transformRequest 和 transformResponse 来定制请求和响应数据的转换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">  method: &#x27;post&#x27;,</span><br><span class="line">  url: &#x27;https://api.example.com/data&#x27;,</span><br><span class="line">  data: &#123; name: &#x27;张三&#x27;, age: 25 &#125;,</span><br><span class="line">  transformRequest: [(data) =&gt; &#123;</span><br><span class="line">    // 将数据转换成表单数据格式</span><br><span class="line">    return qs.stringify(data);</span><br><span class="line">  &#125;],</span><br><span class="line">  transformResponse: [(data) =&gt; &#123;</span><br><span class="line">    // 在响应数据到达之前进行转换</span><br><span class="line">    return JSON.parse(data);</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>Axios 提供了丰富的错误信息，可以根据错误的不同类型来处理。</p>
+<p>​	•	<strong>请求失败</strong>：如网络错误、超时等。</p>
+<p>​	•	<strong>响应错误</strong>：如状态码 400、500 等。</p>
+<p>你可以通过 .catch() 来处理错误，或者使用拦截器统一处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;https://api.example.com/data&#x27;)</span><br><span class="line">  .then(response =&gt; &#123;</span><br><span class="line">    console.log(response.data);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(error =&gt; &#123;</span><br><span class="line">    if (error.response) &#123;</span><br><span class="line">      // 请求已发出，服务器响应了状态码</span><br><span class="line">      console.error(&#x27;响应错误:&#x27;, error.response.status);</span><br><span class="line">    &#125; else if (error.request) &#123;</span><br><span class="line">      // 请求已经发出，但是没有收到响应</span><br><span class="line">      console.error(&#x27;请求错误:&#x27;, error.request);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 发生了其他错误</span><br><span class="line">      console.error(&#x27;其他错误:&#x27;, error.message);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="一些疑问？？？？？"><a href="#一些疑问？？？？？" class="headerlink" title="一些疑问？？？？？"></a><del>一些疑问？？？？？</del></h2><h3 id="为什么需要-HTTP-请求？"><a href="#为什么需要-HTTP-请求？" class="headerlink" title="为什么需要 HTTP 请求？"></a><strong>为什么需要 HTTP 请求？</strong></h3><p>在现代 Web 开发中，<strong>客户端</strong>（通常是浏览器）和<strong>服务器</strong>之间的通信是不可或缺的。前端应用通过 HTTP 请求与后端 API 交互，获取数据、发送数据，或者执行某些操作。HTTP 请求就是这种通信的桥梁</p>
+<p><strong>GET 请求（获取数据）</strong></p>
+<p>​	•	<strong>用途</strong>：GET 请求用于从服务器获取资源或数据。它是最常用的请求类型。</p>
+<p>​	•	<strong>例子</strong>：你在浏览器中访问一个网页时，浏览器实际上发出的是一个 GET 请求来请求该页面的数据。</p>
+<p><strong>1.2 POST 请求（提交数据）</strong></p>
+<p>​	•	<strong>用途</strong>：POST 请求用于向服务器提交数据，通常是向服务器创建新的资源或提交表单数据。</p>
+<p>​	•	<strong>例子</strong>：你在注册页面输入信息并提交表单时，浏览器会发出一个 POST 请求，将表单数据发送到服务器进行处理（如创建新用户）。</p>
+<p><strong>1.3 PUT 请求（更新数据）</strong></p>
+<p>​	•	<strong>用途</strong>：PUT 请求用于更新服务器上的资源。它通常用于替换资源的整个内容。</p>
+<p>​	•	<strong>例子</strong>：假设你想更新用户的资料信息，可以通过 PUT 请求将新的数据发送给服务器。</p>
+<p><strong>1.4 DELETE 请求（删除数据）</strong></p>
+<p>​	•	<strong>用途</strong>：DELETE 请求用于删除服务器上的资源。它通常用于删除某个特定的资源。</p>
+<p>​	•	<strong>例子</strong>：你可能在一个用户管理界面中提供删除用户的功能，当用户点击删除时，发出一个 DELETE 请求来从服务器删除该用户。</p>
+<h2 id="拦截器是什么东西？？什么意思"><a href="#拦截器是什么东西？？什么意思" class="headerlink" title="拦截器是什么东西？？什么意思"></a><del>拦截器是什么东西？？什么意思</del></h2><p><strong>截器</strong>（Interceptor）是一个在发送请求或接收响应时可以进行处理或修改的函数。它们提供了一种在请求被发送到服务器或响应到达前对其进行拦截并进行自定义处理的机制。</p>
+<p>在 Axios 中，<strong><u>拦截器允许我们在请求发送之前对请求进行修改</u></strong>，或者在响应到达时对响应进行处理。这使得我们可以在应用中集中处理认证、错误管理、日志记录、修改请求数据或响应数据等任务，而无需在每个请求中都进行这些操作。</p>
+<p><strong>1. 请求拦截器（Request Interceptor）</strong></p>
+<p>请求拦截器会在请求被<strong>发送到服务器之前</strong>执行，可以对请求进行修改，比如添加请求头、请求参数等。</p>
+<p><strong>2. 响应拦截器（Response Interceptor）</strong></p>
+<p>响应拦截器会在服务器响应数据<strong>返回给客户端之前</strong>执行。你可以在响应到达前对响应数据进行处理，比如统一处理错误、格式化数据等。</p>
+<p><strong>示例：响应拦截器</strong></p>
+<p>假设你想要统一处理所有请求的错误，并在控制台输出详细错误信息：</p>
+<h2 id="那么这个数据是怎么传输的？？"><a href="#那么这个数据是怎么传输的？？" class="headerlink" title="那么这个数据是怎么传输的？？"></a><del>那么这个数据是怎么传输的？？</del></h2><p><strong><u>1. 客户端向服务器发送请求</u></strong></p>
+<p>在 Web 应用中，客户端通常指的是运行在浏览器中的应用，而服务器是存储数据和处理请求的后端系统。当用户在客户端（浏览器）发起某个操作时（例如点击按钮、提交表单等），客户端会向服务器发送一个 HTTP 请求。</p>
+<p>这个请求通常会包含：</p>
+<p>​	•	请求方法（如 GET、POST、PUT、DELETE 等）。</p>
+<p>​	•	请求 URL（如 <a target="_blank" rel="noopener" href="https://api.example.com/users%EF%BC%89%E3%80%82">https://api.example.com/users）。</a></p>
+<p>​	•	请求头（headers），如认证信息或内容类型等。</p>
+<p>​	•	请求体（data 或 payload），如用户输入的表单数据、JSON 格式的数据等。</p>
+<p><u><strong>2. 服务器处理请求</strong></u></p>
+<p>当服务器接收到客户端的请求时，服务器会根据请求内容执行相应的操作，通常包括：</p>
+<p>​	•	<strong>解析请求数据</strong>：服务器会解析请求头、请求体等内容，判断请求是否有效。</p>
+<p>​	•	<strong>执行操作</strong>：根据请求的类型（如查询、更新、删除数据等），服务器会与数据库进行交互、执行计算等。</p>
+<p>​	•	<strong>生成响应数据</strong>：服务器将处理结果（如查询到的用户信息、操作成功的消息等）生成响应数据。</p>
+<p>服务器的响应数据通常是一个 <strong>JSON 格式</strong> 的对象，或者是 HTML、XML 等格式。</p>
+<p><u><strong>3. 服务器向客户端返回响应</strong></u></p>
+<p>服务器将处理结果作为响应返回给客户端。这通常是一个 HTTP 响应，它包含：</p>
+<p>​	•	状态码（如 200 OK 表示请求成功，404 Not Found 表示资源未找到，500 Internal Server Error 表示服务器错误等）。</p>
+<p>​	•	响应头（如返回的数据类型、缓存控制等）。</p>
+<p>​	•	响应体（data），即服务器返回的数据，通常是 JSON、HTML 或其他格式。</p>
+<p>大体上是这样的。还需完善</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/16/axios%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" data-id="cm60cut9n000412cqdn31669b" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-前缀和与差分" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" class="article-date">
@@ -179,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" data-id="cm60cowcs000dyrcq7tdle6al" data-title="前缀和与差分 - 算法4" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" data-id="cm60cut9o000812cqccr21deh" data-title="前缀和与差分 - 算法4" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -279,7 +643,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/" data-id="cm60cowct000kyrcqattw0k8p" data-title="离散化 - 算法1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/" data-id="cm60cut9r000t12cq1b2r7szp" data-title="离散化 - 算法1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -332,7 +696,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/hello-world/" data-id="cm60cowcr0006yrcq62bm7gcg" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/hello-world/" data-id="cm60cut9m000212cq86ylc2nl" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -865,7 +1229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/Fixed_Day_2-ES6/" data-id="cm60cowcq0002yrcqgxzl41od" data-title="day1/2-ES6学习基础语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/Fixed_Day_2-ES6/" data-id="cm60cut9n000312cqe0c4h3x9" data-title="day1/2-ES6学习基础语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1292,212 +1656,7 @@ const multiply = (a, b) => a * b;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" data-id="cm60cowcs0007yrcqhtvgciv0" data-title="day1-前端基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-AJAX_标准化_修正" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/AJAX_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/" class="article-date">
-  <time class="dt-published" datetime="2025-01-14T16:00:00.000Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/15/AJAX_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/">AJAX</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><h2 id="认识-AJAX"><a href="#认识-AJAX" class="headerlink" title="认识 AJAX"></a>认识 AJAX</h2><p>AJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下与服务器交换数据并更新部分网页内容的技术。它使得网页应用程序能够在后台异步地与服务器进行通信，提升了用户体验，使页面响应更加快速、流畅。</p>
-<h3 id="AJAX-的核心组成部分"><a href="#AJAX-的核心组成部分" class="headerlink" title="AJAX 的核心组成部分"></a>AJAX 的核心组成部分</h3><p>AJAX 的核心组成部分通常包括以下技术：</p>
-<ol>
-<li><p><strong>XMLHttpRequest</strong>：这是一个浏览器内建的 JavaScript 对象，用来异步地发送请求并接收响应。它可以发送不同类型的请求（如 <code>GET</code>、<code>POST</code> 等），并处理服务器的响应。</p>
-</li>
-<li><p><strong>JavaScript</strong>：用于编写逻辑来发送请求、接收响应并动态更新页面内容。</p>
-</li>
-<li><p><strong>HTML&#x2F;CSS</strong>：动态更新页面内容时使用，用来显示服务器响应的数据。</p>
-</li>
-<li><p><strong>服务器端语言</strong>（如 PHP、Node.js、Java、Python 等）：用于处理 AJAX 请求并返回相应数据。</p>
-</li>
-</ol>
-<hr>
-<h3 id="基本的-AJAX-流程"><a href="#基本的-AJAX-流程" class="headerlink" title="基本的 AJAX 流程"></a>基本的 AJAX 流程</h3><ol>
-<li>客户端通过 JavaScript 创建一个 <code>XMLHttpRequest</code> 对象。</li>
-<li>使用该对象向服务器发送请求。</li>
-<li>服务器处理请求并返回数据（通常是 JSON 或 XML 格式）。</li>
-<li>JavaScript 处理服务器返回的数据，并使用 DOM（Document Object Model）来更新页面内容。</li>
-</ol>
-<hr>
-<h3 id="XML-示例"><a href="#XML-示例" class="headerlink" title="XML 示例"></a>XML 示例</h3><p>XML（eXtensible Markup Language，扩展标记语言）是一种用于描述数据结构和传输数据的标记语言。它与 HTML 类似，但 XML 的主要目的是 <strong>存储和传输数据</strong>，而不是呈现数据。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bookstore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">book</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>学习XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">author</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bookstore</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/AJAX_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/" data-id="cm60cowcp0001yrcqfbkk4bp3" data-title="AJAX" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-axios_从入门到源码分析_标准化_修正" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/axios_%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/" class="article-date">
-  <time class="dt-published" datetime="2025-01-14T16:00:00.000Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/15/axios_%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/">axios从入门到源码分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="学习前的准备"><a href="#学习前的准备" class="headerlink" title="学习前的准备"></a>学习前的准备</h3><p>学习 <code>Axios</code> 前，需要对 <strong>Promise</strong> 和 <strong>AJAX</strong> 有一定的了解。因为在之前的学习中已经对这两者做了讲解，相关内容请参考前文笔记。</p>
-<p><strong>备注</strong>：删除线部分是拓展内容，跟本文无关，是自己需要补充的名词。</p>
-<hr>
-<h3 id="什么是-Axios？"><a href="#什么是-Axios？" class="headerlink" title="什么是 Axios？"></a>什么是 Axios？</h3><p><code>Axios</code> 本质上是一个基于 <strong>Promise</strong> 的 HTTP 客户端，广泛用于浏览器和 Node.js 环境。它主要用于向服务器发送 HTTP 请求并接收响应。</p>
-<h4 id="主要特点："><a href="#主要特点：" class="headerlink" title="主要特点："></a>主要特点：</h4><ul>
-<li><p><strong>请求方法支持</strong>：</p>
-<ul>
-<li><code>GET</code>：用于获取数据。</li>
-<li><code>POST</code>：用于提交数据。</li>
-<li><code>PUT</code>：用于更新数据。</li>
-<li><code>DELETE</code>：用于删除数据。</li>
-</ul>
-</li>
-<li><p><strong>主要功能</strong>：</p>
-<ul>
-<li>自动将响应数据解析为 JSON 格式（如果响应是 JSON）。</li>
-<li>提供请求和响应的拦截器功能。</li>
-<li>支持请求取消。</li>
-<li>支持并发请求处理。</li>
-</ul>
-</li>
-</ul>
-<h4 id="配置-Axios"><a href="#配置-Axios" class="headerlink" title="配置 Axios"></a>配置 <code>Axios</code></h4><p>你可以通过以下方式引入 <code>Axios</code>：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>或者通过 CDN 网址 <code>https://www.bootcdn.cn</code> 搜索 <code>Axios</code>。</p>
-<hr>
-<h3 id="Axios-基本用法"><a href="#Axios-基本用法" class="headerlink" title="Axios 基本用法"></a>Axios 基本用法</h3><h4 id="1-GET-请求"><a href="#1-GET-请求" class="headerlink" title="1. GET 请求"></a>1. <strong>GET 请求</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;https://api.example.com/data&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>); <span class="comment">// 处理返回的数据</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(error); <span class="comment">// 错误处理</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-POST-请求"><a href="#2-POST-请求" class="headerlink" title="2. POST 请求"></a>2. <strong>POST 请求</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">post</span>(<span class="string">&#x27;https://api.example.com/data&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">25</span></span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>); <span class="comment">// 返回的创建结果</span></span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(error); <span class="comment">// 错误处理</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-配置请求"><a href="#3-配置请求" class="headerlink" title="3. 配置请求"></a>3. <strong>配置请求</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">  <span class="attr">url</span>: <span class="string">&#x27;/user&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">25</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">headers</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">5000</span>  <span class="comment">// 超时时间：5秒</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="配置-Axios-示例"><a href="#配置-Axios-示例" class="headerlink" title="配置 Axios 示例"></a>配置 Axios 示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;https://api.example.com&#x27;</span>;</span><br><span class="line">axios.<span class="property">defaults</span>.<span class="property">timeout</span> = <span class="number">10000</span>; <span class="comment">// 设置默认超时时间为 10秒</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li><code>Axios</code> 是一个流行的 JavaScript 库，用于处理 HTTP 请求与响应。它简化了开发流程，提供了强大的功能，如请求拦截、响应拦截、请求取消等。</li>
-<li>它支持多种 HTTP 请求方法，并且适用于浏览器与 Node.js 环境。</li>
-</ul>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/axios_%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/" data-id="cm60cowcr0005yrcqbp70hn0p" data-title="axios从入门到源码分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-重点-ES6封装AJAX请求_标准化_修正" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/15/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/" class="article-date">
-  <time class="dt-published" datetime="2025-01-14T16:00:00.000Z" itemprop="datePublished">2025-01-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/15/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/">重点 - ES6 封装 AJAX 请求</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>AJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下，通过异步与服务器交换数据并更新网页的技术。在前面的笔记中，我们已经大体了解了 AJAX 的概念。现在，我们将重点讨论如何通过 <strong>Promise</strong> 来封装 <strong>AJAX</strong> 请求，以便更好地处理异步操作。</p>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>在现代 JavaScript 中，使用 <strong>Promise</strong> 来封装 AJAX 请求是处理异步操作的一种常见方式。下面是一个基本的例子：</p>
-<h3 id="Promise-封装-AJAX-请求"><a href="#Promise-封装-AJAX-请求" class="headerlink" title="Promise 封装 AJAX 请求"></a>Promise 封装 AJAX 请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ajaxRequest</span>(<span class="params">url</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">        xhr.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>, url, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求成功时</span></span><br><span class="line">        xhr.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (xhr.<span class="property">status</span> &gt;= <span class="number">200</span> &amp;&amp; xhr.<span class="property">status</span> &lt; <span class="number">300</span>) &#123;</span><br><span class="line">                <span class="title function_">resolve</span>(xhr.<span class="property">responseText</span>); <span class="comment">// 请求成功，返回数据</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Request failed with status &quot;</span> + xhr.<span class="property">status</span>)); <span class="comment">// 请求失败，返回错误</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求出错时</span></span><br><span class="line">        xhr.<span class="property">onerror</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Network error&quot;</span>));</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        xhr.<span class="title function_">send</span>(); <span class="comment">// 发送请求</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用示例</span></span><br><span class="line"><span class="title function_">ajaxRequest</span>(<span class="string">&quot;https://api.apiservice.com/getJoke&quot;</span>)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;成功返回数据: &quot;</span>, response);</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;请求失败: &quot;</span>, error);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>在这个示例中，我们使用 <code>Promise</code> 封装了 <code>XMLHttpRequest</code>，并处理了请求的成功和失败情况。如果请求成功，返回数据；如果失败，则返回错误。</p>
-<hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过 <strong>Promise</strong> 来封装 AJAX 请求，可以使异步代码更加清晰和易于管理。使用 <code>then()</code> 和 <code>catch()</code> 方法来处理请求成功和失败的情况，避免了回调地狱的问题，提高了代码的可读性和可维护性。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/15/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82_%E6%A0%87%E5%87%86%E5%8C%96_%E4%BF%AE%E6%AD%A3/" data-id="cm60cowcu0014yrcqa86r8qpl" data-title="重点 - ES6 封装 AJAX 请求" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/" data-id="cm60cut9o000712cqcv9xagsc" data-title="day1-前端基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1590,7 +1749,7 @@ const multiply = (a, b) => a * b;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" data-id="cm60cowcs000byrcq6904bvxo" data-title="双指针运算与位运算-算法3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/12/%E5%8F%8C%E6%8C%87%E9%92%88%E8%BF%90%E7%AE%97%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" data-id="cm60cut9p000912cq2nkm7dh4" data-title="双指针运算与位运算-算法3" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1750,7 +1909,7 @@ const multiply = (a, b) => a * b;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm60cowct000iyrcq2pqia5c5" data-title="数据结构-链表-算法2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/01/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/" data-id="cm60cut9p000d12cq98ny7nuh" data-title="数据结构-链表-算法2" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1794,7 +1953,7 @@ const multiply = (a, b) => a * b;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a>
+      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a>
     </div>
   </div>
 
@@ -1816,23 +1975,23 @@ const multiply = (a, b) => a * b;
       <ul>
         
           <li>
+            <a href="/2025/01/17/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/17/AJAX/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/16/axios%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">前缀和与差分 - 算法4</a>
           </li>
         
           <li>
             <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/">离散化 - 算法1</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/Fixed_Day_2-ES6/">day1/2-ES6学习基础语法</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/%E5%89%8D%E7%AB%AF(html+css)/">day1-前端基础</a>
           </li>
         
       </ul>

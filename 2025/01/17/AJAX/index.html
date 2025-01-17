@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYE08Z338"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XVYE08Z338');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>clock&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="title: AJAXdate: 2025-01-15 12:00:00tags:  前端categories:  前端   AJAX因为在promise的时候，有一个知识点是Promise封装AJAX请求，所以今天参考AJAX课程。大体了解一下到底是一个什么东西。 认识AJAXAJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下与服务器交换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="clock&#39;s blog">
+<meta property="og:url" content="http://example.com/2025/01/17/AJAX/index.html">
+<meta property="og:site_name" content="clock&#39;s blog">
+<meta property="og:description" content="title: AJAXdate: 2025-01-15 12:00:00tags:  前端categories:  前端   AJAX因为在promise的时候，有一个知识点是Promise封装AJAX请求，所以今天参考AJAX课程。大体了解一下到底是一个什么东西。 认识AJAXAJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下与服务器交换">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/image-20250117095147207.png">
+<meta property="og:image" content="http://example.com/images/image-20250117095415195.png">
+<meta property="og:image" content="http://example.com/images/image-20250117095524143.png">
+<meta property="og:image" content="http://example.com/images/image-20250117095734895.png">
+<meta property="article:published_time" content="2025-01-17T01:50:18.463Z">
+<meta property="article:modified_time" content="2025-01-17T05:49:40.114Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/image-20250117095147207.png">
+  
+    <link rel="alternate" href="/atom.xml" title="clock's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">clock&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Here&#39;s liyuhan&#39;s personal blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AJAX" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/17/AJAX/" class="article-date">
+  <time class="dt-published" datetime="2025-01-17T01:50:18.463Z" itemprop="datePublished">2025-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>title: AJAX<br>date: 2025-01-15 12:00:00<br>tags:</p>
+<ul>
+<li><p>前端<br>categories:</p>
+</li>
+<li><p>前端</p>
+</li>
+</ul>
+<h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><p>因为在promise的时候，有一个知识点是Promise封装AJAX请求，所以今天参考AJAX课程。大体了解一下到底是一个什么东西。</p>
+<h2 id="认识AJAX"><a href="#认识AJAX" class="headerlink" title="认识AJAX"></a>认识AJAX</h2><p>AJAX（Asynchronous JavaScript and XML）是一种在不重新加载整个页面的情况下与服务器交换数据并更新部分网页内容的技术。它使得网页应用程序能够在后台异步地与服务器进行通信，提升了用户体验，使页面响应更加快速、流畅。</p>
+<p>AJAX的核心组成部分通常包括以下技术：</p>
+<p>​	1.	<strong>XMLHttpRequest</strong>：这是一个浏览器内建的JavaScript对象，用来异步地发送请求并接收响应。它可以发送不同类型的请求（如GET、POST等），并处理服务器的响应。</p>
+<p>​	2.	<strong>JavaScript</strong>：用于编写逻辑来发送请求、接收响应并动态更新页面内容。</p>
+<p>​	3.	<strong>HTML&#x2F;CSS</strong>：动态更新页面内容时使用，用来显示服务器响应的数据。</p>
+<p>​	4.	<strong>服务器端语言</strong>（如PHP、Node.js、Java、Python等）：用于处理AJAX请求并返回相应数据。</p>
+<p><strong>基本的AJAX流程</strong></p>
+<p>​	1.	客户端通过JavaScript创建一个XMLHttpRequest对象。</p>
+<p>​	2.	<strong>使用该对象向服务器发送请求。</strong></p>
+<p>​	3.	<strong>服务器处理请求并返回数据（通常是JSON或XML格式）</strong>。</p>
+<p>​	4.	JavaScript处理服务器返回的数据，并使用DOM（Document Object Model）来更新页面内容。</p>
+<h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><p>XML（eXtensible Markup Language，扩展标记语言）是一种用于描述数据结构和传输数据的标记语言。它与HTML类似，但XML的主要目的是<strong>存储和传输数据</strong>，而不是呈现数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;bookstore&gt;</span><br><span class="line">    &lt;book&gt;</span><br><span class="line">        &lt;title&gt;学习XML&lt;/title&gt;</span><br><span class="line">        &lt;author&gt;张三&lt;/author&gt;</span><br><span class="line">        &lt;price&gt;39.99&lt;/price&gt;</span><br><span class="line">    &lt;/book&gt;</span><br><span class="line">    &lt;book&gt;</span><br><span class="line">        &lt;title&gt;深入理解数据结构&lt;/title&gt;</span><br><span class="line">        &lt;author&gt;李四&lt;/author&gt;</span><br><span class="line">        &lt;price&gt;49.99&lt;/price&gt;</span><br><span class="line">    &lt;/book&gt;</span><br><span class="line">&lt;/bookstore&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AJAX特点"><a href="#AJAX特点" class="headerlink" title="AJAX特点"></a>AJAX特点</h3><p>AJAX优点</p>
+<ul>
+<li><p>无需刷新页面与服务器进行通信</p>
+</li>
+<li><p>允许你根据用户事件来更新部分页面内容</p>
+</li>
+</ul>
+<p>AJAX缺点</p>
+<ul>
+<li><p>没有浏览历史，不能回退</p>
+</li>
+<li><p>存在跨域问题</p>
+</li>
+<li><p>SEO不友好（网站或网页的结构、内容、代码等不利于搜索引擎优化（SEO），使得搜索引擎难以正确地索引和排名这些页面）</p>
+</li>
+</ul>
+<h3 id="AJAX-HTTP协议请求报文"><a href="#AJAX-HTTP协议请求报文" class="headerlink" title="AJAX-HTTP协议请求报文"></a>AJAX-HTTP协议请求报文</h3><p>在使用AJAX（Asynchronous JavaScript and XML）技术时，客户端通常使用XMLHttpRequest或fetchAPI来向服务器发送HTTP请求。这个请求的报文结构与普通的HTTP请求报文类似，但它是由JavaScript代码动态生成并发送的。</p>
+<p>HTTP协议（超文本传输协议），协议详细规定了浏览器和万维网服务器之间互相通信的规则。</p>
+<p><strong>请求报文</strong>：重点是格式与参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">行：POST</span><br><span class="line">头：HOST</span><br><span class="line">	 COOKIE</span><br><span class="line">	 Content-type:</span><br><span class="line">	 user-Agent:</span><br><span class="line">空行：</span><br><span class="line">体：</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应报文：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">行：HTTP/1.1. 200 OK</span><br><span class="line">头：Content-Type</span><br><span class="line">    Content-length</span><br><span class="line">    Content-encoding</span><br><span class="line"> 空行</span><br><span class="line"> 体：对应的响应报文</span><br></pre></td></tr></table></figure>
+
+<h3 id="Chrome网络控制台与POST请求"><a href="#Chrome网络控制台与POST请求" class="headerlink" title="Chrome网络控制台与POST请求"></a>Chrome网络控制台与POST请求</h3><p><img src="/../images/image-20250117095147207.png" alt="image-20250117095147207"></p>
+<p><strong>response Headers对应的是响应头信息。</strong></p>
+<p><u>响应行 HTTP&#x2F;1.1 200 OK,下面都是响应头。</u></p>
+<p><img src="/../images/image-20250117095415195.png" alt="image-20250117095415195"></p>
+<p><strong>response 这里是响应体</strong></p>
+<p><img src="/../images/image-20250117095524143.png" alt="image-20250117095524143"></p>
+<p><strong>Preview这里是响应体解析之后的查看页面，是一个预览</strong></p>
+<p><img src="/../images/image-20250117095734895.png" alt="image-20250117095734895"></p>
+<p><strong>请求报文看request Headers与Form Data</strong>(请求体)</p>
+<p> <strong>响应报文看response Headers与Response</strong></p>
+<p><strong>如果有get请求，有URl,那么就会变成query String Permeters</strong></p>
+<p>​	•	<strong>Request Headers</strong>：包含关于请求的元数据，例如User-Agent、Accept等。</p>
+<p>​	•	<strong>Form Data</strong>：通过POST方法提交的数据，通常位于请求体中。</p>
+<p>​	•	<strong>Query String Parameters</strong>：GET请求中的参数，附加在URL后，以?分隔，多个参数用&amp;连接。</p>
+<p>​	•	<strong>Response Headers</strong>：包含关于响应的元数据，例如Content-Type、Cache-Control等。</p>
+<p>​	•	<strong>Response Body</strong>：服务器返回给客户端的实际数据，可能是HTML、JSON、图片等内容。</p>
+<h3 id="EXPRESS框架"><a href="#EXPRESS框架" class="headerlink" title="EXPRESS框架"></a>EXPRESS框架</h3><p>为什么我们要学习EXPRESS框架呢，因为AJAX会给服务端发请求，既然发请求那么就需要一个服务端</p>
+<p><strong>命令终端</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -- yes</span><br><span class="line">nmp i express </span><br></pre></td></tr></table></figure>
+
+<p>在js里面的呈现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const express = require(&#x27;express&#x27;);  //这行代码导入了 Express 模块，允许你使用 Express 来创建服务器。</span><br><span class="line">const app = express();  //这行代码调用 express() 来初始化一个 Express 应用。</span><br><span class="line">app.get(&#x27;/&#x27;, (request, response) =&gt; &#123;</span><br><span class="line">    response.send(&#x27;HELLO EXPRESS&#x27;);</span><br><span class="line">&#125;);   //这里定义了一个路由处理程序，当收到对根路径 (/) 的 HTTP GET 请求时，服务器会响应 “HELLO EXPRESS”。</span><br><span class="line">app.listen(8000, () =&gt; &#123;</span><br><span class="line">    console.log(&quot;服务已启动, 8000 端口监听中....&quot;);</span><br><span class="line">&#125;);   //这行代码让应用监听 8000 端口。当服务器启动后，会在控制台输出一条消息，表示服务已经启动并在 8000 端口上监听。</span><br><span class="line"></span><br><span class="line">这段代码就是一个简单的 Express 服务器，它会对根路径（/）的请求返回 “HELLO EXPRESS” 字符串，并且监听 8000 端口。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/17/AJAX/" data-id="cm60cut9l000112cqh0kxb3jr" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/17/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/16/axios%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/17/%E9%87%8D%E7%82%B9-ES6%E5%B0%81%E8%A3%85AJAX%E8%AF%B7%E6%B1%82/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/17/AJAX/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/16/axios%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">前缀和与差分 - 算法4</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/15/%E7%A6%BB%E6%95%A3%E5%8C%96/">离散化 - 算法1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
