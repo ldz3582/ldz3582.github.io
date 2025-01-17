@@ -17,7 +17,7 @@
 
 
 
-<title>day1-ES6学习基础语法 | clock&#39;s blog</title>
+<title>day1/2-ES6学习基础语法 | clock&#39;s blog</title>
 
 
 
@@ -197,7 +197,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">day1-ES6学习基础语法</h1>
+            <h1 class="post-title">day1/2-ES6学习基础语法</h1>
             
                 <div class="post-meta">
                     
@@ -359,10 +359,12 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const message = `这是一个模板字符串。`;</span><br><span class="line">console.log(message); // 输出: 这是一个模板字符串。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+
 <ul>
 <li>内容中可以直接出现换行符</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let str = `</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;沈腾&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;玛丽&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;魏翔&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;艾伦&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">`;</span><br><span class="line"></span><br><span class="line">console.log(str);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
 <ul>
 <li><p>变量拼接</p>
@@ -634,6 +636,7 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    // 异步任务 1</span><br><span class="line">    function one() &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            console.log(111);  // 模拟异步任务完成</span><br><span class="line">            iterator.next();   // 恢复生成器执行</span><br><span class="line">        &#125;, 1000); // 1 秒后执行</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 异步任务 2</span><br><span class="line">    function two() &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            console.log(222);  // 模拟异步任务完成</span><br><span class="line">            iterator.next();   // 恢复生成器执行</span><br><span class="line">        &#125;, 2000); // 2 秒后执行</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 异步任务 3</span><br><span class="line">    function three() &#123;</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            console.log(333);  // 模拟异步任务完成</span><br><span class="line">            iterator.next();   // 恢复生成器执行</span><br><span class="line">        &#125;, 3000); // 3 秒后执行</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 生成器函数，用于串行控制</span><br><span class="line">    function</span><br><span class="line">* gen() &#123;</span><br><span class="line">        yield one();   // 执行 one()，暂停直到调用 next()</span><br><span class="line">        yield two();   // 执行 two()，暂停直到调用 next()</span><br><span class="line">        yield three(); // 执行 three()，暂停直到调用 next()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 启动生成器</span><br><span class="line">    const iterator = gen();</span><br><span class="line">    iterator.next(); // 开始执行第一个异步任务</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
+<p>​    </p>
 <h1 id="-99"><a href="#-99" class="headerlink" title=""></a></h1><h1 id="二-第二章：promise"><a href="#二-第二章：promise" class="headerlink" title="二   第二章：promise"></a>二   第二章：promise</h1><h1 id="-100"><a href="#-100" class="headerlink" title=""></a></h1><h1 id="-101"><a href="#-101" class="headerlink" title=""></a></h1><h1 id="promise介绍与基本语法"><a href="#promise介绍与基本语法" class="headerlink" title="promise介绍与基本语法"></a>promise介绍与基本语法</h1><p>Promise 是 ES6 引入的一种用于处理异步操作的对象。它提供了更加优雅的方式来组织异步代码，避免回调地狱（Callback Hell）的问题</p>
 <p><strong>1.1 什么是 Promise？</strong></p>
 <p>​	•	Promise 是一个代表未来某个事件（通常是一个异步操作）最终结果的对象。</p>
