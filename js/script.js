@@ -82,6 +82,40 @@ document.ready(
             })
         };
         _Blog.toggleTheme();
-        // ready function.
+
+        // 启动雪花效果
+        (function() {
+            var flakes = [];
+            var numberOfFlakes = 50;
+
+            function createFlake() {
+                var flake = document.createElement('div');
+                flake.className = 'flake';
+                flake.style.position = 'absolute';
+                flake.style.top = '-10px';
+                flake.style.width = Math.random() * 10 + 'px';
+                flake.style.height = flake.style.width;
+                flake.style.backgroundColor = 'white';
+                flake.style.borderRadius = '50%';
+                document.body.appendChild(flake);
+                flakes.push(flake);
+            }
+
+            function moveFlakes() {
+                flakes.forEach(function(flake) {
+                    var position = parseFloat(flake.style.top);
+                    flake.style.top = position + 1 + 'px';
+                    if (position > window.innerHeight) {
+                        flake.style.top = '-10px';
+                    }
+                });
+            }
+
+            for (var i = 0; i < numberOfFlakes; i++) {
+                createFlake();
+            }
+
+            setInterval(moveFlakes, 30);
+        })();
     }
 );
