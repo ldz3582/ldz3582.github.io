@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                
+    <div class="container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/archives"><img src="/image/touxiang.jpg"></a>
+        </div>
+        <div class="nickname">Yuhan_li</div>
+        <div class="description"><p>Don’t watch the <strong>clock</strong>; do what it does. Keep going.</p>
+</div>
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/archives">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="CSDN" target="_blank" rel="noopener" href="https://blog.csdn.net/clock的时钟">
+                        
+                        
+                            <i class="iconfont icon-csdn"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Instagram" href="">
+                        
+                        
+                            <i class="iconfont icon-instagram"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Reddit" href="">
+                        
+                        
+                            <i class="iconfont icon-reddit"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="QQ" target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=2100892868&amp;site=qq&amp;menu=yes">
+                        
+                        
+                            <i class="iconfont icon-qq"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="WeChat" target="_blank" rel="noopener" href="https://www.wechat.com/Clock_LHSC">
+                        
+                        
+                            <i class="iconfont icon-wechat"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/ldz3582">
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 引入 jQuery 库 -->
+<script type="text/javascript" src="https://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
+<!-- 引入雪花特效脚本 -->
+<script type="text/javascript" src="/js/snow.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 启动雪花效果
+        startSnow(); // 假设 snow.js 提供了 startSnow 函数，具体名称根据脚本而定
+    });
+</script>
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

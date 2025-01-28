@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>思考题 | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">思考题</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h1><h1 id="着重学习思考如何使用axios进行前后端数据传输"><a href="#着重学习思考如何使用axios进行前后端数据传输" class="headerlink" title="着重学习思考如何使用axios进行前后端数据传输"></a>着重学习思考如何使用axios进行前后端数据传输</h1><p>​	1.	<strong>GET 请求</strong>：从服务器获取数据，例如加载列表、获取用户信息。</p>
+<p>​	2.	<strong>POST 请求</strong>：向服务器发送数据，例如提交表单、用户登录。</p>
+<p>​	3.	<strong>数据格式</strong>：</p>
+<p>​	•	JSON 是最常用的格式，适合结构化数据。</p>
+<p>​	•	表单格式用于传统提交方式。</p>
+<p>​	•	文件上传需使用特殊格式（如 FormData）。</p>
+<p>​	4.	<strong>全局配置</strong>：可以设置基础路径、请求头和超时时间，减少重复代码。</p>
+<p>​	5.	<strong>常见场景</strong>：登录认证、动态获取内容、表单提交、文件上传等。</p>
+<p>​	6.	<strong>错误处理</strong>：需要针对网络错误、后端响应错误进行统一处理。</p>
+<h1 id="vue相比原生三件套有什么特点，体现在哪里？"><a href="#vue相比原生三件套有什么特点，体现在哪里？" class="headerlink" title="vue相比原生三件套有什么特点，体现在哪里？"></a>vue相比原生三件套有什么特点，体现在哪里？</h1><p>​	1.	<strong>组件化</strong>：代码模块化，结构清晰，方便复用。</p>
+<p>​	2.	<strong>响应式</strong>：数据和视图自动同步，无需手动操作 DOM。</p>
+<p>​	3.	<strong>指令简化</strong>：使用如 v-for、v-if 等指令，让操作 DOM 更直观。</p>
+<p>​	4.	<strong>双向绑定</strong>：用 v-model 实现数据和表单的实时同步。</p>
+<p>​	5.	<strong>性能优化</strong>：通过虚拟 DOM 提升渲染效率。</p>
+<p>​	6.	<strong>生态系统</strong>：内置路由和状态管理工具，开发更高效。</p>
+<h1 id="学习了vue之后，之前写的小米官网有哪些可以优化的地方"><a href="#学习了vue之后，之前写的小米官网有哪些可以优化的地方" class="headerlink" title="学习了vue之后，之前写的小米官网有哪些可以优化的地方"></a>学习了vue之后，之前写的小米官网有哪些可以优化的地方</h1><p>​	1.	<strong>组件化开发</strong></p>
+<p>​	•	<strong>问题</strong>：页面代码重复，结构不清晰，逻辑混杂。</p>
+<p>​	•	<strong>优化</strong>：将页面拆分为独立的组件（如导航栏、商品列表、轮播图等），实现模块化开发，提高代码复用性。</p>
+<p>​	2.	<strong>数据驱动视图</strong></p>
+<p>​	•	<strong>问题</strong>：手动操作 DOM 更新数据，易出错且效率低。</p>
+<p>​	•	<strong>优化</strong>：使用 Vue 的响应式数据，自动更新视图，减少 DOM 操作。</p>
+<p>​	3.	<strong>动态路由</strong></p>
+<p>​	•	<strong>问题</strong>：页面跳转通过静态链接或复杂的 JS 实现。</p>
+<p>​	•	<strong>优化</strong>：使用 Vue Router 管理页面跳转和嵌套路由，实现单页应用体验。</p>
+<p>​	4.	<strong>状态管理</strong></p>
+<p>​	•	<strong>问题</strong>：数据共享通过全局变量，易导致逻辑混乱。</p>
+<p>​	•	<strong>优化</strong>：使用 Pinia 管理全局状态，统一管理购物车、用户信息等数据。</p>
+<p>​	5.	<strong>双向数据绑定</strong></p>
+<p>​	•	<strong>问题</strong>：表单数据需要手动绑定和同步，代码复杂。</p>
+<p>​	•	<strong>优化</strong>：使用 v-model 实现表单数据与视图的双向绑定。</p>
+<p>​	6.	<strong>指令优化</strong></p>
+<p>​	•	<strong>问题</strong>：通过 JS 手动控制元素的显示隐藏和样式切换。</p>
+<p>​	•	<strong>优化</strong>：使用 Vue 的指令（如 v-if、v-show、v-bind）简化逻辑。</p>
+<p>​	7.	<strong>性能优化</strong></p>
+<p>​	•	<strong>问题</strong>：全量 DOM 操作或刷新页面，影响性能。</p>
+<p>​	•	<strong>优化</strong>：通过 Vue 的虚拟 DOM 和组件更新机制，仅更新需要变化的部分。</p>
+<h1 id="使用npm创建一个属于自己的vue项目，把命令行代码附在博客上"><a href="#使用npm创建一个属于自己的vue项目，把命令行代码附在博客上" class="headerlink" title="使用npm创建一个属于自己的vue项目，把命令行代码附在博客上"></a>使用npm创建一个属于自己的vue项目，把命令行代码附在博客上</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line">vue create my-vue-app</span><br><span class="line">cd my-vue-app</span><br><span class="line">npm install</span><br><span class="line">npm run serve</span><br><span class="line">npm run build</span><br><span class="line">npm run lint</span><br><span class="line">npm install vue-router@4</span><br><span class="line">npm install pinia</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/%E6%80%9D%E8%80%83%E9%A2%98/">http://clock_blog.com/2025/01/28/%E6%80%9D%E8%80%83%E9%A2%98/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/vue_format_corrected_fixed/">vue_1</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%EF%BC%88AJAX/">前端框架(AJAX+axios+promise)</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

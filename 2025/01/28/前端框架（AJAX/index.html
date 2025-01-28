@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>前端框架(AJAX+axios+promise) | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">前端框架(AJAX+axios+promise)</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="前端框架（AJAX）"><a href="#前端框架（AJAX）" class="headerlink" title="前端框架（AJAX）"></a>前端框架（AJAX）</h1><p><strong>目标：1.明确概念，干什么的</strong>，<strong>数据传输原理</strong></p>
+<p><strong>2.掌握检查功能</strong></p>
+<p><strong>3.怎么用，怎么开发</strong></p>
+<p>框架前置课程</p>
+<p><img src="/../images/image-20250126205018884.png" alt="image-20250126205018884"></p>
+<h2 id="AJAX入门"><a href="#AJAX入门" class="headerlink" title="AJAX入门"></a>AJAX入门</h2><p><img src="/../images/image-20250126205026973.png" alt="image-20250126205026973"></p>
+<h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><p>请求目标资源地址，拿到省份列表数据，显示到页面</p>
+<p>使用axios库，获取省份列表数据，显示到页面上</p>
+<ul>
+<li><p>引入axios库</p>
+</li>
+<li><p>使用axios函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送https请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">  url: &#x27;http://hmajax.itheima.net/api/province&#x27;</span><br><span class="line">&#125;).then(result =&gt; &#123;</span><br><span class="line">  console.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="原理理解（示范）"><a href="#原理理解（示范）" class="headerlink" title="原理理解（示范）"></a>原理理解（示范）</h1></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;AJAX概念和axios使用&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!--</span><br><span class="line">    axios库地址：https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js</span><br><span class="line">    省份数据地址：http://hmajax.itheima.net/api/province</span><br><span class="line"></span><br><span class="line">    目标: 使用axios库, 获取省份列表数据, 展示到页面上</span><br><span class="line">    1. 引入axios库</span><br><span class="line">  --&gt;</span><br><span class="line">  &lt;p class=&quot;my-p&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // 2. 使用axios函数</span><br><span class="line">    axios(&#123;</span><br><span class="line">      url: &#x27;http://hmajax.itheima.net/api/province&#x27;</span><br><span class="line">    &#125;).then(result =&gt; &#123;</span><br><span class="line">      console.log(result)</span><br><span class="line">      // 好习惯：多打印，确认属性名</span><br><span class="line">      console.log(result.data.list)</span><br><span class="line">      console.log(result.data.list.join(&#x27;&lt;br&gt;&#x27;))</span><br><span class="line">      // 把准备好省份列表，插入到页面</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.data.list.join(&#x27;&lt;br&gt;&#x27;) </span><br><span class="line">    &#125;) </span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第一步：Axios发送HTTP请求的原理"><a href="#第一步：Axios发送HTTP请求的原理" class="headerlink" title="第一步：Axios发送HTTP请求的原理"></a>第一步：Axios发送HTTP请求的原理</h2><h3 id="引入Axios库"><a href="#引入Axios库" class="headerlink" title="引入Axios库"></a>引入Axios库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过 script 标签加载 Axios 库，这是一个基于 Promise 的 HTTP 请求工具，简化了浏览器中的网络请求操作。</p>
+<h3 id="通过Axios发起请求"><a href="#通过Axios发起请求" class="headerlink" title="通过Axios发起请求"></a>通过Axios发起请求</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios(&#123;</span><br><span class="line">  url: &#x27;http://hmajax.itheima.net/api/province&#x27;</span><br><span class="line">&#125;).then(result =&gt; &#123;</span><br><span class="line">  console.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="第2步：获取服务器返回的数据"><a href="#第2步：获取服务器返回的数据" class="headerlink" title="第2步：获取服务器返回的数据"></a>第2步：获取服务器返回的数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  data: &#123; ... &#125;,        // 服务器返回的实际数据</span><br><span class="line">  status: 200,          // HTTP 状态码</span><br><span class="line">  statusText: &#x27;OK&#x27;,     // HTTP 状态文本</span><br><span class="line">  headers: &#123; ... &#125;,     // 响应头</span><br><span class="line">  config: &#123; ... &#125;,      // 请求的配置信息</span><br><span class="line">  request: XMLHttpRequest  // 请求对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126205039624.png" alt="image-20250126205039624"></p>
+<p>在这里，这些就是服务器传回的数据</p>
+<p><img src="/../images/image-20250126205046338.png" alt="image-20250126205046338"></p>
+<p>代码体现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(result); // 打印整个响应对象</span><br><span class="line">console.log(result.data.list); // 打印服务器返回的省份列表</span><br></pre></td></tr></table></figure>
+
+<p>​	•	result.data：服务器返回的主要数据部分。</p>
+<p>​	•	result.data.list：假设 list 是一个数组，包含省份的名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(result.data.list.join(&#x27;&lt;br&gt;&#x27;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="第3步：数据处理：拼接HTML字符串"><a href="#第3步：数据处理：拼接HTML字符串" class="headerlink" title="第3步：数据处理：拼接HTML字符串"></a>第3步：数据处理：拼接HTML字符串</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(result.data.list.join(&#x27;&lt;br&gt;&#x27;));</span><br></pre></td></tr></table></figure>
+
+<p>​	•	result.data.list 是一个数组（例如：[“北京”, “天津”, “河北”]）。</p>
+<p>使用 join 将数组元素br拼接成字符串</p>
+<h2 id="第4步：动态更新HTML的内容"><a href="#第4步：动态更新HTML的内容" class="headerlink" title="第4步：动态更新HTML的内容"></a>第4步：动态更新HTML的内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.data.list.join(&#x27;&lt;br&gt;&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过 DOM 操作获取 HTML 元素：</strong></p>
+<p>​	•	document.querySelector(‘.my-p’) 找到 HTML 中类名为 my-p 的 <p> 元素</p>
+<p>​	2.	<strong>动态插入内容：</strong></p>
+<p>​	•	使用 innerHTML 将拼接好的省份列表插入到 <p> 标签中，HTML 内容会动态更新：</p>
+<p>在这里：</p>
+<p><img src="/../images/image-20250126205100681.png" alt="image-20250126205100681"></p>
+<p><img src="/../images/image-20250126205109844.png" alt="image-20250126205109844"></p>
+<h2 id="认识URL"><a href="#认识URL" class="headerlink" title="认识URL"></a>认识URL</h2><p>统一资源定位符，定位位置，URL地址，俗称网页地址，简称网址，在因特网上标准的资源的地址，就是网络上的门牌，就是用来做万维网的地址</p>
+<h2 id="以我的博客分析"><a href="#以我的博客分析" class="headerlink" title="以我的博客分析"></a>以我的博客分析</h2><p><a target="_blank" rel="noopener" href="https://ldz3582.github.io/archives/">https://ldz3582.github.io/archives/</a></p>
+<p><strong>前面的https表示的是协议</strong></p>
+<p>  是一种超文本传输协议，定义了浏览器和服务器之间如何通信</p>
+<p>  是一种无状态的协议，主要用于加载网页与协议</p>
+<p><strong>ldz3582.io这里就是URL，也就是域名也就是IP地址</strong></p>
+<p>那后面的就是资源路径</p>
+<h2 id="URL查询参数"><a href="#URL查询参数" class="headerlink" title="URL查询参数"></a>URL查询参数</h2><p>浏览器提供给服务器的额外信息，让服务器返回浏览器想要的数据</p>
+<p><img src="/../images/image-20250126205123619.png" alt="image-20250126205123619"></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询参数</title>
+</head>
+<body>
+  <!-- 
+    城市列表: http://hmajax.itheima.net/api/city
+    参数名: pname
+    值: 省份名字
+  -->
+  <p></p>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    axios({
+      url: 'http://hmajax.itheima.net/api/city',
+      // 查询参数
+      params: {
+        pname: '辽宁省'
+      }
+    }).then(result => {
+      console.log(result.data.list)
+      document.querySelector('p').innerHTML = result.data.list.join('<br>')
+    })
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询参数</title>
+</head>
+<body>
+  <!-- 
+    城市列表: http://hmajax.itheima.net/api/city
+    参数名: pname
+    值: 省份名字
+  -->
+  <p></p>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    axios({
+      url: 'http://hmajax.itheima.net/api/city',
+      // 查询参数
+      params: {
+        pname: '辽宁省'
+      }
+    }).then(result => {
+      console.log(result.data.list)
+      document.querySelector('p').innerHTML = result.data.list.join('<br>')
+    })
+  </script>
+</body>
+</html>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;查询参数&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- </span><br><span class="line">    城市列表: http://hmajax.itheima.net/api/city</span><br><span class="line">    参数名: pname</span><br><span class="line">    值: 省份名字</span><br><span class="line">  --&gt;</span><br><span class="line">  &lt;p&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    axios(&#123;</span><br><span class="line">      url: &#x27;http://hmajax.itheima.net/api/city&#x27;,</span><br><span class="line">      // 查询参数</span><br><span class="line">      params: &#123;</span><br><span class="line">        pname: &#x27;辽宁省&#x27;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).then(result =&gt; &#123;</span><br><span class="line">      console.log(result.data.list)</span><br><span class="line">      document.querySelector(&#x27;p&#x27;).innerHTML = result.data.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>利用params输出的就是辽宁省的所有市的名称</p>
+<h2 id="常用请求方法"><a href="#常用请求方法" class="headerlink" title="常用请求方法"></a>常用请求方法</h2><p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250126195714245.png" alt="image-20250126195714245"></p>
+<p><img src="/../images/image-20250126205134831.png" alt="image-20250126205134831"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;常用请求方法和数据提交&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button class=&quot;btn&quot;&gt;注册用户&lt;/button&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /*</span><br><span class="line">      注册用户：http://hmajax.itheima.net/api/register</span><br><span class="line">      请求方法：POST</span><br><span class="line">      参数名：</span><br><span class="line">        username：用户名（中英文和数字组成，最少8位）</span><br><span class="line">        password：密码  （最少6位）</span><br><span class="line"></span><br><span class="line">      目标：点击按钮，通过axios提交用户和密码，完成注册</span><br><span class="line">    */</span><br><span class="line">    document.querySelector(&#x27;.btn&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; &#123;</span><br><span class="line">      axios(&#123;</span><br><span class="line">        url: &#x27;http://hmajax.itheima.net/api/register&#x27;,</span><br><span class="line">        method: &#x27;POST&#x27;,</span><br><span class="line">        data: &#123;</span><br><span class="line">          username: &#x27;itheima007&#x27;,</span><br><span class="line">          password: &#x27;7654321&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>axios的核心配置</strong></p>
+<ul>
+<li><p>URL：请求URL网址</p>
+</li>
+<li><p>Method:请求方法，GET可以省略</p>
+</li>
+<li><p>Params：查询参数</p>
+</li>
+<li><p>Data:提交数据</p>
+</li>
+</ul>
+<p>POST用来提交数据，GET来查询数据</p>
+<h2 id="Axios错误处理"><a href="#Axios错误处理" class="headerlink" title="Axios错误处理"></a>Axios错误处理</h2><p><img src="/../images/image-20250126205143415.png" alt="image-20250126205143415"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;axios错误处理&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button class=&quot;btn&quot;&gt;注册用户&lt;/button&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /*</span><br><span class="line">      注册用户: http://hmajax.itheima.net/api/register</span><br><span class="line">      请求方法: POST</span><br><span class="line">      参数名:</span><br><span class="line">        username: 用户名 (中英文和数字组成, 最少8位)</span><br><span class="line">        password: 密码 (最少6位)</span><br><span class="line"></span><br><span class="line">      目标: 点击按钮, 通过axios提交用户和密码, 完成注册</span><br><span class="line">      需求: 使用axios错误处理语法, 拿到报错信息, 弹框反馈给用户</span><br><span class="line">    */</span><br><span class="line">   document.querySelector(&#x27;.btn&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; &#123;</span><br><span class="line">    axios(&#123;</span><br><span class="line">      url: &#x27;http://hmajax.itheima.net/api/register&#x27;,</span><br><span class="line">      method: &#x27;post&#x27;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        username: &#x27;itheima007&#x27;,</span><br><span class="line">        password: &#x27;7654321&#x27;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).then(result =&gt; &#123;</span><br><span class="line">      // 成功</span><br><span class="line">      console.log(result)</span><br><span class="line">    &#125;).catch(error =&gt; &#123;</span><br><span class="line">      // 失败</span><br><span class="line">      // 处理错误信息</span><br><span class="line">      console.log(error)</span><br><span class="line">      console.log(error.response.data.message)</span><br><span class="line">      alert(error.response.data.message)</span><br><span class="line">    &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP协议-请求报文"><a href="#HTTP协议-请求报文" class="headerlink" title="HTTP协议-请求报文"></a>HTTP协议-请求报文</h2><p>浏览器按照HTTP协议要求的格式，发送给服务器的内容</p>
+<p>规定了浏览器发送以及浏览器返回内容的格式</p>
+<p><strong>查看报文</strong></p>
+<p><img src="/../images/image-20250126205150986.png" alt="image-20250126205150986"></p>
+<p><img src="/../images/image-20250126205158088.png" alt="image-20250126205158088"></p>
+<p><img src="/../images/image-20250126205205262.png" alt="image-20250126205205262"></p>
+<h2 id="请求报文-错误排查"><a href="#请求报文-错误排查" class="headerlink" title="请求报文-错误排查"></a>请求报文-错误排查</h2><p><strong>看载荷</strong></p>
+<h2 id="HTTP协议-响应报文"><a href="#HTTP协议-响应报文" class="headerlink" title="HTTP协议-响应报文"></a>HTTP协议-响应报文</h2><p>服务器按照HTTP协议要求的格式，返回给浏览器的内容</p>
+<p>构成：</p>
+<p>响应行：协议，HTTP响应状态码，状态信息</p>
+<p>响应头：以键值对的格式携带的附加信息，比如content-Type</p>
+<p>空行：分隔响应头，空行之后的是返回浏览器的资源</p>
+<p>响应体：返回的资源</p>
+<h2 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h2><p>描述接口的文章</p>
+<p>接口：使用AJAX和服务器通讯时。使用的URL，请求方法以及参数</p>
+<h2 id="Form-serialize插件"><a href="#Form-serialize插件" class="headerlink" title="Form-serialize插件"></a>Form-serialize插件</h2><p>作用：快速收集单元素的值</p>
+<ul>
+<li><h3 id="把插件引入到自己网页中"><a href="#把插件引入到自己网页中" class="headerlink" title="把插件引入到自己网页中"></a>把插件引入到自己网页中</h3></li>
+<li><h3 id="获取表单的数据"><a href="#获取表单的数据" class="headerlink" title="获取表单的数据"></a>获取表单的数据</h3></li>
+<li><p>表单元素设置name属性，值会作为对象的属性名（建议设置name属性的值，最好与接口文档名一致）</p>
+</li>
+<li><h3 id="配置对象"><a href="#配置对象" class="headerlink" title="配置对象"></a>配置对象</h3></li>
+<li><p>hash设置获取数据结构</p>
+<p>empty设置是否获取空值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;form-serialize插件使用&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;form action=&quot;javascript:;&quot; class=&quot;example-form&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; class=&quot;btn&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  &lt;!-- </span><br><span class="line">    目标：在点击提交时，使用form-serialize插件，快速收集表单元素值</span><br><span class="line">    1. 把插件引入到自己网页中</span><br><span class="line">  --&gt;</span><br><span class="line">  &lt;script src=&quot;./lib/form-serialize.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    document.querySelector(&#x27;.btn&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; &#123;</span><br><span class="line">      /**</span><br><span class="line">       * 2. 使用serialize函数，快速收集表单元素的值</span><br><span class="line">       * 参数1：要获取哪个表单的数据</span><br><span class="line">       *  表单元素设置name属性，值会作为对象的属性名</span><br><span class="line">       *  建议name属性的值，最好和接口文档参数名一致</span><br><span class="line">       * 参数2：配置对象</span><br><span class="line">       *  hash 设置获取数据结构</span><br><span class="line">       *    - true：JS对象（推荐）一般请求体里提交给服务器</span><br><span class="line">       *    - false: 查询字符串</span><br><span class="line">       *  empty 设置是否获取空值</span><br><span class="line">       *    - true: 获取空值（推荐）数据结构和标签结构一致</span><br><span class="line">       *    - false：不获取空值</span><br><span class="line">      */</span><br><span class="line">      const form = document.querySelector(&#x27;.example-form&#x27;)</span><br><span class="line">      const data = serialize(form, &#123; hash: true, empty: true &#125;)</span><br><span class="line">      // const data = serialize(form, &#123; hash: false, empty: true &#125;)</span><br><span class="line">      // const data = serialize(form, &#123; hash: true, empty: false &#125;)</span><br><span class="line">      console.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bootstrap弹框"><a href="#Bootstrap弹框" class="headerlink" title="Bootstrap弹框"></a>Bootstrap弹框</h2><p><img src="/../images/image-20250126205212413.png" alt="image-20250126205212413"></p>
+</li>
+</ul>
+<p>默认关闭</p>
+<p>AJAX原理</p>
+<h2 id="XHR"><a href="#XHR" class="headerlink" title="XHR"></a>XHR</h2><p>X HR对象用于与服务器交互，可以在不刷新的情况下请求特定的URL.获取数据，这允许网页在不影响用户操作的情况下，更新页面的局部内容&#x2F;</p>
+<p><img src="/../images/image-20250126205217518.png" alt="image-20250126205217518"></p>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><h4 id="创建XMLHttpRequest对象"><a href="#创建XMLHttpRequest对象" class="headerlink" title="创建XMLHttpRequest对象"></a>创建XMLHttpRequest对象</h4><h4 id="配置请求方法和请求url地址"><a href="#配置请求方法和请求url地址" class="headerlink" title="配置请求方法和请求url地址"></a>配置请求方法和请求url地址</h4><h4 id="监听loadend事件，接受响应结果"><a href="#监听loadend事件，接受响应结果" class="headerlink" title="监听loadend事件，接受响应结果"></a>监听loadend事件，接受响应结果</h4><h4 id="发起请求"><a href="#发起请求" class="headerlink" title="发起请求"></a>发起请求</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;XMLHttpRequest_基础使用&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p class=&quot;my-p&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：使用XMLHttpRequest对象与服务器通信</span><br><span class="line">     *  1. 创建 XMLHttpRequest 对象</span><br><span class="line">     *  2. 配置请求方法和请求 url 地址</span><br><span class="line">     *  3. 监听 loadend 事件，接收响应结果</span><br><span class="line">     *  4. 发起请求</span><br><span class="line">    */</span><br><span class="line">    // 1. 创建 XMLHttpRequest 对象</span><br><span class="line">    const xhr = new XMLHttpRequest()</span><br><span class="line"></span><br><span class="line">    // 2. 配置请求方法和请求 url 地址</span><br><span class="line">    xhr.open(&#x27;GET&#x27;, &#x27;http://hmajax.itheima.net/api/province&#x27;)</span><br><span class="line"></span><br><span class="line">    // 3. 监听 loadend 事件，接收响应结果</span><br><span class="line">    xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">      console.log(xhr.response)</span><br><span class="line">      const data = JSON.parse(xhr.response)</span><br><span class="line">      console.log(data.list.join(&#x27;&lt;br&gt;&#x27;))</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = data.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 4. 发起请求</span><br><span class="line">    xhr.send()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h3><p><img src="/../images/image-20250126205702631.png" alt="image-20250126205702631"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;XMLHttpRequest_查询参数&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p class=&quot;city-p&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：使用XHR携带查询参数，展示某个省下属的城市列表</span><br><span class="line">    */</span><br><span class="line">    const xhr = new XMLHttpRequest()</span><br><span class="line">    xhr.open(&#x27;GET&#x27;, &#x27;http://hmajax.itheima.net/api/city?pname=辽宁省&#x27;)</span><br><span class="line">    xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">      console.log(xhr.response)</span><br><span class="line">      const data = JSON.parse(xhr.response)</span><br><span class="line">      console.log(data)</span><br><span class="line">      document.querySelector(&#x27;.city-p&#x27;).innerHTML = data.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line">    xhr.send()</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a><!--JSON--></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const data = JSON.parse(xhr.response)</span><br></pre></td></tr></table></figure>
+
+<p>是什么意思呢？</p>
+<p>这句代码的含义是将 xhr.response 中的 JSON 格式字符串解析为 JavaScript 对象，并将其赋值给变量 data。</p>
+<p><strong>JSON（JavaScript Object Notation）</strong> 是一种轻量级的数据交换格式，常用于服务器与客户端之间的数据传递</p>
+<p>​	服务器通常会返回 <strong>JSON 格式的字符串</strong>，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25, &quot;city&quot;: &quot;New York&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>•	在 JavaScript 中，这是一个字符串，无法直接作为对象操作。</p>
+<p>•	需要通过 JSON.parse() 方法将其解析为 JavaScript 对象。</p>
+<p><strong>2. xhr.response</strong></p>
+<p>​	•	xhr.response 是通过 XMLHttpRequest 对象发起 HTTP 请求后返回的服务器响应。</p>
+<p>​	•	当服务器返回的数据是 JSON 格式的字符串时，你需要将其解析为 JavaScript 对象才能使用。</p>
+<p>​	•	例如，xhr.response 的值可能是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#123;&quot;name&quot;:&quot;Alice&quot;,&quot;age&quot;:25,&quot;city&quot;:&quot;New York&quot;&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. JSON.parse() 的作用</strong></p>
+<p>​	•	JSON.parse() 是 JavaScript 提供的一个方法，用于将 JSON 格式的字符串解析为 JavaScript 对象。</p>
+<p>​	•	例子：</p>
+<figure class="highlight plaintext"><figcaption><span>jsonString </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const obj = JSON.parse(jsonString); // 将 JSON 字符串解析为对象</span><br><span class="line">console.log(obj.name); // 输出: Alice</span><br><span class="line">console.log(obj.age);  // 输出: 2</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据提交"><a href="#数据提交" class="headerlink" title="数据提交"></a>数据提交</h2><p>通过SHR 提交用户名和密码，完成注册功能</p>
+<p>所以要把JS转换为JSON，告诉服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;XMLHttpRequest_数据提交&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button class=&quot;reg-btn&quot;&gt;注册用户&lt;/button&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：使用xhr进行数据提交-完成注册功能</span><br><span class="line">    */</span><br><span class="line">    document.querySelector(&#x27;.reg-btn&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; &#123;</span><br><span class="line">      const xhr = new XMLHttpRequest()</span><br><span class="line">      xhr.open(&#x27;POST&#x27;, &#x27;http://hmajax.itheima.net/api/register&#x27;)</span><br><span class="line">      xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">        console.log(xhr.response)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      // 设置请求头-告诉服务器内容类型（JSON字符串）</span><br><span class="line">      xhr.setRequestHeader(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;)</span><br><span class="line">      // 准备提交的数据</span><br><span class="line">      const userObj = &#123;</span><br><span class="line">        username: &#x27;itheima007&#x27;,</span><br><span class="line">        password: &#x27;7654321&#x27;</span><br><span class="line">      &#125;</span><br><span class="line">      const userStr = JSON.stringify(userObj)</span><br><span class="line">      // 设置请求体，发起请求</span><br><span class="line">      xhr.send(userStr)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126211604559.png" alt="image-20250126211604559"></p>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>promise对象用于表示一个<strong>异步操作</strong>的最终完成或者失败及其结果值</p>
+<p>好处：</p>
+<p>逻辑清晰</p>
+<p>了解axios函数内部运作机制</p>
+<p>能解决回调函数内部运作机制</p>
+<p><strong>异步操作是指在程序执行中，某个操作不会阻塞主线程或其他操作的执行，而是允许程序继续运行，直到该操作完成后</strong></p>
+<p><strong>异步操作的基本特点</strong></p>
+<p>​	1.	<strong>不阻塞执行</strong>：异步操作允许程序继续执行其他任务，而不是等待操作完成。只有当异步操作完成时，才会回调处理结果。</p>
+<p>​	2.	<strong>事件驱动</strong>：通常与事件机制、回调函数、Promises 或 async&#x2F;await 语法相关联。</p>
+<p>​	3.	<strong>并发性</strong>：异步操作可以同时进行多个任务，提高程序的效率，避免不必要的等待。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;认识Promise&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：使用Promise管理异步任务</span><br><span class="line">    */</span><br><span class="line">    // 1. 创建Promise对象</span><br><span class="line">    const p = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">      // 2. 执行异步代码</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        // resolve(&#x27;模拟AJAX请求-成功结果&#x27;)</span><br><span class="line">        reject(new Error(&#x27;模拟AJAX请求-失败结果&#x27;))</span><br><span class="line">      &#125;, 2000)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 3. 获取结果</span><br><span class="line">    p.then(result =&gt; &#123;</span><br><span class="line">      console.log(result)</span><br><span class="line">    &#125;).catch(error =&gt; &#123;</span><br><span class="line">      console.log(error)</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126214723511.png" alt="image-20250126214723511"></p>
+<p>这个表格是非常的好</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;认识Promise状态&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：认识Promise状态</span><br><span class="line">    */</span><br><span class="line">    // 1. 创建Promise对象（pending-待定状态）</span><br><span class="line">    const p = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">      // Promise对象创建时，这里的代码都会执行了</span><br><span class="line">      // 2. 执行异步代码</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        // resolve() =&gt; &#x27;fulfilled状态-已兑现&#x27; =&gt; then()</span><br><span class="line">        resolve(&#x27;模拟AJAX请求-成功结果&#x27;)</span><br><span class="line">        // reject() =&gt; &#x27;rejected状态-已拒绝&#x27; =&gt; catch()</span><br><span class="line">        reject(new Error(&#x27;模拟AJAX请求-失败结果&#x27;))</span><br><span class="line">      &#125;, 2000)</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(p)</span><br><span class="line"></span><br><span class="line">    // 3. 获取结果</span><br><span class="line">    p.then(result =&gt; &#123;</span><br><span class="line">      console.log(result)</span><br><span class="line">    &#125;).catch(error =&gt; &#123;</span><br><span class="line">      console.log(error)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>promise 三种状态</p>
+<p>pending fulfilled rejected</p>
+<h2 id="promise-XHR"><a href="#promise-XHR" class="headerlink" title="promise + XHR"></a>promise + XHR</h2><p>需求：使用Promise 管理XHR 获取省份列表，并展示到页面上</p>
+<p>步骤：</p>
+<ul>
+<li>创建promise对象</li>
+<li>执行XHR异步代码，获取省份列表</li>
+<li>关联成功或者失败函数，做后续处理</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;案例_使用Promise+XHR_获取省份列表&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p class=&quot;my-p&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：使用Promise管理XHR请求省份列表</span><br><span class="line">     *  1. 创建Promise对象</span><br><span class="line">     *  2. 执行XHR异步代码，获取省份列表</span><br><span class="line">     *  3. 关联成功或失败函数，做后续处理</span><br><span class="line">    */</span><br><span class="line">    // 1. 创建Promise对象</span><br><span class="line">    const p = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">      // 2. 执行XHR异步代码，获取省份列表</span><br><span class="line">      const xhr = new XMLHttpRequest()</span><br><span class="line">      xhr.open(&#x27;GET&#x27;, &#x27;http://hmajax.itheima.net/api/province&#x27;)</span><br><span class="line">      xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">        // xhr如何判断响应成功还是失败的？</span><br><span class="line">        // 2xx开头的都是成功响应状态码</span><br><span class="line">        if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">          resolve(JSON.parse(xhr.response))</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          reject(new Error(xhr.response))</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      xhr.send()</span><br><span class="line">    &#125;)</span><br><span class="line">    // 3. 关联成功或失败函数，做后续处理</span><br><span class="line">    p.then(result =&gt; &#123;</span><br><span class="line">      console.log(result)</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">    &#125;).catch(error =&gt; &#123;</span><br><span class="line">      // 错误对象要用console.dir详细打印</span><br><span class="line">      console.dir(error)</span><br><span class="line">      // 服务器返回错误提示消息，插入到p标签显示</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = error.message</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建promise对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const p = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  // 2. 执行XHR异步代码，获取省份列表</span><br><span class="line">  const xhr = new XMLHttpRequest()</span><br><span class="line">  xhr.open(&#x27;GET&#x27;, &#x27;http://hmajax.itheima.net/api/province&#x27;)</span><br><span class="line">  xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">    // xhr如何判断响应成功还是失败的？</span><br><span class="line">    // 2xx开头的都是成功响应状态码</span><br><span class="line">    if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">      resolve(JSON.parse(xhr.response))</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      reject(new Error(xhr.response))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  xhr.send()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​	•	XMLHttpRequest 用于发起 HTTP 请求。</p>
+<p>​	•	请求方法是 GET，并且目标 URL 是 ‘<a target="_blank" rel="noopener" href="http://hmajax.itheima.net/api/province'%EF%BC%8C%E8%BF%99%E9%80%9A%E5%B8%B8%E6%98%AF%E8%BF%94%E5%9B%9E%E7%9C%81%E4%BB%BD%E5%88%97%E8%A1%A8%E7%9A%84">http://hmajax.itheima.net/api/province&#39;，这通常是返回省份列表的</a> API。</p>
+<p>​	•	xhr.addEventListener(‘loadend’, …)：监听 loadend 事件，即请求完成后执行。此事件会在请求成功或失败后触发。</p>
+<p>​	•	判断响应状态码，2xx 开头表示成功，其他则表示失败。</p>
+<p>处理promise的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">p.then(result =&gt; &#123;</span><br><span class="line">  console.log(result)</span><br><span class="line">  document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">&#125;).catch(error =&gt; &#123;</span><br><span class="line">  // 错误对象要用console.dir详细打印</span><br><span class="line">  console.dir(error)</span><br><span class="line">  // 服务器返回错误提示消息，插入到p标签显示</span><br><span class="line">  document.querySelector(&#x27;.my-p&#x27;).innerHTML = error.message</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>​	•	then：当请求成功并调用 resolve() 时，执行 then 中的回调函数。result 是服务器返回的省份列表数据。</p>
+<p>​	•	result.list.join(‘&lt;br’) 将列表项通过 &lt;br 换行符连接起来，最终插入到页面中的 p 标签里。</p>
+<p>​	•	catch：如果请求失败并调用 reject()，则执行 catch 中的回调函数。error.message 是请求失败时的错误消息，会显示在页面上</p>
+<h2 id="封装-列表形式"><a href="#封装-列表形式" class="headerlink" title="封装-列表形式"></a>封装-列表形式</h2><p>基于promise+ XHR 封装myAxios函数，获取省份列表展示</p>
+<p>步骤：</p>
+<p>1）定义 myAxios 函数，接受配置对象，返回Promise对象</p>
+<p>2）发起XHR请求</p>
+<p>3）调用成功&#x2F;失败的处理程序</p>
+<p>4）使用myAxios函数，获取省份列表展示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;封装_简易axios函数_获取省份列表&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p class=&quot;my-p&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：封装_简易axios函数_获取省份列表</span><br><span class="line">     *  1. 定义myAxios函数，接收配置对象，返回Promise对象</span><br><span class="line">     *  2. 发起XHR请求，默认请求方法为GET</span><br><span class="line">     *  3. 调用成功/失败的处理程序</span><br><span class="line">     *  4. 使用myAxios函数，获取省份列表展示</span><br><span class="line">    */</span><br><span class="line">    // 1. 定义myAxios函数，接收配置对象，返回Promise对象</span><br><span class="line">    function myAxios(config) &#123;</span><br><span class="line">      return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        // 2. 发起XHR请求，默认请求方法为GET</span><br><span class="line">        const xhr = new XMLHttpRequest()</span><br><span class="line">        xhr.open(config.method || &#x27;GET&#x27;, config.url)</span><br><span class="line">        xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">          // 3. 调用成功/失败的处理程序</span><br><span class="line">          if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">            resolve(JSON.parse(xhr.response))</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            reject(new Error(xhr.response))</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        xhr.send()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 4. 使用myAxios函数，获取省份列表展示</span><br><span class="line">    myAxios(&#123;</span><br><span class="line">      url: &#x27;http://hmajax.itheima.net/api/province&#x27;</span><br><span class="line">    &#125;).then(result =&gt; &#123;</span><br><span class="line">      console.log(result)</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">    &#125;).catch(error =&gt; &#123;</span><br><span class="line">      console.log(error)</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = error.message</span><br><span class="line">    &#125;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码的目标是封装一个简易版的axios函数，用于发起XMLHttpRequest(XHR)请求来获取省份列表，并通过promise 进行异步处理</p>
+<ul>
+<li><p>封装myAxios函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function myAxios(config) &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    // 2. 发起XHR请求，默认请求方法为GET</span><br><span class="line">    const xhr = new XMLHttpRequest()</span><br><span class="line">    xhr.open(config.method || &#x27;GET&#x27;, config.url)</span><br><span class="line">    xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">      // 3. 调用成功/失败的处理程序</span><br><span class="line">      if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">        resolve(JSON.parse(xhr.response))  // 成功时，解析 JSON 响应并调用 resolve</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        reject(new Error(xhr.response))  // 失败时，调用 reject</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    xhr.send()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>myAxios函数接收一个config 配置对象，包含url 和可选的method()</strong></p>
+<p><strong>它返回一个 Promise 对象，用于处理异步请求结果</strong></p>
+</li>
+</ul>
+<p>​	<strong>•	XMLHttpRequest 用于发送 HTTP 请求：</strong></p>
+<p>​	<strong>•	xhr.open(config.method, config.url)：打开请求，指定方法和目标 URL。</strong></p>
+<p>​	<strong>•	xhr.send()：发送请求。</strong></p>
+<p>​	<strong>•	请求完成后，通过 loadend 事件来判断请求是否成功（状态码 2xx 表示成功），然后解析响应并通过 resolve 返回数据，或者通过 reject 返回错误。</strong></p>
+<p><strong>2. 使用 myAxios 获取省份列表</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">myAxios(&#123;</span><br><span class="line">  url: &#x27;http://hmajax.itheima.net/api/province&#x27;</span><br><span class="line">&#125;).then(result =&gt; &#123;</span><br><span class="line">  console.log(result)</span><br><span class="line">  document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">&#125;).catch(error =&gt; &#123;</span><br><span class="line">  console.log(error)</span><br><span class="line">  document.querySelector(&#x27;.my-p&#x27;).innerHTML = error.message</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="查询列表"><a href="#查询列表" class="headerlink" title="查询列表"></a>查询列表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;封装_简易axios函数_获取地区列表&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;p class=&quot;my-p&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    /**</span><br><span class="line">     * 目标：封装_简易axios函数_获取地区列表</span><br><span class="line">     *  1. 判断有params选项，携带查询参数</span><br><span class="line">     *  2. 使用URLSearchParams转换，并携带到url上</span><br><span class="line">     *  3. 使用myAxios函数，获取地区列表</span><br><span class="line">    */</span><br><span class="line">    function myAxios(config) &#123;</span><br><span class="line">      return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        const xhr = new XMLHttpRequest()</span><br><span class="line">        // 1. 判断有params选项，携带查询参数</span><br><span class="line">        if (config.params) &#123;</span><br><span class="line">          // 2. 使用URLSearchParams转换，并携带到url上</span><br><span class="line">          const paramsObj = new URLSearchParams(config.params)</span><br><span class="line">          const queryString = paramsObj.toString()</span><br><span class="line">          // 把查询参数字符串，拼接在url？后面</span><br><span class="line">          config.url += `?$&#123;queryString&#125;`</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        xhr.open(config.method || &#x27;GET&#x27;, config.url)</span><br><span class="line">        xhr.addEventListener(&#x27;loadend&#x27;, () =&gt; &#123;</span><br><span class="line">          if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) &#123;</span><br><span class="line">            resolve(JSON.parse(xhr.response))</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            reject(new Error(xhr.response))</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        xhr.send()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 3. 使用myAxios函数，获取地区列表</span><br><span class="line">    myAxios(&#123;</span><br><span class="line">      url: &#x27;http://hmajax.itheima.net/api/area&#x27;,</span><br><span class="line">      params: &#123;</span><br><span class="line">        pname: &#x27;辽宁省&#x27;,</span><br><span class="line">        cname: &#x27;大连市&#x27;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).then(result =&gt; &#123;</span><br><span class="line">      console.log(result)</span><br><span class="line">      document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个代码实现一个封装的myAxios函数，用于发起HTTP 请求并支持携带查询参数</p>
+<p><strong>解析</strong>：</p>
+<p>​	•	myAxios <strong>函数</strong>：接受一个 config 配置对象，返回一个 Promise 对象，封装了异步请求的过程。</p>
+<p>​	•	<strong>判断</strong> params <strong>是否存在</strong>：如果 config 中有 params 属性（查询参数），则将其转换为 URL 查询字符串。</p>
+<p>​	•	使用 URLSearchParams 将 params 对象转为查询字符串格式（key&#x3D;value&amp;key&#x3D;value）。</p>
+<p>​	•	然后拼接到 config.url 后面，构成完整的请求 URL。</p>
+<p>​	•	通过 xhr.open() 设置请求方法（默认为 GET）和目标 URL。</p>
+<p>​	•	监听请求的 loadend 事件，在请求完成后根据状态码判断请求是否成功：</p>
+<p>​	•	<strong>成功</strong>：解析响应的 JSON 数据并通过 resolve() 返回。</p>
+<p>​	•	<strong>失败</strong>：通过 reject() 返回错误信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">myAxios(&#123;</span><br><span class="line">  url: &#x27;http://hmajax.itheima.net/api/area&#x27;,</span><br><span class="line">  params: &#123;</span><br><span class="line">    pname: &#x27;辽宁省&#x27;,</span><br><span class="line">    cname: &#x27;大连市&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).then(result =&gt; &#123;</span><br><span class="line">  console.log(result)</span><br><span class="line">  document.querySelector(&#x27;.my-p&#x27;).innerHTML = result.list.join(&#x27;&lt;br&gt;&#x27;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong>：</p>
+<p>​	•	通过调用封装好的 myAxios 函数，发起一个 GET 请求，获取指定 pname 和 cname 的地区列表。</p>
+<p>​	•	url 指定请求的地址：<a target="_blank" rel="noopener" href="http://hmajax.itheima.net/api/area%E3%80%82">http://hmajax.itheima.net/api/area。</a></p>
+<p>​	•	params 包含查询参数，表示请求中的 pname 和 cname，例如：辽宁省 和 大连市。</p>
+<p>​	•	<strong>请求成功后</strong>：</p>
+<p>​	•	then(result)：成功获取到返回的数据，将其解析为 JSON 格式，数据保存在 result 中。</p>
+<p>​	•	result.list.join(‘<br>‘)：将返回的省份列表使用 <br> 换行符拼接为字符串。</p>
+<p>​	•	将拼接后的字符串插入到页面中的 <p class="my-p"></p> 标签中。<strong>运行效果</strong></p>
+<p>​	•	当请求成功时，页面上的 <p> 标签会显示 <strong>辽宁省</strong> 和 <strong>大连市</strong> 下的所有地区列表（每个地区名称换行显示）。</p>
+<p>​	•	请求失败时，浏览器控制台会输出错误信息，但目前的代码并没有在失败时更新页面内容。如果需要，也可以在 catch 中处理错误并将错误信息显示到页面上。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%EF%BC%88AJAX/">http://clock_blog.com/2025/01/28/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%EF%BC%88AJAX/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/%E6%80%9D%E8%80%83%E9%A2%98/">思考题</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/%E9%87%8D%E7%82%B9/">重点</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

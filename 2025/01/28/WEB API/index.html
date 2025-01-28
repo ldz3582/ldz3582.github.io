@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>WebAPI语法 | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">WebAPI语法</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="WEB-API"><a href="#WEB-API" class="headerlink" title="WEB API"></a>WEB API</h1><p>了解DOM的结构并掌握其基本的操作，体验 DOM 在开发中的作用</p>
+<h2 id="API简介"><a href="#API简介" class="headerlink" title="API简介"></a>API简介</h2><p>就是使用js来操作html和浏览器</p>
+<p><img src="/../images/image-20250118230748212.png" alt="image-20250118230748212"></p>
+<h2 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM?"></a>什么是DOM?</h2><p>就是一个文档对象模型，是用来呈现预计于任意html交互的API.</p>
+<p>一句话：是浏览器提供的一套专门来操作网页内容的功能。</p>
+<ul>
+<li>DOM :开发网页内容特效和实现用户交互。</li>
+<li><img src="/../images/image-20250118230824335.png" alt="image-20250118230824335"></li>
+</ul>
+<h2 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h2><p>将html文档以树状结构直观的呈现出来，我们称之为文档树,DOm树</p>
+<p>描述网页内容关系的名词。</p>
+<p><strong>作用：文档树直观的体现了标签与标签的关系</strong></p>
+<p><img src="/../images/image-20250118230838046.png" alt="image-20250118230838046"></p>
+<h2 id="DOM对象（重要）"><a href="#DOM对象（重要）" class="headerlink" title="DOM对象（重要）"></a>DOM对象（重要）</h2><ul>
+<li><p>对象：浏览器根据html标签生成的Js对象</p>
+</li>
+<li><p><strong>所有的标签属性都可以在这个对象上面找到</strong></p>
+</li>
+<li><p>修改这个对象的属性会自动映射到标签身上。</p>
+</li>
+</ul>
+<p>核心思想：把网页内容当作对象来处理。</p>
+<p>Document :是DOM里面提供的一个对象</p>
+<ul>
+<li><p>所以他提供的属性和方法都是用来访问和操作网页内容的</p>
+</li>
+<li><p>网页内容都在document里面</p>
+<p>获取一个DOM 元素我们使用谁？能直接操作修改吗？</p>
+<p>一般我们用的谁<strong>querySelector()</strong> 可以直接操作修改</p>
+<p>获取多个DOM 元素我们使用<strong>querySelctorAll()</strong>,不可以直接进行修改，只能通过遍历的方式一次给里面的元素做修改。</p>
+</li>
+</ul>
+<h2 id="根据CSS选择器来获取DOM元素（重点）"><a href="#根据CSS选择器来获取DOM元素（重点）" class="headerlink" title="根据CSS选择器来获取DOM元素（重点）"></a>根据CSS选择器来获取DOM元素（重点）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelctorAll(&#x27;css选择器&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>得到的是一个<strong>伪数组</strong></p>
+<ul>
+<li><p>有长度有索引号的数组</p>
+</li>
+<li><p>但是没有pop(),push()等数组的方法</p>
+<p>想要得到里面的每一个对象，则需要遍历(for)来实现。</p>
+</li>
+</ul>
+<p>那么我应该怎么做呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//获取元素</span><br><span class="line">const lis = document,querySelectorAll(&#x27;.nav li&#x27;)</span><br><span class="line">//console.log(lis)</span><br><span class="line">for(let i = 0;i&lt;lis.length;i++)</span><br><span class="line">&#123;</span><br><span class="line">	console.log(lis[i]); //每一个小li对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>小括号里面的参数必须是字符串，也就是必须加引号。</p>
+<h2 id="其他获取DOM元素的方法"><a href="#其他获取DOM元素的方法" class="headerlink" title="其他获取DOM元素的方法"></a>其他获取DOM元素的方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&#x27;nav&#x27;)</span><br><span class="line">//根据id获取一个元素</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作元素内容"><a href="#操作元素内容" class="headerlink" title="操作元素内容"></a>操作元素内容</h2><p>目标：能够修改元素的文本更换内容</p>
+<p>DOM对象就是根据标签生成的，所以操作标签，<strong>本质上就是操作DOM对象</strong></p>
+<p>就是操作对象使用的点语法</p>
+<p><strong>如果想要修改标签元素的里面的内容，那么可以使用如下的几种方式</strong></p>
+<ul>
+<li><p><strong>对象.innerText属性</strong></p>
+<p> 那么具体上是怎么要的呢</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;我是文字的内容&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//获取元素</span><br><span class="line">const box = document.querySelector(&#x27;.box&#x27;)</span><br><span class="line">//修改文字内容。对象.innerText 属性</span><br><span class="line">console.log(box.innerText)  //获取文字内容</span><br><span class="line">box.innerText = &#x27;我是一个盒子&#x27;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>innerText 属性 显示纯文本，不解析标签</strong></p>
+<p><strong>可以将文本内容添加&#x2F;更新到任意标签位置</strong></p>
+</li>
+<li><p><strong>对象.innerHTML属性</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;我是文字的内容&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//获取元素</span><br><span class="line">const box = document.querySelector(&#x27;.box&#x27;)</span><br><span class="line">//修改文字内容。对象.innerText 属性</span><br><span class="line">console.log(box.innerText)  //获取文字内容</span><br><span class="line">box.innerHTML = &#x27;&lt;strong&gt;我要更换&lt;/strong&gt;&#x27;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>一个具体例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">//线声明一下数组</span><br><span class="line">const personArr = [&#x27;周杰伦&#x27;，&#x27;sw&#x27;,&#x27;qd&#x27;,&#x27;wdw&#x27;]</span><br><span class="line">//随机数数组下标</span><br><span class="line">const random = Math.floor(Math.random() * personArr.length)</span><br><span class="line">//获取one 元素</span><br><span class="line">const one = doucument.querySelctor(&#x27;#one&#x27;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250124231229553.png" alt="image-20250124231229553"></p>
+<h2 id="操作元素属性"><a href="#操作元素属性" class="headerlink" title="操作元素属性"></a>操作元素属性</h2><p>对象.属性 &#x3D; 值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img src=&quot;./images/1.webp&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 1. 获取图片元素</span><br><span class="line">        const img = document.querySelector(&#x27;img&#x27;);</span><br><span class="line">        </span><br><span class="line">        // 2. 修改图片对象的属性</span><br><span class="line">        img.src = &#x27;./images/2.webp&#x27;;</span><br><span class="line">        img.title = &#x27;pink老师的艺术照&#x27;;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后再写一个生成随机照片的程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;随机图片&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img src=&quot;./images/1.webp&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 获取 N ~ M 的随机整数</span><br><span class="line">        function getRandom(N, M) &#123;</span><br><span class="line">            return Math.floor(Math.random() * (M - N + 1)) + N;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 1. 获取图片对象</span><br><span class="line">        const img = document.querySelector(&#x27;img&#x27;);</span><br><span class="line"></span><br><span class="line">        // 2. 随机得到序号</span><br><span class="line">        const random = getRandom(1, 6);</span><br><span class="line"></span><br><span class="line">        // 3. 更换路径</span><br><span class="line">        img.src = `./images/$&#123;random&#125;.webp`;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个得记住，当模版来记忆</p>
+<p>操作对象的样式属性</p>
+<p><strong>img.src &#x3D; <code>./images/$&#123;random&#125;.webp</code>;</strong>  这里是重点，也是精髓所在</p>
+<p> <strong>小驼峰命名法</strong>（Camel Case）是一种命名约定，通常用于编程中变量、函数、对象等的命名。</p>
+<p><strong>特点：</strong></p>
+<p>​	1.	<strong>首字母小写</strong>：小驼峰命名法的第一个单词以小写字母开头。</p>
+<p>​	2.	<strong>后续单词首字母大写</strong>：从第二个单词开始，每个单词的首字母大写，其余字母小写。</p>
+<pre><code>3.	**不使用分隔符**：单词之间不使用下划线、连字符等，仅通过字母大小写区分单词边界。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;修改样式&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 1. 获取元素</span><br><span class="line">        const box = document.querySelector(&#x27;.box&#x27;);</span><br><span class="line"></span><br><span class="line">        // 2. 修改样式属性 对象.style.样式属性 = &#x27;值&#x27; 别忘了跟单位</span><br><span class="line">        box.style.width = &#x27;300px&#x27;;</span><br><span class="line">        box.style.backgroundColor = &#x27;hotpink&#x27;;</span><br><span class="line">        box.style.border = &#x27;2px solid blue&#x27;;</span><br><span class="line">        box.style.borderTop = &#x27;2px solid red&#x27;;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意这个格式</p>
+<p>小驼峰形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;通过类名修改样式&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 300px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: hotpink;</span><br><span class="line">            border: 1px solid #000;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 1. 获取元素</span><br><span class="line">        const div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        </span><br><span class="line">        // 2. 添加类名 class 是个关键字 我们用 className</span><br><span class="line">        div.className = &#x27;box&#x27;;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果你想更换的是nav 的话，可以在添加类名也就是第2步鞋</p>
+<p>Div.className &#x3D; ‘nav box’</p>
+<p>操作元素样式属性</p>
+<ul>
+<li>通过classList 操作类控制CSS</li>
+<li>为了解决className 容易覆盖以前的类名，我们可以通过classList 方式追加和删除类名</li>
+</ul>
+<h2 id="通过classList修改样式"><a href="#通过classList修改样式" class="headerlink" title="通过classList修改样式"></a>通过classList修改样式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;classList.add 示例&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .box &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line">      background-color: lightgray;</span><br><span class="line">    &#125;</span><br><span class="line">    .active &#123;</span><br><span class="line">      background-color: lightblue;</span><br><span class="line">      border: 2px solid blue;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div class=&quot;box&quot;&gt;文字&lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">  //获取元素</span><br><span class="line">    const box = document.querySelector(&#x27;.box&#x27;)</span><br><span class="line">    // 添加类名 active</span><br><span class="line">    box.classList.add(&#x27;active&#x27;)</span><br><span class="line">    //删除一个类</span><br><span class="line">    box.claaList.remove(&#x27;active&#x27;)</span><br><span class="line">    //切换一个类</span><br><span class="line">    box.classList.togglē(&#x27;active&#x27;)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250125141938325.png" alt="image-20250125141938325"></p>
+<h2 id="轮播图"><a href="#轮播图" class="headerlink" title="轮播图"></a>轮播图</h2><p>首先随机数</p>
+<h1 id="随机数（记住）"><a href="#随机数（记住）" class="headerlink" title="随机数（记住）"></a>随机数（记住）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;随机内容更新&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .slider-wrapper img &#123;</span><br><span class="line">      width: 300px;</span><br><span class="line">      height: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .slider-footer &#123;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div class=&quot;slider-wrapper&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;placeholder.jpg&quot; alt=&quot;随机图片&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;slider-footer&quot;&gt;</span><br><span class="line">    &lt;p&gt;占位文字&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    const sliderData = [</span><br><span class="line">      &#123; url: &#x27;image1.jpg&#x27;, title: &#x27;图片一标题&#x27;, color: &#x27;#ffcccc&#x27; &#125;,</span><br><span class="line">      &#123; url: &#x27;image2.jpg&#x27;, title: &#x27;图片二标题&#x27;, color: &#x27;#ccffcc&#x27; &#125;,</span><br><span class="line">      &#123; url: &#x27;image3.jpg&#x27;, title: &#x27;图片三标题&#x27;, color: &#x27;#ccccff&#x27; &#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    const random = parseInt(Math.random() * sliderData.length)</span><br><span class="line"></span><br><span class="line">    const img = document.querySelector(&#x27;.slider-wrapper img&#x27;)</span><br><span class="line">    img.src = sliderData[random].url</span><br><span class="line"></span><br><span class="line">    const p = document.querySelector(&#x27;.slider-footer p&#x27;)</span><br><span class="line">    p.innerHTML = sliderData[random].title</span><br><span class="line"></span><br><span class="line">    const footer = document.querySelector(&#x27;.slider-footer&#x27;)</span><br><span class="line">    footer.style.backgroundColor = sliderData[random].color</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="加小点"><a href="#加小点" class="headerlink" title="加小点"></a>加小点</h1><h1 id="的具体实现"><a href="#的具体实现" class="headerlink" title="的具体实现"></a>的具体实现</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;slider-wrapper&quot;&gt;</span><br><span class="line">  &lt;img src=&quot;placeholder.jpg&quot; alt=&quot;图片&quot;&gt;</span><br><span class="line">  &lt;ul class=&quot;slider-indicator&quot;&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">.slider-wrapper &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  width: 300px;</span><br><span class="line">  height: 200px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.slider-wrapper img &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.slider-indicator &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  bottom: 10px;</span><br><span class="line">  left: 50%;</span><br><span class="line">  transform: translateX(-50%);</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  list-style: none;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.slider-indicator li &#123;</span><br><span class="line">  width: 10px;</span><br><span class="line">  height: 10px;</span><br><span class="line">  background-color: lightgray;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">  margin: 0 5px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.slider-indicator li.active &#123;</span><br><span class="line">  background-color: blue; /* 当前选中小圆点的颜色 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const sliderData = [</span><br><span class="line">  &#123; url: &#x27;image1.jpg&#x27;, title: &#x27;图片一标题&#x27;, color: &#x27;#ffcccc&#x27; &#125;,</span><br><span class="line">  &#123; url: &#x27;image2.jpg&#x27;, title: &#x27;图片二标题&#x27;, color: &#x27;#ccffcc&#x27; &#125;,</span><br><span class="line">  &#123; url: &#x27;image3.jpg&#x27;, title: &#x27;图片三标题&#x27;, color: &#x27;#ccccff&#x27; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">// 随机选择一个图片和对应的小圆点</span><br><span class="line">const random = parseInt(Math.random() * sliderData.length);</span><br><span class="line"></span><br><span class="line">// 更新图片</span><br><span class="line">const img = document.querySelector(&#x27;.slider-wrapper img&#x27;);</span><br><span class="line">img.src = sliderData[random].url;</span><br><span class="line"></span><br><span class="line">// 更新标题</span><br><span class="line">const p = document.querySelector(&#x27;.slider-footer p&#x27;);</span><br><span class="line">p.innerHTML = sliderData[random].title;</span><br><span class="line"></span><br><span class="line">// 更新背景颜色</span><br><span class="line">const footer = document.querySelector(&#x27;.slider-footer&#x27;);</span><br><span class="line">footer.style.backgroundColor = sliderData[random].color;</span><br><span class="line"></span><br><span class="line">// 选中小圆点并添加 active 类</span><br><span class="line">const li = document.querySelector(`.slider-indicator li:nth-child($&#123;random + 1&#125;)`);</span><br><span class="line">li.classList.add(&#x27;active&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250125145247336.png" alt="image-20250125145247336"></p>
+<h2 id="操作表单元素属性"><a href="#操作表单元素属性" class="headerlink" title="操作表单元素属性"></a>操作表单元素属性</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;表单值操作&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;input type=&quot;text&quot; value=&quot;电脑&quot; id=&quot;uname&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // 1. 获取元素</span><br><span class="line">    const uname = document.querySelector(&#x27;input&#x27;);</span><br><span class="line"></span><br><span class="line">    // 2. 获取值</span><br><span class="line">    // 获取表单里当前的值，用 uname.value</span><br><span class="line">    console.log(uname.value); // 输出：电脑</span><br><span class="line"></span><br><span class="line">    // innerHTML 无法获取表单值</span><br><span class="line">    console.log(uname.innerHTML); // 输出：undefined 或空字符串</span><br><span class="line"></span><br><span class="line">    // 3. 设置表单的值</span><br><span class="line">    uname.value = &#x27;我要买电脑&#x27;;</span><br><span class="line">    console.log(uname.value); // 输出：我要买电脑</span><br><span class="line"></span><br><span class="line">    // 4. 获取和设置表单类型</span><br><span class="line">    console.log(uname.type); // 输出：text</span><br><span class="line">    uname.type = &#x27;password&#x27;; // 将表单类型改为密码输入框</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作表属性（实现勾选）"><a href="#操作表属性（实现勾选）" class="headerlink" title="操作表属性（实现勾选）"></a>操作表属性（实现勾选）</h2><h2 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h2><p><img src="/../images/image-20250125150806639.png" alt="image-20250125150806639"></p>
+<p>这样就会出现5个<div></p>
+<p><strong>自定义属性。在html5中推出来了专门的data-自定义属性</strong></p>
+<p><strong>在标签上一律是以data-开头</strong></p>
+<p><strong>在DOM对象上一律是以dataset对象方式获取</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-id=&quot;1&quot; data-spm=&quot;不知道&quot;&gt;1&lt;/div&gt;</span><br><span class="line">&lt;div data-id=&quot;2&quot;&gt;2&lt;/div&gt;</span><br><span class="line">&lt;div data-id=&quot;3&quot;&gt;3&lt;/div&gt;</span><br><span class="line">&lt;div data-id=&quot;4&quot;&gt;4&lt;/div&gt;</span><br><span class="line">&lt;div data-id=&quot;5&quot;&gt;5&lt;/div&gt;</span><br><span class="line">const one = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">console.log(one.dataset.id);  // 输出：1</span><br><span class="line">console.log(one.dataset.spm); // 输出：不知道</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250125151431441.png" alt="image-20250125151431441"></p>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p><img src="/../images/image-20250125151531531.png" alt="image-20250125151531531"></p>
+<p>间歇函数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  	第一种方法</span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setInterval</span>(<span class="title function_">fuction</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">                &#125;,<span class="number">1000</span>)</span></span><br><span class="line"><span class="language-javascript">     第二种方法</span></span><br><span class="line"><span class="language-javascript">     <span class="built_in">setInterval</span>(fn,<span class="number">3000</span>)</span></span><br><span class="line"><span class="language-javascript">    关闭定时器</span></span><br><span class="line"><span class="language-javascript">    fuction <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1111&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> n = <span class="built_in">setInterval</span>(fn,<span class="number">1000</span>)</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(n)</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">clearInterval</span>(n)</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250125153036936.png" alt="image-20250125153036936"></p>
+<p>实现用户倒计时效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let i = 1</span><br><span class="line">setInterval(fuction ()&#123;</span><br><span class="line">i++</span><br><span class="line">document.write(i)</span><br><span class="line">&#125;,200)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250125154225375.png" alt="image-20250125154225375"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;倒计时启用按钮&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .btn &#123;</span><br><span class="line">      padding: 10px 20px;</span><br><span class="line">      font-size: 16px;</span><br><span class="line">      cursor: not-allowed;</span><br><span class="line">    &#125;</span><br><span class="line">    .btn:enabled &#123;</span><br><span class="line">      cursor: pointer;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button class=&quot;btn&quot; disabled&gt;我已经阅读用户协议(5)&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    // 1. 获取元素</span><br><span class="line">    const btn = document.querySelector(&#x27;.btn&#x27;);</span><br><span class="line">    // console.log(btn.innerHTML); // 按钮的初始内容</span><br><span class="line"></span><br><span class="line">    // 2. 倒计时</span><br><span class="line">    let i = 5; // 倒计时初始值</span><br><span class="line">    // 2.1 开启定时器</span><br><span class="line">    let n = setInterval(function () &#123;</span><br><span class="line">      i--; // 倒计时减少</span><br><span class="line">      // 更新按钮文字</span><br><span class="line">      btn.innerHTML = `我已经阅读用户协议($&#123;i&#125;)`;</span><br><span class="line">      // 判断倒计时是否结束</span><br><span class="line">      if (i === 0) &#123;</span><br><span class="line">        clearInterval(n); // 关闭定时器</span><br><span class="line">        // 定时器停止后，按钮可用，文字更新为“同意”</span><br><span class="line">        btn.disabled = false;</span><br><span class="line">        btn.innerHTML = &#x27;同意&#x27;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, 1000); // 每秒执行一次</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="轮播图定时器版本"><a href="#轮播图定时器版本" class="headerlink" title="轮播图定时器版本"></a>轮播图定时器版本</h2><p>  论比</p>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>程序检测是否有事件发生。</p>
+<p><img src="/../images/image-20250126094443829.png" alt="image-20250126094443829"></p>
+<h1 id="关闭广告"><a href="#关闭广告" class="headerlink" title="关闭广告"></a>关闭广告</h1><p><img src="/../images/image-20250126095013506.png" alt="image-20250126095013506"></p>
+<h2 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h2><p>const date &#x3D; <strong>new</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const date =  new Date()</span><br><span class="line">console.log(data)</span><br><span class="line">console.log(date.getFullYear());</span><br><span class="line">const date1 = new Date(&#x27;&#x27;)</span><br><span class="line">console.log(date1)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126100117535.png" alt="image-20250126100117535"></p>
+<p><img src="/../images/image-20250126100343310.png" alt="image-20250126100343310"></p>
+<h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><p>在 JavaScript 中，<strong>时间戳（Timestamp）</strong> 是指从 <strong>1970 年 1 月 1 日 00:00:00 UTC</strong> 开始的毫秒数，用于表示一个具体的时间点。以下是关于时间戳的相关知识和常用方法。</p>
+<p><img src="/../images/image-20250126100629885.png" alt="image-20250126100629885"></p>
+<p>这是获得时间的三种方式</p>
+<p><img src="/../images/image-20250126100815491.png" alt="image-20250126100815491"></p>
+<h1 id="查找DOM节点"><a href="#查找DOM节点" class="headerlink" title="查找DOM节点"></a>查找DOM节点</h1><p>在前端开发中，<strong>DOM（Document Object Model）节点</strong>是 HTML 文档的基础组成部分。DOM 是一种用于表示和操作 HTML 和 XML 文档的编程接口。</p>
+<p><strong>什么是 DOM 节点？</strong></p>
+<p>​	•	<strong>节点（Node）</strong> 是 DOM 树中的基本单元。</p>
+<p>​	•	每个节点代表 HTML 文档中的一部分，比如标签、属性、文本等。</p>
+<p>​	•	整个 HTML 文档被解析后，会被表示为一个由节点组成的树状结构，称为 <strong>DOM 树</strong>。<strong>元素节点</strong>	表示 HTML 标签，比如 </p>
+<p><img src="/../images/image-20250126100952344.png" alt="image-20250126100952344"></p>
+<h3 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a><strong>查找节点</strong></h3><p><strong>通过 ID 查找</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const node = document.getElementById(&quot;myID&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过类名查找：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const nodes = document.getElementsByClassName(&quot;myClass&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过标签名查找：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const nodes = document.getElementsByTagName(&quot;div&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong> querySelector**：**</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const node = document.querySelector(&quot;.myClass&quot;); // 选择第一个符合条件的节点</span><br><span class="line">const nodes = document.querySelectorAll(&quot;.myClass&quot;); // 选择所有符合条件的节点</span><br></pre></td></tr></table></figure>
+
+<p> 父子节点</p>
+<p><img src="/../images/image-20250126101849007.png" alt="image-20250126101849007"></p>
+<h3 id="增加节点"><a href="#增加节点" class="headerlink" title="增加节点"></a>增加节点</h3><p><strong>创造节点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const newDiv = document.createElement(&quot;div&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加子节点：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const parent = document.getElementById(&quot;parent&quot;);</span><br><span class="line">const child = document.createElement(&quot;div&quot;);</span><br><span class="line">parent.appendChild(child);</span><br></pre></td></tr></table></figure>
+
+<p><strong>在指定位置插入节点</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const parent = document.getElementById(&quot;parent&quot;);</span><br><span class="line">const newNode = document.createElement(&quot;p&quot;);</span><br><span class="line">const referenceNode = document.getElementById(&quot;child&quot;);</span><br><span class="line">parent.insertBefore(newNode, referenceNode);</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除节点：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const parent = document.getElementById(&quot;parent&quot;);</span><br><span class="line">const child = document.getElementById(&quot;child&quot;);</span><br><span class="line">parent.removeChild(child);</span><br></pre></td></tr></table></figure>
+
+<p>修改节点内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const node = document.getElementById(&quot;myID&quot;);</span><br><span class="line">node.textContent = &quot;New Content&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>修改节点属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const node = document.getElementById(&quot;myID&quot;);</span><br><span class="line">node.setAttribute(&quot;class&quot;, &quot;newClass&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>DOM 节点关系</strong></p>
+<p>在 DOM 树中，节点之间存在层级关系：</p>
+<p>​	•	<strong>父节点（Parent Node）：</strong> 使用 parentNode 属性访问。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const parent = childNode.parentNode;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>子节点（Child Nodes）：</strong> 使用 childNodes 属性访问（包括文本节点）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const children = parentNode.childNodes;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>第一个子节点&#x2F;最后一个子节点：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const firstChild = parentNode.firstChild;</span><br><span class="line">const lastChild = parentNode.lastChild;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>兄弟节点（Sibling Nodes）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const nextSibling = currentNode.nextSibling; // 下一个节点</span><br><span class="line">const previousSibling = currentNode.previousSibling; // 上一个节点</span><br></pre></td></tr></table></figure>
+
+<h2 id="M端事件"><a href="#M端事件" class="headerlink" title="M端事件"></a>M端事件</h2><p><img src="/../images/image-20250126102719326.png" alt="image-20250126102719326"></p>
+<h2 id="swipper插件"><a href="#swipper插件" class="headerlink" title="swipper插件"></a>swipper插件</h2><p>在swipper插件这里</p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><p><img src="/../images/image-20250126115026862.png" alt="image-20250126115026862"></p>
+<p>在前端开发中，<strong>BOM</strong>（<strong>Browser Object Model</strong>，浏览器对象模型）是一个用于操作浏览器窗口和浏览器相关功能的接口。BOM 提供了 JavaScript 与浏览器交互的能力，比如控制窗口、导航、获取浏览器信息等。</p>
+<p>在前端开发中，<strong>BOM</strong>（<strong>Browser Object Model</strong>，浏览器对象模型）是一个用于操作浏览器窗口和浏览器相关功能的接口。BOM 提供了 JavaScript 与浏览器交互的能力，比如控制窗口、导航、获取浏览器信息等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(window.innerWidth);  // 浏览器窗口的宽度</span><br><span class="line">console.log(window.innerHeight); // 浏览器窗口的高度</span><br><span class="line">window.alert(&quot;这是一个弹窗!&quot;);  // 显示警告框</span><br><span class="line">window.open(&quot;https://www.example.com&quot;); // 打开新窗口</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. navigator 对象</strong></p>
+<p>​	•	提供浏览器和用户设备的信息，比如浏览器的名称、版本、操作系统等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(navigator.userAgent);      // 用户代理字符串，包含浏览器信息</span><br><span class="line">console.log(navigator.platform);      // 操作系统类型</span><br><span class="line">console.log(navigator.language);      // 当前使用的语言</span><br><span class="line">console.log(navigator.onLine);        // 检测是否联网</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. location 对象</strong></p>
+<p>​	•	提供当前页面的 URL 信息，并可以通过它操作浏览器跳转。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(location.href);           // 当前页面的完整 URL</span><br><span class="line">console.log(location.hostname);       // 主机名</span><br><span class="line">console.log(location.pathname);       // 路径部分</span><br><span class="line">console.log(location.search);         // 查询字符串部分</span><br><span class="line">location.assign(&quot;https://www.example.com&quot;); // 跳转到指定 URL</span><br><span class="line">location.reload();                    // 重新加载当前页面</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. history 对象</strong></p>
+<p>​	•	提供对浏览器历史记录的操作能力。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">history.back();  // 返回上一页</span><br><span class="line">history.forward(); // 前进到下一页</span><br><span class="line">history.go(-2);   // 跳转到历史记录中的指定位置，负数表示后退</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126121511133.png" alt="image-20250126121511133"></p>
+<p><strong>5. screen 对象</strong></p>
+<p>​	•	提供与用户屏幕相关的信息，比如分辨率。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(screen.width);    // 屏幕宽度</span><br><span class="line">console.log(screen.height);   // 屏幕高度</span><br><span class="line">console.log(screen.availWidth);  // 可用宽度（减去任务栏等）</span><br><span class="line">console.log(screen.availHeight); // 可用高度</span><br></pre></td></tr></table></figure>
+
+<p>定时器</p>
+<p><img src="/../images/image-20250126115922452.png" alt="image-20250126115922452"></p>
+<p>JS执行机制</p>
+<p><img src="/../images/image-20250126120538319.png" alt="image-20250126120538319"></p>
+<h2 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h2><p>在前端开发中，<strong>本地存储（Local Storage）</strong> 是 HTML5 提供的一种持久化存储方式，用于在浏览器中以键值对的形式保存数据。这些数据保存在用户的浏览器中，即使刷新页面或关闭浏览器后数据仍然存在。</p>
+<p><strong>1. 本地存储的特点</strong></p>
+<p>​	•	<strong>容量大</strong>：一般为 <strong>5MB</strong>，比传统的 cookie 容量大。</p>
+<p>​	•	<strong>持久性</strong>：数据会一直保存在浏览器中，直到手动清除。</p>
+<p>​	•	<strong>键值对存储</strong>：以字符串形式存储键值对。</p>
+<p>​	•	<strong>仅在同一域名下共享</strong>：同一域名下的页面可以访问相同的本地存储。</p>
+<p><strong>(1) 保存数据</strong></p>
+<p>使用 localStorage.setItem(key, value) 方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&#x27;username&#x27;, &#x27;Alice&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>参数说明</strong>：</p>
+<p>​	•	key：键名（字符串）。</p>
+<p>​	•	value：键值（必须是字符串）。</p>
+<p><strong>(2) 读取数据</strong></p>
+<p>使用 localStorage.getItem(key) 方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const username = localStorage.getItem(&#x27;username&#x27;);</span><br><span class="line">console.log(username); // 输出：Alice</span><br></pre></td></tr></table></figure>
+
+<p><strong>(3) 删除某个键值对</strong></p>
+<p>使用 localStorage.removeItem(key) 方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.removeItem(&#x27;username&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>(4) 清除所有数据</strong></p>
+<p>使用 localStorage.clear() 方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
+
+<p><strong>(5) 获取所有键</strong></p>
+<p>使用 localStorage.key(index) 方法获取指定索引的键名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (let i = 0; i &lt; localStorage.length; i++) &#123;</span><br><span class="line">  console.log(localStorage.key(i)); // 遍历所有键名</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126121927544.png" alt="image-20250126121927544"></p>
+<p> 只能存储字符串</p>
+<p>存储复杂数据类型</p>
+<p><strong>1. 存储对象</strong></p>
+<p><strong>存储方法</strong></p>
+<p>将对象通过 JSON.stringify() 转换为字符串后存储：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const user = &#123; name: &#x27;Alice&#x27;, age: 25, hobbies: [&#x27;reading&#x27;, &#x27;coding&#x27;] &#125;;</span><br><span class="line">localStorage.setItem(&#x27;user&#x27;, JSON.stringify(user)); // 转为字符串存储</span><br></pre></td></tr></table></figure>
+
+<p><strong>读取方法</strong></p>
+<p>从本地存储中获取字符串后，用 JSON.parse() 转换回对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const userStr = localStorage.getItem(&#x27;user&#x27;); // 获取字符串</span><br><span class="line">if (userStr) &#123;</span><br><span class="line">  const user = JSON.parse(userStr); // 转为对象</span><br><span class="line">  console.log(user.name); // 输出：Alice</span><br><span class="line">  console.log(user.hobbies); // 输出：[&#x27;reading&#x27;, &#x27;coding&#x27;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126150402187.png" alt="image-20250126150402187"></p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><img src="/../images/image-20250126150531766.png" alt="image-20250126150531766"></p>
+<p>map也称之为映射</p>
+<h2 id="join-把数组转换为字符串"><a href="#join-把数组转换为字符串" class="headerlink" title="join 把数组转换为字符串"></a>join 把数组转换为字符串</h2><p> <img src="/../images/image-20250126150752208.png" alt="image-20250126150752208"></p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>正则表达式（<strong>Regular Expression</strong>）是用来<strong>匹配字符串中字符模式</strong>的工具，广泛应用于文本处理，比如验证输入格式、查找替换字符串、数据提取等。</p>
+<p><strong>1. 正则表达式的基础</strong></p>
+<p>正则表达式由<strong>普通字符</strong>和<strong>元字符</strong>（特殊字符）组成，具有灵活且强大的匹配能力。</p>
+<p><img src="/../images/image-20250126151010922.png" alt="image-20250126151010922"></p>
+<p>正则表达式中的一些特殊字符需要通过反斜杠 \ 转义才能匹配本身：</p>
+<p>​	•	. 匹配 .，* 匹配 *。</p>
+<p>​	•	如果要匹配反斜杠本身，写成 \。</p>
+<p><strong>常见正则表达式作用</strong></p>
+<ul>
+<li><p>表单验证</p>
+</li>
+<li><p>过滤敏感词</p>
+</li>
+<li><p>字符串中提取我们想要的部分</p>
+<p>三组词语</p>
+<p><strong>匹配，替换，提取</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const regex = /abc/;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const regex = /hello/i;</span><br><span class="line">console.log(regex.test(&quot;Hello&quot;)); // true</span><br></pre></td></tr></table></figure>
+
+<p>定义-检测是否匹配</p>
+<p><img src="/../images/image-20250126151652456.png" alt="image-20250126151652456"></p>
+<p><img src="/../images/image-20250126151808120.png" alt="image-20250126151808120"></p>
+<p><strong>元字符（Metacharacters）</strong> 是正则表达式中具有特殊含义的字符，用于定义匹配规则，而不是直接匹配它们的字面值。元字符赋予了正则表达式强大的功能，使其可以灵活处理字符串模式匹配。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const regex = /a.b/;</span><br><span class="line">console.log(regex.test(&quot;acb&quot;)); // true</span><br><span class="line">console.log(regex.test(&quot;a_b&quot;)); // true</span><br><span class="line">console.log(regex.test(&quot;ab&quot;));  // false</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const regex1 = /^hello/; // 必须以 &quot;hello&quot; 开头</span><br><span class="line">console.log(regex1.test(&quot;hello world&quot;)); // true</span><br><span class="line">console.log(regex1.test(&quot;world hello&quot;)); // false</span><br><span class="line"></span><br><span class="line">const regex2 = /world$/; // 必须以 &quot;world&quot; 结尾</span><br><span class="line">console.log(regex2.test(&quot;hello world&quot;)); // true</span><br><span class="line">console.log(regex2.test(&quot;world hello&quot;)); // false</span><br></pre></td></tr></table></figure>
+
+<p><strong>边界符</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const regex1 = /^hello/; // 必须以 &quot;hello&quot; 开头</span><br><span class="line">console.log(regex1.test(&quot;hello world&quot;)); // true</span><br><span class="line">console.log(regex1.test(&quot;world hello&quot;)); // false</span><br><span class="line"></span><br><span class="line">const regex2 = /world$/; // 必须以 &quot;world&quot; 结尾</span><br><span class="line">console.log(regex2.test(&quot;hello world&quot;)); // true</span><br><span class="line">console.log(regex2.test(&quot;world hello&quot;)); // false</span><br></pre></td></tr></table></figure>
+
+<p><strong>(4) {}（量词）</strong></p>
+<p>​	•	{n}：匹配前面的字符恰好 <strong>n 次</strong>。</p>
+<p>​	•	{n,}：匹配前面的字符至少 <strong>n 次</strong>。</p>
+<p>​	•	{n,m}：匹配前面的字符 <strong>n 到 m 次</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const regex1 = /a&#123;2&#125;/; // 匹配两个连续的 &quot;a&quot;</span><br><span class="line">console.log(regex1.test(&quot;aa&quot;)); // true</span><br><span class="line">console.log(regex1.test(&quot;a&quot;));  // false</span><br><span class="line"></span><br><span class="line">const regex2 = /a&#123;2,&#125;/; // 匹配至少两个连续的 &quot;a&quot;</span><br><span class="line">console.log(regex2.test(&quot;aaa&quot;)); // true</span><br><span class="line">console.log(regex2.test(&quot;a&quot;));   // false</span><br><span class="line"></span><br><span class="line">const regex3 = /a&#123;2,4&#125;/; // 匹配 2 到 4 个连续的 &quot;a&quot;</span><br><span class="line">console.log(regex3.test(&quot;aaa&quot;));  // true</span><br><span class="line">console.log(regex3.test(&quot;aaaaa&quot;));// true（只匹配前 4 个 &quot;a&quot;）</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250126152358336.png" alt="image-20250126152358336"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const regex1 = /a&#123;2&#125;/; // 匹配两个连续的 &quot;a&quot;</span><br><span class="line">console.log(regex1.test(&quot;aa&quot;)); // true</span><br><span class="line">console.log(regex1.test(&quot;a&quot;));  // false</span><br><span class="line"></span><br><span class="line">const regex2 = /a&#123;2,&#125;/; // 匹配至少两个连续的 &quot;a&quot;</span><br><span class="line">console.log(regex2.test(&quot;aaa&quot;)); // true</span><br><span class="line">console.log(regex2.test(&quot;a&quot;));   // false</span><br><span class="line"></span><br><span class="line">const regex3 = /a&#123;2,4&#125;/; // 匹配 2 到 4 个连续的 &quot;a&quot;</span><br><span class="line">console.log(regex3.test(&quot;aaa&quot;));  // true</span><br><span class="line">console.log(regex3.test(&quot;aaaaa&quot;));// true（只匹配前 4 个 &quot;a&quot;）</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 特殊的字符类</strong></p>
+<p>正则表达式还提供了一些预定义的字符类，可以快速匹配特定类型的字符：</p>
+<p><img src="/../images/image-20250126152606091.png" alt="image-20250126152606091"></p>
+<p><img src="/../images/image-20250126152750226.png" alt="image-20250126152750226"></p>
+<p><img src="/../images/image-20250126152948549.png" alt="image-20250126152948549"></p>
+<p><img src="/../images/image-20250126152959015.png" alt="image-20250126152959015"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/WEB%20API/">http://clock_blog.com/2025/01/28/WEB%20API/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/TypeScript/">TypeScript基础语法</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/Webpack_Improved/">Webpack</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

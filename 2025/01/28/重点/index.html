@@ -26,7 +26,7 @@
 
 
 
-<title>web API | clock&#39;s blog</title>
+<title>重点 | clock&#39;s blog</title>
 
 
 
@@ -206,7 +206,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">web API</h1>
+            <h1 class="post-title">重点</h1>
             
                 <div class="post-meta">
                     
@@ -215,7 +215,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 18, 2025&nbsp;&nbsp;12:00:00</a>
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
                         </span>
                     
                     
@@ -231,74 +231,42 @@
         </header>
 
         <div class="post-content">
-            <h1 id="WEB-API"><a href="#WEB-API" class="headerlink" title="WEB API"></a>WEB API</h1><p>了解DOM的结构并掌握其基本的操作，体验 DOM 在开发中的作用</p>
-<h2 id="API简介"><a href="#API简介" class="headerlink" title="API简介"></a>API简介</h2><p>就是使用js来操作html和浏览器</p>
-<p><img src="/../images/image-20250118230748212.png" alt="image-20250118230748212"></p>
-<h2 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM?"></a>什么是DOM?</h2><p>就是一个文档对象模型，是用来呈现预计于任意html交互的API.</p>
-<p>一句话：是浏览器提供的一套专门来操作网页内容的功能。</p>
-<ul>
-<li>DOM :开发网页内容特效和实现用户交互。</li>
-<li><img src="/../images/image-20250118230824335.png" alt="image-20250118230824335"></li>
-</ul>
-<h2 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h2><p>将html文档以树状结构直观的呈现出来，我们称之为文档树,DOm树</p>
-<p>描述网页内容关系的名词。</p>
-<p><strong>作用：文档树直观的体现了标签与标签的关系</strong></p>
-<p><img src="/../images/image-20250118230838046.png" alt="image-20250118230838046"></p>
-<h2 id="DOM对象（重要）"><a href="#DOM对象（重要）" class="headerlink" title="DOM对象（重要）"></a>DOM对象（重要）</h2><ul>
-<li><p>对象：浏览器根据html标签生成的Js对象</p>
-</li>
-<li><p><strong>所有的标签属性都可以在这个对象上面找到</strong></p>
-</li>
-<li><p>修改这个对象的属性会自动映射到标签身上。</p>
-</li>
-</ul>
-<p>核心思想：把网页内容当作对象来处理。</p>
-<p>Document :是DOM里面提供的一个对象</p>
-<ul>
-<li><p>所以他提供的属性和方法都是用来访问和操作网页内容的</p>
-</li>
-<li><p>网页内容都在document里面</p>
-<p>获取一个DOM 元素我们使用谁？能直接操作修改吗？</p>
-<p>一般我们用的谁<strong>querySelector()</strong> 可以直接操作修改</p>
-<p>获取多个DOM 元素我们使用<strong>querySelctorAll()</strong>,不可以直接进行修改，只能通过遍历的方式一次给里面的元素做修改。</p>
-</li>
-</ul>
-<h2 id="根据CSS选择器来获取DOM元素（重点）"><a href="#根据CSS选择器来获取DOM元素（重点）" class="headerlink" title="根据CSS选择器来获取DOM元素（重点）"></a>根据CSS选择器来获取DOM元素（重点）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelctorAll(&#x27;css选择器&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>得到的是一个<strong>伪数组</strong></p>
-<ul>
-<li><p>有长度有索引号的数组</p>
-</li>
-<li><p>但是没有pop(),push()等数组的方法</p>
-<p>想要得到里面的每一个对象，则需要遍历(for)来实现。</p>
-</li>
-</ul>
-<p>那么我应该怎么做呢？</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//获取元素</span><br><span class="line">const lis = document,querySelectorAll(&#x27;.nav li&#x27;)</span><br><span class="line">//console.log(lis)</span><br><span class="line">for(let i = 0;i&lt;lis.length;i++)</span><br><span class="line">&#123;</span><br><span class="line">	console.log(lis[i]); //每一个小li对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>小括号里面的参数必须是字符串，也就是必须加引号。</p>
-<h2 id="其他获取DOM元素的方法"><a href="#其他获取DOM元素的方法" class="headerlink" title="其他获取DOM元素的方法"></a>其他获取DOM元素的方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&#x27;nav&#x27;)</span><br><span class="line">//根据id获取一个元素</span><br></pre></td></tr></table></figure>
-
-<h2 id="操作元素内容"><a href="#操作元素内容" class="headerlink" title="操作元素内容"></a>操作元素内容</h2><p>目标：能够修改元素的文本更换内容</p>
-<p>DOM对象就是根据标签生成的，所以操作标签，<strong>本质上就是操作DOM对象</strong></p>
-<p>就是操作对象使用的点语法</p>
-<p><strong>如果想要修改标签元素的里面的内容，那么可以使用如下的几种方式</strong></p>
-<ul>
-<li><p><strong>对象.innerText属性</strong></p>
-<p> 那么具体上是怎么要的呢</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;我是文字的内容&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//获取元素</span><br><span class="line">const box = document.querySelector(&#x27;.box&#x27;)</span><br><span class="line">//修改文字内容。对象.innerText 属性</span><br><span class="line">console.log(box.innerText)  //获取文字内容</span><br><span class="line">box.innerText = &#x27;我是一个盒子&#x27;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>innerText 属性 显示纯文本，不解析标签</strong></p>
-<p><strong>可以将文本内容添加&#x2F;更新到任意标签位置</strong></p>
-</li>
-<li><p><strong>对象.innerHTML属性</strong></p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;我是文字的内容&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//获取元素</span><br><span class="line">const box = document.querySelector(&#x27;.box&#x27;)</span><br><span class="line">//修改文字内容。对象.innerText 属性</span><br><span class="line">console.log(box.innerText)  //获取文字内容</span><br><span class="line">box.innerHTML = &#x27;&lt;strong&gt;我要更换&lt;/strong&gt;&#x27;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>一个具体例子</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">//线声明一下数组</span><br><span class="line">const personArr = [&#x27;周杰伦&#x27;，&#x27;sw&#x27;,&#x27;qd&#x27;,&#x27;wdw&#x27;]</span><br><span class="line">//随机数数组下标</span><br><span class="line">const random = Math.floor(Math.random() * personArr.length)</span><br><span class="line">//获取one 元素</span><br><span class="line">const one = doucument.querySelctor(&#x27;#one&#x27;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
+            <p>画重点梳理了一下最近学习的vue，这些问题就是每天步骤任务的提纲</p>
+<h1 id="重点了解使用vue比原生三件套有哪些好处、ref和reactive的响应式设计的用法与作用（重中之重）、watch监视的基本使用与应用场景（1-21）"><a href="#重点了解使用vue比原生三件套有哪些好处、ref和reactive的响应式设计的用法与作用（重中之重）、watch监视的基本使用与应用场景（1-21）" class="headerlink" title="重点了解使用vue比原生三件套有哪些好处、ref和reactive的响应式设计的用法与作用（重中之重）、watch监视的基本使用与应用场景（1-21）"></a>重点了解使用vue比原生三件套有哪些好处、ref和reactive的响应式设计的用法与作用（重中之重）、watch监视的基本使用与应用场景（1-21）</h1><p><strong>使用 Vue 比原生三件套的好处</strong></p>
+<p>​	<strong>•	模块化开发：Vue 的组件化设计使得代码结构清晰，可复用性高。</strong></p>
+<p>​	<strong>•	双向绑定：通过 v-model 实现数据和视图的同步，减少 DOM 操作。</strong></p>
+<p>​	<strong>•	响应式系统：自动更新视图，无需手动操作 DOM。</strong></p>
+<p>​	<strong>•	指令简化操作：如 v-for、v-if 提供直观的逻辑控制。</strong></p>
+<p>​	<strong>•	生态系统：集成了 Vue Router、Pinia 等工具，简化开发流程。</strong></p>
+<p>​	<strong>•	性能优化：虚拟 DOM 提高了渲染效率。</strong></p>
+<p>Ref–基本类型或者对象</p>
+<p>reactive:主要是对象</p>
+<p>Watch:监听一个值watch(refVar, (newVal, oldVal) &#x3D;&gt; { … })</p>
+<p>监听多个值watch([var1, var2], ([new1, new2], [old1, old2]) &#x3D;&gt; { … })。</p>
+<h1 id="重点了解prop属性的使用、vue的生命周期和生命周期钩子函数（重点）、vue路由的使用与理解（重点）、pinia的作用和使用方式（22-51"><a href="#重点了解prop属性的使用、vue的生命周期和生命周期钩子函数（重点）、vue路由的使用与理解（重点）、pinia的作用和使用方式（22-51" class="headerlink" title="重点了解prop属性的使用、vue的生命周期和生命周期钩子函数（重点）、vue路由的使用与理解（重点）、pinia的作用和使用方式（22-51"></a>重点了解prop属性的使用、vue的生命周期和生命周期钩子函数（重点）、vue路由的使用与理解（重点）、pinia的作用和使用方式（22-51</h1><h2 id="回答："><a href="#回答：" class="headerlink" title="回答："></a>回答：</h2><p>props是传递数据的，一般就是父子之间吧，子组件一般是用defineProps定义接收props</p>
+<p><strong>vue生命周期分为</strong></p>
+<p>创建阶段: setuo,onBeforeMount</p>
+<p>挂载阶段：onMounted(DOM)</p>
+<p>更新阶段：onBeforeDate,onUpdated(响应式数据更新)</p>
+<p>销毁阶段：onBeforeUnmount,onUnmounted（组件销毁前后）</p>
+<p><strong>钩子函数</strong></p>
+<p>onMounted：初始数据加载、DOM 操作。</p>
+<p>onUnmounted：清理定时器、移除监听器。</p>
+<p>onUpdated：数据变化后触发。</p>
+<p><strong>路由</strong></p>
+<p>就是路径参数与API</p>
+<p>Router,push()-&gt;编程式导航</p>
+<p>useRoute 获取当前路由信息</p>
+<p>useRouter:执行导航操作</p>
+<p><strong>pinia</strong></p>
+<p>State:定义全局状态</p>
+<p>Getters:计算属性，派生状态</p>
+<p>Actions:修改状态</p>
+<p><strong>使用方式在vue(ts)里面有步骤呈现</strong></p>
+<h1 id="重点学习父子组件和兄弟组件的通信方式，插槽的作用与使用方式"><a href="#重点学习父子组件和兄弟组件的通信方式，插槽的作用与使用方式" class="headerlink" title="重点学习父子组件和兄弟组件的通信方式，插槽的作用与使用方式"></a>重点学习父子组件和兄弟组件的通信方式，插槽的作用与使用方式</h1><h2 id="Answer："><a href="#Answer：" class="headerlink" title="Answer："></a>Answer：</h2><p>父子组件通信：父-》子 props,子-〉父，$emit</p>
+<p>兄弟之间通信：vue2:Vuex,vue3:pinia</p>
+<p>插槽：实现父组件向子组件传递HTML结构，提升组件灵活性</p>
+<p>基础插槽，具名插槽，作用域插槽</p>
 
         </div>
 
@@ -313,7 +281,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://clock_blog.com/2025/01/18/WEB%20API/">http://clock_blog.com/2025/01/18/WEB%20API/</a></span>
+                        <span><a href="http://clock_blog.com/2025/01/28/%E9%87%8D%E7%82%B9/">http://clock_blog.com/2025/01/28/%E9%87%8D%E7%82%B9/</a></span>
                     </p>
                 
                 
@@ -350,10 +318,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2025/01/18/Javasript%E5%A4%8D%E4%B9%A0/">JS复习</a>
+                <a class="prev" rel="prev" href="/2025/01/28/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%EF%BC%88AJAX/">前端框架(AJAX+axios+promise)</a>
             
             
-            <a class="next" rel="next" href="/2025/01/17/Echarts%E5%AE%98%E7%BD%91%E8%87%AA%E5%AD%A6/">Echarts官网自学</a>
+            <a class="next" rel="next" href="/2025/01/28/%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/">组件通信</a>
             
         </section>
 

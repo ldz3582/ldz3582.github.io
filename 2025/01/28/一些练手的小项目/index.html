@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>练手项目 | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">练手项目</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="一些练手的小项目"><a href="#一些练手的小项目" class="headerlink" title="一些练手的小项目"></a>一些练手的小项目</h1><h1 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h1><h2 id="关闭广告"><a href="#关闭广告" class="headerlink" title="关闭广告"></a>关闭广告</h2><p><strong>这里的关闭广告有两种写法</strong></p>
+<ul>
+<li><p>方法一：获取事件源，事件侦听</p>
+</li>
+<li><p>查找DOM 节点，也就是找父节点，进行关闭</p>
+<p><img src="/../images/image-20250126101712054.png" alt="image-20250126101712054"></p>
+<h2 id="学成在线渲染（120）-练习DOM节点"><a href="#学成在线渲染（120）-练习DOM节点" class="headerlink" title="学成在线渲染（120）-练习DOM节点"></a>学成在线渲染（120）-练习DOM节点</h2></li>
+</ul>
+<p><img src="/../images/image-20250126102616777.png" alt="image-20250126102616777"></p>
+<h2 id="学生信息表案例（DOM）124"><a href="#学生信息表案例（DOM）124" class="headerlink" title="学生信息表案例（DOM）124"></a><strong>学生信息表案例</strong>（DOM）124</h2><h2 id="学生信息统计表-加上本地存储-132"><a href="#学生信息统计表-加上本地存储-132" class="headerlink" title="学生信息统计表-加上本地存储 132"></a>学生信息统计表-加上本地存储 132</h2><h2 id="渲染模块制作-134"><a href="#渲染模块制作-134" class="headerlink" title="渲染模块制作 134"></a>渲染模块制作 134</h2><h2 id="录入模块制作"><a href="#录入模块制作" class="headerlink" title="录入模块制作"></a>录入模块制作</h2><h2 id="删除模块制作"><a href="#删除模块制作" class="headerlink" title="删除模块制作"></a>删除模块制作</h2><h2 id="用户名验证案例"><a href="#用户名验证案例" class="headerlink" title="用户名验证案例"></a>用户名验证案例</h2><h2 id="新用户注册案例"><a href="#新用户注册案例" class="headerlink" title="新用户注册案例"></a>新用户注册案例</h2><h2 id="登录页面制作"><a href="#登录页面制作" class="headerlink" title="登录页面制作"></a>登录页面制作</h2><h2 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h2><h2 id="放大镜效果"><a href="#放大镜效果" class="headerlink" title="放大镜效果"></a>放大镜效果</h2><h2 id="倒计时-118"><a href="#倒计时-118" class="headerlink" title="倒计时 118"></a>倒计时 118</h2><h2 id="仿照京东滑动以及bilinili导航栏"><a href="#仿照京东滑动以及bilinili导航栏" class="headerlink" title="仿照京东滑动以及bilinili导航栏"></a>仿照京东滑动以及bilinili导航栏</h2><h2 id="电梯导航"><a href="#电梯导航" class="headerlink" title="电梯导航"></a>电梯导航</h2><h2 id="轮播图随机滚动版本-96"><a href="#轮播图随机滚动版本-96" class="headerlink" title="轮播图随机滚动版本 96"></a>轮播图随机滚动版本 96</h2><h2 id="轮播图左右栏目切换版本87"><a href="#轮播图左右栏目切换版本87" class="headerlink" title="轮播图左右栏目切换版本87"></a>轮播图左右栏目切换版本87</h2><h2 id="随机点名-94"><a href="#随机点名-94" class="headerlink" title="随机点名 94"></a>随机点名 94</h2><h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="京东页面-静态"><a href="#京东页面-静态" class="headerlink" title="京东页面-静态"></a>京东页面-静态</h2><h2 id="抖音解决方案"><a href="#抖音解决方案" class="headerlink" title="抖音解决方案"></a>抖音解决方案</h2><h2 id="产品卡片以及新浪新闻-6768"><a href="#产品卡片以及新浪新闻-6768" class="headerlink" title="产品卡片以及新浪新闻 6768"></a>产品卡片以及新浪新闻 6768</h2><h2 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a>个人简介</h2><h2 id="体育新闻列表"><a href="#体育新闻列表" class="headerlink" title="体育新闻列表"></a>体育新闻列表</h2><h2 id="注册信息"><a href="#注册信息" class="headerlink" title="注册信息"></a>注册信息</h2><h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><h2 id="地区查询（bootscarp）-04"><a href="#地区查询（bootscarp）-04" class="headerlink" title="地区查询（bootscarp） 04"></a>地区查询（bootscarp） 04</h2><h2 id="登录移动端-11"><a href="#登录移动端-11" class="headerlink" title="登录移动端 11"></a>登录移动端 11</h2><h2 id="登录整合form-14"><a href="#登录整合form-14" class="headerlink" title="登录整合form 14"></a>登录整合form 14</h2><h2 id="图书管理-15-，204"><a href="#图书管理-15-，204" class="headerlink" title="图书管理  15 ，204"></a>图书管理  15 ，204</h2><h2 id="地区查询-303"><a href="#地区查询-303" class="headerlink" title="地区查询 303"></a>地区查询 303</h2><h2 id="天气预报-311"><a href="#天气预报-311" class="headerlink" title="天气预报 311"></a>天气预报 311</h2><h1 id="较为麻烦的项目"><a href="#较为麻烦的项目" class="headerlink" title="较为麻烦的项目"></a>较为麻烦的项目</h1><h2 id="数据管理平台"><a href="#数据管理平台" class="headerlink" title="数据管理平台"></a>数据管理平台</h2>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/%E4%B8%80%E4%BA%9B%E7%BB%83%E6%89%8B%E7%9A%84%E5%B0%8F%E9%A1%B9%E7%9B%AE/">http://clock_blog.com/2025/01/28/%E4%B8%80%E4%BA%9B%E7%BB%83%E6%89%8B%E7%9A%84%E5%B0%8F%E9%A1%B9%E7%9B%AE/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/nodejs_corrected/">Node.js基础语法</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/vue_format_corrected_fixed/">vue_1</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

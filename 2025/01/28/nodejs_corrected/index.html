@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>Node.js基础语法 | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Node.js基础语法</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h1><p>虽然不是前端必须掌握的工具，但是为前端开发提供了很多便利,简单了解一下</p>
+<h2 id="为什么需要node-js"><a href="#为什么需要node-js" class="headerlink" title="为什么需要node.js"></a>为什么需要node.js</h2><p>​	•	<strong>前端构建工具：</strong> 许多现代前端工具（如 Webpack、Babel、ESLint 等）都基于 Node.js 来运行。你需要理解如何配置这些工具以及如何使用它们来构建和优化项目。</p>
+<p>​	•	<strong>前后端统一：</strong> 如果你学习 Node.js，你就能更好地理解全栈开发。尤其是与前端框架如 React 或 Vue 搭配使用时，了解 Node.js 可以帮助你更好地理解服务器端渲染、API 构建等功能。</p>
+<p><strong>Node.js 的核心用途：</strong></p>
+<p>​	•	管理项目依赖（npm）。</p>
+<p>​	•	运行和配置构建工具（如 Webpack、Babel、ESLint）。</p>
+<p>​	•	开发和运行前端相关的命令行工具。</p>
+<h2 id="什么是node-js"><a href="#什么是node-js" class="headerlink" title="什么是node.js"></a>什么是node.js</h2><p>Node.js</p>
+<p>是一个跨平台JavaScript 运行环境，使开发者可以搭建服务器端的JavaScript应用程序</p>
+<p>作用：使用Node.js编写服务器端的程序</p>
+<ul>
+<li>编写数据接口，提供网页资源浏览功能等等</li>
+<li>前端工程化：为后续学习vue和React做铺垫</li>
+</ul>
+<p><img src="/../images/image-20250126231452053.png" alt="image-20250126231452053"></p>
+<p><img src="/../images/image-20250126231538790.png" alt="image-20250126231538790"></p>
+<p>显示配置成功</p>
+<h2 id="使用Node-js"><a href="#使用Node-js" class="headerlink" title="使用Node.js"></a><strong>使用Node.js</strong></h2><p>新建JS文件，编写代码后，在node环境下执行</p>
+<p>在VScode集成终端中，输入node xxx.js</p>
+<h2 id="Path-使用绝对路径"><a href="#Path-使用绝对路径" class="headerlink" title="Path-使用绝对路径"></a>Path-使用绝对路径</h2><p>http协议，默认访问80端口</p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>端口号的作用：标记分服务器里面不同的服务程序</p>
+<h2 id="Node-js模块化"><a href="#Node-js模块化" class="headerlink" title="Node.js模块化"></a>Node.js模块化</h2><p>Node.js 使用了 <strong>CommonJS</strong> 模块规范，这是它的核心模块系统。它提供了模块化的机制，通过 require() 来引入模块，使用 module.exports 或 exports 来导出模块。</p>
+<p>项目是由很多个模块文件组成的</p>
+<h3 id="CommonJS标准"><a href="#CommonJS标准" class="headerlink" title="CommonJS标准"></a>CommonJS标准</h3><p>需求：定义utils.js模块，封装基地址和求数组总和的函数</p>
+<p>使用：</p>
+<ul>
+<li>导出：module.exports&#x3D;{}</li>
+<li>导入：require(‘模块名或路径’)</li>
+</ul>
+<p><img src="/../images/image-20250127103604523.png" alt="image-20250127103604523"></p>
+<h3 id="ECMAScript标准"><a href="#ECMAScript标准" class="headerlink" title="ECMAScript标准"></a>ECMAScript标准</h3><p>默认导出或者导入</p>
+<p>需求：封装并导出基地址和求数组元素和的函数</p>
+<p><img src="/../images/image-20250127104117249.png" alt="image-20250127104117249"></p>
+<p>在这段代码中，左侧的utils.js文件定义了一个baseURL和一个getArraySum函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const baseURL = &#x27;http://hmajax.itheima.net&#x27;;</span><br><span class="line"></span><br><span class="line">const getArraySum = arr =&gt; arr.reduce((sum, item) =&gt; sum += item, 0);</span><br><span class="line"></span><br><span class="line">// 默认导出对象</span><br><span class="line">export default &#123;</span><br><span class="line">    url: baseURL,</span><br><span class="line">    arraySum: getArraySum</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>baseURL : 定义一个URL字符串</p>
+<p>getArraySum:定义一个计算数组元素总和的函数</p>
+<p>Export default : 把baseURL 和 getArraySum 作为一个对象导出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import obj from &#x27;./utils.js&#x27;;</span><br><span class="line">console.log(obj);  // 输出导入的对象</span><br><span class="line">const result = obj.arraySum([10, 20, 30]);</span><br><span class="line">console.log(result);  // 输出数组总和 60</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250127105155515.png" alt="image-20250127105155515"></p>
+<h2 id="命名导入"><a href="#命名导入" class="headerlink" title="命名导入"></a>命名导入</h2><h1 id="包的概念"><a href="#包的概念" class="headerlink" title="包的概念"></a>包的概念</h1><p>包：将模块，代码，其他资料聚合成一个文件夹</p>
+<ul>
+<li>项目包：主要用于编写项目和业务逻辑</li>
+<li>软件包：封装工具和方法进行使用</li>
+</ul>
+<p>要求：根目录中，必须有package.json文件（记录包的清单信息）</p>
+<p><img src="/../images/image-20250127105452355.png" alt="image-20250127105452355"></p>
+<h1 id="npm软件包"><a href="#npm软件包" class="headerlink" title="npm软件包"></a>npm软件包</h1><p>npm 是nde.js标准的软件包管理器</p>
+<p><strong>使用：初始化清单文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+
+<p>得到pakage.json文件，有了这略过这个命令</p>
+<p><strong>下载软件包 :</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用软件包</strong></p>
+<p><strong>图解：</strong></p>
+<p><img src="/../images/image-20250127105843364.png" alt="image-20250127105843364"></p>
+<h2 id="npm-安装所有依赖"><a href="#npm-安装所有依赖" class="headerlink" title="npm -安装所有依赖"></a>npm -安装所有依赖</h2><p><img src="/../images/image-20250127110046930.png" alt="image-20250127110046930"></p>
+<p>Npm 全局软件包nodemon</p>
+<p>Nodemon :<strong>替代node命令，检测代码更改，自动重启程序</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i nodemon -g</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250127111833339.png" alt="image-20250127111833339"></p>
+<p><img src="/../images/image-20250127111901757.png" alt="image-20250127111901757"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/nodejs_corrected/">http://clock_blog.com/2025/01/28/nodejs_corrected/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/html%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">html基础语法</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/%E4%B8%80%E4%BA%9B%E7%BB%83%E6%89%8B%E7%9A%84%E5%B0%8F%E9%A1%B9%E7%9B%AE/">练手项目</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>vue(TS)+路由器 | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">vue(TS)+路由器</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Vue3-第二部分"><a href="#Vue3-第二部分" class="headerlink" title="Vue3-第二部分"></a>Vue3-第二部分</h1><p><strong>这里是代码中出现TS的，后面是路由器</strong></p>
+<p>现在先上代码，步步分析。</p>
+<h1 id="eg1-props的使用"><a href="#eg1-props的使用" class="headerlink" title="eg1-props的使用"></a>eg1-props的使用</h1><h2 id="步步分析代码（先理解，再实践）"><a href="#步步分析代码（先理解，再实践）" class="headerlink" title="步步分析代码（先理解，再实践）"></a>步步分析代码（先理解，再实践）</h2><h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><p><img src="/../images/image-20250128003823892.png" alt="image-20250128003823892"></p>
+<h3 id="先分析main-ts"><a href="#先分析main-ts" class="headerlink" title="先分析main.ts"></a>先分析main.ts</h3><p>常规出现，就是创建与引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 引入createApp用于创建应用</span><br><span class="line">import &#123;createApp&#125; from &#x27;vue&#x27;</span><br><span class="line">// 引入App根组件</span><br><span class="line">import App from &#x27;./App.vue&#x27;</span><br><span class="line"></span><br><span class="line">createApp(App).mount(&#x27;#app&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析组件内的person-vue"><a href="#分析组件内的person-vue" class="headerlink" title="分析组件内的person.vue"></a>分析组件内的person.vue</h3><h4 id="模版部分"><a href="#模版部分" class="headerlink" title="模版部分"></a>模版部分</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;person&quot;&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for=&quot;p in list&quot; :key=&quot;p.id&quot;&gt;</span><br><span class="line">        &#123; &#123;p.name&#125; &#125; -- &#123; &#123;p.age&#125; &#125;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能说明：</strong></p>
+<p>​	1.	<strong>渲染数据列表</strong>：</p>
+<p>​	•	list 是通过 props 传递给 Person 组件的。</p>
+<p>​	•	使用 v-for 循环遍历 list 数组，动态生成 <li> 列表项。</p>
+<p>​	•	每个 li 显示每个对象的 name 和 age。</p>
+<p>​	2.	<strong>绑定唯一的</strong> key：</p>
+<p>​	•	使用 :key&#x3D;”p.id” 为每个列表项绑定唯一的 key，提高渲染效率。</p>
+<h4 id="脚本部分"><a href="#脚本部分" class="headerlink" title="脚本部分"></a>脚本部分</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup name=&quot;Person&quot;&gt;</span><br><span class="line">  import &#123; withDefaults &#125; from &#x27;vue&#x27;</span><br><span class="line">  import &#123; type Persons &#125; from &#x27;@/types&#x27;</span><br><span class="line"></span><br><span class="line">  // 接收list + 限制类型 + 限制必要性 + 指定默认值</span><br><span class="line">  withDefaults(defineProps&lt;&#123;list?: Persons&#125;&gt;(), &#123;</span><br><span class="line">    list: () =&gt; [&#123; id: &#x27;ausydgyu01&#x27;, name: &#x27;康师傅·王麻子·特仑苏&#x27;, age: 19 &#125;]</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>上面的import是什么？</strong></p>
+<p><strong>一般是导入工具与类型</strong></p>
+<p>​	<strong>•	withDefaults：</strong></p>
+<p>​	<strong>•	用于为 defineProps 定义的 props 设置默认值。它接收两个参数：</strong></p>
+<p>​	<strong>•	defineProps 的返回值（包含 props 的类型约束）。</strong></p>
+<p>​	<strong>•	一个对象，用来指定每个 prop 的默认值。</strong></p>
+<p>​	<strong>•	Persons：</strong></p>
+<p>​	<strong>•	从 @&#x2F;types 导入的类型别名，表示一个由多个 person 对象组成的数组，符合以下结构：</strong></p>
+<p>也就是如果我要用到 prop的时候用</p>
+<p><strong>知识点解析：</strong></p>
+<p>​	<strong>1.	defineProps：</strong></p>
+<p>​	<strong>•	Vue 3 提供的 API，用于定义组件接收的 props。</strong></p>
+<p>​	<strong>•	defineProps&lt;{list?: Persons}&gt;()：</strong></p>
+<p>​	<strong>•	定义了一个可选的 list 属性，类型为 Persons（数组，每个元素是一个符合 PersonInter 的对象）。</strong></p>
+<p>​	<strong>2.	withDefaults：</strong></p>
+<p>​	<strong>•	用来为可选 props（如 list?）设置默认值。</strong></p>
+<p>​	<strong>•	默认值为：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123; id: &#x27;ausydgyu01&#x27;, name: &#x27;康师傅·王麻子·特仑苏&#x27;, age: 19 &#125;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="再分析index-ts"><a href="#再分析index-ts" class="headerlink" title="再分析index.ts"></a>再分析index.ts</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 定义一个接口，用于限制person对象的具体属性</span><br><span class="line">export interface PersonInter &#123;</span><br><span class="line">  id: string,</span><br><span class="line">  name: string,</span><br><span class="line">  age: number,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 一个自定义类型</span><br><span class="line">export type Persons = PersonInter[]</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>1.	接口 PersonInter：</strong></p>
+<p>​	<strong>•	定义了 person 对象的结构，强制要求每个对象包含以下属性：</strong></p>
+<p>​	<strong>•	id：字符串，唯一标识。</strong></p>
+<p>​	<strong>•	name：字符串，人员姓名。</strong></p>
+<p>​	<strong>•	age：数字，人员年龄。</strong></p>
+<p>​	<strong>2.	类型别名 Persons：</strong></p>
+<p>​	<strong>•	定义了一个数组类型，数组的每个元素都必须符合 PersonInter 接口。</strong></p>
+<h3 id="App-vue解析"><a href="#App-vue解析" class="headerlink" title="App.vue解析"></a>App.vue解析</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 务必看懂下面这一行代码 --&gt;</span><br><span class="line">  &lt;!-- &lt;h2 a=&quot;1+1&quot; :b=&quot;1+1&quot; c=&quot;x&quot; :d=&quot;x&quot; ref=&quot;qwe&quot;&gt;测试&lt;/h2&gt; --&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;Person a=&quot;哈哈&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>静态属性：a &#x3D; “1 + 1”是一个普通的字符串，直接作为属性值</p>
+<p>动态属性：b &#x3D; “1 + 1”是一个动态表达式，结果会被计算后作为属性值</p>
+<p>ref&#x3D;”qwe”,绑定DOM引用，可以在JavaScript中通过ref操作这个DOM元素</p>
+<p>​	2.	<strong>子组件</strong> <Person /> <strong>的使用：</strong></p>
+<p>​	•	<Person /> 是导入的子组件，代表 person.vue 文件。</p>
+<p>​	•	a&#x3D;”哈哈” 是传递给 <Person /> 的一个普通属性。</p>
+<p>脚本部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup name=&quot;App&quot;&gt;</span><br><span class="line">  import Person from &#x27;./components/Person.vue&#x27;</span><br><span class="line">  import &#123; reactive &#125; from &#x27;vue&#x27;</span><br><span class="line">  import &#123; type Persons &#125; from &#x27;@/types&#x27;</span><br><span class="line"></span><br><span class="line">  let x = 9</span><br><span class="line"></span><br><span class="line">  let personList = reactive&lt;Persons&gt;([</span><br><span class="line">    &#123; id: &#x27;asudfysafd01&#x27;, name: &#x27;张三&#x27;, age: 18 &#125;,</span><br><span class="line">    &#123; id: &#x27;asudfysafd02&#x27;, name: &#x27;李四&#x27;, age: 20 &#125;,</span><br><span class="line">    &#123; id: &#x27;asudfysaf)d03&#x27;, name: &#x27;王五&#x27;, age: 22 &#125;</span><br><span class="line">  ])</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	1.	<strong>引入</strong> Person <strong>组件：</strong></p>
+<p>​	•	import Person from ‘.&#x2F;components&#x2F;Person.vue’ 引入 person.vue，使得 &lt;Person &#x2F;能够在模板中使用。</p>
+<ol start="2">
+<li><p><strong>定yi响应式数据：</strong></p>
+</li>
+<li><p>reactive <strong>的作用：</strong></p>
+<p>​    •    使得 personList 成为响应式数据。当 personList 或其内部的对象属性发生变化时，Vue 会自动更新视图。</p>
+</li>
+</ol>
+<h2 id="整体逻辑总结"><a href="#整体逻辑总结" class="headerlink" title="整体逻辑总结"></a>整体逻辑总结</h2><p>Index.ts <strong>定义了personInter接口和Person类型，用来约束person数据结构</strong></p>
+<p>Person.vue 接收list作为props，通过withDefaults为list设置默认值</p>
+<p>渲染list数据。动态生成列表</p>
+<p>App.vue</p>
+<p>定义一个响应式数据personalist，并可以通过props传递给pweson.vue</p>
+<p><img src="/../images/image-20250128010109534.png" alt="image-20250128010109534"></p>
+<h1 id="vue2生命周期"><a href="#vue2生命周期" class="headerlink" title="vue2生命周期"></a>vue2生命周期</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;person&quot;&gt;</span><br><span class="line">    &lt;h2&gt;当前求和为：&#123; &#123; sum &#125; &#125;&lt;/h2&gt;</span><br><span class="line">    &lt;button @click=&quot;add&quot;&gt;点我sum+1&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能说明：</strong></p>
+<p>​	1.	<strong>数据绑定：</strong></p>
+<p>​	•	{ { sum } } 用来动态展示变量 sum 的值。</p>
+<p>​	•	每次点击按钮，sum 的值增加 1。</p>
+<p>​	2.	<strong>事件绑定：</strong></p>
+<p>​	•	@click&#x3D;”add”：绑定按钮点击事件，触发 add 方法，更新 sum 的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup name=&quot;Person&quot;&gt;</span><br><span class="line">  import &#123; ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted &#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">  // 数据</span><br><span class="line">  let sum = ref(0)</span><br><span class="line"></span><br><span class="line">  // 方法</span><br><span class="line">  function add() &#123;</span><br><span class="line">    sum.value += 1</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 创建</span><br><span class="line">  console.log(&#x27;创建&#x27;)</span><br><span class="line"></span><br><span class="line">  // 挂载前</span><br><span class="line">  onBeforeMount(() =&gt; &#123;</span><br><span class="line">    // console.log(&#x27;挂载前&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 挂载完毕</span><br><span class="line">  onMounted(() =&gt; &#123;</span><br><span class="line">    console.log(&#x27;子---挂载完毕&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 更新前</span><br><span class="line">  onBeforeUpdate(() =&gt; &#123;</span><br><span class="line">    // console.log(&#x27;更新前&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 更新完毕</span><br><span class="line">  onUpdated(() =&gt; &#123;</span><br><span class="line">    // console.log(&#x27;更新完毕&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 卸载前</span><br><span class="line">  onBeforeUnmount(() =&gt; &#123;</span><br><span class="line">    // console.log(&#x27;卸载前&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 卸载完毕</span><br><span class="line">  onUnmounted(() =&gt; &#123;</span><br><span class="line">    // console.log(&#x27;卸载完毕&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250128011042599.png" alt="image-20250128011042599"></p>
+<p>app.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Person v-if=&quot;isShow&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	1.	&lt;Person v-if&#x3D;”isShow” &#x2F;<strong>：</strong></p>
+<p>​	•	条件渲染子组件 Person。</p>
+<p>​	•	当 isShow 为 true 时，&lt;Person &#x2F; 会被挂载。</p>
+<p>​	•	当 isShow 为 false 时，&lt;Person &#x2F;会被卸载。</p>
+<p>脚本部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup name=&quot;App&quot;&gt;</span><br><span class="line">  import Person from &#x27;./components/Person.vue&#x27;</span><br><span class="line">  import &#123; ref, onMounted &#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">  let isShow = ref(true)</span><br><span class="line"></span><br><span class="line">  // 挂载完毕</span><br><span class="line">  onMounted(() =&gt; &#123;</span><br><span class="line">    console.log(&#x27;父---挂载完毕&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能解析：</strong></p>
+<p>​	1.	<strong>引入子组件：</strong></p>
+<p>​	•	Person 是一个子组件，来自 .&#x2F;components&#x2F;Person.vue。</p>
+<p>​	2.	<strong>响应式数据：</strong></p>
+<p>​	•	let isShow &#x3D; ref(true)：定义了一个响应式布尔值 isShow，控制 <Person /> 的显示和隐藏。</p>
+<p>​	3.	<strong>生命周期钩子：</strong></p>
+<p>​	•	onMounted：在 App 组件挂载到 DOM 后执行。这里输出 父—挂载完毕，用于标记父组件挂载完成。</p>
+<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><ol>
+<li><strong>父组件挂载（<strong>App</strong>）</strong></li>
+</ol>
+<p>​	•	isShow 默认为 true。</p>
+<p>​	•	&lt;Person &#x2F; 被挂载到 DOM 中。</p>
+<p>​	•	控制台输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">父---挂载完毕</span><br><span class="line">创建</span><br><span class="line">子---挂载完毕</span><br></pre></td></tr></table></figure>
+
+<p>.	<strong>子组件更新（<strong>Person</strong>）</strong></p>
+<p>​	•	点击按钮时，sum.value 增加 1，触发子组件更新。</p>
+<p>​	•	在更新阶段，执行以下生命周期钩子：</p>
+<p>​	•	onBeforeUpdate</p>
+<p>​	•	onUpdated</p>
+<p>​	3.	<strong>子组件卸载（<strong>Person</strong>）</strong></p>
+<p>​	•	如果将 isShow 设置为 false（例如通过交互），<Person /> 会被卸载。</p>
+<p>​	•	卸载阶段执行：</p>
+<p>​	•	onBeforeUnmount</p>
+<p>​	•	onUnmounted</p>
+<h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a><strong>5. 总结</strong></h3><p><strong>person.vue 的功能</strong></p>
+<p>​	•	通过按钮点击实现 sum 的动态更新。</p>
+<p>​	•	使用 Vue 3 的生命周期钩子监控组件的各个阶段，包括挂载、更新、卸载。</p>
+<p><strong>app.vue 的功能</strong></p>
+<p>​	•	使用 v-if 控制子组件 Person 的挂载和卸载。</p>
+<p>​	•	父组件负责管理子组件的存在与否，同时通过生命周期钩子记录父组件的挂载阶段。</p>
+<p><strong>生命周期运行示意图</strong></p>
+<p>​	1.	<strong>父组件挂载：</strong></p>
+<p>​	•	onMounted -&gt; 输出：父—挂载完毕</p>
+<p>​	2.	<strong>子组件挂载：</strong></p>
+<p>​	•	创建</p>
+<p>​	•	onBeforeMount（未输出）</p>
+<p>​	•	onMounted -&gt; 输出：子—挂载完毕</p>
+<p>​	3.	<strong>子组件更新：</strong></p>
+<p>​	•	onBeforeUpdate</p>
+<p>​	•	onUpdated</p>
+<p>​	4.	<strong>子组件卸载：</strong></p>
+<p>​	•	onBeforeUnmount</p>
+<p>​	•	onUnmounted</p>
+<p><img src="/../images/image-20250128012228275.png" alt="image-20250128012228275"></p>
+<p>对应页面</p>
+<h1 id="Eg2-hook自定义"><a href="#Eg2-hook自定义" class="headerlink" title="Eg2-hook自定义"></a>Eg2-hook自定义</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;person&quot;&gt;</span><br><span class="line">    &lt;h2&gt;当前求和为：&#123; &#123; sum &#125; &#125;，放大10倍后：&#123; &#123; bigSum &#125; &#125;&lt;/h2&gt;</span><br><span class="line">    &lt;button @click=&quot;add&quot;&gt;点我sum+1&lt;/button&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;img v-for=&quot;(dog,index) in dogList&quot; :src=&quot;dog&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;button @click=&quot;getDog&quot;&gt;再来一只小狗&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup name=&quot;Person&quot;&gt;</span><br><span class="line">  import useSum from &#x27;@/hooks/useSum&#x27;</span><br><span class="line">  import useDog from &#x27;@/hooks/useDog&#x27;</span><br><span class="line"></span><br><span class="line">  const &#123;sum,add,bigSum&#125; = useSum()</span><br><span class="line">  const &#123;dogList,getDog&#125; = useDog()</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .person &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">    box-shadow: 0 0 10px;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    padding: 20px;</span><br><span class="line">  &#125;</span><br><span class="line">  button &#123;</span><br><span class="line">    margin: 0 5px;</span><br><span class="line">  &#125;</span><br><span class="line">  li &#123;</span><br><span class="line">    font-size: 20px;</span><br><span class="line">  &#125;</span><br><span class="line">  img &#123;</span><br><span class="line">    height: 100px;</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个是person.vue</p>
+<p>**在模版部分，	**</p>
+<p><strong>•	图片渲染：</strong></p>
+<p><strong>•	使用 v-for 循环 dogList，通过动态绑定 src 和 key 属性渲染小狗图片。</strong></p>
+<p><strong>在脚本部分</strong></p>
+<p>​	<strong>•	引入逻辑模块：</strong></p>
+<p>​	<strong>•	从 useSum.ts 中引入了 sum、add 和 bigSum，负责数值的处理。</strong></p>
+<p>​	<strong>•	从 useDog.ts 中引入了 dogList 和 getDog，负责图片列表的管理和 API 请求。</strong></p>
+<p>​	<strong>•	使用组合式 API：</strong></p>
+<p>​	<strong>•	通过解构的方式，将逻辑解耦到独立的模块中，提高代码的可复用性。</strong></p>
+<p>在useDog.ts模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import &#123; reactive, onMounted &#125; from &#x27;vue&#x27;</span><br><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">  // 数据</span><br><span class="line">  let dogList = reactive([</span><br><span class="line">    &#x27;https://images.dog.ceo/breeds/pembroke/n02113023_4373.jpg&#x27;</span><br><span class="line">  ])</span><br><span class="line">  // 方法</span><br><span class="line">  async function getDog() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">      let result = await axios.get(&#x27;https://dog.ceo/api/breed/pembroke/images/random&#x27;)</span><br><span class="line">      dogList.push(result.data.message)</span><br><span class="line">    &#125; catch (error) &#123;</span><br><span class="line">      alert(error)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 钩子</span><br><span class="line">  onMounted(() =&gt; &#123;</span><br><span class="line">    getDog()</span><br><span class="line">  &#125;)</span><br><span class="line">  // 向外部提供东西</span><br><span class="line">  return &#123; dogList, getDog &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能分析</strong>：</p>
+<p>​	1.	<strong>响应式数据</strong>：</p>
+<p>​	•	使用 reactive 定义了图片列表 dogList，默认包含一张图片。</p>
+<p>​	2.	<strong>API 请求方法</strong>：</p>
+<p>​	•	getDog 方法使用 Axios 请求 <a target="_blank" rel="noopener" href="https://dog.ceo/">https://dog.ceo</a> 提供的小狗图片 API。</p>
+<p>​	•	将获取的图片 URL 推入 dogList 中。</p>
+<p>​	•	通过 try-catch 捕获请求错误。</p>
+<p>​	3.	<strong>生命周期钩子</strong>：</p>
+<p>​	•	在组件挂载时 (onMounted) 自动调用 getDog，预加载一张小狗图片。</p>
+<p><strong>关键点</strong>：</p>
+<p>​	•	合理使用 reactive 管理数组的响应式更新。</p>
+<p>​	•	在组件加载时预先获取数据，优化用户体验。</p>
+<p>在这里面有一个地方发送异步请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zlet result = await axios.get(&#x27;https://dog.ceo/api/breed/pembroke/images/random&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>​	axios.get()：</p>
+<p>​	•	使用 axios 发起一个 HTTP GET 请求。</p>
+<p>​	•	请求地址是 <a target="_blank" rel="noopener" href="https://dog.ceo/api/breed/pembroke/images/random%EF%BC%8C%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8F%90%E4%BE%9B%E9%9A%8F%E6%9C%BA%E5%B0%8F%E7%8B%97%E5%9B%BE%E7%89%87%E7%9A%84">https://dog.ceo/api/breed/pembroke/images/random，这是一个提供随机小狗图片的</a> API。</p>
+<p>​	•	返回的数据是一个包含 message 属性的 JSON 对象</p>
+<p>​	await：</p>
+<p>​	•	await 暂停代码的执行，直到请求完成并返回结果。</p>
+<p>​	•	返回值存储在 result 变量中，具体数据保存在 result.data 中。</p>
+<p>在useSum.ts模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import &#123; ref, onMounted, computed &#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">  // 数据</span><br><span class="line">  let sum = ref(0)</span><br><span class="line">  let bigSum = computed(() =&gt; &#123;</span><br><span class="line">    return sum.value * 10</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 方法</span><br><span class="line">  function add() &#123;</span><br><span class="line">    sum.value += 1</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 钩子</span><br><span class="line">  onMounted(() =&gt; &#123;</span><br><span class="line">    add()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 给外部提供东西</span><br><span class="line">  return &#123; sum, add, bigSum &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>功能分析</strong>：</p>
+<p>​	1.	<strong>响应式数据</strong>：</p>
+<p>​	•	使用 ref 定义了单一响应式数据 sum。</p>
+<p>​	•	使用 computed 定义了计算属性 bigSum，动态计算 sum 的 10 倍值。</p>
+<p>​	2.	<strong>方法</strong>：</p>
+<p>​	•	add 方法使 sum 增加 1。</p>
+<p>​	3.	<strong>生命周期钩子</strong>：</p>
+<p>​	•	在 onMounted 中调用 add，在组件加载时使 sum 初始值为 1。</p>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p>在 Vue 3 中，路由管理通常通过 Vue Router 实现。路由的主要功能是实现页面的导航和组件的动态渲染。以下是关于路由的核心概念和代码实现的详细说明。</p>
+<p><strong>1. 什么是路由？</strong></p>
+<p>路由是一种通过 URL 映射组件或视图的方式。它允许用户在单页应用（SPA）中导航，而无需重新加载整个页面。</p>
+<p>例如：</p>
+<p>​	•	&#x2F;home 映射到 Home 组件。</p>
+<p>​	•	&#x2F;about 映射到 About 组件。</p>
+<p><img src="/../images/image-20250128081820700.png" alt="image-20250128081820700"></p>
+<h2 id="页面组件"><a href="#页面组件" class="headerlink" title="页面组件"></a>页面组件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;home&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://www.atguigu.com/images/index_new/logo.png&quot; alt=&quot;&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>功能</strong>：展示一个居中的图片。</p>
+<p>​	•	<strong>样式</strong>：通过 flex 布局将内容水平和垂直居中。</p>
+<p>​	•	<strong>用途</strong>：作为首页内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;Home&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>作用</strong>：</p>
+<p>​	•	表示该组件使用 Vue 3 的 <script setup> 语法。</p>
+<p>​	•	lang=&quot;ts&quot; 表示代码使用 TypeScript，增加类型安全。</p>
+<p>​	•	name=&quot;Home&quot; 给组件命名为 Home，方便调试和递归调用。</p>
+<p>样式部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .home &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: center;</span><br><span class="line">    align-items: center;</span><br><span class="line">    height: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>作用</strong>：</p>
+<p>​	•	定义组件的样式。</p>
+<p>​	•	scoped 表示样式只作用于当前组件，不影响其他组件。</p>
+<p>​	•	<strong>细节解析</strong>：</p>
+<p>​	•	display: flex;：</p>
+<p>​	•	使用 Flex 布局，使子元素容易居中对齐。</p>
+<p>​	•	justify-content: center;：</p>
+<p>​	<strong>•	子元素水平居中。</strong></p>
+<p>​	<strong>•	align-items: center;：</strong></p>
+<p>​	•	子元素垂直居中。</p>
+<p>​	•	height: 100%;：</p>
+<p>​	•	根容器的高度设置为父级容器的 100%。</p>
+<h3 id="About-vue"><a href="#About-vue" class="headerlink" title="About.vue"></a>About.vue</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;about&quot;&gt;</span><br><span class="line">    &lt;h2&gt;大家好，欢迎来到尚硅谷直播间&lt;/h2&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;About&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.about &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">  height: 100%;</span><br><span class="line">  color: rgb(85, 84, 84);</span><br><span class="line">  font-size: 18px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="News-vue"><a href="#News-vue" class="headerlink" title="News.vue"></a>News.vue</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;news&quot;&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻001&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻002&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻003&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;新闻004&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;News&quot;&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">/* 新闻 */</span><br><span class="line">.news &#123;</span><br><span class="line">  padding: 0 20px;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.news ul &#123;</span><br><span class="line">  margin-top: 30px;</span><br><span class="line">  list-style: none;</span><br><span class="line">  padding-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.news li&gt;a &#123;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  line-height: 40px;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">  color: #64967E;</span><br><span class="line">  text-shadow: 0 0 1px rgb(0, 84, 0);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个路由器，并暴露出去</span><br><span class="line"></span><br><span class="line">// 第一步：引入createRouter</span><br><span class="line">import &#123;createRouter,createWebHistory&#125; from &#x27;vue-router&#x27;</span><br><span class="line">// 引入一个一个可能要呈现组件</span><br><span class="line">import Home from &#x27;@/components/Home.vue&#x27;</span><br><span class="line">import News from &#x27;@/components/News.vue&#x27;</span><br><span class="line">import About from &#x27;@/components/About.vue&#x27;</span><br><span class="line"></span><br><span class="line">// 第二步：创建路由器</span><br><span class="line">const router = createRouter(&#123;</span><br><span class="line">  history:createWebHistory(), //路由器的工作模式（稍后讲解） </span><br><span class="line">  routes:[ //一个一个的路由规则</span><br><span class="line">    &#123;</span><br><span class="line">      path:&#x27;/home&#x27;,</span><br><span class="line">      component:Home</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path:&#x27;/news&#x27;,</span><br><span class="line">      component:News</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path:&#x27;/about&#x27;,</span><br><span class="line">      component:About</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 暴露出去router</span><br><span class="line">export default router</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​	•	<strong>createRouter</strong>：</p>
+<p>​	•	创建一个路由实例。</p>
+<p>​	•	<strong>createWebHistory</strong>：</p>
+<p>​	•	使用 HTML5 的历史记录模式。</p>
+<p>​	•	<strong>routes</strong>：</p>
+<p>​	•	定义路由规则，每条规则对应一个路径和组件。</p>
+<h2 id="应用入口"><a href="#应用入口" class="headerlink" title="应用入口"></a>应用入口</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 引入createApp用于创建应用</span><br><span class="line">import &#123;createApp&#125; from &#x27;vue&#x27;</span><br><span class="line">// 引入App根组件</span><br><span class="line">import App from &#x27;./App.vue&#x27;</span><br><span class="line">// 引入路由器</span><br><span class="line">import router from &#x27;./router&#x27;</span><br><span class="line"></span><br><span class="line">// 创建一个应用</span><br><span class="line">const app = createApp(App)</span><br><span class="line">// 使用路由器</span><br><span class="line">app.use(router)</span><br><span class="line">// 挂载整个应用到app容器中</span><br><span class="line">app.mount(&#x27;#app&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="App-vue"><a href="#App-vue" class="headerlink" title="App.vue"></a>App.vue</h2><h3 id="模版部分-1"><a href="#模版部分-1" class="headerlink" title="模版部分"></a>模版部分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h2 class=&quot;title&quot;&gt;Vue路由测试&lt;/h2&gt;</span><br><span class="line">    &lt;!-- 导航区 --&gt;</span><br><span class="line">    &lt;div class=&quot;navigate&quot;&gt;</span><br><span class="line">      &lt;RouterLink to=&quot;/home&quot; active-class=&quot;xiaozhupeiqi&quot;&gt;首页&lt;/RouterLink&gt;</span><br><span class="line">      &lt;RouterLink to=&quot;/news&quot; active-class=&quot;xiaozhupeiqi&quot;&gt;新闻&lt;/RouterLink&gt;</span><br><span class="line">      &lt;RouterLink to=&quot;/about&quot; active-class=&quot;xiaozhupeiqi&quot;&gt;关于&lt;/RouterLink&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;!-- 展示区 --&gt;</span><br><span class="line">    &lt;div class=&quot;main-content&quot;&gt;</span><br><span class="line">      &lt;RouterView&gt;&lt;/RouterView&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	&lt;RouterLink：</p>
+<p>​	•	Vue Router 提供的导航组件，类似于 HTML 的 <a> 标签。</p>
+<p>​	•	to=&quot;/home&quot;：指定点击该链接时跳转的路由路径。</p>
+<p>​	•	active-class=&quot;xiaozhupeiqi&quot;：定义激活时的样式类名，当链接的路由匹配当前路径时会自动应用。</p>
+<p>​	•	导航链接功能：</p>
+<p>​	•	首页：跳转到 /home 路由。</p>
+<p>​	•	新闻：跳转到 /news 路由。</p>
+<p>​	•	关于：跳转到 /about 路由。</p>
+<p>在展示区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;main-content&quot;&gt;</span><br><span class="line">  &lt;RouterView&gt;&lt;/RouterView&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	&lt;RouterView :</p>
+<p>​	•	Vue Router 提供的内置组件，用于渲染当前路由匹配的组件。</p>
+<p>​	•	根据用户点击的导航链接，&lt;RouterView会动态切换为对应的组件内容，例如 Home.vue、News.vue 或 About.vue。</p>
+<h3 id="脚本部分-1"><a href="#脚本部分-1" class="headerlink" title="脚本部分"></a>脚本部分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup name=&quot;App&quot;&gt;</span><br><span class="line">  import &#123; RouterView, RouterLink &#125; from &#x27;vue-router&#x27;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>逐行解析</strong></p>
+<p><strong>(1) lang=&quot;ts&quot;</strong></p>
+<p>​	•	表示当前脚本部分使用 <strong>TypeScript</strong>，增强类型安全。</p>
+<p>​	•	允许对变量、函数等进行类型声明。</p>
+<p><strong>(2) setup</strong></p>
+<p>​	•	使用 Vue 3 的组合式 API 的语法糖。</p>
+<p>​	•	在 &lt;script setup中定义的变量和方法，可以直接在模板中使用，无需显式返回。</p>
+<p><strong>(3) name=&quot;App&quot;</strong></p>
+<p>​	•	为当前组件指定名称为 App。</p>
+<p>​	•	在开发者工具（如 Vue DevTools）中调试时，可以看到组件名称为 App，便于区分。</p>
+<p><strong>(4) 引入 Vue Router 的组件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; RouterView, RouterLink &#125; from &#x27;vue-router&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	RouterLink：用于定义路由导航链接。</p>
+<p>​	•	RouterView：用于动态渲染路由匹配的组件。</p>
+<h3 id="样式部分"><a href="#样式部分" class="headerlink" title="样式部分"></a>样式部分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">.title &#123;</span><br><span class="line">  text-align: center;</span><br><span class="line">  word-spacing: 5px;</span><br><span class="line">  margin: 30px 0;</span><br><span class="line">  height: 70px;</span><br><span class="line">  line-height: 70px;</span><br><span class="line">  background-image: linear-gradient(45deg, gray, white);</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">  box-shadow: 0 0 2px;</span><br><span class="line">  font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line">.navigate &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-around;</span><br><span class="line">  margin: 0 100px;</span><br><span class="line">&#125;</span><br><span class="line">.navigate a &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  text-align: center;</span><br><span class="line">  width: 90px;</span><br><span class="line">  height: 40px;</span><br><span class="line">  line-height: 40px;</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">  background-color: gray;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">  color: white;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  letter-spacing: 5px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250128085015970.png" alt="image-20250128085015970"></p>
+<p><img src="/../images/image-20250128085239563.png" alt="image-20250128085239563"></p>
+<p><img src="/../images/image-20250128085251179.png" alt="image-20250128085251179"></p>
+<p>xiaozhupeiqi 激活后呈现的</p>
+<p><img src="/../images/image-20250128085312669.png" alt="image-20250128085312669"></p>
+<p>这个就是超链接&lt;a的时候，未点击前呈现的</p>
+<p>视频中没有讲这一部分，少了一个知识点的讲解就是routeLink-&gt;转换为&lt;a标签</p>
+<p><img src="/../images/image-20250128085843036.png" alt="image-20250128085843036"></p>
+<p><img src="/../images/image-20250128090039568.png" alt="image-20250128090039568"></p>
+<p><img src="/../images/image-20250128090244976.png" alt="image-20250128090244976"></p>
+<h1 id="Query-参数-路由"><a href="#Query-参数-路由" class="headerlink" title="Query 参数-路由"></a>Query 参数-路由</h1><h2 id="Header-ts"><a href="#Header-ts" class="headerlink" title="Header.ts"></a>Header.ts</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h2 class=&quot;title&quot;&gt;Vue路由测试&lt;/h2&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;Header&quot;&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .title &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    word-spacing: 5px;</span><br><span class="line">    margin: 30px 0;</span><br><span class="line">    height: 70px;</span><br><span class="line">    line-height: 70px;</span><br><span class="line">    background-image: linear-gradient(45deg, gray, white);</span><br><span class="line">    border-radius: 10px;</span><br><span class="line">    box-shadow: 0 0 2px;</span><br><span class="line">    font-size: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="About-ts"><a href="#About-ts" class="headerlink" title="About.ts"></a>About.ts</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;about&quot;&gt;</span><br><span class="line">    &lt;h2&gt;大家好，欢迎来到尚硅谷直播间&lt;/h2&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;About&quot;&gt;</span><br><span class="line">  import &#123;onMounted,onUnmounted&#125; from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">  onMounted(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;About组件挂载了&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line">  onUnmounted(()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;About组件卸载了&#x27;)</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.about &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">  height: 100%;</span><br><span class="line">  color: rgb(85, 84, 84);</span><br><span class="line">  font-size: 18px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250128092207216.png" alt="image-20250128092207216"></p>
+<h2 id="Detail-ts"><a href="#Detail-ts" class="headerlink" title="Detail.ts"></a>Detail.ts</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;ul class=&quot;news-list&quot;&gt;</span><br><span class="line">    &lt;li&gt;编号：&#123; &#123; query.id &#125; &#125;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;标题：&#123; &#123; query.title &#125; &#125;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;内容：&#123; &#123; query.content &#125; &#125;&lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;About&quot;&gt;</span><br><span class="line">  import &#123;toRefs&#125; from &#x27;vue&#x27;</span><br><span class="line">  import &#123;useRoute&#125; from &#x27;vue-router&#x27;</span><br><span class="line">  let route = useRoute()</span><br><span class="line">  let &#123;query&#125; = toRefs(route)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .news-list &#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">    padding-left: 20px;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .news-list&gt;li &#123;</span><br><span class="line">    line-height: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>脚本部分</strong></p>
+<p><strong>解析</strong></p>
+<p><strong>(1) useRoute</strong></p>
+<p>​	•	<strong>定义</strong>：</p>
+<p>​	•	useRoute 是 Vue Router 提供的组合式 API，<strong>用于获取当前路由对象。</strong></p>
+<p>​	•	<strong>作用</strong>：</p>
+<p>​	•	返回当前激活的路由信息，包括路径、参数、查询字符串等。</p>
+<p>​	•	<strong>返回值</strong>：</p>
+<p>​	•	<strong>route 是一个响应式对象，包含当前路由的所有信息</strong>，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &quot;/news&quot;,</span><br><span class="line">  query: &#123;</span><br><span class="line">    id: &quot;123&quot;,</span><br><span class="line">    title: &quot;Vue Router&quot;,</span><br><span class="line">    content: &quot;这是一个简单的示例&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  params: &#123; ... &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>(2) toRefs</strong></p>
+<p>​	•	<strong>定义</strong>：</p>
+<p>​	•	toRefs 是 Vue 的组合式 API，用于将响应式对象的属性转换为独立的响应式引用。</p>
+<p>​	•	<strong>作用</strong>：</p>
+<p>​	•	<strong>将 route.query 转换为响应式引用，使得在模板中访问 query 的属性时，能够保持响应式更新。</strong></p>
+<p>​	•	<strong>代码作用</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let &#123; query &#125; = toRefs(route)</span><br></pre></td></tr></table></figure>
+
+<p><strong>(3) 数据流程</strong></p>
+<p>​	•	useRoute() 获取当前路由信息。</p>
+<p>​	•	通过 toRefs(route) 解构出 query，用于动态绑定数据。</p>
+<h1 id="Params"><a href="#Params" class="headerlink" title="Params"></a>Params</h1><p><img src="/../images/image-20250128094158019.png" alt="image-20250128094158019"></p>
+<p><img src="/../images/image-20250128094312633.png" alt="image-20250128094312633"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;news&quot;&gt;</span><br><span class="line">    &lt;!-- 导航区 --&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for=&quot;news in newsList&quot; :key=&quot;news.id&quot;&gt;</span><br><span class="line">        &lt;!-- 第一种写法 --&gt;</span><br><span class="line">        &lt;!-- &lt;RouterLink :to=&quot;`/news/detail/$&#123;news.id&#125;/$&#123;news.title&#125;/$&#123;news.content&#125;`&quot;&gt;&#123; &#123;news.title&#125; &#125;&lt;/RouterLink&gt; --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 第二种写法 --&gt;</span><br><span class="line">        &lt;RouterLink </span><br><span class="line">          :to=&quot;&#123;</span><br><span class="line">            name:&#x27;xiang&#x27;,</span><br><span class="line">            params:&#123;</span><br><span class="line">              id:news.id,</span><br><span class="line">              title:news.title,</span><br><span class="line">              content:news.content</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;&quot;</span><br><span class="line">        &gt;</span><br><span class="line">          &#123; &#123;news.title&#125; &#125;</span><br><span class="line">        &lt;/RouterLink&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    &lt;!-- 展示区 --&gt;</span><br><span class="line">    &lt;div class=&quot;news-content&quot;&gt;</span><br><span class="line">      &lt;RouterView&gt;&lt;/RouterView&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;News&quot;&gt;</span><br><span class="line">  import &#123;reactive&#125; from &#x27;vue&#x27;</span><br><span class="line">  import &#123;RouterView,RouterLink&#125; from &#x27;vue-router&#x27;</span><br><span class="line"></span><br><span class="line">  const newsList = reactive([</span><br><span class="line">    &#123;id:&#x27;asfdtrfay01&#x27;,title:&#x27;很好的抗癌食物&#x27;,content:&#x27;西蓝花&#x27;&#125;,</span><br><span class="line">    &#123;id:&#x27;asfdtrfay02&#x27;,title:&#x27;如何一夜暴富&#x27;,content:&#x27;学IT&#x27;&#125;,</span><br><span class="line">    &#123;id:&#x27;asfdtrfay03&#x27;,title:&#x27;震惊，万万没想到&#x27;,content:&#x27;明天是周一&#x27;&#125;,</span><br><span class="line">    &#123;id:&#x27;asfdtrfay04&#x27;,title:&#x27;好消息！好消息！&#x27;,content:&#x27;快过年了&#x27;&#125;</span><br><span class="line">  ])</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">/* 新闻 */</span><br><span class="line">.news &#123;</span><br><span class="line">  padding: 0 20px;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.news ul &#123;</span><br><span class="line">  margin-top: 30px;</span><br><span class="line">  /* list-style: none; */</span><br><span class="line">  padding-left: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.news li::marker &#123;</span><br><span class="line">  color: #64967E;</span><br><span class="line">&#125;</span><br><span class="line">.news li&gt;a &#123;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  line-height: 40px;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">  color: #64967E;</span><br><span class="line">  text-shadow: 0 0 1px rgb(0, 84, 0);</span><br><span class="line">&#125;</span><br><span class="line">.news-content &#123;</span><br><span class="line">  width: 70%;</span><br><span class="line">  height: 90%;</span><br><span class="line">  border: 1px solid;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个是new.vue</p>
+<p><img src="/../images/image-20250128095252643.png" alt="image-20250128095252643"></p>
+<p><img src="/../images/image-20250128095646602.png" alt="image-20250128095646602"></p>
+<h1 id="Pinia"><a href="#Pinia" class="headerlink" title="Pinia"></a>Pinia</h1><p>Count.vue</p>
+<p><strong>模版部分</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;count&quot;&gt;</span><br><span class="line">    &lt;h2&gt;当前求和为：&#123; &#123; sum &#125; &#125;&lt;/h2&gt;</span><br><span class="line">    &lt;select v-model.number=&quot;n&quot;&gt;</span><br><span class="line">      &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;</span><br><span class="line">      &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;</span><br><span class="line">      &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">    &lt;button @click=&quot;add&quot;&gt;加&lt;/button&gt;</span><br><span class="line">    &lt;button @click=&quot;minus&quot;&gt;减&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>•	使用 { { sum } } 动态绑定 sum 的值，显示当前的求和结果。</p>
+<p>​	2.	<strong>选择操作数</strong>：</p>
+<p>​	•	使用 &lt;select 元素，让用户选择一个数字（1、2 或 3）。</p>
+<p>​	•	通过 v-model.number=&quot;n&quot; 双向绑定选中的值到变量 n，并将其转换为数值。</p>
+<ol start="3">
+<li><strong>加减操作</strong>：</li>
+</ol>
+<p>​	•	点击“加”按钮时调用 add 方法。</p>
+<p>​	•	点击“减”按钮时调用 minus 方法。</p>
+<p><strong>脚本部分</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;Count&quot;&gt;</span><br><span class="line">  import &#123; ref &#125; from &quot;vue&quot;;</span><br><span class="line">  // 数据</span><br><span class="line">  let sum = ref(1) // 当前求和</span><br><span class="line">  let n = ref(1) // 用户选择的数字</span><br><span class="line"></span><br><span class="line">  // 方法</span><br><span class="line">  function add()&#123;</span><br><span class="line">    sum.value += n.value</span><br><span class="line">  &#125;</span><br><span class="line">  function minus()&#123;</span><br><span class="line">    sum.value -= n.value</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​	1.	ref <strong>定义响应式数据</strong>：</p>
+<p>​	•	sum：当前求和，初始值为 1。</p>
+<p>​	•	n：用户选择的数字，初始值为 1。</p>
+<p>​	•	响应式数据会自动更新绑定到模板的内容。</p>
+<p>​	2.	<strong>方法功能</strong>：</p>
+<p>​	•	add：将选中的数字 n.value 加到 sum.value 上。</p>
+<p>​	•	minus：从 sum.value 中减去 n.value。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;LoveTalk&quot;&gt;</span><br><span class="line">  import &#123; reactive &#125; from &#x27;vue&#x27;</span><br><span class="line">  import axios from &quot;axios&quot;;</span><br><span class="line">  import &#123; nanoid &#125; from &#x27;nanoid&#x27;</span><br><span class="line">  // 数据</span><br><span class="line">  let talkList = reactive([</span><br><span class="line">    &#123;id:&#x27;ftrfasdf01&#x27;,title:&#x27;今天你有点怪，哪里怪？怪好看的！&#x27;&#125;,</span><br><span class="line">    &#123;id:&#x27;ftrfasdf02&#x27;,title:&#x27;草莓、蓝莓、蔓越莓，今天想我了没？&#x27;&#125;,</span><br><span class="line">    &#123;id:&#x27;ftrfasdf03&#x27;,title:&#x27;心里给你留了一块地，我的死心塌地&#x27;&#125;</span><br><span class="line">  ])</span><br><span class="line">  // 方法</span><br><span class="line">  async function getLoveTalk()&#123;</span><br><span class="line">    // 发请求，下面这行的写法是：连续解构赋值+重命名</span><br><span class="line">    let &#123;data:&#123;content:title&#125; &#125; = await axios.get(&#x27;https://api.uomg.com/api/rand.qinghua?format=json&#x27;)</span><br><span class="line">    // 把请求回来的字符串，包装成一个对象</span><br><span class="line">    let obj = &#123;id:nanoid(),title&#125;</span><br><span class="line">    // 放到数组中</span><br><span class="line">    talkList.unshift(obj)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在app.vue里面写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Count/&gt;</span><br><span class="line">  &lt;br&gt;</span><br><span class="line">  &lt;LoveTalk/&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot; name=&quot;App&quot;&gt;</span><br><span class="line">  import Count from &#x27;./components/Count.vue&#x27;</span><br><span class="line">  import LoveTalk from &#x27;./components/LoveTalk.vue&#x27;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pinia</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250128103405430.png" alt="image-20250128103405430"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;createApp&#125; from &#x27;vue&#x27;</span><br><span class="line">import App from &#x27;./App.vue&#x27;</span><br><span class="line">// 第一步：引入pinia</span><br><span class="line">import &#123;createPinia&#125; from &#x27;pinia&#x27;</span><br><span class="line"></span><br><span class="line">const app = createApp(App)</span><br><span class="line">// 第二步：创建pinia</span><br><span class="line">const pinia = createPinia()</span><br><span class="line">// 第三步：安装pinia</span><br><span class="line">app.use(pinia)</span><br><span class="line">app.mount(&#x27;#app&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250128103603995.png" alt="image-20250128103603995"></p>
+<p>小菠萝出来啦！！！</p>
+<h1 id="存储-读取数据"><a href="#存储-读取数据" class="headerlink" title="存储+读取数据"></a>存储+读取数据</h1><p>创建一个store文件夹</p>
+<p>Count.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123;defineStore&#125; from &#x27;pinia&#x27;</span><br><span class="line"></span><br><span class="line">export const useCountStore = defineStore(&#x27;count&#x27;,&#123;</span><br><span class="line">  // 真正存储数据的地方</span><br><span class="line">  state()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      sum:6</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>Lovetalk.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123;defineStore&#125; from &#x27;pinia&#x27;</span><br><span class="line"></span><br><span class="line">export const useTalkStore = defineStore(&#x27;talk&#x27;,&#123;</span><br><span class="line">  // 真正存储数据的地方</span><br><span class="line">  state()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      talkList:[</span><br><span class="line">        &#123;id:&#x27;ftrfasdf01&#x27;,title:&#x27;今天你有点怪，哪里怪？怪好看的！&#x27;&#125;,</span><br><span class="line">        &#123;id:&#x27;ftrfasdf02&#x27;,title:&#x27;草莓、蓝莓、蔓越莓，今天想我了没？&#x27;&#125;,</span><br><span class="line">        &#123;id:&#x27;ftrfasdf03&#x27;,title:&#x27;心里给你留了一块地，我的死心塌地&#x27;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import &#123;defineStore&#125; from &#x27;pinia&#x27;</span><br><span class="line"></span><br><span class="line">export const useCountStore = defineStore(&#x27;count&#x27;,&#123;</span><br><span class="line">  // actions里面放置的是一个一个的方法，用于响应组件中的“动作”</span><br><span class="line">  actions:&#123;</span><br><span class="line">    increment(value)&#123;</span><br><span class="line">      console.log(&#x27;increment被调用了&#x27;,value)</span><br><span class="line">      if( this.sum &lt; 10)&#123;</span><br><span class="line">        // 修改数据（this是当前的store）</span><br><span class="line">        this.sum += value</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  // 真正存储数据的地方</span><br><span class="line">  state()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      sum:6,</span><br><span class="line">      school:&#x27;atguigu&#x27;,</span><br><span class="line">      address:&#x27;宏福科技园&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import &#123;defineStore&#125; from &#x27;pinia&#x27;</span><br><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line">import &#123;nanoid&#125; from &#x27;nanoid&#x27;</span><br><span class="line"></span><br><span class="line">export const useTalkStore = defineStore(&#x27;talk&#x27;,&#123;</span><br><span class="line">  actions:&#123;</span><br><span class="line">    async getATalk()&#123;</span><br><span class="line">      // 发请求，下面这行的写法是：连续解构赋值+重命名</span><br><span class="line">      let &#123;data:&#123;content:title&#125; &#125; = await axios.get(&#x27;https://api.uomg.com/api/rand.qinghua?format=json&#x27;)</span><br><span class="line">      // 把请求回来的字符串，包装成一个对象</span><br><span class="line">      let obj = &#123;id:nanoid(),title&#125;</span><br><span class="line">      // 放到数组中</span><br><span class="line">      this.talkList.unshift(obj)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  // 真正存储数据的地方</span><br><span class="line">  state()&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      talkList:[</span><br><span class="line">        &#123;id:&#x27;ftrfasdf01&#x27;,title:&#x27;今天你有点怪，哪里怪？怪好看的！&#x27;&#125;,</span><br><span class="line">        &#123;id:&#x27;ftrfasdf02&#x27;,title:&#x27;草莓、蓝莓、蔓越莓，今天想我了没？&#x27;&#125;,</span><br><span class="line">        &#123;id:&#x27;ftrfasdf03&#x27;,title:&#x27;心里给你留了一块地，我的死心塌地&#x27;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>现在展开解释</strong></p>
+<p><strong>整体功能</strong></p>
+<p>这段代码通过 Pinia 定义了一个 Store，用于管理一个情话列表 talkList，并提供了一个方法 getATalk 来向 API 请求新的情话并添加到 talkList 中。</p>
+<p><strong>1. 引入的依赖</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; defineStore &#125; from &#x27;pinia&#x27;</span><br><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line">import &#123; nanoid &#125; from &#x27;nanoid&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong></p>
+<p>​	1.	defineStore：</p>
+<p>​	•	从 pinia 中引入，用于定义一个新的 Store。</p>
+<p>​	•	Store 是状态管理的核心，用于存储和管理全局共享的状态。</p>
+<p>​	2.	axios：</p>
+<p>​	•	用于发送 HTTP 请求。</p>
+<p>​	•	这里通过 axios.get() 从 <a target="_blank" rel="noopener" href="https://api.uomg.com/api/rand.qinghua">https://api.uomg.com/api/rand.qinghua</a> 获取随机土味情话。</p>
+<p>​	<strong>3.	nanoid：</strong></p>
+<p>​	<strong>•	一个小型的 ID 生成工具。</strong></p>
+<p>​	<strong>•	用于为每条情话生成唯一的 ID，确保 talkList 中的每条情话都有一个独特的标识。</strong></p>
+<p><strong>2. 定义 Store</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export const useTalkStore = defineStore(&#x27;talk&#x27;, &#123; ... &#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong></p>
+<p>​	1.	export const useTalkStore：</p>
+<p>​	•	定义了一个 Store，命名为 useTalkStore。</p>
+<p>​	•	这个名字的命名规则通常是 use 开头，以表明它是一个 Store。</p>
+<p>​	2.	defineStore(&#39;talk&#39;, {...})：</p>
+<p>​	•	&#39;talk&#39; 是这个 Store 的唯一标识符，用于区分其他 Store。</p>
+<p>​	•	第二个参数是 Store 的配置对象，包含 state 和 actions 等。</p>
+<p><strong>3. state：存储数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">state() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    talkList: [</span><br><span class="line">      &#123; id: &#x27;ftrfasdf01&#x27;, title: &#x27;今天你有点怪，哪里怪？怪好看的！&#x27; &#125;,</span><br><span class="line">      &#123; id: &#x27;ftrfasdf02&#x27;, title: &#x27;草莓、蓝莓、蔓越莓，今天想我了没？&#x27; &#125;,</span><br><span class="line">      &#123; id: &#x27;ftrfasdf03&#x27;, title: &#x27;心里给你留了一块地，我的死心塌地&#x27; &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong></p>
+<p>​	1.	state：</p>
+<p>​	•	一个函数，返回一个对象，这个对象定义了 Store 中的数据。</p>
+<p>​	•	在这里，state 定义了一个情话列表 talkList。</p>
+<p>​	2.	talkList：</p>
+<p>​	•	是一个数组，存储了情话的初始数据。</p>
+<p>​	•	每条情话是一个对象，包含以下字段：</p>
+<p>​	•	id：情话的唯一标识符。</p>
+<p>​	•	title：情话的具体内容。</p>
+<p>​	3.	<strong>响应式特性</strong>：</p>
+<p>​	•	Pinia 的 state 是响应式的。</p>
+<p>​	•	当 talkList 数据发生变化时，绑定到 talkList 的视图会自动更新。</p>
+<p><strong>4. actions：定义方法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">  async getATalk() &#123;</span><br><span class="line">    let &#123; data: &#123; content: title &#125; &#125; = await axios.get(&#x27;https://api.uomg.com/api/rand.qinghua?format=json&#x27;)</span><br><span class="line">    let obj = &#123; id: nanoid(), title &#125;</span><br><span class="line">    this.talkList.unshift(obj)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解析</strong></p>
+<p>​	1.	actions：</p>
+<p>​	•	定义了 Store 中的方法，通常用于处理复杂逻辑或修改状态。</p>
+<p>​	•	getATalk 是一个异步方法，用于从 API 获取新的情话并更新 talkList。</p>
+<p>​	2.	getATalk <strong>的工作流程</strong>：</p>
+<p>​	•	<strong>发送请求</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let &#123; data: &#123; content: title &#125; &#125; = await axios.get(&#x27;https://api.uomg.com/api/rand.qinghua?format=json&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>​	•	使用 axios.get() 发送请求，从 API 获取情话。</p>
+<p>​	•	解构赋值提取 content 字段，并将其重命名为 title。</p>
+<p>​	•	<strong>创建新对象</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123; id: nanoid(), title &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	•	使用 nanoid() 生成一个唯一的 ID。</p>
+<p>​	•	创建一个包含 id 和 title 的新情话对象。</p>
+<p>​	•	<strong>更新</strong> talkList：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.talkList.unshift(obj)</span><br></pre></td></tr></table></figure>
+
+<p>•	使用 unshift 方法，将新情话添加到 talkList 的开头。</p>
+<p>​	•	由于 talkList 是响应式的，更新数据后，绑定到 talkList 的 UI 会自动更新。</p>
+<hr>
+<p><img src="/../images/image-20250128104601061.png" alt="image-20250128104601061"></p>
+<p><strong>1. storeToRefs 的使用</strong></p>
+<p>storeToRefs 是 Pinia 提供的一个工具函数，主要用于从 Store 中提取状态（state）和 Getter 的响应式引用，确保解构后不会丢失响应性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import &#123; storeToRefs &#125; from &#x27;pinia&#x27;</span><br><span class="line"></span><br><span class="line">const store = useSomeStore()</span><br><span class="line">const &#123; stateProp, getterProp &#125; = storeToRefs(store)</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用</strong></p>
+<p>​	•	将 state 和 getter 转换为响应式 ref。</p>
+<p>​	•	解构 Store 中的属性时，防止响应性丢失。</p>
+<p><strong>2. getters 的使用</strong></p>
+<p><strong>Pinia 的 getters 是类似于 Vuex 中的计算属性，用于对 state 的值进行派生计算。</strong></p>
+<figure class="highlight plaintext"><figcaption><span>const useTalkStore </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  state: () =&gt; (&#123;</span><br><span class="line">    talkList: [</span><br><span class="line">      &#123; id: &#x27;1&#x27;, title: &#x27;情话一&#x27; &#125;,</span><br><span class="line">      &#123; id: &#x27;2&#x27;, title: &#x27;情话二&#x27; &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;),</span><br><span class="line">  getters: &#123;</span><br><span class="line">    talkCount: (state) =&gt; state.talkList.length // 返回情话总数</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; useTalkStore &#125; from &#x27;@/stores/talkStore&#x27;</span><br><span class="line"></span><br><span class="line">const talkStore = useTalkStore()</span><br><span class="line"></span><br><span class="line">// 直接访问 getter</span><br><span class="line">console.log(talkStore.talkCount) // 输出情话总数</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. $subscribe 的使用</strong></p>
+<p>$subscribe 是 Pinia 提供的一个方法，用于监听 Store 中 state 和 action 的变化。</p>
+<p><strong>语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">store.$subscribe((mutation, state) =&gt; &#123;</span><br><span class="line">  console.log(mutation) // 包含 type 和 payload</span><br><span class="line">  console.log(state)    // 当前状态</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. store 组合式写法</strong></p>
+<p>Pinia 支持组合式 API（Composition API）风格的 Store 定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">export const useTalkStore = defineStore(&#x27;talk&#x27;, () =&gt; &#123;</span><br><span class="line">  const talkList = ref([</span><br><span class="line">    &#123; id: &#x27;1&#x27;, title: &#x27;情话一&#x27; &#125;,</span><br><span class="line">    &#123; id: &#x27;2&#x27;, title: &#x27;情话二&#x27; &#125;</span><br><span class="line">  ])</span><br><span class="line"></span><br><span class="line">  const talkCount = computed(() =&gt; talkList.value.length)</span><br><span class="line"></span><br><span class="line">  const addTalk = (id, title) =&gt; &#123;</span><br><span class="line">    talkList.value.push(&#123; id, title &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123; talkList, talkCount, addTalk &#125;</span><br><span class="line">&#125;)</span><br><span class="line">import &#123; useTalkStore &#125; from &#x27;@/stores/talkStore&#x27;</span><br><span class="line"></span><br><span class="line">const talkStore = useTalkStore()</span><br><span class="line"></span><br><span class="line">// 调用方法和访问属性</span><br><span class="line">talkStore.addTalk(&#x27;3&#x27;, &#x27;情话三&#x27;)</span><br><span class="line">console.log(talkStore.talkCount) // 输出 3</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250128104929967.png" alt="image-20250128104929967"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/Vue_TS_corrected/">http://clock_blog.com/2025/01/28/Vue_TS_corrected/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/Webpack_Improved/">Webpack</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/html%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">html基础语法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>
