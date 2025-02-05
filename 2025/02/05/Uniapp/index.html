@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>Uniapp | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Uniapp</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 5, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Uniapp"><a href="#Uniapp" class="headerlink" title="Uniapp"></a>Uniapp</h1><h2 id="页面大致组成"><a href="#页面大致组成" class="headerlink" title="页面大致组成"></a>页面大致组成</h2><p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250204172229213.png" alt="image-20250204172229213"></p>
+<p>pages.json</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;pages&quot;: [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;path&quot;: &quot;pages/index/index&quot;,</span><br><span class="line">			&quot;style&quot;: &#123;</span><br><span class="line">				&quot;navigationBarTitleText&quot;: &quot;uni-app&quot;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;path&quot;: &quot;pages/demo1/demo1&quot;,</span><br><span class="line">			&quot;style&quot;: &#123;</span><br><span class="line">				&quot;navigationBarTitleText&quot;: &quot;demo1&quot;,</span><br><span class="line">				&quot;enablePullDownRefresh&quot;: false</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;path&quot; : &quot;pages/demo2/demo2&quot;,</span><br><span class="line">			&quot;style&quot; : </span><br><span class="line">			&#123;</span><br><span class="line">				&quot;navigationBarTitleText&quot; : &quot;demo2&quot;,</span><br><span class="line">				&quot;enablePullDownRefresh&quot;: false</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	&quot;globalStyle&quot;: &#123;</span><br><span class="line">		&quot;navigationBarTextStyle&quot;: &quot;black&quot;,</span><br><span class="line">		&quot;navigationBarTitleText&quot;: &quot;uni-app&quot;,</span><br><span class="line">		&quot;navigationBarBackgroundColor&quot;: &quot;#F8F8F8&quot;,</span><br><span class="line">		&quot;backgroundColor&quot;: &quot;#F8F8F8&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;uniIdRouter&quot;: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><p><strong>属性说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">hover-class</td>
+<td align="left">String</td>
+<td align="left">none</td>
+<td align="left">指定按下去的样式类。当 hover-class&#x3D;”none” 时，没有点击态效果</td>
+</tr>
+<tr>
+<td align="left">hover-stop-propagation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">指定是否阻止本节点的祖先节点出现点击态，App、H5、支付宝小程序、百度小程序不支持（支付宝小程序、百度小程序文档中都有此属性，实测未支持）</td>
+</tr>
+<tr>
+<td align="left">hover-start-time</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">按住后多久出现点击态，单位毫秒</td>
+</tr>
+<tr>
+<td align="left">hover-stay-time</td>
+<td align="left">Number</td>
+<td align="left">400</td>
+<td align="left">手指松开后点击态保留时间，单位毫秒</td>
+</tr>
+</tbody></table>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/0B48CDE5-39D5-4537-980A-5115777519EB_1_102_o.jpeg" alt="0B48CDE5-39D5-4537-980A-5115777519EB_1_102_o"></p>
+<h2 id="text组件"><a href="#text组件" class="headerlink" title="text组件"></a>text组件</h2><p>文本组件。用于包裹文本内容。</p>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p>在app-uvue和app-nvue中，文本只能写在text中，而不能写在view的text区域。</p>
+<p>虽然app-uvue中写在view的text区域的文字，也会被编译器自动包裹一层text组件，看起来也可以使用。但这样会造成无法修改该text文字的样式，详见uvue的<a target="_blank" rel="noopener" href="https://doc.dcloud.net.cn/uni-app-x/css/#stylenoextends">样式不继承</a>章节</p>
+<h2 id="属性说明"><a href="#属性说明" class="headerlink" title="属性说明"></a>属性说明</h2><table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">selectable</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">文本是否可选</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">user-select</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">文本是否可选</td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">space</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">显示连续空格</td>
+<td align="left">钉钉小程序不支持</td>
+</tr>
+<tr>
+<td align="left">decode</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否解码</td>
+<td align="left">百度、钉钉小程序不支持</td>
+</tr>
+</tbody></table>
+<p><strong>space 值说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ensp</td>
+<td align="left">中文字符空格一半大小</td>
+</tr>
+<tr>
+<td align="left">emsp</td>
+<td align="left">中文字符空格大小</td>
+</tr>
+<tr>
+<td align="left">nbsp</td>
+<td align="left">根据字体设置的空格大小</td>
+</tr>
+</tbody></table>
+<h2 id="scroll-view"><a href="#scroll-view" class="headerlink" title="scroll-view"></a>scroll-view</h2><p>可滚动视图区域。用于区域滚动。</p>
+<p>需注意在webview渲染的页面中，区域滚动的性能不及页面滚动。</p>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<h2 id="属性说明-1"><a href="#属性说明-1" class="headerlink" title="属性说明"></a>属性说明</h2><table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">scroll-x</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">允许横向滚动</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">scroll-y</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">允许纵向滚动</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">upper-threshold</td>
+<td align="left">Number&#x2F;String</td>
+<td align="left">50</td>
+<td align="left">距顶部&#x2F;左边多远时（单位px），触发 scrolltoupper 事件</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">lower-threshold</td>
+<td align="left">Number&#x2F;String</td>
+<td align="left">50</td>
+<td align="left">距底部&#x2F;右边多远时（单位px），触发 scrolltolower 事件</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">scroll-top</td>
+<td align="left">Number&#x2F;String</td>
+<td align="left"></td>
+<td align="left">设置竖向滚动条位置</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">scroll-left</td>
+<td align="left">Number&#x2F;String</td>
+<td align="left"></td>
+<td align="left">设置横向滚动条位置</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">scroll-into-view</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">scroll-with-animation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">在设置滚动条位置时使用动画过渡</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">enable-back-to-top</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向</td>
+<td align="left">app-nvue，微信小程序</td>
+</tr>
+<tr>
+<td align="left">show-scrollbar</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">控制是否出现滚动条</td>
+<td align="left">App-nvue 2.1.5+</td>
+</tr>
+<tr>
+<td align="left">refresher-enabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">开启自定义下拉刷新</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">refresher-threshold</td>
+<td align="left">Number</td>
+<td align="left">45</td>
+<td align="left">设置自定义下拉刷新阈值</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">refresher-default-style</td>
+<td align="left">String</td>
+<td align="left">“black”</td>
+<td align="left">设置自定义下拉刷新默认样式，支持设置 black，white，none，none 表示不使用默认样式</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">refresher-background</td>
+<td align="left">String</td>
+<td align="left">“#FFF”</td>
+<td align="left">设置自定义下拉刷新区域背景颜色</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">refresher-triggered</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">设置当前下拉刷新状态，true 表示下拉刷新已经被触发，false 表示下拉刷新未被触发</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">enable-flex</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">启用 flexbox 布局。开启后，当前节点声明了 display: flex 就会成为 flex container，并作用于其孩子节点。</td>
+<td align="left">微信小程序 2.7.3</td>
+</tr>
+<tr>
+<td align="left">scroll-anchoring</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">开启 scroll anchoring 特性，即控制滚动位置不随内容变化而抖动，仅在 iOS 下生效，安卓下可参考 CSS overflow-anchor 属性。</td>
+<td align="left">微信小程序 2.8.2</td>
+</tr>
+<tr>
+<td align="left">@scrolltoupper</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">滚动到顶部&#x2F;左边，会触发 scrolltoupper 事件</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@scrolltolower</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">滚动到底部&#x2F;右边，会触发 scrolltolower 事件</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@scroll</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">滚动时触发，event.detail &#x3D; {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY}</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@refresherpulling</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">自定义下拉刷新控件被下拉</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">@refresherrefresh</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">自定义下拉刷新被触发</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">@refresherrestore</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">自定义下拉刷新被复位</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+<tr>
+<td align="left">@refresherabort</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">自定义下拉刷新被中止</td>
+<td align="left">H5、app-vue 2.5.12+,微信小程序基础库2.10.1+</td>
+</tr>
+</tbody></table>
+<p><strong>属性 HarmonyOS Next 兼容性</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">HarmonyOS Next 兼容性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">direction</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">upper-threshold</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">lower-threshold</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">scroll-top</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">scroll-left</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">scroll-into-view</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">scroll-with-animation</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">refresher-enabled</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">refresher-threshold</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">refresher-default-style</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">refresher-background</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">refresher-triggered</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">show-scrollbar</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@refresherpulling</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@refresherrefresh</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@refresherrestore</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@refresherabort</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@scrolltoupper</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@scrolltolower</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">@scroll</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">rebound</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">scroll-y</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">scroll-x</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p>使用竖向滚动时，需要给 <code>&lt;scroll-view&gt;</code> 一个固定高度，通过 css 设置 height；使用横向滚动时，需要给<code>&lt;scroll-view&gt;</code>添加<code>white-space: nowrap;</code>样式。</p>
+<h2 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a>swiper</h2><p>滑块视图容器。</p>
+<p>一般用于左右滑动或上下滑动，比如banner轮播图。</p>
+<p>注意滑动切换和滚动的区别，滑动切换是一屏一屏的切换。swiper下的每个swiper-item是一个滑动切换区域，不能停留在2个滑动区域之间。</p>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p><strong>属性说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">indicator-dots</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否显示面板指示点</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">indicator-color</td>
+<td align="left">Color</td>
+<td align="left">rgba(0, 0, 0, .3)</td>
+<td align="left">指示点颜色</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">indicator-active-color</td>
+<td align="left">Color</td>
+<td align="left">#000000</td>
+<td align="left">当前选中的指示点颜色</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">active-class</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">swiper-item 可见时的 class</td>
+<td align="left">支付宝小程序</td>
+</tr>
+<tr>
+<td align="left">changing-class</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">acceleration 设置为 true 时且处于滑动过程中，中间若干屏处于可见时的class</td>
+<td align="left">支付宝小程序</td>
+</tr>
+<tr>
+<td align="left">autoplay</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否自动切换</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">current</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">当前所在滑块的 index</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">current-item-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">当前所在滑块的 item-id ，不能与 current 被同时指定</td>
+<td align="left">支付宝小程序不支持</td>
+</tr>
+<tr>
+<td align="left">interval</td>
+<td align="left">Number</td>
+<td align="left">5000</td>
+<td align="left">自动切换时间间隔</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">duration</td>
+<td align="left">Number</td>
+<td align="left">500</td>
+<td align="left">滑动动画时长</td>
+<td align="left">app-nvue不支持</td>
+</tr>
+<tr>
+<td align="left">circular</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否采用衔接滑动，即播放到末尾后重新回到开头</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">vertical</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">滑动方向是否为纵向</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">previous-margin</td>
+<td align="left">String</td>
+<td align="left">0px</td>
+<td align="left">前边距，可用于露出前一项的一小部分，接受 px 和 rpx 值</td>
+<td align="left">app-nvue、抖音小程序、飞书小程序不支持</td>
+</tr>
+<tr>
+<td align="left">next-margin</td>
+<td align="left">String</td>
+<td align="left">0px</td>
+<td align="left">后边距，可用于露出后一项的一小部分，接受 px 和 rpx 值</td>
+<td align="left">app-nvue、抖音小程序、飞书小程序不支持</td>
+</tr>
+<tr>
+<td align="left">acceleration</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">当开启时，会根据滑动速度，连续滑动多屏</td>
+<td align="left">支付宝小程序</td>
+</tr>
+<tr>
+<td align="left">disable-programmatic-animation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否禁用代码变动触发 swiper 切换时使用动画。</td>
+<td align="left">支付宝小程序</td>
+</tr>
+<tr>
+<td align="left">display-multiple-items</td>
+<td align="left">Number</td>
+<td align="left">1</td>
+<td align="left">同时显示的滑块数量</td>
+<td align="left">app-nvue、支付宝小程序不支持</td>
+</tr>
+<tr>
+<td align="left">skip-hidden-item-layout</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否跳过未显示的滑块布局，设为 true 可优化复杂情况下的滑动性能，但会丢失隐藏状态滑块的布局信息</td>
+<td align="left">App、微信小程序、京东小程序</td>
+</tr>
+<tr>
+<td align="left">disable-touch</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否禁止用户 touch 操作</td>
+<td align="left">App 2.5.5+、H5 2.5.5+、支付宝小程序、抖音小程序与飞书小程序（只在初始化时有效，不能动态变更）</td>
+</tr>
+<tr>
+<td align="left">touchable</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">是否监听用户的触摸事件，只在初始化时有效，不能动态变更</td>
+<td align="left">抖音小程序与飞书小程序（uni-app 2.5.5+ 推荐统一使用 disable-touch）</td>
+</tr>
+<tr>
+<td align="left">easing-function</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">指定 swiper 切换缓动动画类型，有效值：default、linear、easeInCubic、easeOutCubic、easeInOutCubic</td>
+<td align="left">微信小程序、快手小程序、京东小程序</td>
+</tr>
+<tr>
+<td align="left">@change</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">current 改变时会触发 change 事件，event.detail &#x3D; {current: current, source: source}</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@transition</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">swiper-item 的位置发生改变时会触发 transition 事件，event.detail &#x3D; {dx: dx, dy: dy}，支付宝小程序暂不支持dx, dy</td>
+<td align="left">App、H5、微信小程序、支付宝小程序、抖音小程序、飞书小程序、QQ小程序、快手小程序</td>
+</tr>
+<tr>
+<td align="left">@animationfinish</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">动画结束时会触发 animationfinish 事件，event.detail &#x3D; {current: current, source: source}</td>
+<td align="left">抖音小程序与飞书小程序不支持</td>
+</tr>
+</tbody></table>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250204192539984.png" alt="image-20250204192539984"></p>
+<h1 id="image"><a href="#image" class="headerlink" title="image"></a>image</h1><blockquote>
+<p>图片需要上传？推荐<code>uni-cdn</code>，帮你节省至少30%的 CDN 费用！<a target="_blank" rel="noopener" href="https://doc.dcloud.net.cn/uniCloud/uni-cdn/intro.html">详情</a>。</p>
+</blockquote>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p>图片组件。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">src</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">图片资源地址</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mode</td>
+<td align="left">String</td>
+<td align="left">‘scaleToFill’</td>
+<td align="left">图片裁剪、缩放的模式</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">lazy-load</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">图片懒加载。只针对page与scroll-view下的image有效</td>
+<td align="left">微信小程序、百度小程序、抖音小程序、飞书小程序</td>
+</tr>
+<tr>
+<td align="left">fade-show</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">图片显示动画效果</td>
+<td align="left">仅App-nvue 2.3.4+ Android有效</td>
+</tr>
+<tr>
+<td align="left">webp</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">在系统不支持webp的情况下是否单独启用webp。默认false，只支持网络资源。webp支持详见下面说明</td>
+<td align="left">微信小程序2.9.0</td>
+</tr>
+<tr>
+<td align="left">show-menu-by-longpress</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">开启长按图片显示识别小程序码菜单</td>
+<td align="left">微信小程序2.7.0</td>
+</tr>
+<tr>
+<td align="left">draggable</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">是否能拖动图片</td>
+<td align="left">H5 3.1.1+、App（iOS15+）</td>
+</tr>
+<tr>
+<td align="left">@error</td>
+<td align="left">HandleEvent</td>
+<td align="left"></td>
+<td align="left">当错误发生时，发布到 AppService 的事件名，事件对象event.detail &#x3D; {errMsg: ‘something wrong’}</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@load</td>
+<td align="left">HandleEvent</td>
+<td align="left"></td>
+<td align="left">当图片载入完毕时，发布到 AppService 的事件名，事件对象event.detail &#x3D; {height:’图片高度px’, width:’图片宽度px’}</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="mode-有效值"><a href="#mode-有效值" class="headerlink" title="mode 有效值"></a>mode 有效值</h2><p>mode 有 14 种模式，其中 5 种是缩放模式，9 种是裁剪模式。</p>
+<table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th align="left">值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">缩放</td>
+<td align="left">scaleToFill</td>
+<td align="left">不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素</td>
+</tr>
+<tr>
+<td align="left">缩放</td>
+<td align="left">aspectFit</td>
+<td align="left">保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。</td>
+</tr>
+<tr>
+<td align="left">缩放</td>
+<td align="left">aspectFill</td>
+<td align="left">保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。</td>
+</tr>
+<tr>
+<td align="left">缩放</td>
+<td align="left">widthFix</td>
+<td align="left">宽度不变，高度自动变化，保持原图宽高比不变</td>
+</tr>
+<tr>
+<td align="left">缩放</td>
+<td align="left">heightFix</td>
+<td align="left">高度不变，宽度自动变化，保持原图宽高比不变 <strong>App 和 H5 平台 HBuilderX 2.9.3+ 支持、微信小程序需要基础库 2.10.3</strong></td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">top</td>
+<td align="left">不缩放图片，只显示图片的顶部区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">bottom</td>
+<td align="left">不缩放图片，只显示图片的底部区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">center</td>
+<td align="left">不缩放图片，只显示图片的中间区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">left</td>
+<td align="left">不缩放图片，只显示图片的左边区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">right</td>
+<td align="left">不缩放图片，只显示图片的右边区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">top left</td>
+<td align="left">不缩放图片，只显示图片的左上边区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">top right</td>
+<td align="left">不缩放图片，只显示图片的右上边区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">bottom left</td>
+<td align="left">不缩放图片，只显示图片的左下边区域</td>
+</tr>
+<tr>
+<td align="left">裁剪</td>
+<td align="left">bottom right</td>
+<td align="left">不缩放图片，只显示图片的右下边区域</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		&lt;swiper indicator-dots indicator-color=&quot;#b0c4de&quot; indicator-active-color=&quot;#333&quot; </span><br><span class="line">		circular autoplay interval=&quot;2000&quot;&gt;</span><br><span class="line">			&lt;swiper-item&gt;&lt;image src=&quot;/static/pic2.jpeg&quot; mode=&quot;aspectFill&quot;&gt;&lt;/image&gt;&lt;/swiper-item&gt;</span><br><span class="line">			&lt;swiper-item&gt;&lt;image src=&quot;/static/pic3.jpeg&quot; mode=&quot;aspectFill&quot;&gt;&lt;/image&gt;&lt;/swiper-item&gt;</span><br><span class="line">			&lt;swiper-item&gt;&lt;image src=&quot;/static/logo.png&quot; mode=&quot;aspectFill&quot;&gt;&lt;/image&gt;&lt;/swiper-item&gt;</span><br><span class="line">			&lt;swiper-item&gt;&lt;image src=&quot;/static/pic6.jpeg&quot; mode=&quot;aspectFill&quot;&gt;&lt;/image&gt;&lt;/swiper-item&gt;</span><br><span class="line">		&lt;/swiper&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		&lt;image src=&quot;/static/logo.png&quot; mode=&quot;&quot; class=&quot;pic1&quot;&gt;&lt;/image&gt;</span><br><span class="line">		&lt;image src=&quot;/static/pic2.jpeg&quot; mode=&quot;aspectFill&quot; class=&quot;pic2&quot;&gt;&lt;/image&gt;</span><br><span class="line">		&lt;image src=&quot;/static/pic3.jpeg&quot; mode=&quot;heightFix&quot; class=&quot;pic3&quot;&gt;&lt;/image&gt;</span><br><span class="line">		&lt;image src=&quot;/static/pic4.jpeg&quot; mode=&quot;&quot; class=&quot;pic4&quot;&gt;&lt;/image&gt;</span><br><span class="line">		&lt;image src=&quot;/static/pic5.jpeg&quot; mode=&quot;&quot; class=&quot;pic5&quot;&gt;&lt;/image&gt;</span><br><span class="line">		&lt;image src=&quot;/static/pic6.jpeg&quot; mode=&quot;heightFix&quot; class=&quot;pic6&quot;&gt;&lt;/image&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		methods: &#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line">	</span><br><span class="line">.pic1&#123;</span><br><span class="line">	width: 150px;</span><br><span class="line">	height: 150px;</span><br><span class="line">&#125;</span><br><span class="line">.pic2&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.pic3&#123;</span><br><span class="line">	height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">.pic6</span><br><span class="line">&#123;</span><br><span class="line">	height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">swiper&#123;</span><br><span class="line">	width:100vw;</span><br><span class="line">	height:200px;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	swiper-item&#123;</span><br><span class="line">		width:100%;</span><br><span class="line">		height: 100%;</span><br><span class="line">		background: pink;</span><br><span class="line">	&#125;</span><br><span class="line">		/* 设置 swiper-item 内部图片的样式 */</span><br><span class="line">		swiper-item image &#123;</span><br><span class="line">			width: 100%;</span><br><span class="line">			height: 100%;</span><br><span class="line">			object-fit: cover;  /* 保持比例，填充容器 */</span><br><span class="line">		&#125;</span><br><span class="line">	swiper-item:nth-child(2n)&#123;</span><br><span class="line">		background: orange;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h2><p>页面跳转。</p>
+<p>该组件类似HTML中的<code>&lt;a&gt;</code>组件，但只能跳转本地页面。目标页面必须在pages.json中注册。</p>
+<p>除了组件方式，API方式也可以实现页面跳转，另见：<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/router?id=navigateto">https://uniapp.dcloud.io/api/router?id=navigateto</a></p>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p><strong>属性说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">应用内的跳转链接，值为相对路径或绝对路径，如：”..&#x2F;first&#x2F;first”，”&#x2F;pages&#x2F;first&#x2F;first”，注意不能加 <code>.vue</code> 后缀</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">open-type</td>
+<td align="left">String</td>
+<td align="left">navigate</td>
+<td align="left">跳转方式</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">delta</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">当 open-type 为 ‘navigateBack’ 时有效，表示回退的层数</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">animation-type</td>
+<td align="left">String</td>
+<td align="left">pop-in&#x2F;out</td>
+<td align="left">当 open-type 为 navigate、navigateBack 时有效，窗口的显示&#x2F;关闭动画效果，详见：<a target="_blank" rel="noopener" href="https://zh.uniapp.dcloud.io/api/router#animation">窗口动画</a></td>
+<td align="left">App</td>
+</tr>
+<tr>
+<td align="left">animation-duration</td>
+<td align="left">Number</td>
+<td align="left">300</td>
+<td align="left">当 open-type 为 navigate、navigateBack 时有效，窗口显示&#x2F;关闭动画的持续时间。</td>
+<td align="left">App</td>
+</tr>
+<tr>
+<td align="left">render-link</td>
+<td align="left">boolean</td>
+<td align="left">true</td>
+<td align="left">是否给 navigator 组件加一层 a 标签控制 ssr 渲染</td>
+<td align="left">web3.7.6+、App-vue3.7.6+</td>
+</tr>
+<tr>
+<td align="left">hover-class</td>
+<td align="left">String</td>
+<td align="left">navigator-hover</td>
+<td align="left">指定点击时的样式类，当hover-class&#x3D;”none”时，没有点击态效果</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hover-stop-propagation</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">指定是否阻止本节点的祖先节点出现点击态</td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">hover-start-time</td>
+<td align="left">Number</td>
+<td align="left">50</td>
+<td align="left">按住后多久出现点击态，单位毫秒</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hover-stay-time</td>
+<td align="left">Number</td>
+<td align="left">600</td>
+<td align="left">手指松开后点击态保留时间，单位毫秒</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">target</td>
+<td align="left">String</td>
+<td align="left">self</td>
+<td align="left">在哪个小程序目标上发生跳转，默认当前小程序，值域self&#x2F;miniProgram</td>
+<td align="left">微信2.0.7+、百度2.5.2+、QQ</td>
+</tr>
+</tbody></table>
+<p><strong>open-type 有效值</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">navigate</td>
+<td align="left">对应 uni.navigateTo 的功能</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">redirect</td>
+<td align="left">对应 uni.redirectTo 的功能</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">switchTab</td>
+<td align="left">对应 uni.switchTab 的功能</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">reLaunch</td>
+<td align="left">对应 uni.reLaunch 的功能</td>
+<td align="left">抖音小程序与飞书小程序不支持</td>
+</tr>
+<tr>
+<td align="left">navigateBack</td>
+<td align="left">对应 uni.navigateBack 的功能</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">exit</td>
+<td align="left">退出小程序，target&#x3D;”miniProgram”时生效</td>
+<td align="left">微信2.1.0+、百度2.5.2+、QQ1.4.7+</td>
+</tr>
+</tbody></table>
+<p>这些细节可在<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/router?id=navigateto">页面路由API文档</a>查阅。</p>
+<p><strong>注意</strong></p>
+<ul>
+<li>跳转tabbar页面，必须设置open-type&#x3D;”switchTab”</li>
+<li>navigator-hover 默认为 {background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}, <code>&lt;navigator&gt;</code> 的子节点背景色应为透明色。</li>
+<li>navigator-<code>open-type</code>属性 如果使用对应的值，则对应值的功能会高于对应跳转路径。</li>
+<li>app-nvue 平台只有纯nvue项目（render为native）才支持 <code>&lt;navigator&gt;</code>。非render为native的情况下，nvue暂不支持navigator组件，请使用API跳转。</li>
+<li>app下退出应用，Android平台可以使用<a target="_blank" rel="noopener" href="https://www.html5plus.org/doc/zh_cn/runtime.html#plus.runtime.quit">plus.runtime.quit</a>。iOS没有退出应用的概念。</li>
+<li><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?id=1182">uLink组件</a>是navigator组件的增强版，样式上自带下划线，功能上支持打开在线网页、其他App的schema、mailto发邮件、tel打电话。</li>
+<li>Vue3 项目因 SSR 需要，H5 端会在外层嵌套 a 标签</li>
+</ul>
+<h2 id="uni-reLaunch-OBJECT"><a href="#uni-reLaunch-OBJECT" class="headerlink" title="uni.reLaunch(OBJECT)"></a>uni.reLaunch(OBJECT)</h2><p>关闭所有页面，打开到应用内的某个页面。</p>
+<p><strong>HarmonyOS Next 兼容性</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong> 如果调用了 <a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/preload-page">uni.preloadPage(OBJECT)</a> 不会关闭，仅触发生命周期 <code>onHide</code></p>
+<p><strong>OBJECT参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">类型</th>
+<th align="left">必填</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">String</td>
+<td align="left">是</td>
+<td align="left">需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用?分隔，参数键与参数值用&#x3D;相连，不同参数用&amp;分隔；如 ‘path?key&#x3D;value&amp;key2&#x3D;value2’，如果跳转的页面路径是 tabBar 页面则不能带参数</td>
+</tr>
+<tr>
+<td align="left">success</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">接口调用成功的回调函数</td>
+</tr>
+<tr>
+<td align="left">fail</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">接口调用失败的回调函数</td>
+</tr>
+<tr>
+<td align="left">complete</td>
+<td align="left">Function</td>
+<td align="left">否</td>
+<td align="left">接口调用结束的回调函数（调用成功、失败都会执行）</td>
+</tr>
+</tbody></table>
+<p><strong>示例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">reLaunch</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: <span class="string">&#x27;test?id=1&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	<span class="attr">onLoad</span>: <span class="keyword">function</span> (<span class="params">option</span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(option.<span class="property">id</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<p>Tips：</p>
+<ul>
+<li>H5端调用<code>uni.reLaunch</code>之后之前页面栈会销毁，但是无法清空浏览器之前的历史记录，此时<code>navigateBack</code>不能返回，如果存在历史记录的话点击浏览器的返回按钮或者调用<code>history.back()</code>仍然可以导航到浏览器的其他历史记录。</li>
+</ul>
+<h2 id="button"><a href="#button" class="headerlink" title="button"></a>button</h2><p>按钮。</p>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p><strong>属性说明</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">生效时机</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">size</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">按钮的大小</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">default</td>
+<td align="left">按钮的样式类型</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">plain</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">按钮是否镂空，背景色透明</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否禁用</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">名称前是否带 loading 图标</td>
+<td align="left"></td>
+<td align="left">H5、App(App-nvue 平台，在 ios 上为雪花，Android上为圆圈)</td>
+</tr>
+<tr>
+<td align="left">form-type</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">用于 <code>&lt;form&gt;</code> 组件，点击分别会触发 <code>&lt;form&gt;</code> 组件的 submit&#x2F;reset 事件</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">open-type</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">开放能力</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hover-class</td>
+<td align="left">String</td>
+<td align="left">button-hover</td>
+<td align="left">指定按钮按下去的样式类。当 hover-class&#x3D;”none” 时，没有点击态效果</td>
+<td align="left"></td>
+<td align="left">App-nvue 平台暂不支持</td>
+</tr>
+<tr>
+<td align="left">hover-start-time</td>
+<td align="left">Number</td>
+<td align="left">20</td>
+<td align="left">按住后多久出现点击态，单位毫秒</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">hover-stay-time</td>
+<td align="left">Number</td>
+<td align="left">70</td>
+<td align="left">手指松开后点击态保留时间，单位毫秒</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">app-parameter</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">打开 APP 时，向 APP 传递的参数，open-type&#x3D;launchApp时有效</td>
+<td align="left"></td>
+<td align="left">微信小程序、QQ小程序</td>
+</tr>
+<tr>
+<td align="left">hover-stop-propagation</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">指定是否阻止本节点的祖先节点出现点击态</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">lang</td>
+<td align="left">string</td>
+<td align="left">‘en’</td>
+<td align="left">指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">session-from</td>
+<td align="left">string</td>
+<td align="left"></td>
+<td align="left">会话来源，open-type&#x3D;”contact”时有效</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">send-message-title</td>
+<td align="left">string</td>
+<td align="left">当前标题</td>
+<td align="left">会话内消息卡片标题，open-type&#x3D;”contact”时有效</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">send-message-path</td>
+<td align="left">string</td>
+<td align="left">当前分享路径</td>
+<td align="left">会话内消息卡片点击跳转小程序路径，open-type&#x3D;”contact”时有效</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">send-message-img</td>
+<td align="left">string</td>
+<td align="left">截图</td>
+<td align="left">会话内消息卡片图片，open-type&#x3D;”contact”时有效</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">show-message-card</td>
+<td align="left">boolean</td>
+<td align="left">false</td>
+<td align="left">是否显示会话内消息卡片，设置此参数为 true，用户进入客服会话会在右下角显示”可能要发送的小程序”提示，用户点击后可以快速发送小程序消息，open-type&#x3D;”contact”时有效</td>
+<td align="left"></td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">group-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">打开群资料卡时，传递的群号</td>
+<td align="left">open-type&#x3D;”openGroupProfile”</td>
+<td align="left">QQ小程序</td>
+</tr>
+<tr>
+<td align="left">guild-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">打开频道页面时，传递的频道号</td>
+<td align="left">open-type&#x3D;”openGuildProfile”</td>
+<td align="left">QQ小程序</td>
+</tr>
+<tr>
+<td align="left">public-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">打开公众号资料卡时，传递的号码</td>
+<td align="left">open-type&#x3D;”openPublicProfile”</td>
+<td align="left">QQ小程序</td>
+</tr>
+<tr>
+<td align="left">data-im-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">客服的抖音号</td>
+<td align="left">open-type&#x3D;”im”</td>
+<td align="left">抖音小程序2.68.0版本+</td>
+</tr>
+<tr>
+<td align="left">data-im-type</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">IM卡片类型</td>
+<td align="left">open-type&#x3D;”im”</td>
+<td align="left">抖音小程序2.80.0版本+</td>
+</tr>
+<tr>
+<td align="left">data-goods-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">商品的id，仅支持泛知识课程库和生活服务商品库中的商品</td>
+<td align="left">open-type&#x3D;”im”</td>
+<td align="left">抖音小程序2.80.0版本+</td>
+</tr>
+<tr>
+<td align="left">data-order-id</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">订单的id，仅支持交易2.0订单</td>
+<td align="left">open-type&#x3D;”im”</td>
+<td align="left">抖音小程序2.80.0版本+</td>
+</tr>
+<tr>
+<td align="left">data-biz-line</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">商品类型，“1”代表生活服务，“2”代表泛知识。</td>
+<td align="left">open-type&#x3D;”im”</td>
+<td align="left">抖音小程序2.80.0版本+</td>
+</tr>
+<tr>
+<td align="left">@getphonenumber</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">获取用户手机号回调</td>
+<td align="left">open-type&#x3D;”getPhoneNumber”</td>
+<td align="left">微信、支付宝、百度、抖音、快手、京东小程序</td>
+</tr>
+<tr>
+<td align="left">@getuserinfo</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">用户点击该按钮时，会返回获取到的用户信息，从返回参数的detail中获取到的值同uni.getUserInfo</td>
+<td align="left">open-type&#x3D;”getUserInfo”</td>
+<td align="left">微信、QQ、百度、快手、京东小程序</td>
+</tr>
+<tr>
+<td align="left">@error</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">当使用开放能力时，发生错误的回调</td>
+<td align="left">open-type&#x3D;”launchApp”</td>
+<td align="left">微信、QQ、快手、京东小程序</td>
+</tr>
+<tr>
+<td align="left">@opensetting</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">在打开授权设置页并关闭后回调</td>
+<td align="left">open-type&#x3D;”openSetting”</td>
+<td align="left">微信、QQ、百度、快手、京东小程序</td>
+</tr>
+<tr>
+<td align="left">@launchapp</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">从小程序打开 App 成功的回调</td>
+<td align="left">open-type&#x3D;”launchApp”</td>
+<td align="left">微信、QQ、快手、京东小程序</td>
+</tr>
+<tr>
+<td align="left">@contact</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">客服消息回调</td>
+<td align="left">open-type&#x3D;”contact”</td>
+<td align="left">微信、QQ、百度、快手小程序</td>
+</tr>
+<tr>
+<td align="left">@chooseavatar</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">获取用户头像回调</td>
+<td align="left">open-type&#x3D;”chooseAvatar”</td>
+<td align="left">微信、支付宝小程序</td>
+</tr>
+<tr>
+<td align="left">@agreeprivacyauthorization</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">用户同意隐私协议事件回调，open-type&#x3D;”agreePrivacyAuthorization”时有效</td>
+<td align="left">open-type&#x3D;”agreeprivacyauthorization”</td>
+<td align="left">微信小程序2.33.0</td>
+</tr>
+<tr>
+<td align="left">@addgroupapp</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">添加群应用的回调</td>
+<td align="left">open-type&#x3D;”addGroupApp”</td>
+<td align="left">QQ小程序</td>
+</tr>
+<tr>
+<td align="left">@chooseaddress</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">调起用户编辑并选择收货地址的回调</td>
+<td align="left">open-type&#x3D;”chooseAddress”</td>
+<td align="left">百度小程序</td>
+</tr>
+<tr>
+<td align="left">@chooseinvoicetitle</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">用户选择发票抬头的回调</td>
+<td align="left">open-type&#x3D;”chooseInvoiceTitle”</td>
+<td align="left">百度小程序</td>
+</tr>
+<tr>
+<td align="left">@subscribe</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">订阅消息授权回调</td>
+<td align="left">open-type&#x3D;”subscribe”</td>
+<td align="left">百度小程序</td>
+</tr>
+<tr>
+<td align="left">@login</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">登录回调</td>
+<td align="left">open-type&#x3D;”login”</td>
+<td align="left">百度小程序</td>
+</tr>
+<tr>
+<td align="left">@im</td>
+<td align="left">Handler</td>
+<td align="left"></td>
+<td align="left">监听跳转IM的成功回调</td>
+<td align="left">open-type&#x3D;”im”</td>
+<td align="left">抖音小程序2.68.0版本+</td>
+</tr>
+</tbody></table>
+<p><strong>属性 HarmonyOS Next 兼容性</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">HarmonyOS Next 兼容性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">disabled</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">hover-class</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">hover-start-time</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">hover-stay-time</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">size</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">plain</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">loading</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">form-type</td>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+<tr>
+<td align="left">open-type</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">@error</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">@chooseinvoicetitle</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">@subscribe</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">@login</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>注1：<code>button-hover</code> 默认为 <code>&#123;background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;&#125;</code></strong></li>
+<li><code>open-type=&quot;launchApp&quot;</code>时需要调起的APP接入微信OpenSDK<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html">详见</a></li>
+<li>微信小程序、Web、App平台 button组件的默认边框宽度为0.5px，不会占据实际的渲染宽高；当type属性为plain时，边框宽度是1px，如果未指定元素的宽高，此时边框宽度会占据实际渲染宽高。</li>
+</ul>
+<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><p>单行输入框。</p>
+<p><strong>HarmonyOS Next</strong> 兼容性</p>
+<table>
+<thead>
+<tr>
+<th align="left">HarmonyOS Next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">HBuilderX 4.23</td>
+</tr>
+</tbody></table>
+<p>html规范中input不仅是输入框，还有radio、checkbox、时间、日期、文件选择功能。在uni-app规范中，input仅仅是输入框。其他功能uni-app有单独的组件或API：<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/component/radio">radio组件</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/component/checkbox">checkbox组件</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/component/picker?id=%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%99%A8">时间选择</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/component/picker?id=%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8">日期选择</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/media/image?id=chooseimage">图片选择</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/media/video?id=choosevideo">视频选择</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/media/video?id=choosemedia">多媒体文件选择(含图片视频)</a>、<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/media/file?id=choosefile">通用文件选择</a>。</p>
+<h3 id="属性说明-2"><a href="#属性说明-2" class="headerlink" title="属性说明"></a>属性说明</h3><table>
+<thead>
+<tr>
+<th align="left">属性名</th>
+<th align="left">类型</th>
+<th align="left">默认值</th>
+<th align="left">说明</th>
+<th align="left">平台差异说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">输入框的初始内容</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">String</td>
+<td align="left">text</td>
+<td align="left">input 的类型 <a target="_blank" rel="noopener" href="https://zh.uniapp.dcloud.io/component/input.html#type">有效值</a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">text-content-type</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">文本区域的语义，根据类型自动填充 <a target="_blank" rel="noopener" href="https://zh.uniapp.dcloud.io/component/input.html#text-content-type">有效值</a></td>
+<td align="left">仅 App-nvue-iOS 支持</td>
+</tr>
+<tr>
+<td align="left">password</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否是密码类型</td>
+<td align="left">H5和App写此属性时，type失效</td>
+</tr>
+<tr>
+<td align="left">placeholder</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">输入框为空时占位符</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">placeholder-style</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">指定 placeholder 的样式</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">placeholder-class</td>
+<td align="left">String</td>
+<td align="left">“input-placeholder”</td>
+<td align="left">指定 placeholder 的样式类，注意页面或组件的style中写了scoped时，需要在类名前写&#x2F;deep&#x2F;</td>
+<td align="left">抖音小程序、飞书小程序、快手小程序不支持</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否禁用</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">maxlength</td>
+<td align="left">Number</td>
+<td align="left">140</td>
+<td align="left">最大输入长度，设置为 -1 的时候不限制最大长度</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cursor-spacing</td>
+<td align="left">Number</td>
+<td align="left">0</td>
+<td align="left">指定光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离</td>
+<td align="left">App、微信小程序、百度小程序、QQ小程序、京东小程序</td>
+</tr>
+<tr>
+<td align="left">focus</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">获取焦点。</td>
+<td align="left">H5、App需要点击按钮获取焦点的，必须使用@touchend.prevent&#x3D;”onTap”阻止键盘收起默认事件才能获取焦点<a target="_blank" rel="noopener" href="https://zh.uniapp.dcloud.io/component/input.html#%E5%85%B3%E4%BA%8E%E8%BD%AF%E9%94%AE%E7%9B%98%E5%BC%B9%E5%87%BA%E7%9A%84%E9%80%BB%E8%BE%91%E8%AF%B4%E6%98%8E">关于软键盘弹出的逻辑说明</a>，小程序、nvue需使用组件的 focus()、blur() 方法控制焦点</td>
+</tr>
+<tr>
+<td align="left">confirm-type</td>
+<td align="left">String</td>
+<td align="left">done</td>
+<td align="left">设置键盘右下角按钮的文字，仅在 type&#x3D;”text” 时生效。<a target="_blank" rel="noopener" href="https://zh.uniapp.dcloud.io/component/input.html#confirm-type">有效值</a></td>
+<td align="left">微信小程序、App、H5、快手小程序、京东小程序</td>
+</tr>
+<tr>
+<td align="left">confirm-hold</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">点击键盘右下角按钮时是否保持键盘不收起</td>
+<td align="left">App(3.3.7+)、H5 (3.3.7+)、微信小程序、支付宝小程序、百度小程序、QQ小程序、京东小程序</td>
+</tr>
+<tr>
+<td align="left">cursor</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">指定focus时的光标位置</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cursor-color</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">光标颜色</td>
+<td align="left">微信小程序 3.1.0+、H5(4.0+)、App-Vue(4.0+)</td>
+</tr>
+<tr>
+<td align="left">selection-start</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">光标起始位置，自动聚集时有效，需与selection-end搭配使用</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">selection-end</td>
+<td align="left">Number</td>
+<td align="left">-1</td>
+<td align="left">光标结束位置，自动聚集时有效，需与selection-start搭配使用</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">adjust-position</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">键盘弹起时，是否自动上推页面</td>
+<td align="left">App-Android（vue 页面 softinputMode 为 adjustResize 时无效，使用 x5 内核时无效）、微信小程序、百度小程序、QQ小程序、京东小程序</td>
+</tr>
+<tr>
+<td align="left">auto-blur</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">键盘收起时，是否自动失去焦点</td>
+<td align="left">App-Vue 3.0.0+</td>
+</tr>
+<tr>
+<td align="left">ignoreCompositionEvent</td>
+<td align="left">Boolean</td>
+<td align="left">true</td>
+<td align="left">是否忽略组件内对文本合成系统事件的处理。为 <code>false</code> 时将触发 <code>compositionstart、compositionend、compositionupdate</code> 事件，且在文本合成期间会触发 <code>input</code> 事件</td>
+<td align="left">App-vue (3.4.4+)、H5 (3.4.4+)、App-nvue不支持</td>
+</tr>
+<tr>
+<td align="left">always-embed</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效)</td>
+<td align="left">微信小程序 2.10.4+</td>
+</tr>
+<tr>
+<td align="left">hold-keyboard</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">focus时，点击页面的时候不收起键盘</td>
+<td align="left">微信小程序 2.8.2+</td>
+</tr>
+<tr>
+<td align="left">safe-password-cert-path</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">安全键盘加密公钥的路径，只支持包内路径</td>
+<td align="left">微信小程序 2.18.0+</td>
+</tr>
+<tr>
+<td align="left">safe-password-length</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">安全键盘输入密码长度</td>
+<td align="left">微信小程序 2.18.0+</td>
+</tr>
+<tr>
+<td align="left">safe-password-time-stamp</td>
+<td align="left">Number</td>
+<td align="left"></td>
+<td align="left">安全键盘加密时间戳</td>
+<td align="left">微信小程序 2.18.0+</td>
+</tr>
+<tr>
+<td align="left">safe-password-nonce</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">安全键盘加密盐值</td>
+<td align="left">微信小程序 2.18.0+</td>
+</tr>
+<tr>
+<td align="left">safe-password-salt</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">安全键盘计算 hash 盐值，若指定custom-hash 则无效</td>
+<td align="left">微信小程序 2.18.0+</td>
+</tr>
+<tr>
+<td align="left">safe-password-custom-hash</td>
+<td align="left">String</td>
+<td align="left"></td>
+<td align="left">安全键盘计算 hash 的算法表达式，如 md5(sha1(‘foo’ + sha256(sm3(password + ‘bar’))))</td>
+<td align="left">微信小程序 2.18.0+</td>
+</tr>
+<tr>
+<td align="left">random-number</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">当 type 为 number, digit, idcard 数字键盘是否随机排列</td>
+<td align="left">支付宝小程序 1.9.0+</td>
+</tr>
+<tr>
+<td align="left">controlled</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否为受控组件。为 true 时，value 内容会完全受 setData 控制</td>
+<td align="left">支付宝小程序 1.9.0+</td>
+</tr>
+<tr>
+<td align="left">always-system</td>
+<td align="left">Boolean</td>
+<td align="left">false</td>
+<td align="left">是否强制使用系统键盘和 Web-view 创建的 input 元素。为 true 时，confirm-type、confirm-hold 可能失效</td>
+<td align="left">支付宝小程序 2.7.3+</td>
+</tr>
+<tr>
+<td align="left">inputmode</td>
+<td align="left">String</td>
+<td align="left">“text”</td>
+<td align="left">是一个枚举属性，它提供了用户在编辑元素或其内容时可能输入的数据类型的提示。<a target="_blank" rel="noopener" href="https://zh.uniapp.dcloud.io/component/input.html#inputmode">有效值</a></td>
+<td align="left">H5（3.6.16+）、App-vue（3.6.16+）</td>
+</tr>
+<tr>
+<td align="left">@input</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">当键盘输入时，触发input事件，event.detail &#x3D; {value}</td>
+<td align="left">差异见下方 Tips</td>
+</tr>
+<tr>
+<td align="left">@focus</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">输入框聚焦时触发，event.detail &#x3D; { value, height }，height 为键盘高度</td>
+<td align="left">仅微信小程序、京东小程序、App（2.2.3+） 、QQ小程序、快手小程序支持 height</td>
+</tr>
+<tr>
+<td align="left">@blur</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">输入框失去焦点时触发，event.detail &#x3D; {value: value}</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@confirm</td>
+<td align="left">EventHandle</td>
+<td align="left"></td>
+<td align="left">点击完成按钮时触发，event.detail &#x3D; {value: value}</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">@keyboardheightchange</td>
+<td align="left">eventhandle</td>
+<td align="left"></td>
+<td align="left">键盘高度发生变化的时候触发此事件，event.detail &#x3D; {height: height, duration: duration}</td>
+<td align="left">微信小程序基础库2.7.0+、App 3.1.0+</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		&lt;button size=&quot;default&quot; type=&quot;primary&quot; loading=&quot;&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line">		&lt;view&gt;---&lt;/view&gt;</span><br><span class="line">		&lt;input type=&quot;number&quot; placeholder=&quot;请输入搜索内容&quot; password disabled=&quot;&quot;&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default  &#123;</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		methods: &#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250205110142671.png" alt="image-20250205110142671"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		&#123;&#123;num1&#125;&#125;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">	import &#123;ref&#125; from &quot;vue&quot;;</span><br><span class="line">	let num1 = 6;</span><br><span class="line">	// setInterval(()=&gt;&#123;</span><br><span class="line">	// 	num1 ++;</span><br><span class="line">	// 	console.log(num1);</span><br><span class="line">	// &#125;,1000)</span><br><span class="line">	let num2 = ref(10);</span><br><span class="line">	console.log(num1);</span><br><span class="line">	console.log(num2.value);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		&lt;image :src=&quot;pictur1&quot; mode=&quot;&quot;&gt;&lt;/image&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123;ref&#125; from &quot;vue&quot;;</span><br><span class="line">const arrs = ref([</span><br><span class="line">	&quot;/static/pic2.jpeg&quot;,</span><br><span class="line">	&quot;/static/pic3.jpeg&quot;,</span><br><span class="line">	&quot;/static/pic4.jpeg&quot;,</span><br><span class="line">	&quot;/static/pic5.jpeg&quot;,</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">const pictur1 = ref(&quot;/static/pic2.jpeg&quot;)</span><br><span class="line"></span><br><span class="line">let i = 0;</span><br><span class="line">setInterval(()=&gt;&#123;</span><br><span class="line">	i++;</span><br><span class="line">	pictur1.value = arrs.value[i%4];</span><br><span class="line">&#125;,1000)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		&lt;image :src=&quot;pictur1&quot; mode=&quot;&quot;&gt;&lt;/image&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">	&lt;view class=&quot;box&quot; :class=&quot;&#123;active:isActive&#125;&quot;&gt;v-blind指令&lt;/view&gt;</span><br><span class="line">	&lt;view class=&quot;box&quot; :style=&quot;&#123;width: &#x27;300px&#x27;,height:260 + &#x27;px&#x27;,fontSize:size + &#x27;px&#x27;&#125;&quot;&gt;内联样式&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123;ref&#125; from &quot;vue&quot;;</span><br><span class="line">const isActive = ref(true);</span><br><span class="line">const size = ref(30);</span><br><span class="line">const arrs = ref([</span><br><span class="line">	&quot;/static/pic2.jpeg&quot;,</span><br><span class="line">	&quot;/static/pic3.jpeg&quot;,</span><br><span class="line">	&quot;/static/pic4.jpeg&quot;, </span><br><span class="line">	&quot;/static/pic5.jpeg&quot;,</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">const pictur1 = ref(&quot;/static/pic2.jpeg&quot;)</span><br><span class="line"> </span><br><span class="line">let i = 0;</span><br><span class="line">setInterval(()=&gt;&#123;</span><br><span class="line">	i++;</span><br><span class="line">	// size.value ++;</span><br><span class="line">	pictur1.value = arrs.value[i%4];</span><br><span class="line">	isActive.value = !isActive.value;</span><br><span class="line">&#125;,1000)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line">.box&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background: orange;  </span><br><span class="line">	font-size: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.active&#123;</span><br><span class="line">	background: green;</span><br><span class="line">	color: #fff;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><h3 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h3><p>我们可以使用 <code>v-on</code> 指令 (通常缩写为 @ 符号，下文简称为：@事件) 来监听 DOM 事件，并在触发事件时执行一些 <code>JavaScript</code>。</p>
+<p>用法为 <code>v-on:click=&quot;methodName&quot;</code> 或使用快捷方式 <code>@click=&quot;methodName&quot;</code> （uni-app里一般都使用@缩写方式）</p>
+<p>指令的值，字符串里直接写js。比如下面的<code>counter += 1</code>就是一段js。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;counter += 1&quot;</span>&gt;</span>Add 1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">text</span>&gt;</span>The button above has been clicked &#123;&#123; counter &#125;&#125; times.<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">				<span class="attr">counter</span>:<span class="number">0</span></span></span><br><span class="line"><span class="language-javascript">			&#125;</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<h3 id="事件处理方法"><a href="#事件处理方法" class="headerlink" title="事件处理方法"></a>事件处理方法</h3><p>然而许多事件处理逻辑会更为复杂，所以直接把 <code>JavaScript</code> 代码写在组件属性值里是不可行的。因此@事件还可以接收一个需要调用的方法名称。</p>
+<p>示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- `greet` 是在下面定义的方法名 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;greet&quot;</span>&gt;</span>Greet<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">				<span class="attr">name</span>: <span class="string">&#x27;Vue.js&#x27;</span></span></span><br><span class="line"><span class="language-javascript">			&#125;</span></span><br><span class="line"><span class="language-javascript">		&#125;,</span></span><br><span class="line"><span class="language-javascript">		<span class="comment">// 在 `methods` 对象中定义方法</span></span></span><br><span class="line"><span class="language-javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="title function_">greet</span>(<span class="params">event</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">				<span class="comment">// `event` 是原生 DOM 事件</span></span></span><br><span class="line"><span class="language-javascript">				<span class="variable language_">console</span>.<span class="title function_">log</span>(event);</span></span><br><span class="line"><span class="language-javascript">				uni.<span class="title function_">showToast</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">					<span class="attr">title</span>: <span class="string">&#x27;Hello &#x27;</span> + <span class="variable language_">this</span>.<span class="property">name</span> + <span class="string">&#x27;!&#x27;</span></span></span><br><span class="line"><span class="language-javascript">				&#125;);</span></span><br><span class="line"><span class="language-javascript">			&#125;</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<h3 id="内联处理器中的方法"><a href="#内联处理器中的方法" class="headerlink" title="内联处理器中的方法"></a>内联处理器中的方法</h3><p>除了直接绑定到一个方法，也可以在内联 <code>JavaScript</code> 语句中调用方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;say(&#x27;hi&#x27;)&quot;</span>&gt;</span>Say hi<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;say(&#x27;what&#x27;)&quot;</span>&gt;</span>Say what<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="title function_">say</span>(<span class="params">message</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">				uni.<span class="title function_">showToast</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">					<span class="attr">title</span>: message</span></span><br><span class="line"><span class="language-javascript">				&#125;);</span></span><br><span class="line"><span class="language-javascript">			&#125;</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<p>有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 <code>$event</code> 把它传入方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;warn(&#x27;Form cannot be submitted yet.&#x27;, $event)&quot;</span>&gt;</span></span><br><span class="line">		  Submit</span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="title function_">warn</span>(<span class="params">message, event</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">				<span class="comment">// 现在我们可以访问原生事件对象</span></span></span><br><span class="line"><span class="language-javascript">				<span class="keyword">if</span> (event) &#123;</span></span><br><span class="line"><span class="language-javascript">					<span class="comment">//可访问 event.target等原生事件对象</span></span></span><br><span class="line"><span class="language-javascript">					<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;event: &quot;</span>,event);</span></span><br><span class="line"><span class="language-javascript">				&#125;</span></span><br><span class="line"><span class="language-javascript">				uni.<span class="title function_">showToast</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">					<span class="attr">title</span>: message</span></span><br><span class="line"><span class="language-javascript">				&#125;);</span></span><br><span class="line"><span class="language-javascript">			&#125;</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<h3 id="多事件处理器"><a href="#多事件处理器" class="headerlink" title="多事件处理器"></a>多事件处理器</h3><p>事件处理程序中可以有多个方法，这些方法由逗号运算符分隔：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 这两个 one() 和 two() 将执行按钮点击事件 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;one($event); two($event)&quot;</span>&gt;</span></span><br><span class="line">		  Submit</span><br><span class="line">		<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">			<span class="title function_">one</span>(<span class="params">event</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">				<span class="comment">// first handler logic...</span></span></span><br><span class="line"><span class="language-javascript">				<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;event1: &quot;</span>,event);</span></span><br><span class="line"><span class="language-javascript">			&#125;,</span></span><br><span class="line"><span class="language-javascript">			<span class="title function_">two</span>(<span class="params">event</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">				<span class="comment">// second handler logic...</span></span></span><br><span class="line"><span class="language-javascript">				<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;event2: &quot;</span>,event);</span></span><br><span class="line"><span class="language-javascript">			&#125;</span></span><br><span class="line"><span class="language-javascript">		&#125;</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>修饰符 (modifier) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，<code>.prevent</code> 修饰符告诉 @事件对于触发的事件调用 <code>event.preventDefault()</code>：</p>
+<p>@事件（v-on）提供了事件修饰符:</p>
+<ul>
+<li><code>.stop</code>: 各平台均支持， 使用时会阻止事件冒泡，在非 H5 端同时也会阻止事件的默认行为</li>
+<li><code>.prevent</code>: 仅在 H5 平台支持</li>
+<li><code>.capture</code>: 仅在 H5 平台支持</li>
+<li><code>.self</code>: 仅在 H5 平台支持</li>
+<li><code>.once</code>: 仅在 H5 平台支持</li>
+<li><code>.passive</code>: 仅在 H5 平台支持</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 阻止单击事件继续传播 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> @<span class="attr">click.stop</span>=<span class="string">&quot;doThis&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<blockquote>
+<p>使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 <code>@click.prevent.self</code> 会阻止所有的点击，而 <code>@click.self.prevent</code> 只会阻止对元素自身的点击。</p>
+</blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>为兼容各端，事件需使用 <strong>@</strong> 的方式绑定，请勿使用小程序端的 <code>bind</code> 和 <code>catch</code> 进行事件绑定；也不能在 JS 中使用<code>event.preventDefault()</code>和<code>event.stopPropagation()</code>方法。</li>
+<li>若需要禁止蒙版下的页面滚动，可使用 <code>@touchmove.stop.prevent=&quot;moveHandle&quot;</code>，<code>moveHandle</code> 可以用来处理 <code>touchmove</code> 的事件，也可以是一个空函数。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;mask&quot;</span> @<span class="attr">touchmove.stop.prevent</span>=<span class="string">&quot;moveHandle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>复制代码</p>
+<ul>
+<li>按键修饰符：<code>uni-app</code> 运行在手机端，没有键盘事件，所以不支持按键修饰符。</li>
+</ul>
+<p><strong>使用 v-on 或 @ 有几个好处</strong></p>
+<ol>
+<li>扫一眼 <code>template</code> 模板便能轻松定位在 <code>JavaScript</code> 代码里对应的方法。</li>
+<li>因为你无须在 <code>JavaScript</code> 里手动绑定事件，你的 <code>ViewModel</code> 代码可以是非常纯粹的逻辑，和 <code>DOM</code> 完全解耦，更易于测试。</li>
+<li>当一个 <code>ViewModel</code> 被销毁时，所有的事件处理器都会自动被删除。你无须担心如何清理它们。</li>
+</ol>
+<h3 id="事件映射表"><a href="#事件映射表" class="headerlink" title="事件映射表"></a>事件映射表</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 事件映射表，左侧为 WEB 事件，右侧为 ``uni-app`` 对应事件</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="attr">click</span>: <span class="string">&#x27;tap&#x27;</span>,</span><br><span class="line">		<span class="attr">touchstart</span>: <span class="string">&#x27;touchstart&#x27;</span>,</span><br><span class="line">		<span class="attr">touchmove</span>: <span class="string">&#x27;touchmove&#x27;</span>,</span><br><span class="line">		<span class="attr">touchcancel</span>: <span class="string">&#x27;touchcancel&#x27;</span>,</span><br><span class="line">		<span class="attr">touchend</span>: <span class="string">&#x27;touchend&#x27;</span>,</span><br><span class="line">		<span class="attr">tap</span>: <span class="string">&#x27;tap&#x27;</span>,</span><br><span class="line">		<span class="attr">longtap</span>: <span class="string">&#x27;longtap&#x27;</span>, <span class="comment">//推荐使用longpress代替</span></span><br><span class="line">		<span class="attr">input</span>: <span class="string">&#x27;input&#x27;</span>,</span><br><span class="line">		<span class="attr">change</span>: <span class="string">&#x27;change&#x27;</span>,</span><br><span class="line">		<span class="attr">submit</span>: <span class="string">&#x27;submit&#x27;</span>,</span><br><span class="line">		<span class="attr">blur</span>: <span class="string">&#x27;blur&#x27;</span>,</span><br><span class="line">		<span class="attr">focus</span>: <span class="string">&#x27;focus&#x27;</span>,</span><br><span class="line">		<span class="attr">reset</span>: <span class="string">&#x27;reset&#x27;</span>,</span><br><span class="line">		<span class="attr">confirm</span>: <span class="string">&#x27;confirm&#x27;</span>,</span><br><span class="line">		<span class="attr">columnchange</span>: <span class="string">&#x27;columnchange&#x27;</span>,</span><br><span class="line">		<span class="attr">linechange</span>: <span class="string">&#x27;linechange&#x27;</span>,</span><br><span class="line">		<span class="attr">error</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">		<span class="attr">scrolltoupper</span>: <span class="string">&#x27;scrolltoupper&#x27;</span>,</span><br><span class="line">		<span class="attr">scrolltolower</span>: <span class="string">&#x27;scrolltolower&#x27;</span>,</span><br><span class="line">		<span class="attr">scroll</span>: <span class="string">&#x27;scroll&#x27;</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view class=&quot;box&quot; @click=&quot;onClick&quot; :style=&quot;&#123;background:color&#125;&quot;&gt;</span><br><span class="line">		&#123;&#123;num&#125;&#125;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123;ref&#125; from &quot;vue&quot;;</span><br><span class="line">const num = ref(1);</span><br><span class="line">const color = ref(&quot;#fc359a&quot;);</span><br><span class="line">function onClick()&#123;</span><br><span class="line">	color.value = &quot;#&quot;+String(Math.random()).substring(3,9);</span><br><span class="line">	console.log(String(Math.random()).substring(3,9));</span><br><span class="line">	num.value++;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line">.box&#123;</span><br><span class="line">	width: 200px;</span><br><span class="line">	height: 200px;</span><br><span class="line">	background: pink;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20250205143917843.png" alt="image-20250205143917843"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/02/05/Uniapp/">http://clock_blog.com/2025/02/05/Uniapp/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2025/02/01/Apifax%20%E6%B5%8B%E8%AF%95API/">Apifox</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>
