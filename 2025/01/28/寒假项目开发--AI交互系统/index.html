@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>寒假项目开发--AI交互系统 | clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">寒假项目开发--AI交互系统</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">clock</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 28, 2025&nbsp;&nbsp;12:00:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="寒假项目开发–AI交互系统"><a href="#寒假项目开发–AI交互系统" class="headerlink" title="寒假项目开发–AI交互系统"></a>寒假项目开发–AI交互系统</h1><p>我主要是涉及三个页面，分别是登录也蛮，ai交互页面，以及个人中心页面</p>
+<h2 id="登录页面"><a href="#登录页面" class="headerlink" title="登录页面"></a>登录页面</h2><p>首先运用figma这一个工具设计了一个页面</p>
+<p>这个页面我参考的是claude.ai的格式</p>
+<p><img src="/../images/image-20250223200935958.png" alt="image-20250223200935958"></p>
+<p>加了个轮播。先是在figma上设计页面，然后就在通过自己设计的写代码，用的vue</p>
+<p>这里设计灵感来自claude，本来想做一个气泡动态输出，不会做做不出来就弄了个静态搬运图。。</p>
+<p>没什么很难的地方，重要的是css设计这里。</p>
+<p>还有一个就是搬运图的代码，和路由的使用这里麻烦一点</p>
+<p>登录界面涉及到后端了，还要调用api，所以我写的是固定的。</p>
+<p><strong>重点说一下轮播图</strong>，用了一个swiper组件，在modules里面启用自动播放，左右导航和分页</p>
+<p>引入swiper,调用swiper组件。</p>
+<p>import Carousel from “..&#x2F;components&#x2F;Carousel.vue”;</p>
+<h2 id="因为现在还不会与后端进行交互，还没有全栈开发的能力，所以现在满足的是固定的密码与用户名，期待后期能够改进"><a href="#因为现在还不会与后端进行交互，还没有全栈开发的能力，所以现在满足的是固定的密码与用户名，期待后期能够改进" class="headerlink" title="因为现在还不会与后端进行交互，还没有全栈开发的能力，所以现在满足的是固定的密码与用户名，期待后期能够改进"></a>因为现在还不会与后端进行交互，还没有全栈开发的能力，所以现在满足的是固定的密码与用户名，期待后期能够改进</h2><p>在这里弄了一个轮播图，效果不错，我是引入的插件，这个插件是用vue的格式来写的。</p>
+<p><img src="/../images/image-20250223202506204.png" alt="image-20250223202506204"></p>
+<p><img src="/../images/image-20250223202549979.png" alt="image-20250223202549979"></p>
+<h2 id="重中之重-AI交互页面"><a href="#重中之重-AI交互页面" class="headerlink" title="重中之重- AI交互页面"></a>重中之重- AI交互页面</h2><p><img src="/../images/image-20250223202855263.png" alt="image-20250223202855263"></p>
+<p>在左边加编辑与删除。</p>
+<p>重头戏是在实现ai交互上吧。</p>
+<p>这里我用js来写的，感觉更方便一点。</p>
+<p><strong>在data这里</strong></p>
+<p>先初始化在computed这里，返回当前的对话对象methods：</p>
+<p>先是创建新对话</p>
+<p>新建对话窗口，选择对话窗口，发送信息，发送用户信息，发送信息给ai,获取ai信息，分别在api文档里面添加。</p>
+<p>我用的是汉化的，所以引入的是kimi和豆包模型</p>
+<p><a target="_blank" rel="noopener" href="https://www.coze.cn/open/docs/developer_guides/workflow_stream_run">https://www.coze.cn/open/docs/developer_guides/workflow_stream_run</a></p>
+<p>这里是流式的，但是我没有用这个，所以是非流式。</p>
+<p>主要是参考扣子，这里面提供不同接口的API ，也就是i这里我一直都在出错，怎么配置都不会显示</p>
+<p>仅仅显示对应的POST请求，但是不显示对用get到的请求。。。。文档太繁琐，不知道怎么与后端进行前后端交互。</p>
+<p><a target="_blank" rel="noopener" href="https://www.coze.cn/home">https://www.coze.cn/home</a></p>
+<p>进入这个页面</p>
+<p>详细说一下这里的步骤：</p>
+<p>先是获取一个API token–对应的<a target="_blank" rel="noopener" href="https://www.coze.cn/open/oauth/pats">https://www.coze.cn/open/oauth/pats</a></p>
+<p>来添加个人令牌</p>
+<p>同时获得bot_id</p>
+<p>这两个非常重要，是实现后期发送与接收请求的关键一步</p>
+<p><img src="/../images/image-20250223203725026.png" alt="image-20250223203725026"></p>
+<p>添加对话，工作流，进而引入模型</p>
+<h2 id="加入几个接口"><a href="#加入几个接口" class="headerlink" title="加入几个接口"></a>加入几个接口</h2><p>新建对话接口<a target="_blank" rel="noopener" href="https://api.coze.cn/v1/conversation/create">https://api.coze.cn/v1/conversation/create</a></p>
+<p>发送对话接口：<a target="_blank" rel="noopener" href="https://api.coze.cn/v3/chat?conversation_id=$%7Bconversation.conversationId">https://api.coze.cn/v3/chat?conversation_id=${conversation.conversationId</a></p>
+<p>这两个都是POST</p>
+<p>发送消息给ai:<a target="_blank" rel="noopener" href="https://api.coze.cn/v3/chat?conversation_id=$%7Bconversation.conversationId">https://api.coze.cn/v3/chat?conversation_id=${conversation.conversationId</a></p>
+<p>这里也是POST</p>
+<p><a target="_blank" rel="noopener" href="https://api.coze.cn/v3/chat/retrieve?conversation_id=$%7Bconversation.conversationId%7D&chat_id=$%7BchatId%7D">https://api.coze.cn/v3/chat/retrieve?conversation_id=${conversation.conversationId}&amp;chat_id=${chatId}</a></p>
+<p>这里是GET</p>
+<p><a target="_blank" rel="noopener" href="https://api.coze.cn/v3/chat/message/list?conversation_id=$%7Bconversation.conversationId%7D&chat_id=$%7BchatId%7D">https://api.coze.cn/v3/chat/message/list?conversation_id=${conversation.conversationId}&amp;chat_id=${chatId}</a></p>
+<p>这里也还是GET,是为了获取AI回复信息，</p>
+<p><img src="/../images/image-20250223204258581.png" alt="image-20250223204258581"></p>
+<p>最后是效果：</p>
+<p><img src="/../images/image-20250223204456660.png" alt="image-20250223204456660"></p>
+<h2 id="用户中心："><a href="#用户中心：" class="headerlink" title="用户中心："></a>用户中心：</h2><p><img src="/../images/image-20250223204521252.png" alt="image-20250223204521252"></p>
+<p>收获很多，通过这次实现</p>
+<p>但是很多vue语法以及与后端的交互还是不清楚，期待下一次项目开发。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>clock</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://clock_blog.com/2025/01/28/%E5%AF%92%E5%81%87%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91--AI%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F/">http://clock_blog.com/2025/01/28/%E5%AF%92%E5%81%87%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91--AI%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2025/01/28/vue_format_corrected_fixed/">vue_1</a>
+            
+            
+            <a class="next" rel="next" href="/2025/01/28/%E6%80%9D%E8%80%83%E9%A2%98/">思考题</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

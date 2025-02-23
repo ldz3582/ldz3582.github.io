@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5461T457HT"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5461T457HT');
+</script>
+<!-- End Google Analytics -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="clock">
+
+
+    <meta name="subtitle" content="Here's liyuhan's personal blog">
+
+
+    <meta name="description" content="Welcome!">
+
+
+
+<title>clock&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Clock&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Clock&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <p><strong>第一步：需求分析与设计</strong></p>
+<p>​	•	<strong>目标</strong>：明确每个功能模块的需求和页面设计。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	<strong>功能分析</strong>：登录页面、AI大模型交互页面、用户中心。每个模块需要做什么，功能如何实现。</p>
+<p>​	•	<strong>设计规划</strong>：明确页面布局，决定每个功能的位置和交互方式，思考用户使用的流畅性。</p>
+<p><strong>第二步：页面设计与布局</strong></p>
+<p>​	•	<strong>目标</strong>：在设计工具（如 Figma 或 Sketch）中创建页面的原型和布局。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	<strong>登录页面设计</strong>：基本的表单，输入框（账号、密码）、按钮（登录）、错误提示。</p>
+<p>​	•	<strong>AI大模型交互页面设计</strong>：对话框区域、输入框、发送按钮、流式显示区域（支持图片、文本等）。</p>
+<p>​	•	<strong>用户中心设计</strong>：修改密码、修改个人资料、登出按钮等。</p>
+<p><strong>第三步：搭建基本的前端框架</strong></p>
+<p>​	•	<strong>目标</strong>：初始化项目并搭建项目基础框架，使用你熟悉的技术栈（例如：HTML、CSS、JavaScript 或 Vue&#x2F;React）。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	创建页面的静态框架，使用 HTML&#x2F;CSS 搭建页面布局（不涉及功能时，只实现静态页面）。</p>
+<p>​	•	使用 Git 进行版本控制，并创建一个 GitHub 仓库，确保每次修改都能提交版本。</p>
+<p><strong>第四步：实现登录功能</strong></p>
+<p>​	•	<strong>目标</strong>：实现基本的登录页面功能，模拟简单的账号密码匹配。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	使用 JavaScript 实现用户输入的验证（判断账号密码是否匹配）。</p>
+<p>​	•	使用本地存储（如 localStorage 或 sessionStorage）模拟登录状态。</p>
+<p><strong>第五步：接入 Coze API，实现对话功能</strong></p>
+<p>​	•	<strong>目标</strong>：使用 Coze API 实现用户输入与 AI 大模型的交互。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	学习如何调用 Coze API，了解它如何接收请求、返回结果。</p>
+<p>​	•	实现流式对话功能：用户输入后，Coze API 返回内容并逐行展示。</p>
+<p>​	•	支持文本和图片等不同格式的显示。</p>
+<p>​	•	实现新增对话窗口的功能：每个对话保持独立且能保留历史对话，且可以编辑、删除。</p>
+<p><strong>第六步：用户中心功能实现</strong></p>
+<p>​	•	<strong>目标</strong>：实现用户资料修改和登出功能。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	修改用户名、密码功能。</p>
+<p>​	•	实现登出，清除登录状态。</p>
+<p><strong>第七步：美化与细节优化</strong></p>
+<p>​	•	<strong>目标</strong>：让页面更加美观与易用，提升用户体验。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	调整布局，优化颜色、字体、按钮样式。</p>
+<p>​	•	使页面具有响应式设计，确保在移动端和桌面端都能良好展示。</p>
+<p><strong>第八步：代码规范与工具使用</strong></p>
+<p>​	•	<strong>目标</strong>：整理代码，确保符合编码规范。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	使用 ESLint 检查代码规范。</p>
+<p>​	•	确保文件结构清晰，代码注释完整。</p>
+<p><strong>第九步：测试与功能完善</strong></p>
+<p>​	•	<strong>目标</strong>：检查所有功能是否按预期工作，并进行测试。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	手动测试：测试登录功能、对话框输入输出、用户修改和登出等功能。</p>
+<p>​	•	修复 bug，优化交互体验。</p>
+<p><strong>第十步：提交与总结</strong></p>
+<p>​	•	<strong>目标</strong>：将最终代码提交，准备设计稿件和提交材料。</p>
+<p>​	•	<strong>内容</strong>：</p>
+<p>​	•	完成页面设计稿（Figma 或其他工具）。</p>
+<p>​	•	整理项目文件，提交 GitHub 仓库，并编写简要的项目说明。</p>
+<template>
+  <div class="mb-4">
+    <el-button>Default</el-button>
+    <el-button type="primary">Primary</el-button>
+    <el-button type="success">Success</el-button>
+    <el-button type="info">Info</el-button>
+    <el-button type="warning">Warning</el-button>
+    <el-button type="danger">Danger</el-button>
+  </div>
+
+  <div class="mb-4">
+    <el-button plain>Plain</el-button>
+    <el-button type="primary" plain>Primary</el-button>
+    <el-button type="success" plain>Success</el-button>
+    <el-button type="info" plain>Info</el-button>
+    <el-button type="warning" plain>Warning</el-button>
+    <el-button type="danger" plain>Danger</el-button>
+  </div>
+
+  <div class="mb-4">
+    <el-button round>Round</el-button>
+    <el-button type="primary" round>Primary</el-button>
+    <el-button type="success" round>Success</el-button>
+    <el-button type="info" round>Info</el-button>
+    <el-button type="warning" round>Warning</el-button>
+    <el-button type="danger" round>Danger</el-button>
+  </div>
+
+  <div>
+    <el-button :icon="Search" circle />
+    <el-button type="primary" :icon="Edit" circle />
+    <el-button type="success" :icon="Check" circle />
+    <el-button type="info" :icon="Message" circle />
+    <el-button type="warning" :icon="Star" circle />
+    <el-button type="danger" :icon="Delete" circle />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import {
+  Check,
+  Delete,
+  Edit,
+  Message,
+  Search,
+  Star,
+} from '@element-plus/icons-vue'
+</script>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;!-- 左侧注册页面 --&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;</span><br><span class="line">      &lt;h2&gt;Your ideas, amplified&lt;/h2&gt;</span><br><span class="line">      &lt;p&gt;Privacy-first AI that helps you create in confidence.&lt;/p&gt;</span><br><span class="line">      &lt;div class=&quot;form&quot;&gt;</span><br><span class="line">        &lt;button class=&quot;google-btn&quot;&gt;Continue with Google&lt;/button&gt;</span><br><span class="line">        &lt;p&gt;OR&lt;/p&gt;</span><br><span class="line">        &lt;input type=&quot;email&quot; placeholder=&quot;Enter your personal or work email&quot; /&gt;</span><br><span class="line">        &lt;button class=&quot;email-btn&quot;&gt;Continue with email&lt;/button&gt;</span><br><span class="line">        &lt;p class=&quot;terms&quot;&gt;</span><br><span class="line">          By continuing, you agree to the &lt;a href=&quot;#&quot;&gt;Consumer Terms and Usage Policy&lt;/a&gt; and acknowledge their &lt;a href=&quot;#&quot;&gt;Privacy Policy&lt;/a&gt;.</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 右侧滚动图 --&gt;</span><br><span class="line">    &lt;div class=&quot;right&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;scroll-container&quot;&gt;</span><br><span class="line">        &lt;img v-for=&quot;n in 4&quot; :key=&quot;n&quot; :src=&quot;getImageUrl(n)&quot; alt=&quot;image&quot; /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;App&quot;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getImageUrl(index) &#123;</span><br><span class="line">      // 假设你的图片已经放在 public 文件夹下，你可以替换为图片实际路径</span><br><span class="line">      return `/images/image-$&#123;index&#125;.jpg`; // 根据实际图片路径调整</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">  padding: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.left &#123;</span><br><span class="line">  width: 45%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.right &#123;</span><br><span class="line">  width: 45%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.form &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">button &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  padding: 10px;</span><br><span class="line">  margin: 5px 0;</span><br><span class="line">  border: none;</span><br><span class="line">  background-color: #f1f1f1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  padding: 10px;</span><br><span class="line">  margin: 5px 0;</span><br><span class="line">  border: 1px solid #ccc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.terms &#123;</span><br><span class="line">  font-size: 12px;</span><br><span class="line">  margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.scroll-container &#123;</span><br><span class="line">  overflow-x: auto;</span><br><span class="line">  display: flex;</span><br><span class="line">  gap: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.scroll-container img &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  object-fit: cover;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250206101256806.png" alt="image-20250206101256806"></p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250206101349341.png" alt="image-20250206101349341"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import &#123; ElMessage, ElMessageBox, ElNotification &#125; from &#x27;element-plus&#x27;</span><br><span class="line"></span><br><span class="line">// 消息</span><br><span class="line">const openMsg = () =&gt; &#123;</span><br><span class="line">    ElMessage(&#123;</span><br><span class="line">        type: &#x27;success&#x27;, // success | warning | info | error</span><br><span class="line">        message: &#x27;dengruicode.com&#x27;,</span><br><span class="line">        showClose: true</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 确认框</span><br><span class="line">const openConfirm = () =&gt; &#123;</span><br><span class="line">    ElMessageBox.confirm(&#x27;确认删除?&#x27;, &#x27;标题&#x27;, &#123;</span><br><span class="line">        type: &#x27;warning&#x27;,</span><br><span class="line">        confirmButtonText: &#x27;确认&#x27;,</span><br><span class="line">        cancelButtonText: &#x27;取消&#x27;</span><br><span class="line">    &#125;).then(() =&gt; &#123;</span><br><span class="line">        console.log(&#x27;确认&#x27;)</span><br><span class="line">    &#125;).catch(() =&gt; &#123;</span><br><span class="line">        console.log(&#x27;取消&#x27;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 通知</span><br><span class="line">const openNotify = () =&gt; &#123;</span><br><span class="line">    ElNotification(&#123;</span><br><span class="line">        title: &#x27;标题&#x27;,</span><br><span class="line">        message: &#x27;邓瑞编程&#x27;,</span><br><span class="line">        duration: 1500 // 展示时间 [单位:毫秒]</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 通知2</span><br><span class="line">const openNotify2 = () =&gt; &#123;</span><br><span class="line">    ElNotification(&#123;</span><br><span class="line">        type: &#x27;success&#x27;, // success | warning | info | error</span><br><span class="line">        title: &#x27;标题&#x27;,</span><br><span class="line">        message: &#x27;dengruicode.com&#x27;,</span><br><span class="line">        duration: 1500,</span><br><span class="line">        position: &#x27;bottom-right&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;el-button @click=&quot;openMsg&quot;&gt;消息&lt;/el-button&gt;</span><br><span class="line">&lt;el-button @click=&quot;openConfirm&quot;&gt;确认框&lt;/el-button&gt;</span><br><span class="line">&lt;el-button @click=&quot;openNotify&quot;&gt;通知&lt;/el-button&gt;</span><br><span class="line">&lt;el-button @click=&quot;openNotify2&quot;&gt;通知2&lt;/el-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250206114818969.png" alt="image-20250206114818969"></p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250206114921663.png" alt="image-20250206114921663"></p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250206114959382.png" alt="image-20250206114959382"></p>
+<p><img src="/Users/liyuhan/Downloads/Hexo/source/images/image-20250206115125891.png" alt="image-20250206115125891"></p>
+<h5 id=""><a href="#" class="headerlink" title=""></a></h5>
+        </section>
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="contact-info">
+        <h3>Contact Me:</h3>
+        <ul>
+            <strong>CSDN:</strong> <a href="https://blog.csdn.net/2401_87202881?type=blog" target="_blank">点击访问</a>
+            <strong>QQ:</strong> <a target="_blank" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&uin=2100892868&site=qq&menu=yes">点击联系我</a>
+            <strong>Email:</strong> <a href="mailto:你的邮箱地址">2100892868@qq.com</a>
+            <strong>GitHub:</strong> <a href="https://github.com/ldz3582" target="_blank">点击访问我的GitHub</a>
+            <strong>WeChat:</strong> Clock_LHSC
+        </ul>
+    </div>
+    <div class="copyright">
+        <span>© clock | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>
